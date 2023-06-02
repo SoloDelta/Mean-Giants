@@ -15,7 +15,7 @@ C:/Users/todd_/OneDrive/Documents/GitHub/Mean-Giants/Mid_Term
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-49955
+53083
 Successfully changed project path to: C:/Users/todd_/OneDrive/Documents/GitHub/Mean-Giants/Mid_Term
 C:/Users/todd_/OneDrive/Documents/GitHub/Mean-Giants/Mid_Term
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -47,11 +47,11 @@ C:/Users/todd_/OneDrive/Documents/GitHub/Mean-Giants/Mid_Term
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [32484] Host "[IP] 192.168.1.247 [Port] 0 [Flags] 2 [Guid] 1455858341 [EditorId] 1455858341 [Version] 1048832 [Id] WindowsEditor(7,MSI) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [24932] Host "[IP] 192.168.1.247 [Port] 0 [Flags] 2 [Guid] 2527586026 [EditorId] 2527586026 [Version] 1048832 [Id] WindowsEditor(7,MSI) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [32484] Host "[IP] 192.168.1.247 [Port] 0 [Flags] 2 [Guid] 1455858341 [EditorId] 1455858341 [Version] 1048832 [Id] WindowsEditor(7,MSI) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [24932] Host "[IP] 192.168.1.247 [Port] 0 [Flags] 2 [Guid] 2527586026 [EditorId] 2527586026 [Version] 1048832 [Id] WindowsEditor(7,MSI) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
-Refreshing native plugins compatible for Editor in 6.39 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 5.03 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2022.2.18f1 (5ebc6493a86f)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2022.2.18f1/Editor/Data/Resources/UnitySubsystems
@@ -67,18 +67,18 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2022.2.18f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2022.2.18f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2022.2.18f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56392
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56440
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.2.18f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.004715 seconds.
+Registered in 0.005101 seconds.
 - Loaded All Assemblies, in  0.254 seconds
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.212 seconds
+- Finished resetting the current domain, in  0.218 seconds
 Domain Reload Profiling:
-	ReloadAssembly (147ms)
-		BeginReloadAssembly (67ms)
+	ReloadAssembly (154ms)
+		BeginReloadAssembly (68ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
@@ -87,21 +87,21 @@ Domain Reload Profiling:
 		LoadAllAssembliesAndSetupDomain (0ms)
 			LoadAssemblies (66ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (99ms)
-				TypeCache.Initialize (98ms)
-					TypeCache.ScanAssembly (97ms)
+			SetupTypeCache (93ms)
+				TypeCache.Initialize (93ms)
+					TypeCache.ScanAssembly (92ms)
 				ResolveRequiredComponents (0ms)
 		FinalizeReload (0ms)
 			ReleaseScriptCaches (0ms)
 			RebuildScriptCaches (0ms)
-			SetupLoadedEditorAssemblies (165ms)
+			SetupLoadedEditorAssemblies (171ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (7ms)
-				SetLoadedEditorAssemblies (7ms)
+				SetLoadedEditorAssemblies (6ms)
 				RefreshPlugins (0ms)
 				BeforeProcessingInitializeOnLoad (1ms)
-				ProcessInitializeOnLoadAttributes (111ms)
-				ProcessInitializeOnLoadMethodAttributes (40ms)
+				ProcessInitializeOnLoadAttributes (115ms)
+				ProcessInitializeOnLoadMethodAttributes (41ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
@@ -111,48 +111,48 @@ Worker process is ready to serve import requests
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image C:\Users\todd_\OneDrive\Documents\GitHub\Mean-Giants\Mid_Term\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
 Symbol file LoadedFromMemory doesn't match image C:\Users\todd_\OneDrive\Documents\GitHub\Mean-Giants\Mid_Term\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-- Loaded All Assemblies, in  0.581 seconds
-Refreshing native plugins compatible for Editor in 2.38 ms, found 3 plugins.
+- Loaded All Assemblies, in  0.543 seconds
+Refreshing native plugins compatible for Editor in 2.42 ms, found 3 plugins.
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.415 seconds
+- Finished resetting the current domain, in  0.392 seconds
 Domain Reload Profiling:
-	ReloadAssembly (172ms)
-		BeginReloadAssembly (101ms)
+	ReloadAssembly (160ms)
+		BeginReloadAssembly (95ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (4ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (17ms)
-		LoadAllAssembliesAndSetupDomain (407ms)
-			LoadAssemblies (222ms)
+			CreateAndSetChildDomain (16ms)
+		LoadAllAssembliesAndSetupDomain (381ms)
+			LoadAssemblies (203ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (232ms)
-				TypeCache.Initialize (216ms)
-					TypeCache.ScanAssembly (213ms)
+			SetupTypeCache (220ms)
+				TypeCache.Initialize (204ms)
+					TypeCache.ScanAssembly (201ms)
 				ResolveRequiredComponents (3ms)
 		FinalizeReload (0ms)
 			ReleaseScriptCaches (0ms)
 			RebuildScriptCaches (0ms)
-			SetupLoadedEditorAssemblies (303ms)
+			SetupLoadedEditorAssemblies (275ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (6ms)
-				SetLoadedEditorAssemblies (3ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (2ms)
 				RefreshPlugins (0ms)
-				BeforeProcessingInitializeOnLoad (51ms)
-				ProcessInitializeOnLoadAttributes (223ms)
+				BeforeProcessingInitializeOnLoad (45ms)
+				ProcessInitializeOnLoadAttributes (203ms)
 				ProcessInitializeOnLoadMethodAttributes (15ms)
-				AfterProcessingInitializeOnLoad (5ms)
+				AfterProcessingInitializeOnLoad (6ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (5ms)
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Refreshing native plugins compatible for Editor in 4.86 ms, found 3 plugins.
+			AwakeInstancesAfterBackupRestoration (7ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 2.61 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 3107 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 31 unused Assets / (66.3 KB). Loaded Objects now: 3572.
-Memory consumption went from 111.6 MB to 111.5 MB.
-Total: 2.392700 ms (FindLiveObjects: 0.175600 ms CreateObjectMapping: 0.079400 ms MarkObjects: 2.065900 ms  DeleteObjects: 0.070900 ms)
+Unloading 31 unused Assets / (66.9 KB). Loaded Objects now: 3572.
+Memory consumption went from 111.5 MB to 111.4 MB.
+Total: 2.737900 ms (FindLiveObjects: 0.160700 ms CreateObjectMapping: 0.067800 ms MarkObjects: 2.416200 ms  DeleteObjects: 0.092200 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
@@ -167,9 +167,731 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 32726.639123 seconds.
-  path: Assets/SciFi_Space_Soldier/Resources
-  artifactKey: Guid(84454d06f7a2c2346af987ae3f36eafa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SciFi_Space_Soldier/Resources using Guid(84454d06f7a2c2346af987ae3f36eafa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '57184d3c07799d59fba04c3e7e85e20c') in 0.001519 seconds
+  Time since last request: 32996.211944 seconds.
+  path: Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Shaders
+  artifactKey: Guid(b57a4e530e1379b48869948890a58721) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Shaders using Guid(b57a4e530e1379b48869948890a58721) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '30abf70fcff41a08f6b34756d63ec903') in 0.002375 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 23.917939 seconds.
+  path: Assets/Unity Store Downloads/SciFi_Space_Soldier/Prefabs/Space_Soldier_A.prefab
+  artifactKey: Guid(7aa6f6434be94e44583bd055d3a42eee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Unity Store Downloads/SciFi_Space_Soldier/Prefabs/Space_Soldier_A.prefab using Guid(7aa6f6434be94e44583bd055d3a42eee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '744643a8a26c889e6fd15e445ae3bd22') in 0.302550 seconds
+Internal: There are remaining Allocations on the JobTempAlloc. This is a leak, and will impact performance
+To Debug, run app with -diag-job-temp-memory-leak-validation cmd line argument. This will output the callstacks of the leaked allocations.
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 96
+========================================================================
+Received Import Request.
+  Time since last request: 10.459421 seconds.
+  path: Assets/Unity Store Downloads/SciFi_Space_Soldier/Prefabs/Space_Soldier_A_LOD1.prefab
+  artifactKey: Guid(ee13d518658eb2140a5cf1e59a3de544) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Unity Store Downloads/SciFi_Space_Soldier/Prefabs/Space_Soldier_A_LOD1.prefab using Guid(ee13d518658eb2140a5cf1e59a3de544) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3056ec804f365c6a5d11894938cd0eab') in 0.062122 seconds
+Internal: There are remaining Allocations on the JobTempAlloc. This is a leak, and will impact performance
+To Debug, run app with -diag-job-temp-memory-leak-validation cmd line argument. This will output the callstacks of the leaked allocations.
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 94
+========================================================================
+Received Import Request.
+  Time since last request: 15.100381 seconds.
+  path: Assets/Unity Store Downloads/SciFi_Space_Soldier/Prefabs/Space_Soldier_Ragdoll_A_LOD1.prefab
+  artifactKey: Guid(e7eed3cc0a94151498ee5b22d0a590db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Unity Store Downloads/SciFi_Space_Soldier/Prefabs/Space_Soldier_Ragdoll_A_LOD1.prefab using Guid(e7eed3cc0a94151498ee5b22d0a590db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ad14316bd61cd254a6bd95e23febdf51') in 0.058098 seconds
+Internal: There are remaining Allocations on the JobTempAlloc. This is a leak, and will impact performance
+To Debug, run app with -diag-job-temp-memory-leak-validation cmd line argument. This will output the callstacks of the leaked allocations.
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 208
+========================================================================
+Received Import Request.
+  Time since last request: 0.996185 seconds.
+  path: Assets/Unity Store Downloads/SciFi_Space_Soldier/Prefabs/Space_Soldier_Ragdoll_A.prefab
+  artifactKey: Guid(4045ab46594095b41ad7a0f08cfd554c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Unity Store Downloads/SciFi_Space_Soldier/Prefabs/Space_Soldier_Ragdoll_A.prefab using Guid(4045ab46594095b41ad7a0f08cfd554c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2d16449952b373884503f897fc760f56') in 0.075744 seconds
+Internal: There are remaining Allocations on the JobTempAlloc. This is a leak, and will impact performance
+To Debug, run app with -diag-job-temp-memory-leak-validation cmd line argument. This will output the callstacks of the leaked allocations.
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 210
+========================================================================
+Received Import Request.
+  Time since last request: 66.822066 seconds.
+  path: Assets/Scripts/PlayerController
+  artifactKey: Guid(1515ba8e032aedc41a76c7bf49281dbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PlayerController using Guid(1515ba8e032aedc41a76c7bf49281dbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aceed4387109e3aeca4e4343b3500e1b') in 0.011078 seconds
+Internal: There are remaining Allocations on the JobTempAlloc. This is a leak, and will impact performance
+To Debug, run app with -diag-job-temp-memory-leak-validation cmd line argument. This will output the callstacks of the leaked allocations.
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 29.061329 seconds.
+  path: Assets/Scripts/PlayerController.cs
+  artifactKey: Guid(0ffc44160fa761b409e960c8164420e1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PlayerController.cs using Guid(0ffc44160fa761b409e960c8164420e1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c30a373ced603c1b31d48f920b9b9301') in 0.000618 seconds
+Internal: There are remaining Allocations on the JobTempAlloc. This is a leak, and will impact performance
+To Debug, run app with -diag-job-temp-memory-leak-validation cmd line argument. This will output the callstacks of the leaked allocations.
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Internal: deleting an allocation that is older than its permitted lifetime of 4 frames (age = 5)
+Internal: deleting an allocation that is older than its permitted lifetime of 4 frames (age = 5)
+Internal: deleting an allocation that is older than its permitted lifetime of 4 frames (age = 6)
+Internal: deleting an allocation that is older than its permitted lifetime of 4 frames (age = 6)
+Symbol file LoadedFromMemory doesn't match image C:\Users\todd_\OneDrive\Documents\GitHub\Mean-Giants\Mid_Term\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\todd_\OneDrive\Documents\GitHub\Mean-Giants\Mid_Term\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+- Loaded All Assemblies, in  0.530 seconds
+Refreshing native plugins compatible for Editor in 2.60 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.598 seconds
+Domain Reload Profiling:
+	ReloadAssembly (165ms)
+		BeginReloadAssembly (107ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (28ms)
+		LoadAllAssembliesAndSetupDomain (363ms)
+			LoadAssemblies (212ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (193ms)
+				TypeCache.Initialize (188ms)
+					TypeCache.ScanAssembly (184ms)
+				ResolveRequiredComponents (3ms)
+		FinalizeReload (0ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (0ms)
+			SetupLoadedEditorAssemblies (231ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (2ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (43ms)
+				ProcessInitializeOnLoadAttributes (163ms)
+				ProcessInitializeOnLoadMethodAttributes (12ms)
+				AfterProcessingInitializeOnLoad (5ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (4ms)
+Refreshing native plugins compatible for Editor in 2.11 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3099 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 22 unused Assets / (30.5 KB). Loaded Objects now: 3585.
+Memory consumption went from 116.8 MB to 116.8 MB.
+Total: 2.581900 ms (FindLiveObjects: 0.152100 ms CreateObjectMapping: 0.074100 ms MarkObjects: 2.315900 ms  DeleteObjects: 0.038900 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 5.459265 seconds.
+  path: Assets/Scripts/PlayerController.cs
+  artifactKey: Guid(0ffc44160fa761b409e960c8164420e1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PlayerController.cs using Guid(0ffc44160fa761b409e960c8164420e1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c8f0c0fd78b9dadba65c8baac9aea0bd') in 0.001796 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 199.163079 seconds.
+  path: Assets/Scripts/NewBehaviourScript.cs
+  artifactKey: Guid(ca8ee82d0cfea3346b0d7511aa24a412) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/NewBehaviourScript.cs using Guid(ca8ee82d0cfea3346b0d7511aa24a412) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd85faf92aa915c1151a675f893865c69') in 0.001707 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\todd_\OneDrive\Documents\GitHub\Mean-Giants\Mid_Term\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\todd_\OneDrive\Documents\GitHub\Mean-Giants\Mid_Term\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+- Loaded All Assemblies, in  0.959 seconds
+Refreshing native plugins compatible for Editor in 7.25 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.861 seconds
+Domain Reload Profiling:
+	ReloadAssembly (266ms)
+		BeginReloadAssembly (171ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (7ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (50ms)
+		LoadAllAssembliesAndSetupDomain (687ms)
+			LoadAssemblies (390ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (367ms)
+				TypeCache.Initialize (360ms)
+					TypeCache.ScanAssembly (355ms)
+				ResolveRequiredComponents (5ms)
+		FinalizeReload (0ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (0ms)
+			SetupLoadedEditorAssemblies (503ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (7ms)
+				SetLoadedEditorAssemblies (5ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (72ms)
+				ProcessInitializeOnLoadAttributes (382ms)
+				ProcessInitializeOnLoadMethodAttributes (25ms)
+				AfterProcessingInitializeOnLoad (12ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (8ms)
+Refreshing native plugins compatible for Editor in 2.24 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3099 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 22 unused Assets / (30.5 KB). Loaded Objects now: 3588.
+Memory consumption went from 116.8 MB to 116.8 MB.
+Total: 2.170900 ms (FindLiveObjects: 0.191900 ms CreateObjectMapping: 0.078000 ms MarkObjects: 1.863600 ms  DeleteObjects: 0.035300 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\todd_\OneDrive\Documents\GitHub\Mean-Giants\Mid_Term\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\todd_\OneDrive\Documents\GitHub\Mean-Giants\Mid_Term\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+- Loaded All Assemblies, in  0.484 seconds
+Refreshing native plugins compatible for Editor in 2.90 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.607 seconds
+Domain Reload Profiling:
+	ReloadAssembly (158ms)
+		BeginReloadAssembly (102ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (26ms)
+		LoadAllAssembliesAndSetupDomain (323ms)
+			LoadAssemblies (185ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (179ms)
+				TypeCache.Initialize (177ms)
+					TypeCache.ScanAssembly (173ms)
+				ResolveRequiredComponents (2ms)
+		FinalizeReload (0ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (0ms)
+			SetupLoadedEditorAssemblies (277ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (4ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (51ms)
+				ProcessInitializeOnLoadAttributes (194ms)
+				ProcessInitializeOnLoadMethodAttributes (17ms)
+				AfterProcessingInitializeOnLoad (6ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
+Refreshing native plugins compatible for Editor in 2.32 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3100 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 22 unused Assets / (37.9 KB). Loaded Objects now: 3591.
+Memory consumption went from 117.1 MB to 117.0 MB.
+Total: 2.367200 ms (FindLiveObjects: 0.226000 ms CreateObjectMapping: 0.107900 ms MarkObjects: 1.995600 ms  DeleteObjects: 0.037000 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\todd_\OneDrive\Documents\GitHub\Mean-Giants\Mid_Term\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\todd_\OneDrive\Documents\GitHub\Mean-Giants\Mid_Term\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+- Loaded All Assemblies, in  0.479 seconds
+Refreshing native plugins compatible for Editor in 2.24 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.599 seconds
+Domain Reload Profiling:
+	ReloadAssembly (154ms)
+		BeginReloadAssembly (104ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (24ms)
+		LoadAllAssembliesAndSetupDomain (323ms)
+			LoadAssemblies (194ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (175ms)
+				TypeCache.Initialize (172ms)
+					TypeCache.ScanAssembly (168ms)
+				ResolveRequiredComponents (2ms)
+		FinalizeReload (0ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (0ms)
+			SetupLoadedEditorAssemblies (273ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (3ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (51ms)
+				ProcessInitializeOnLoadAttributes (191ms)
+				ProcessInitializeOnLoadMethodAttributes (16ms)
+				AfterProcessingInitializeOnLoad (6ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
+Refreshing native plugins compatible for Editor in 2.67 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3100 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 22 unused Assets / (37.9 KB). Loaded Objects now: 3594.
+Memory consumption went from 117.1 MB to 117.0 MB.
+Total: 2.678400 ms (FindLiveObjects: 0.165600 ms CreateObjectMapping: 0.077800 ms MarkObjects: 2.350400 ms  DeleteObjects: 0.083800 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\todd_\OneDrive\Documents\GitHub\Mean-Giants\Mid_Term\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\todd_\OneDrive\Documents\GitHub\Mean-Giants\Mid_Term\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+- Loaded All Assemblies, in  0.483 seconds
+Refreshing native plugins compatible for Editor in 2.09 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.579 seconds
+Domain Reload Profiling:
+	ReloadAssembly (157ms)
+		BeginReloadAssembly (102ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (25ms)
+		LoadAllAssembliesAndSetupDomain (324ms)
+			LoadAssemblies (185ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (180ms)
+				TypeCache.Initialize (177ms)
+					TypeCache.ScanAssembly (173ms)
+				ResolveRequiredComponents (3ms)
+		FinalizeReload (0ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (0ms)
+			SetupLoadedEditorAssemblies (264ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (4ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (50ms)
+				ProcessInitializeOnLoadAttributes (184ms)
+				ProcessInitializeOnLoadMethodAttributes (16ms)
+				AfterProcessingInitializeOnLoad (6ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Refreshing native plugins compatible for Editor in 2.80 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3100 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 22 unused Assets / (37.9 KB). Loaded Objects now: 3597.
+Memory consumption went from 117.1 MB to 117.0 MB.
+Total: 2.379700 ms (FindLiveObjects: 0.163400 ms CreateObjectMapping: 0.073900 ms MarkObjects: 1.988800 ms  DeleteObjects: 0.153000 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 173.922645 seconds.
+  path: Assets/Scenes/Chris.unity
+  artifactKey: Guid(0429a2ee098fe2649b5738814db99a79) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Scenes/Chris.unity using Guid(0429a2ee098fe2649b5738814db99a79) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'd675f223ac939d2d1bca62da5d48f9c3') in 0.079665 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000080 seconds.
+  path: Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Textures/T_SpaceSoldier_Head_D.tga
+  artifactKey: Guid(2f5a147c8e798ed45ac7ac5e13006a16) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Textures/T_SpaceSoldier_Head_D.tga using Guid(2f5a147c8e798ed45ac7ac5e13006a16) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '67557e5eda9ea511d867a46ef3b2bb19') in 0.056847 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000070 seconds.
+  path: Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Floor.mat
+  artifactKey: Guid(aafa21b2fb64511499b1e39e26a2c97d) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Floor.mat using Guid(aafa21b2fb64511499b1e39e26a2c97d) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '9f12a7682c72a18d05774ed360ec4e14') in 0.017022 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Materials/M_Soldier_B_Legs.mat
+  artifactKey: Guid(a699ee56e43a36a4a93d521b97cc7cd7) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Materials/M_Soldier_B_Legs.mat using Guid(a699ee56e43a36a4a93d521b97cc7cd7) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '70de3d6034add43f7cb66a7ad4e47053') in 0.017945 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 5
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Weapons/Rifle/Textures/T_Weapon_Rifle_1_CM.png
+  artifactKey: Guid(b58230416995dae4aa2bfffd18768f6f) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Weapons/Rifle/Textures/T_Weapon_Rifle_1_CM.png using Guid(b58230416995dae4aa2bfffd18768f6f) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '074666f110c335bd8d68c9587861f20c') in 0.012863 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000011 seconds.
+  path: Assets/Scenes/John.unity
+  artifactKey: Guid(0a675ad9aa48f1b41bbf046c65b7dbe8) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Scenes/John.unity using Guid(0a675ad9aa48f1b41bbf046c65b7dbe8) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '9bac2e322ef9708d6d4b671e19548b79') in 0.002466 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Meshes/Soldier_LOD1.FBX
+  artifactKey: Guid(c99537a5ec6872e42af9706f9a279e74) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Meshes/Soldier_LOD1.FBX using Guid(c99537a5ec6872e42af9706f9a279e74) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'a77d6d22daa3877d2ca7133d5990e8ab') in 0.033506 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 102
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Meshes/Anims_RootMotion/Soldier@Rifle_Sprint_F_RM.FBX
+  artifactKey: Guid(1d2914dd4acaf5f4bbc5706c2b289c47) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Meshes/Anims_RootMotion/Soldier@Rifle_Sprint_F_RM.FBX using Guid(1d2914dd4acaf5f4bbc5706c2b289c47) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'e6f33fc90bb335e59293c6bb58194df8') in 0.029531 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 110
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Meshes/Anims_Inplace/Soldier@Rifle_Aiming_Walk_B.FBX
+  artifactKey: Guid(3d2258b5c81862f438661352844c4590) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Meshes/Anims_Inplace/Soldier@Rifle_Aiming_Walk_B.FBX using Guid(3d2258b5c81862f438661352844c4590) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '836a838d7332d1fb8df7f4f676d0dc05') in 0.028069 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 88
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Materials/M_Soldier_C_Head.mat
+  artifactKey: Guid(7edb55f16f8f0ca45b1babcbd2960aa4) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Materials/M_Soldier_C_Head.mat using Guid(7edb55f16f8f0ca45b1babcbd2960aa4) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '4295ff336f493bba8ccd18b8659ac1d5') in 0.018026 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 6
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Materials/M_Soldier_A_Torso.mat
+  artifactKey: Guid(eda028106e6673545a9aeab640c50688) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Materials/M_Soldier_A_Torso.mat using Guid(eda028106e6673545a9aeab640c50688) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'c9608394e1b5410ca96e736c072d535a') in 0.015542 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 5
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Weapons/Rifle/HUD/HUD_Icon_Rifle.png
+  artifactKey: Guid(986fb6568545e4b4e8d2825e26616dff) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Weapons/Rifle/HUD/HUD_Icon_Rifle.png using Guid(986fb6568545e4b4e8d2825e26616dff) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'eee295baaf8d764c4b5641a0b2b90960') in 0.011399 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Textures/T_SpaceSoldier_Head_CM.tga
+  artifactKey: Guid(b498b07523c8c804c9294b2fded8de2e) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Textures/T_SpaceSoldier_Head_CM.tga using Guid(b498b07523c8c804c9294b2fded8de2e) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '8fbbbde51b480be0bd79a3f92683b35a') in 0.011564 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Meshes/Anims_Partial/Soldier@Rifle_Reload.FBX
+  artifactKey: Guid(9a252a22f2418b543ac5ceb6a5023d7c) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Meshes/Anims_Partial/Soldier@Rifle_Reload.FBX using Guid(9a252a22f2418b543ac5ceb6a5023d7c) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'de72659a4763bcaf7ef4b68c1f05ad8c') in 0.038423 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 128
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Meshes/Anims_RootMotion/Soldier@Rifle_Aiming_Walk_B_RM.FBX
+  artifactKey: Guid(982a0ecc9c78b274facf6f28e340a337) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Meshes/Anims_RootMotion/Soldier@Rifle_Aiming_Walk_B_RM.FBX using Guid(982a0ecc9c78b274facf6f28e340a337) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '14f637843954f5d04e2fd15e6105413d') in 0.022529 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 88
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Textures/T_SpaceSoldier_Torso_M.tga
+  artifactKey: Guid(ee12b18da37c0904f971a0bf2f042ae5) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Textures/T_SpaceSoldier_Torso_M.tga using Guid(ee12b18da37c0904f971a0bf2f042ae5) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '69ac0b18607fc3d05933c3635b2f95f4') in 0.012197 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000055 seconds.
+  path: Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Textures/T_SpaceSoldier_Head_M.tga
+  artifactKey: Guid(5a18c989b69887946ac9a044b78c0202) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Textures/T_SpaceSoldier_Head_M.tga using Guid(5a18c989b69887946ac9a044b78c0202) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '9847d7b63f30bb25641a948a475de34a') in 0.014690 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Meshes/Anims_Actions/Soldier@Death_A.FBX
+  artifactKey: Guid(bb97d748305d1df47b5d9b1d6e98a719) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Meshes/Anims_Actions/Soldier@Death_A.FBX using Guid(bb97d748305d1df47b5d9b1d6e98a719) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'ed7e33d6ae052dffdaf95111bc444b37') in 0.025850 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 88
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Meshes/Anims_Inplace/Soldier@Rifle_Idle.FBX
+  artifactKey: Guid(46b28d6574c1af441a7d58ce17a3c78c) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Meshes/Anims_Inplace/Soldier@Rifle_Idle.FBX using Guid(46b28d6574c1af441a7d58ce17a3c78c) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '1b366e2f99e2b6aa115674f8196e38d0') in 0.020838 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 90
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Weapons/Rifle/Materials/M_Weapon_Rifle_C.mat
+  artifactKey: Guid(3d2595c56f4971940887d32a5abace2f) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Weapons/Rifle/Materials/M_Weapon_Rifle_C.mat using Guid(3d2595c56f4971940887d32a5abace2f) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '3a6937f3363624d34d2f7bc46b39e958') in 0.014167 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 6
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Materials/M_Soldier_C_Legs.mat
+  artifactKey: Guid(37a46b1f0fd13754a88d38b533e0455b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Materials/M_Soldier_C_Legs.mat using Guid(37a46b1f0fd13754a88d38b533e0455b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '705cf1b9efe1fc49b51aaa300064e75e') in 0.011772 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 5
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Weapons/Rifle/Textures/T_Weapon_Rifle_1_D.png
+  artifactKey: Guid(2b6e53757cdaea64c8cb8f8d88381ab5) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Weapons/Rifle/Textures/T_Weapon_Rifle_1_D.png using Guid(2b6e53757cdaea64c8cb8f8d88381ab5) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'a3c22de7fef295d0e3cf6aeda41697ca') in 0.010876 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Weapons/Rifle/Materials/M_Weapon_Rifle_A.mat
+  artifactKey: Guid(5bd349b194141c243b60e9e5918d3fd6) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Weapons/Rifle/Materials/M_Weapon_Rifle_A.mat using Guid(5bd349b194141c243b60e9e5918d3fd6) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '1d8d1935cc2a8dba73f7b109839e9053') in 0.009364 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 5
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Materials/M_Soldier_A_Legs.mat
+  artifactKey: Guid(ceaa229ea18542d4fa2b0e4414c91b67) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Materials/M_Soldier_A_Legs.mat using Guid(ceaa229ea18542d4fa2b0e4414c91b67) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'e6224c0f787b261470028a4ef144bd66') in 0.009956 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Meshes/Soldier.FBX
+  artifactKey: Guid(cfeff1d67ecb92245941b957cebd290e) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Meshes/Soldier.FBX using Guid(cfeff1d67ecb92245941b957cebd290e) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '8130a316602335a910090e7f1318c7e3') in 0.021600 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 102
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Weapons/Rifle/Textures/T_Weapon_Rifle_1_E.png
+  artifactKey: Guid(e15efdfa6cbfd86429b408c7921dcb31) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Weapons/Rifle/Textures/T_Weapon_Rifle_1_E.png using Guid(e15efdfa6cbfd86429b408c7921dcb31) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'be6aff2c1cd0ff487df913e794805f6a') in 0.013069 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Scenes/Gio.unity
+  artifactKey: Guid(7e568b8f05623a64eb687e391dfa0e67) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Scenes/Gio.unity using Guid(7e568b8f05623a64eb687e391dfa0e67) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '63e18a8f5c8f3f4c252529b1dca21dc7') in 0.004808 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000073 seconds.
+  path: Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Weapons/Rifle/Materials/M_Weapon_Rifle_B.mat
+  artifactKey: Guid(811bfde249015f34b96e27887110e9f9) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Weapons/Rifle/Materials/M_Weapon_Rifle_B.mat using Guid(811bfde249015f34b96e27887110e9f9) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '625c0485acc7ad1b904cf06dc120949f') in 0.009489 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 6
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Meshes/Anims_Inplace/Soldier@Rifle_Walk_F.FBX
+  artifactKey: Guid(619360461288c4a40867a79019cdd4b7) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Meshes/Anims_Inplace/Soldier@Rifle_Walk_F.FBX using Guid(619360461288c4a40867a79019cdd4b7) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '5c8badb8377be2339aaff1f3ccdc56e6') in 0.024022 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 88
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Meshes/Anims_Inplace/Soldier@Rifle_Aiming_Walk_R.FBX
+  artifactKey: Guid(b6efb94726ff37146b6e0424491efa5d) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Meshes/Anims_Inplace/Soldier@Rifle_Aiming_Walk_R.FBX using Guid(b6efb94726ff37146b6e0424491efa5d) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '61d1fb94941af43eaa3b167ef4227890') in 0.024412 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 88
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Scripts/PlayerController.cs
+  artifactKey: Guid(0ffc44160fa761b409e960c8164420e1) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Scripts/PlayerController.cs using Guid(0ffc44160fa761b409e960c8164420e1) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'f2e32aa15baa8c4cb25311d7a068e863') in 0.003906 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000049 seconds.
+  path: Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Meshes/Anims_Actions/Soldier@PickupObject.FBX
+  artifactKey: Guid(50388f91089043b458e02917df32b4bc) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Meshes/Anims_Actions/Soldier@PickupObject.FBX using Guid(50388f91089043b458e02917df32b4bc) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '96c23554dbf2d1b449d28bd9821c6732') in 0.023362 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 90
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Materials/M_Soldier_B_Torso.mat
+  artifactKey: Guid(3e9beee87956dd6409048c37003411d6) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Materials/M_Soldier_B_Torso.mat using Guid(3e9beee87956dd6409048c37003411d6) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '0e026f3c1c98d119967c18cf5e99a5b6') in 0.015745 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 6
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Unity Store Downloads/SciFi_Space_Soldier/Prefabs/Space_Soldier_Ragdoll_A_LOD1.prefab
+  artifactKey: Guid(e7eed3cc0a94151498ee5b22d0a590db) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Unity Store Downloads/SciFi_Space_Soldier/Prefabs/Space_Soldier_Ragdoll_A_LOD1.prefab using Guid(e7eed3cc0a94151498ee5b22d0a590db) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '6fa6b879581aee1f1ec4c9bbc0af8ec5') in 0.017204 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 186
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Textures/T_SpaceSoldier_Torso_CM.tga
+  artifactKey: Guid(703a963deb2de2448ba1315eb2001845) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Textures/T_SpaceSoldier_Torso_CM.tga using Guid(703a963deb2de2448ba1315eb2001845) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '9fade1ae8eef615f2620b977d0483853') in 0.011634 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000080 seconds.
+  path: Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Meshes/Anims_RootMotion/Soldier@Rifle_Aiming_Walk_L_RM.FBX
+  artifactKey: Guid(bb20ada341177934d8068f487ec46e40) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Meshes/Anims_RootMotion/Soldier@Rifle_Aiming_Walk_L_RM.FBX using Guid(bb20ada341177934d8068f487ec46e40) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '28e780388e6d9457e5fea194b434bae3') in 0.023462 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 88
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Meshes/Anims_RootMotion/Soldier@Rifle_Run_F_RM.FBX
+  artifactKey: Guid(bad676df73c09264cbc0fe9ae8e10d5b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Space_Soldier/Meshes/Anims_RootMotion/Soldier@Rifle_Run_F_RM.FBX using Guid(bad676df73c09264cbc0fe9ae8e10d5b) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '661e1029ab773f8d3bfb53c8ea814551') in 0.025348 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 108
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Weapons/Rifle/Meshes/Weapon_Rifle_1.FBX
+  artifactKey: Guid(41ddbc89f43ce1149ba4f6f0f8ad75c8) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Unity Store Downloads/SciFi_Space_Soldier/Resources/Weapons/Rifle/Meshes/Weapon_Rifle_1.FBX using Guid(41ddbc89f43ce1149ba4f6f0f8ad75c8) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'b2ba51703c54ce530b786a70b01e8665') in 0.014267 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 14
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+TcpMessagingSession - receive error: operation aborted. errorcode: 995, details: The I/O operation has been aborted because of either a thread exit or an application request.
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
