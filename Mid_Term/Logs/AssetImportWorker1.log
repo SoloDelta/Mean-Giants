@@ -342,3 +342,179 @@ AssetImportParameters requested are different than current active one (requested
   custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\blair\OneDrive\Desktop\Midterm\Mean-Giants\Mid_Term\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\blair\OneDrive\Desktop\Midterm\Mean-Giants\Mid_Term\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+- Loaded All Assemblies, in  0.621 seconds
+Refreshing native plugins compatible for Editor in 3.88 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.775 seconds
+Domain Reload Profiling:
+	ReloadAssembly (201ms)
+		BeginReloadAssembly (130ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (38ms)
+		LoadAllAssembliesAndSetupDomain (419ms)
+			LoadAssemblies (228ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (244ms)
+				TypeCache.Initialize (240ms)
+					TypeCache.ScanAssembly (235ms)
+				ResolveRequiredComponents (3ms)
+		FinalizeReload (0ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (0ms)
+			SetupLoadedEditorAssemblies (342ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (3ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (55ms)
+				ProcessInitializeOnLoadAttributes (255ms)
+				ProcessInitializeOnLoadMethodAttributes (19ms)
+				AfterProcessingInitializeOnLoad (5ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Refreshing native plugins compatible for Editor in 4.60 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3136 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 33 unused Assets / (43.5 KB). Loaded Objects now: 3611.
+Memory consumption went from 111.0 MB to 110.9 MB.
+Total: 2.868200 ms (FindLiveObjects: 0.298100 ms CreateObjectMapping: 0.086200 ms MarkObjects: 2.417600 ms  DeleteObjects: 0.065100 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 8459.061852 seconds.
+  path: Assets/Unity Store Downloads/Adam Character Pack/Adam/Adam_Walk.FBX
+  artifactKey: Guid(abff1e609cb74354792d4d21e84c0eaa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Unity Store Downloads/Adam Character Pack/Adam/Adam_Walk.FBX using Guid(abff1e609cb74354792d4d21e84c0eaa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '86118db9fbaabe097a550f58405ea3bc') in 0.943828 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 788
+========================================================================
+Received Import Request.
+  Time since last request: 0.000048 seconds.
+  path: Assets/Unity Store Downloads/Adam Character Pack/Adam/Crowd_LOD1.FBX
+  artifactKey: Guid(692432f31a0940246b75e1ffc7087212) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Unity Store Downloads/Adam Character Pack/Adam/Crowd_LOD1.FBX using Guid(692432f31a0940246b75e1ffc7087212) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8912907ca6e87225fcbae893a647edf5') in 0.056105 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 77
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Unity Store Downloads/Adam Character Pack/Adam/Crowd_LOD0.FBX
+  artifactKey: Guid(f671e87896ed58c4e972db58101c2d27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Unity Store Downloads/Adam Character Pack/Adam/Crowd_LOD0.FBX using Guid(f671e87896ed58c4e972db58101c2d27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '128d9db967bf7ee94f09a0e16afe5647') in 0.314948 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 113
+========================================================================
+Received Import Request.
+  Time since last request: 0.170885 seconds.
+  path: Assets/Unity Store Downloads/Adam Character Pack/Guard/Spear/Guard_ShockPilum.FBX
+  artifactKey: Guid(e934a8ea05887ed4e9faf744986707c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Unity Store Downloads/Adam Character Pack/Guard/Spear/Guard_ShockPilum.FBX using Guid(e934a8ea05887ed4e9faf744986707c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dddc25f99e9d7dde09becf5743ac4f85') in 0.020958 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 8
+========================================================================
+Received Import Request.
+  Time since last request: 1.504181 seconds.
+  path: Assets/Unity Store Downloads/Adam Character Pack/Lu/Lu_rifle.FBX
+  artifactKey: Guid(f88891179e1de71469f16b7b2db565a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Unity Store Downloads/Adam Character Pack/Lu/Lu_rifle.FBX using Guid(f88891179e1de71469f16b7b2db565a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e97adb28f495628ec762e6ae20548e8a') in 0.000774 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.000056 seconds.
+  path: Assets/Unity Store Downloads/Adam Character Pack/Lu/Lu_sim_aasets.FBX
+  artifactKey: Guid(ed7a60d69de7bab40af3881ed373dfb7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Unity Store Downloads/Adam Character Pack/Lu/Lu_sim_aasets.FBX using Guid(ed7a60d69de7bab40af3881ed373dfb7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9617b9170203fc07ec0ab8b8ddf2391a') in 0.002224 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.113761 seconds.
+  path: Assets/Unity Store Downloads/Adam Character Pack/Lu/Lu_sim_tracks.FBX
+  artifactKey: Guid(417d8d57bf413b0438132c22581f69b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Unity Store Downloads/Adam Character Pack/Lu/Lu_sim_tracks.FBX using Guid(417d8d57bf413b0438132c22581f69b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'db8e21763f38c0d772998064e9f8d424') in 0.001103 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 10.434492 seconds.
+  path: Assets/Unity Store Downloads/Adam Character Pack/Adam/Textures/Adam_Arms_o.tif
+  artifactKey: Guid(60bf21ffa5e37094197ff298a5c4e290) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Unity Store Downloads/Adam Character Pack/Adam/Textures/Adam_Arms_o.tif using Guid(60bf21ffa5e37094197ff298a5c4e290) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '07a7d09999d51733b1d551701e61b1e9') in 0.001161 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.000056 seconds.
+  path: Assets/Unity Store Downloads/Adam Character Pack/Adam/Textures/Adam_BloodyHeadBracket_n.tif
+  artifactKey: Guid(8cad0e50265dd054980cebf13754b879) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Unity Store Downloads/Adam Character Pack/Adam/Textures/Adam_BloodyHeadBracket_n.tif using Guid(8cad0e50265dd054980cebf13754b879) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '436ba92dfe4405d0a4f3e780307e4a9a') in 0.001036 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 2.029252 seconds.
+  path: Assets/Unity Store Downloads/Adam Character Pack/Adam/Textures/LOD_Textures/Adam_LOD_01_n.tif
+  artifactKey: Guid(0dc90ea7463c93d4f91f7c4177a20011) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Unity Store Downloads/Adam Character Pack/Adam/Textures/LOD_Textures/Adam_LOD_01_n.tif using Guid(0dc90ea7463c93d4f91f7c4177a20011) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '057bee80fb0af0a5373376aabe98d518') in 0.042519 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Unity Store Downloads/Adam Character Pack/Adam/Textures/LOD_Textures/Adam_LOD_02_Limbs_a.tif
+  artifactKey: Guid(d32caf486e676024ab0b12cedadd014c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Unity Store Downloads/Adam Character Pack/Adam/Textures/LOD_Textures/Adam_LOD_02_Limbs_a.tif using Guid(d32caf486e676024ab0b12cedadd014c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bba8decafa8186f85ccb960a76ac927c') in 0.033544 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.194627 seconds.
+  path: Assets/Unity Store Downloads/Adam Character Pack/Adam/Textures/LOD_Textures/Adam_LOD_02_Limbs_sg.tif
+  artifactKey: Guid(c8851749012eba443a8ec7cd675bab92) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Unity Store Downloads/Adam Character Pack/Adam/Textures/LOD_Textures/Adam_LOD_02_Limbs_sg.tif using Guid(c8851749012eba443a8ec7cd675bab92) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd02e211d1e1713dc168b6857ff1a11f7') in 0.038199 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.257149 seconds.
+  path: Assets/Unity Store Downloads/Adam Character Pack/Adam/Textures/LOD_Textures/Adam_LOD_Far_n.TIF
+  artifactKey: Guid(7110c895da413874cb87b6b7c9d50f74) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Unity Store Downloads/Adam Character Pack/Adam/Textures/LOD_Textures/Adam_LOD_Far_n.TIF using Guid(7110c895da413874cb87b6b7c9d50f74) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a125086b53e1a59f465d964ece4aa38c') in 0.016360 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.838512 seconds.
+  path: Packages/com.unity.textmeshpro/Editor Resources/Textures/btn_AlignCenterGeo.psd
+  artifactKey: Guid(c76700ea0062413d9f69409b4e9e151b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.textmeshpro/Editor Resources/Textures/btn_AlignCenterGeo.psd using Guid(c76700ea0062413d9f69409b4e9e151b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a3d446805137ca462186b92d2e512a73') in 0.014788 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+TcpMessagingSession - receive error: operation aborted. errorcode: 995, details: The I/O operation has been aborted because of either a thread exit or an application request.
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
