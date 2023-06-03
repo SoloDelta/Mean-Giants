@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDamage
 {
     [Header("----- Components -----")]
     [SerializeField] CharacterController controller;
@@ -68,11 +68,11 @@ public class PlayerController : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
         {
-            //IDamage damageable = hit.collider.GetComponent<IDamage>();
-            //if (damageable != null)
-            //{
-            //    damageable.TakeDamage(shootDamage);
-            //}
+            IDamage damageable = hit.collider.GetComponent<IDamage>();
+            if (damageable != null)
+            {
+                damageable.TakeDamage(shootDamage);
+            }
         }
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
