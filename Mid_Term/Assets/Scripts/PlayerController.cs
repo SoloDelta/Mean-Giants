@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour, IDamage
 
     [Header("----- Player Stats -----")]
     [SerializeField] int health;
-    [Range(3, 8)][SerializeField] float playerSpeed;
+    [Range(0, 10)][SerializeField] float playerSpeed;
     [Range(8, 25)][SerializeField] float jumpHeight;
     [Range(10, 50)][SerializeField] float gravityValue;
     [Range(1, 3)][SerializeField] int jumpMax;
@@ -23,13 +23,15 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] GameObject hitEffect;
 
     private int jumpedTimes;
-    private Vector3 playerVelocity;
+    [SerializeField] private Vector3 playerVelocity;
     private bool groundedPlayer;
     private Vector3 move;
     bool isShooting;
+    private Animator animate;
 
     private void Start()
     {
+        animate = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -45,14 +47,14 @@ public class PlayerController : MonoBehaviour, IDamage
     void Movement()
     {
         groundedPlayer = controller.isGrounded;
-        if (groundedPlayer && playerVelocity.y < 0)
+        if (groundedPlayer && playerVelocity.y <= 0)
         {
-            playerVelocity.y = 0f;
+            playerVelocity.y = 0;
             jumpedTimes = 0;
         }
 
         move = (transform.right * Input.GetAxis("Horizontal")) + (transform.forward * Input.GetAxis("Vertical"));
-        controller.Move(move * Time.deltaTime * playerSpeed);
+        controller.Move(playerSpeed * Time.deltaTime * move);
 
         // Changes the height position of the player
         if (Input.GetButtonDown("Jump") && jumpedTimes < jumpMax)
@@ -61,13 +63,17 @@ public class PlayerController : MonoBehaviour, IDamage
             playerVelocity.y = jumpHeight;
         }
 
-        if(Input.GetButtonDown("Sprint"))
+        else if (Input.GetButtonDown("Sprint"))
         {
-            playerSpeed += sprint;
+            Run();
         }
-        if(Input.GetButtonUp("Sprint"))
+        else if (Input.GetButtonUp("Sprint"))
         {
-            playerSpeed -= sprint;
+            Walk();
+        }
+        else if(playerVelocity.z <= 0)
+        {
+            Idle();
         }
 
         playerVelocity.y -= gravityValue * Time.deltaTime;
@@ -92,5 +98,22 @@ public class PlayerController : MonoBehaviour, IDamage
     public void TakeDamage(int damage)
     {
         health -= damage;
+    }
+
+    private void Idle()
+    {
+        animate.SetFloat("Speed", 0, 0.1f, Time.deltaTime);
+    }
+
+    private void Walk() 
+    {
+        playerSpeed -= sprint;
+        animate.SetFloat("Speed", 0.5f, 0.1f, Time.deltaTime);
+    }
+
+    private void Run()
+    {
+        playerSpeed += sprint;
+        animate.SetFloat("Speed", 1, 0.1f, Time.deltaTime);
     }
 }
