@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IDamage
@@ -13,6 +14,7 @@ public class PlayerController : MonoBehaviour, IDamage
     [Range(8, 25)][SerializeField] float jumpHeight;
     [Range(10, 50)][SerializeField] float gravityValue;
     [Range(1, 3)][SerializeField] int jumpMax;
+    [Range(2, 5)][SerializeField] int sprint;
 
     [Header("----- Gun Stats -----")]
     [Range(0.1f, 3)][SerializeField] float shootRate;
@@ -57,6 +59,15 @@ public class PlayerController : MonoBehaviour, IDamage
         {
             jumpedTimes++;
             playerVelocity.y = jumpHeight;
+        }
+
+        if(Input.GetButtonDown("Sprint"))
+        {
+            playerSpeed += sprint;
+        }
+        if(Input.GetButtonUp("Sprint"))
+        {
+            playerSpeed -= sprint;
         }
 
         playerVelocity.y -= gravityValue * Time.deltaTime;
