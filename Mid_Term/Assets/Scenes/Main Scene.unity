@@ -13494,7 +13494,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: f12f2d44b2688054986e54861cc211dc, type: 3}
       propertyPath: m_Name
-      value: Adam
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: f12f2d44b2688054986e54861cc211dc, type: 3}
       propertyPath: m_TagString
@@ -13615,7 +13615,7 @@ MonoBehaviour:
   shootRate: 0
   shootDamage: 0
   shootDistance: 0
-  hitEffect: {fileID: 0}
+  hitEffect: {fileID: 9039188317509268069, guid: 23ce5da2306c5d24c9fb630218af08d4, type: 3}
   playerVelocity: {x: 0, y: 0, z: 0}
 --- !u!4 &1938877342 stripped
 Transform:
