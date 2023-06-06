@@ -11,6 +11,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Transform headPosition;
+    [SerializeField] Transform shootPosition;
     GameObject player;
 
     [Header("-----Enemy Stats-----")]
@@ -21,9 +22,16 @@ public class enemyAI : MonoBehaviour, IDamage
     
     [SerializeField] bool atStart;
 
+
+
     [Header("-----Pathfinding-----")]
     [SerializeField] List<Vector3> patrolSpotss = new List<Vector3>();
     [SerializeField] int currentPointIndex;
+
+
+    [Header("-----Enemy Stats-----")]
+    [SerializeField] float shootRate;
+    [SerializeField] GameObject bullet;
 
     int numOfPatrolSpots;
     Vector3 playerDirection;
@@ -97,12 +105,16 @@ public class enemyAI : MonoBehaviour, IDamage
                 if (hit.collider.CompareTag("Player") && angleToPlayer <= viewConeAngle) //and it hit the player
                 {
                     agent.SetDestination(player.transform.position);
-                    Debug.Log("Chasing Player");
+                    //Debug.Log("Chasing Player");
                     if (agent.remainingDistance <= agent.stoppingDistance)
                     {
                         //implement code for facing the player when at stopping distance
                     }
-
+                    if(!isShooting)
+                    {
+                        StartCoroutine(shoot());
+                        Debug.Log("Bang");
+                    }
                     //if not shooting, start coroutine for shooting
                     return true;
                 }
@@ -110,6 +122,14 @@ public class enemyAI : MonoBehaviour, IDamage
         }
         
         return false;
+    }
+
+    IEnumerator shoot()
+    {
+        isShooting = true;
+        Instantiate(bullet, shootPosition.position, transform.rotation); 
+        yield return new WaitForSeconds(shootRate);
+        isShooting = false;
     }
     void OnTriggerEnter(Collider other)
     {
