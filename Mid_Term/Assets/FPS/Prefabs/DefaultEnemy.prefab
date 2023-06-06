@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -6136169086223922386}
   - component: {fileID: 3546540107032648285}
   - component: {fileID: -3262515917836232932}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DefaultEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ Transform:
   m_Children:
   - {fileID: 3737392609569394937}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2598016105586394011
 MeshFilter:
@@ -103,13 +103,16 @@ MonoBehaviour:
   model: {fileID: 2462829478818566523}
   agent: {fileID: -6136169086223922386}
   headPosition: {fileID: 3737392609569394937}
+  shootPosition: {fileID: 4791609441172615352}
   HP: 3
   speed: 5
   playerFaceSpeed: 6
   viewConeAngle: 90
-  startPosition: {x: 0, y: 1, z: 0}
-  endPosition: {x: 0, y: 1, z: 0}
   atStart: 1
+  patrolSpotss: []
+  currentPointIndex: 0
+  shootRate: 0.1
+  bullet: {fileID: 2038235551928201043, guid: 5718345f35bb02649803d83392ec03d9, type: 3}
   playerInRange: 0
 --- !u!195 &-6136169086223922386
 NavMeshAgent:
@@ -120,7 +123,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 843911144030581328}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 1
   m_Speed: 3.5
   m_Acceleration: 30
   avoidancePriority: 50
@@ -207,7 +210,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.5, z: 0.5}
   m_LocalScale: {x: 0.5, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4791609441172615352}
   m_Father: {fileID: 679477199479102401}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -282,3 +286,34 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &5665483138400407239
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4791609441172615352}
+  m_Layer: 0
+  m_Name: Shootpos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4791609441172615352
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5665483138400407239}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.52}
+  m_LocalScale: {x: 2, y: 5, z: 5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3737392609569394937}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

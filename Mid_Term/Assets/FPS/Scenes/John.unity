@@ -1179,6 +1179,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: f5ebe81aa8e1e954dae3a11c550e2d76, type: 2}
     - target: {fileID: 2468239736151083540, guid: 966efaf78a72d9246baec79801d6f808, type: 3}
+      propertyPath: shootRate
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2468239736151083540, guid: 966efaf78a72d9246baec79801d6f808, type: 3}
       propertyPath: endPosition.x
       value: 47.5
       objectReference: {fileID: 0}
