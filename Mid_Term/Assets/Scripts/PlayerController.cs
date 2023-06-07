@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IDamage
@@ -10,11 +9,10 @@ public class PlayerController : MonoBehaviour, IDamage
 
     [Header("----- Player Stats -----")]
     [SerializeField] int health;
-    [Range(0, 10)][SerializeField] float playerSpeed;
+    [Range(3, 8)][SerializeField] float playerSpeed;
     [Range(8, 25)][SerializeField] float jumpHeight;
     [Range(10, 50)][SerializeField] float gravityValue;
     [Range(1, 3)][SerializeField] int jumpMax;
-    [Range(2, 5)][SerializeField] int sprint;
 
     [Header("----- Gun Stats -----")]
     [Range(0.1f, 3)][SerializeField] float shootRate;
@@ -23,15 +21,15 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] GameObject hitEffect;
 
     private int jumpedTimes;
-    [SerializeField] private Vector3 playerVelocity;
+    private Vector3 playerVelocity;
     private bool groundedPlayer;
     private Vector3 move;
     bool isShooting;
-    private Animator animate;
+    int playerHpOrig;
 
     private void Start()
     {
-        animate = GetComponentInChildren<Animator>();
+        SpawnPlayer();
     }
 
     private void Update()
@@ -47,35 +45,20 @@ public class PlayerController : MonoBehaviour, IDamage
     void Movement()
     {
         groundedPlayer = controller.isGrounded;
-        if (groundedPlayer && playerVelocity.y <= 0)
+        if (groundedPlayer && playerVelocity.y < 0)
         {
-            playerVelocity.y = 0;
+            playerVelocity.y = 0f;
             jumpedTimes = 0;
         }
 
         move = (transform.right * Input.GetAxis("Horizontal")) + (transform.forward * Input.GetAxis("Vertical"));
-        controller.Move(playerSpeed * Time.deltaTime * move);
+        controller.Move(move * Time.deltaTime * playerSpeed);
 
         // Changes the height position of the player
         if (Input.GetButtonDown("Jump") && jumpedTimes < jumpMax)
         {
             jumpedTimes++;
             playerVelocity.y = jumpHeight;
-        }
-
-        else if (Input.GetButtonDown("Sprint"))
-        {
-            playerSpeed += sprint;
-            animate.SetFloat("Speed", 1, 0.1f, Time.deltaTime);
-        }
-        else if (Input.GetButtonUp("Sprint"))
-        {
-            playerSpeed -= sprint;
-            animate.SetFloat("Speed", 0.5f, 0.1f, Time.deltaTime);
-        }
-        else if(Input.GetButtonUp("Horizontal"))
-        {
-            animate.SetFloat("Speed", 0, 0.1f, Time.deltaTime);
         }
 
         playerVelocity.y -= gravityValue * Time.deltaTime;
@@ -100,5 +83,24 @@ public class PlayerController : MonoBehaviour, IDamage
     public void TakeDamage(int damage)
     {
         health -= damage;
+
+        if (health <= 0)
+        {
+            GameManager.Instance.YouLose();
+        }
+    }
+
+    public void UpdatePlayerHp()
+    {
+        GameManager.Instance.playerHpBar.fillAmount = (float)health / playerHpOrig;
+    }
+
+    public void SpawnPlayer()
+    {
+        controller.enabled = false;
+        transform.position = GameManager.Instance.playerSpawnPos.transform.position;
+        controller.enabled = true;
+        health = playerHpOrig;
+        UpdatePlayerHp();
     }
 }
