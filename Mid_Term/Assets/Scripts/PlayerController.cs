@@ -86,19 +86,19 @@ public class PlayerController : MonoBehaviour, IDamage
 
         if (health <= 0)
         {
-            GameManager.Instance.YouLose();
+            //GameManager.Instance.YouLose();
         }
     }
 
     public void UpdatePlayerHp()
     {
-        GameManager.Instance.playerHpBar.fillAmount = (float)health / playerHpOrig;
+        //GameManager.Instance.playerHpBar.fillAmount = (float)health / playerHpOrig;
     }
 
     public void SpawnPlayer()
     {
         controller.enabled = false;
-        transform.position = GameManager.Instance.playerSpawnPos.transform.position;
+        //transform.position = GameManager.Instance.playerSpawnPos.transform.position;
         controller.enabled = true;
         health = playerHpOrig;
         UpdatePlayerHp();

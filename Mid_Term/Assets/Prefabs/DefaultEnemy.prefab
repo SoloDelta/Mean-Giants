@@ -36,7 +36,7 @@ Transform:
   m_Children:
   - {fileID: 3737392609569394937}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2598016105586394011
 MeshFilter:
@@ -109,7 +109,8 @@ MonoBehaviour:
   playerFaceSpeed: 6
   viewConeAngle: 90
   atStart: 1
-  patrolSpotss: []
+  patrolSpotss:
+  - {x: 77, y: 6, z: 55}
   currentPointIndex: 0
   shootRate: 0.1
   bullet: {fileID: 2038235551928201043, guid: 5718345f35bb02649803d83392ec03d9, type: 3}
