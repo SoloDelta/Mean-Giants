@@ -15,19 +15,14 @@ using UnityEngine;
 
 namespace FPS
 {
-    public class GameManager : MonoBehaviour
+    /**----------------------------------------------------------------
+     * @brief
+     */
+    public class GameManager : Singleton<GameManager>
     {
-
-        public static GameManager instance;
-
-
-        // Start is called before the first frame update
-        void Awake()
-        {
-            instance = this;
-        }
-
-        // Update is called once per frame
+        /**----------------------------------------------------------------
+         * @brief
+         */
         void Update()
         {
             

@@ -14,7 +14,9 @@ using UnityEngine;
 
 namespace FPS
 {
-    //Project: Mean_Giants Midterm
+    /**----------------------------------------------------------------
+     * @brief
+     */
     public interface IDamage
     {
         void TakeDamage(int dmg);

@@ -16,7 +16,9 @@ using UnityEngine.UIElements;
 
 namespace FPS
 {
-    //Project: Mean_Giants Midterm
+    /**----------------------------------------------------------------
+     * @brief
+     */
     public class EnemyAI : MonoBehaviour, IDamage
     {
         [Header("-----Components-----")]

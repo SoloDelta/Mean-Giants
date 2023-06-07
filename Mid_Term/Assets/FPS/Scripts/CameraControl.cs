@@ -14,6 +14,9 @@ using UnityEngine;
 
 namespace FPS
 {
+    /**----------------------------------------------------------------
+     * @brief
+     */
     public class CameraControl : MonoBehaviour
     {
         [SerializeField] int sensitivity;

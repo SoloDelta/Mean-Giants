@@ -12,6 +12,9 @@ using UnityEngine;
 
 namespace FPS
 {
+    /**----------------------------------------------------------------
+     * @brief
+     */
     public class DayNightCycle : MonoBehaviour
     {
         public float currentTime;
