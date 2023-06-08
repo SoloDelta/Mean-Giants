@@ -97,6 +97,7 @@ namespace FPS
         public void TakeDamage(int dmg)
         {
             HP -= dmg;
+            agent.SetDestination(GameManager.Instance.player.transform.position);
             StartCoroutine(flashColor());
             if (HP <= 0)
             {
