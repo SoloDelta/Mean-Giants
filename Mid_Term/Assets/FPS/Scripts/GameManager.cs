@@ -61,6 +61,7 @@ namespace FPS
             this.timeScale = Time.timeScale;
             this.player = GameObject.FindGameObjectWithTag("Player");
             this.playerController = this.player.GetComponent<PlayerController>();
+            base.Awake();
         }
 
         /**-----------------------------------------------------------------
