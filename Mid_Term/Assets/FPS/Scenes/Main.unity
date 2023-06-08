@@ -1248,18 +1248,6 @@ PrefabInstance:
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 679477199479102401, guid: 9ddf81a757e81794cb7a0273feab12a3, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 679477199479102401, guid: 9ddf81a757e81794cb7a0273feab12a3, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 679477199479102401, guid: 9ddf81a757e81794cb7a0273feab12a3, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 679477199479102401, guid: 9ddf81a757e81794cb7a0273feab12a3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -214.26443
       objectReference: {fileID: 0}
@@ -1303,10 +1291,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_Heavy
       objectReference: {fileID: 0}
-    - target: {fileID: 4985809183998490722, guid: 9ddf81a757e81794cb7a0273feab12a3, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 4943eda2ab4223c42ae2b507742eb202, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1378,10 +1362,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_Sniper
       objectReference: {fileID: 0}
-    - target: {fileID: 2468239736151083540, guid: 32af1138c3e8641409e210bc9d1f84a4, type: 3}
-      propertyPath: HP
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1447,22 +1427,6 @@ PrefabInstance:
     - target: {fileID: 843911144030581328, guid: 966efaf78a72d9246baec79801d6f808, type: 3}
       propertyPath: m_Name
       value: DefaultEnemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 2468239736151083540, guid: 966efaf78a72d9246baec79801d6f808, type: 3}
-      propertyPath: patrolSpotss.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2468239736151083540, guid: 966efaf78a72d9246baec79801d6f808, type: 3}
-      propertyPath: patrolSpotss.Array.data[0].x
-      value: 77
-      objectReference: {fileID: 0}
-    - target: {fileID: 2468239736151083540, guid: 966efaf78a72d9246baec79801d6f808, type: 3}
-      propertyPath: patrolSpotss.Array.data[0].y
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2468239736151083540, guid: 966efaf78a72d9246baec79801d6f808, type: 3}
-      propertyPath: patrolSpotss.Array.data[0].z
-      value: 55
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

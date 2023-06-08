@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -6136169086223922386}
   - component: {fileID: 3546540107032648285}
   - component: {fileID: -3262515917836232932}
+  - component: {fileID: 1670897394515415809}
   m_Layer: 7
   m_Name: Enemy_Sniper
   m_TagString: Untagged
@@ -35,7 +36,7 @@ Transform:
   m_Children:
   - {fileID: 8547604664095861262}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &2462829478818566523
 MeshRenderer:
@@ -173,6 +174,27 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 70
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &1670897394515415809
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843911144030581328}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 54c925df2b321cd47b92004382c85291, type: 3}
+  m_Controller: {fileID: 9100000, guid: 564e8c476c1000c43a08794446fa3a04, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2057098896096305361
 GameObject:
   m_ObjectHideFlags: 0
