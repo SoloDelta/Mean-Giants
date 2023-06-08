@@ -8,18 +8,18 @@ public class buttonFunctions : MonoBehaviour
 {
    public void Resume()
     {
-        GameManager.Instance.UnpausedState();
+        GameManager.instance.UnpausedState();
     }
 
     public void RespawnPlayer()
-    {
-        GameManager.Instance.UnpausedState();
-        GameManager.Instance.playerScript.SpawnPlayer();
+    {   
+        GameManager.instance.UnpausedState();
+        GameManager.instance.playerScript.SpawnPlayer();
     }
 
     public void Restart()
     {
-        GameManager.Instance.UnpausedState();
+        GameManager.instance.UnpausedState();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

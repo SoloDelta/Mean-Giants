@@ -116,7 +116,7 @@ namespace FPS
             
             if (health <= 0)
             {
-                GameManager.Instance.YouLose();
+                GameManager.instance.YouLose();
             }
             UpdatePlayerHp();
             StartCoroutine(playerFlashDamage());
@@ -124,13 +124,13 @@ namespace FPS
 
         public void UpdatePlayerHp()
         {
-            GameManager.Instance.playerHpBar.fillAmount = (float) health / playerHpOrig;
+            GameManager.instance.playerHpBar.fillAmount = (float) health / playerHpOrig;
         }
 
         public void SpawnPlayer()
         {
             controller.enabled = false;
-            transform.position = GameManager.Instance.playerSpawnPos.transform.position;
+            transform.position = GameManager.instance.playerSpawnPos.transform.position;
             controller.enabled = true;
             health = playerHpOrig;
             UpdatePlayerHp();
@@ -138,9 +138,9 @@ namespace FPS
 
         IEnumerator playerFlashDamage()
         {
-            GameManager.Instance.playerFlashUI.SetActive(true);
+            GameManager.instance.playerFlashUI.SetActive(true);
             yield return new WaitForSeconds(0.1f);
-            GameManager.Instance.playerFlashUI.SetActive(false);
+            GameManager.instance.playerFlashUI.SetActive(false);
         }
     }
 }

@@ -70,8 +70,9 @@ namespace FPS
 
         void Start()
         {
-            GameManager.Instance.UpdateObjective(1);
-            player = GameObject.FindGameObjectWithTag("Player");
+            GameManager.instance.UpdateObjective(1);
+            //player = GameObject.FindGameObjectWithTag("Player");
+            player = GameManager.instance.player;
             startingPos = transform.position;
             agent.speed = speed;
             numOfPatrolSpots = patrolSpots.Count;
@@ -96,11 +97,11 @@ namespace FPS
         public void TakeDamage(int dmg)
         {
             HP -= dmg;
-            agent.SetDestination(GameManager.Instance.player.transform.position);
+            agent.SetDestination(GameManager.instance.player.transform.position);
             StartCoroutine(flashColor());
             if (HP <= 0)
             {
-                GameManager.Instance.UpdateObjective(-1);
+                GameManager.instance.UpdateObjective(-1);
                 Destroy(gameObject);
             }
         }
@@ -134,7 +135,8 @@ namespace FPS
         {
             if (playerInRange)
             {
-                playerDirection = new Vector3(player.transform.position.x, player.transform.position.y + 1, player.transform.position.z) - headPosition.transform.position;
+                player = GameManager.instance.player;
+                playerDirection = new Vector3(player.transform.position.x, player.transform.position.y + 1, player.transform.position.z)- headPosition.transform.position;
                 angleToPlayer = Vector3.Angle(new Vector3(playerDirection.x, 0, playerDirection.z), transform.forward);
                 Debug.DrawRay(headPosition.position, playerDirection);
 
