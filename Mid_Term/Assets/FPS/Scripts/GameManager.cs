@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
     public Image playerHpBar;
     public GameObject playerFlashUI;
     public GameObject loseMenu;
+    public TextMeshProUGUI enemiesRemainingText;
 
     [Header("----- Objectives -----")]
     int enemiesRemaining;
@@ -70,6 +72,7 @@ public class GameManager : MonoBehaviour
     public void UpdateObjective(int amount)
     {
         enemiesRemaining += amount;
+        enemiesRemainingText.text = enemiesRemaining.ToString("F0");
         if (enemiesRemaining <= 0)
         {
             //win condition met
