@@ -12,6 +12,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 namespace FPS
 {
     /**----------------------------------------------------------------
@@ -45,7 +46,9 @@ namespace FPS
         
         private void Start()
         {
+            
             playerHpOrig = health;
+            UpdatePlayerHp();
             SpawnPlayer();
         }
 
@@ -113,13 +116,15 @@ namespace FPS
             
             if (health <= 0)
             {
-                //GameManager.Instance.YouLose();
+                GameManager.instance.Youlose();
             }
+            UpdatePlayerHp();
+            StartCoroutine(playerFlashDamage());
         }
 
         public void UpdatePlayerHp()
         {
-            //GameManager.Instance.playerHpBar.fillAmount = (float)health / playerHpOrig;
+            GameManager.instance.playerBar.fillAmount = (float) health / playerHpOrig;
         }
 
         public void SpawnPlayer()
@@ -128,7 +133,14 @@ namespace FPS
             //transform.position = GameManager.Instance.playerSpawnPos.transform.position;
             controller.enabled = true;
             health = playerHpOrig;
-            UpdatePlayerHp();
+            //UpdatePlayerHp();
+        }
+
+        IEnumerator playerFlashDamage()
+        {
+            GameManager.instance.playerFlashUI.SetActive(true);
+            yield return new WaitForSeconds(0.1f);
+            GameManager.instance.playerFlashUI.SetActive(false);
         }
     }
 }

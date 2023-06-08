@@ -11,6 +11,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace FPS
 {
@@ -45,8 +46,21 @@ namespace FPS
         public float timeScale;
 
         /**-----------------------------------------------------------------
+         */
+
+        [Header("---User Interface---")]
+        public GameObject activeMenu;
+        public GameObject pauseMenu;
+        public GameObject winScreen;
+        public GameObject loseScreen;
+        public Image playerBar;
+        public GameObject playerFlashUI;
+
+
+        /**-----------------------------------------------------------------
          * @brief Default Constructor.
          */
+
         public GameManager()
         {
             //------------------------------------------------------------------
@@ -69,7 +83,17 @@ namespace FPS
          */
         public void Update()
         {
+            if (Input.GetButtonDown("Cancel") && activeMenu == null)
+            {
+                isPaused = !isPaused;
+                activeMenu = pauseMenu;
+                pauseMenu.SetActive(isPaused);
+                statePaused();
 
+               
+
+
+            }
         }
 
         /**-----------------------------------------------------------------
@@ -92,6 +116,25 @@ namespace FPS
             }
         }
 
+        public void statePaused()
+        {
+            Time.timeScale = 0;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
+        }
+
+        public void stateUnpaused()
+        {
+            Time.timeScale = this.timeScale;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            isPaused = !isPaused;
+            activeMenu.SetActive(false);
+            activeMenu = null; 
+        }
+
+
+
         /**-----------------------------------------------------------------
          * @brief Update the games goal by adding more enemies and check
          * to see if we have reached the win condition.
@@ -109,6 +152,7 @@ namespace FPS
             {
                 StartCoroutine(this.Youwin());
             }
+            
         }
 
         /**-----------------------------------------------------------------
@@ -117,8 +161,20 @@ namespace FPS
         public IEnumerator Youwin()
         {
             yield return new WaitForSeconds(3);
-            
-            this.Pause(true);
+            activeMenu = winScreen;
+            activeMenu.SetActive(true);
+            statePaused();
+
+            //this.Pause(true);
         }
+
+        public void Youlose()
+        {
+            activeMenu = loseScreen;
+            activeMenu.SetActive(true);
+            statePaused();
+        }
+        
+
     }
 }
