@@ -10,9 +10,12 @@
 //-----------------------------------------------------------------
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
+using static System.Net.Mime.MediaTypeNames;
+using System.Threading;
 
 namespace FPS
 {
@@ -33,18 +36,18 @@ namespace FPS
         [SerializeField] float speed;
         [SerializeField] int playerFaceSpeed;
         [SerializeField] int viewConeAngle;
-        
+
         [SerializeField] bool atStart;
 
         [Header("-----Roaming-----")]
         [SerializeField, Range(1, 10)] float roamTimer;
         [SerializeField, Range(10, 100)] int roamDist;
-      
+
 
 
         [Header("-----Pathfinding-----")]
         [SerializeField] List<Vector3> patrolSpots = new List<Vector3>();
-         
+
 
 
         [Header("-----Enemy Stats-----")]
@@ -64,7 +67,7 @@ namespace FPS
         float stoppingDistanceOriginal;
         bool isPatrolling;
         int currentPointIndex;
-       
+
 
         void Start()
         {
@@ -75,7 +78,7 @@ namespace FPS
             numOfPatrolSpots = patrolSpots.Count;
             stoppingDistanceOriginal = agent.stoppingDistance;
 
-            if(patrolSpots.Count > 0)
+            if (patrolSpots.Count > 0)
             {
                 isPatrolling = true;
             }
@@ -95,7 +98,7 @@ namespace FPS
         {
             HP -= dmg;
             StartCoroutine(flashColor());
-            if(HP <= 0)
+            if (HP <= 0)
             {
                 GameManager.Instance.UpdateObjective(-1);
                 Destroy(gameObject);
@@ -111,7 +114,7 @@ namespace FPS
 
         void patrolCirculation() //controls the logic for pathing. if the enemy has a patrol route and doesnt see the player, he patrols. if he doesnt have a patrol he roams.
         {
-            if(isPatrolling && !seesPlayer)
+            if (isPatrolling && !seesPlayer)
             {
                 agent.SetDestination(patrolSpots[currentPointIndex]);
                 if (new Vector3(transform.position.x, patrolSpots[currentPointIndex].y, transform.position.z) == patrolSpots[currentPointIndex])
@@ -123,35 +126,35 @@ namespace FPS
                     }
                 }
             }
-            else{StartCoroutine(roam());}
+            else { StartCoroutine(roam()); }
         }
-    
+
 
         bool isFollowingPlayer() //checks to see if the enemy can see the play then tracks the player and shoots at the player
         {
-            if(playerInRange)
-            {               
+            if (playerInRange)
+            {
                 playerDirection = new Vector3(player.transform.position.x, player.transform.position.y + 1, player.transform.position.z) - headPosition.transform.position;
                 angleToPlayer = Vector3.Angle(new Vector3(playerDirection.x, 0, playerDirection.z), transform.forward);
-                Debug.DrawRay(headPosition.position, playerDirection);
+               // Debug.DrawRay(headPosition.position, playerDirection);
 
                 RaycastHit hit;
-                if (Physics.Raycast(headPosition.position, playerDirection, out hit)) 
+                if (Physics.Raycast(headPosition.position, playerDirection, out hit))
                 {
-                    if (hit.collider.CompareTag("Player") && angleToPlayer <= viewConeAngle) 
+                    if (hit.collider.CompareTag("Player") && angleToPlayer <= viewConeAngle)
                     {
                         agent.stoppingDistance = stoppingDistanceOriginal;
                         agent.SetDestination(player.transform.position);
-                      
+
                         if (agent.remainingDistance <= agent.stoppingDistance)
                         {
                             facePlayer();
                         }
-                        if(!isShooting)
+                        if (!isShooting)
                         {
                             StartCoroutine(shoot());
-                           
-                        }                        
+
+                        }
                         return true;
                     }
                 }
@@ -167,7 +170,7 @@ namespace FPS
         IEnumerator shoot()
         {
             isShooting = true;
-            if(isBurstShot)
+            if (isBurstShot)
             {
                 StartCoroutine(shootBurst());
 
@@ -176,7 +179,7 @@ namespace FPS
             {
                 Instantiate(bullet, shootPosition.position, transform.rotation);
             }
-            
+
             yield return new WaitForSeconds(shootRate);
             isShooting = false;
         }
@@ -191,7 +194,7 @@ namespace FPS
         }
         void OnTriggerEnter(Collider other)
         {
-            if(other.CompareTag("Player"))
+            if (other.CompareTag("Player"))
             {
                 playerInRange = true;
             }
@@ -209,17 +212,17 @@ namespace FPS
         {
             if (!destinationChosen && agent.remainingDistance < 0.05f)
             {
-                
+
                 destinationChosen = true;
                 agent.stoppingDistance = 0;
 
                 yield return new WaitForSeconds(roamTimer);
 
                 destinationChosen = false;
-                Vector3 randomPos = Random.insideUnitSphere * roamDist;
-                
+                Vector3 randomPos = Random.insideUnitCircle * roamDist;
+
                 randomPos += startingPos;
-                
+
 
                 NavMeshHit hit;
                 NavMesh.SamplePosition(randomPos, out hit, roamDist, 1);
