@@ -1,31 +1,20 @@
-/**
- * Copyright (c) 2023 - 2023, The Mean Giants, All Rights Reserved.
- *
- * Authors
- *  - 
- */
-
-//-----------------------------------------------------------------
-// Using Namespaces
-//-----------------------------------------------------------------
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Build.Content;
 using UnityEngine;
 
-namespace FPS
+public class gameManager : MonoBehaviour
 {
-    /**----------------------------------------------------------------
-     * @brief
-     */
-    public class GameManager : Singleton<GameManager>
+    public static gameManager instance;
+
+    // Start is called before the first frame update
+    void Awake()
     {
-        /**----------------------------------------------------------------
-         * @brief
-         */
-        void Update()
-        {
-            
-        }
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 }
