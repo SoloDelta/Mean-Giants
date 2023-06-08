@@ -68,7 +68,7 @@ namespace FPS
 
         void Start()
         {
-            GameManager.instance.UpdateGameGoal(1);
+            GameManager.Instance.UpdateObjective(1);
             player = GameObject.FindGameObjectWithTag("Player");
             startingPos = transform.position;
             agent.speed = speed;
@@ -97,7 +97,7 @@ namespace FPS
             StartCoroutine(flashColor());
             if(HP <= 0)
             {
-                GameManager.instance.UpdateGameGoal(-1);
+                GameManager.Instance.UpdateObjective(-1);
                 Destroy(gameObject);
             }
         }
