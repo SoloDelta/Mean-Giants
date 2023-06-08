@@ -44,6 +44,7 @@ namespace FPS
 
         private void Start()
         {
+            playerHpOrig = health;
             SpawnPlayer();
         }
 
@@ -100,7 +101,7 @@ namespace FPS
         public void TakeDamage(int damage)
         {
             health -= damage;
-
+            Debug.Log("Player took damage");
             if (health <= 0)
             {
                 //GameManager.Instance.YouLose();
