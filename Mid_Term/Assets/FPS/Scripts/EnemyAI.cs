@@ -2,7 +2,7 @@
  * Copyright (c) 2023 - 2023, The Mean Giants, All Rights Reserved.
  *
  * Authors
- *  - 
+ *  - John Price
  */
 
 //-----------------------------------------------------------------
@@ -50,6 +50,8 @@ namespace FPS
         [Header("-----Enemy Stats-----")]
         [SerializeField] float shootRate;
         [SerializeField] GameObject bullet;
+        [SerializeField] float burstRate;
+        [SerializeField] bool isBurstShot;
 
         int numOfPatrolSpots;
         Vector3 playerDirection;
@@ -62,9 +64,11 @@ namespace FPS
         float stoppingDistanceOriginal;
         bool isPatrolling;
         int currentPointIndex;
+       
 
         void Start()
         {
+            //gameManager.instance.updateGameGoal(1);
             player = GameObject.FindGameObjectWithTag("Player");
             startingPos = transform.position;
             agent.speed = speed;
@@ -93,7 +97,7 @@ namespace FPS
             StartCoroutine(flashColor());
             if(HP <= 0)
             {
-                //TODO: decrement enemies remaining in GM
+                //gameManager.instance.updateGameGoal(-1);
                 Destroy(gameObject);
             }
         }
@@ -146,7 +150,7 @@ namespace FPS
                         if(!isShooting)
                         {
                             StartCoroutine(shoot());
-                            Debug.Log("Bang");
+                           
                         }                        
                         return true;
                     }
@@ -163,9 +167,27 @@ namespace FPS
         IEnumerator shoot()
         {
             isShooting = true;
-            Instantiate(bullet, shootPosition.position, transform.rotation); 
+            if(isBurstShot)
+            {
+                StartCoroutine(shootBurst());
+
+            }
+            else
+            {
+                Instantiate(bullet, shootPosition.position, transform.rotation);
+            }
+            
             yield return new WaitForSeconds(shootRate);
             isShooting = false;
+        }
+        IEnumerator shootBurst()
+        {
+            //Debug.Log("BRRAPP");
+            Instantiate(bullet, shootPosition.position, transform.rotation);
+            yield return new WaitForSeconds(burstRate);
+            Instantiate(bullet, shootPosition.position, transform.rotation);
+            yield return new WaitForSeconds(burstRate);
+            Instantiate(bullet, shootPosition.position, transform.rotation);
         }
         void OnTriggerEnter(Collider other)
         {
@@ -185,8 +207,9 @@ namespace FPS
 
         IEnumerator roam() //enemy chooses a random spot in roamDist and paths to it
         {
-            if(!destinationChosen && agent.remainingDistance < 0.05f)
+            if (!destinationChosen && agent.remainingDistance < 0.05f)
             {
+                
                 destinationChosen = true;
                 agent.stoppingDistance = 0;
 
@@ -194,7 +217,9 @@ namespace FPS
 
                 destinationChosen = false;
                 Vector3 randomPos = Random.insideUnitSphere * roamDist;
+                
                 randomPos += startingPos;
+                
 
                 NavMeshHit hit;
                 NavMesh.SamplePosition(randomPos, out hit, roamDist, 1);

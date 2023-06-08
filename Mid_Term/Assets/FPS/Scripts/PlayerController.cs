@@ -41,7 +41,7 @@ namespace FPS
         private Vector3 move;
         bool isShooting;
         int playerHpOrig;
-
+        
         private void Start()
         {
             playerHpOrig = health;
@@ -87,7 +87,7 @@ namespace FPS
           
             if(Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
             {
-                Debug.Log(hit);
+               
                 IDamage damageable = hit.collider.GetComponent<IDamage>();
                 if (damageable != null)
                 {
@@ -101,7 +101,7 @@ namespace FPS
         public void TakeDamage(int damage)
         {
             health -= damage;
-            Debug.Log("Player took damage");
+            
             if (health <= 0)
             {
                 //GameManager.Instance.YouLose();
