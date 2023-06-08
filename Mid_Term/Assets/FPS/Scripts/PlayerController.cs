@@ -119,28 +119,28 @@ namespace FPS
                 GameManager.Instance.YouLose();
             }
             UpdatePlayerHp();
-            //StartCoroutine(playerFlashDamage());
+            StartCoroutine(playerFlashDamage());
         }
 
         public void UpdatePlayerHp()
         {
-         //   GameManager.Instance.playerBar.fillAmount = (float) health / playerHpOrig;
+            GameManager.Instance.playerHpBar.fillAmount = (float) health / playerHpOrig;
         }
 
         public void SpawnPlayer()
         {
             controller.enabled = false;
-            //transform.position = GameManager.Instance.playerSpawnPos.transform.position;
+            transform.position = GameManager.Instance.playerSpawnPos.transform.position;
             controller.enabled = true;
             health = playerHpOrig;
-            //UpdatePlayerHp();
+            UpdatePlayerHp();
         }
 
-        //IEnumerator playerFlashDamage()
-        //{
-        //    GameManager.Instance.playerFlashUI.SetActive(true);
-        //    yield return new WaitForSeconds(0.1f);
-        //    GameManager.instance.playerFlashUI.SetActive(false);
-        //}
+        IEnumerator playerFlashDamage()
+        {
+            GameManager.Instance.playerFlashUI.SetActive(true);
+            yield return new WaitForSeconds(0.1f);
+            GameManager.Instance.playerFlashUI.SetActive(false);
+        }
     }
 }

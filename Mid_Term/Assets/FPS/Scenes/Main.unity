@@ -302,6 +302,26 @@ PrefabInstance:
       propertyPath: playerHpBar
       value: 
       objectReference: {fileID: 159413417}
+    - target: {fileID: 6167219166868190975, guid: 90fc07a8e308f2a418005fc96b0abb90, type: 3}
+      propertyPath: m_FillAmount
+      value: 0.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552965807653507676, guid: 90fc07a8e308f2a418005fc96b0abb90, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552965807653507676, guid: 90fc07a8e308f2a418005fc96b0abb90, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552965807653507676, guid: 90fc07a8e308f2a418005fc96b0abb90, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552965807653507676, guid: 90fc07a8e308f2a418005fc96b0abb90, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -24
+      objectReference: {fileID: 0}
     - target: {fileID: 9133420919739505468, guid: 90fc07a8e308f2a418005fc96b0abb90, type: 3}
       propertyPath: m_Name
       value: UI
@@ -569,11 +589,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f12f2d44b2688054986e54861cc211dc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 17.5
+      value: 10.95
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f12f2d44b2688054986e54861cc211dc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 360.1
+      value: 371.71
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f12f2d44b2688054986e54861cc211dc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1241,7 +1261,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1938877339}
   health: 100
-  playerSpeed: 4.21
+  playerSpeed: 4.99
   jumpHeight: 11.9
   gravityValue: 20.6
   jumpMax: 2
