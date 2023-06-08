@@ -10,7 +10,6 @@
 //-----------------------------------------------------------------
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
@@ -137,7 +136,7 @@ namespace FPS
             {
                 playerDirection = new Vector3(player.transform.position.x, player.transform.position.y + 1, player.transform.position.z) - headPosition.transform.position;
                 angleToPlayer = Vector3.Angle(new Vector3(playerDirection.x, 0, playerDirection.z), transform.forward);
-               // Debug.DrawRay(headPosition.position, playerDirection);
+                Debug.DrawRay(headPosition.position, playerDirection);
 
                 RaycastHit hit;
                 if (Physics.Raycast(headPosition.position, playerDirection, out hit))
@@ -186,7 +185,7 @@ namespace FPS
         }
         IEnumerator shootBurst()
         {
-            //Debug.Log("BRRAPP");
+            Debug.Log("BRRAPP");
             Instantiate(bullet, shootPosition.position, transform.rotation);
             yield return new WaitForSeconds(burstRate);
             Instantiate(bullet, shootPosition.position, transform.rotation);
