@@ -86,6 +86,7 @@ namespace FPS
             {
                 isPatrolling = false;
             }
+
         }
 
         void Update()
@@ -143,7 +144,7 @@ namespace FPS
                 RaycastHit hit;
                 if (Physics.Raycast(headPosition.position, playerDirection, out hit))
                 {
-                    if (hit.collider.CompareTag("Player") && angleToPlayer <= viewConeAngle)
+                   if (hit.collider.CompareTag("Player") && angleToPlayer <= viewConeAngle)
                     {
                         agent.stoppingDistance = stoppingDistanceOriginal;
                         agent.SetDestination(player.transform.position);

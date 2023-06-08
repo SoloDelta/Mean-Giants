@@ -11049,7 +11049,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 8220044977229747923}
-  health: 20
+  health: 100
   playerSpeed: 4.21
   jumpHeight: 11.9
   gravityValue: 20.6
