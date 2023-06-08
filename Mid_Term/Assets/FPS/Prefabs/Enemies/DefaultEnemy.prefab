@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 680557358551072669}
   - component: {fileID: 658084369035624442}
   - component: {fileID: 4573044839181902441}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemyHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,7 +295,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4791609441172615352}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shootpos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
