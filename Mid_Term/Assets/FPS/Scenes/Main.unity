@@ -1606,7 +1606,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1294024781}
   m_Layer: 0
-  m_Name: Enimies
+  m_Name: Enemies
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2481,7 +2481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1938877339}
-  health: 15
+  health: 20
   playerSpeed: 4.21
   jumpHeight: 11.9
   gravityValue: 20.6
