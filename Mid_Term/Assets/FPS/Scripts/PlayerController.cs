@@ -49,7 +49,7 @@ namespace FPS
             
             playerHpOrig = health;
             UpdatePlayerHp();
-          //  SpawnPlayer();
+            SpawnPlayer();
         }
 
         private void Update()
@@ -127,14 +127,14 @@ namespace FPS
             GameManager.Instance.playerHpBar.fillAmount = (float) health / playerHpOrig;
         }
 
-        //public void SpawnPlayer()
-        //{
-        //    controller.enabled = false;
-        //    transform.position = GameManager.Instance.playerSpawnPos.transform.position;
-        //    controller.enabled = true;
-        //    health = playerHpOrig;
-        //    UpdatePlayerHp();
-        //}
+        public void SpawnPlayer()
+        {
+            controller.enabled = false;
+            transform.position = GameManager.Instance.playerSpawnPos.transform.position;
+            controller.enabled = true;
+            health = playerHpOrig;
+            UpdatePlayerHp();
+        }
 
         IEnumerator playerFlashDamage()
         {
