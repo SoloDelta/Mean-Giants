@@ -11049,17 +11049,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 8220044977229747923}
-  health: 15
+  health: 100
   playerSpeed: 4.21
   jumpHeight: 11.9
   gravityValue: 20.6
   jumpMax: 2
-  sprint: 5
   shootRate: 0.5
   shootDamage: 1
   shootDistance: 115
   hitEffect: {fileID: 9039188317509268069, guid: 23ce5da2306c5d24c9fb630218af08d4, type: 3}
-  playerVelocity: {x: 0, y: 0, z: 0}
 --- !u!95 &8347213457022782065
 Animator:
   serializedVersion: 5
