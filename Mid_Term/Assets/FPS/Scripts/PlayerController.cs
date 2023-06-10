@@ -55,6 +55,7 @@ namespace FPS
         private void Update()
         {
             Movement();
+            crouch();
 
             if (Input.GetButton("Shoot") && !isShooting)
             {
@@ -91,6 +92,18 @@ namespace FPS
 
             playerVelocity.y -= gravityValue * Time.deltaTime;
             controller.Move(playerVelocity * Time.deltaTime);
+        }
+
+        public void crouch()
+        {
+            if (Input.GetButtonDown("Crouch"))
+            {
+                controller.height = controller.height / 2;
+            }
+            else if (Input.GetButtonUp("Crouch"))
+            {
+                controller.height = controller.height * 2;
+            }
         }
         IEnumerator shoot()
         {
