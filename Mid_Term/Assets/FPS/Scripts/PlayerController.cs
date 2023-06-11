@@ -37,6 +37,7 @@ namespace FPS
         [Range(1, 1000)][SerializeField] int shootDistance;
         [SerializeField] GameObject hitEffect;
 
+        public ParticleSystem muzzleFlash;
         private int jumpedTimes;
         private Vector3 playerVelocity;
         private bool groundedPlayer;
@@ -116,6 +117,7 @@ namespace FPS
         }
         IEnumerator shoot()
         {
+            muzzleFlash.Play();
             isShooting = true;
             RaycastHit hit;
           
@@ -130,6 +132,8 @@ namespace FPS
             }
             yield return new WaitForSeconds(shootRate);
             isShooting = false;
+
+            
         }
 
         public void TakeDamage(int damage)
