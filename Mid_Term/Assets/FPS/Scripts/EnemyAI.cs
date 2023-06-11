@@ -26,6 +26,7 @@ namespace FPS
         [Header("-----Components-----")]
         [SerializeField] Renderer model;
         [SerializeField] NavMeshAgent agent;
+        [SerializeField] Animator anim;
         [SerializeField] Transform headPosition;
         [SerializeField] Transform shootPosition;
 
@@ -107,6 +108,7 @@ namespace FPS
         {
             if (agent.isActiveAndEnabled)
             {
+                anim.SetFloat("Enemy Speed", agent.velocity.normalized.magnitude);
                 rotateUI();
                 if(true) //removed playerinrange
                 {
