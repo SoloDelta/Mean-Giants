@@ -181,7 +181,7 @@ namespace FPS
         }
         bool canSeePlayer()
         {
-            playerDirection = GameManager.instance.player.transform.position - headPosition.position;
+            playerDirection = GameManager.instance.player.transform.position; // - headPosition.position
             angleToPlayer = Vector3.Angle(new Vector3(playerDirection.x, 0, playerDirection.z), transform.forward);
             Debug.DrawRay(headPosition.position, playerDirection);
             RaycastHit hit;
