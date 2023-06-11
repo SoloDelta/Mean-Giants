@@ -116,7 +116,7 @@ namespace FPS
                 {
                     seesPlayer = canSeePlayer();
                     enemyNav();
-                    patrolCirculation();
+                    
                 }
                 
             }
@@ -136,6 +136,7 @@ namespace FPS
                 if (!spotted) //if the player has not been spotted
                 {
                     agent.isStopped = true;
+
                 }
                 else
                 {
@@ -181,7 +182,15 @@ namespace FPS
                 }
                 else
                 {
-                    StartCoroutine(roam());
+                    if(isPatrolling)
+                    {
+                        patrolCirculation();
+                    }
+                    else
+                    {
+                        StartCoroutine(roam());
+                    }
+                    
                 }
             }
         }
@@ -242,9 +251,11 @@ namespace FPS
         {
             if (isPatrolling && !seesPlayer)
             {
+                agent.stoppingDistance = 0;
                 agent.SetDestination(patrolSpots[currentPointIndex]);
                 if (new Vector3(transform.position.x, patrolSpots[currentPointIndex].y, transform.position.z) == patrolSpots[currentPointIndex])
                 {
+
                     currentPointIndex++;
                     if (currentPointIndex > numOfPatrolSpots - 1)
                     {
@@ -300,7 +311,6 @@ namespace FPS
             if (other.CompareTag("Player"))
             {
                 playerInRange = true;
-                Debug.Log("THIS IS WHYY");
             }
         }
 
