@@ -61,6 +61,15 @@ namespace FPS
             {
                 StartCoroutine(shoot());
             }
+
+            if (health == 100)
+            {
+              
+            }
+            else
+            {
+                GameManager.instance.removeCorner();
+            }
         }
 
         void Movement()
@@ -155,5 +164,11 @@ namespace FPS
             yield return new WaitForSeconds(0.1f);
             GameManager.instance.playerFlashUI.SetActive(false);
         }
+       /* IEnumerator Flash()
+        {
+            GameManager.instance.bulletFlash.SetActive(true);
+            yield return new WaitForSeconds(0.1f);
+            GameManager.instance.bulletFlash.SetActive(false);
+        }*/
     }
 }

@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public GameObject playerFlashUI;
     public GameObject loseMenu;
     public TextMeshProUGUI enemiesRemainingText;
+    public GameObject healthCorner; 
 
     [Header("----- Objectives -----")]
     int enemiesRemaining;
@@ -50,6 +51,7 @@ public class GameManager : MonoBehaviour
             activeMenu = pauseMenu;
             activeMenu.SetActive(isPaused);
         }
+
     }
 
     public void PausedState()
@@ -93,5 +95,10 @@ public class GameManager : MonoBehaviour
         PausedState();
         activeMenu = loseMenu;
         activeMenu.SetActive(true);
+    }
+
+    public void removeCorner()
+    {
+        healthCorner.SetActive(false);
     }
 }
