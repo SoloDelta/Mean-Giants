@@ -101,4 +101,8 @@ public class GameManager : MonoBehaviour
     {
         healthCorner.SetActive(false);
     }
+    public void addCorner()
+    {
+        healthCorner.SetActive(true);
+    }
 }

@@ -62,9 +62,9 @@ namespace FPS
                 StartCoroutine(shoot());
             }
 
-            if (health == 100)
+            if (playerHpOrig == health)
             {
-              
+                GameManager.instance.addCorner();
             }
             else
             {
