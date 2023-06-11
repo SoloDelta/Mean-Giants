@@ -564,6 +564,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 1670897394515415809, guid: 32af1138c3e8641409e210bc9d1f84a4, type: 3}
+      propertyPath: m_CullingMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2468239736151083540, guid: 32af1138c3e8641409e210bc9d1f84a4, type: 3}
       propertyPath: anim
       value: 
