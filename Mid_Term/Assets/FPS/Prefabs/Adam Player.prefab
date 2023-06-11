@@ -11004,7 +11004,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7977670783724381172}
   - component: {fileID: 3516337068024487520}
-  - component: {fileID: 8347213457022782065}
   - component: {fileID: 8220044977229747923}
   m_Layer: 6
   m_Name: Adam Player
@@ -11036,7 +11035,7 @@ Transform:
   - {fileID: 3109836862248262469}
   - {fileID: 2644143366454979452}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3516337068024487520
 MonoBehaviour:
@@ -11061,28 +11060,9 @@ MonoBehaviour:
   shootDamage: 1
   shootDistance: 115
   hitEffect: {fileID: 9039188317509268069, guid: 23ce5da2306c5d24c9fb630218af08d4, type: 3}
+  gunshotSource: {fileID: 0}
+  gClip: {fileID: 0}
   muzzleFlash: {fileID: 2257200925341249052}
---- !u!95 &8347213457022782065
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7638439082459081696}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: f12f2d44b2688054986e54861cc211dc, type: 3}
-  m_Controller: {fileID: 9100000, guid: 92b30b5dc5ce6204392c966902747672, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!143 &8220044977229747923
 CharacterController:
   m_ObjectHideFlags: 0
