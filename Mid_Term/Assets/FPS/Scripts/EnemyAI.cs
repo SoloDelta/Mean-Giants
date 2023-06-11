@@ -15,6 +15,7 @@ using UnityEngine.AI;
 using UnityEngine.UIElements;
 using static System.Net.Mime.MediaTypeNames;
 using System.Threading;
+using System.ComponentModel;
 
 namespace FPS
 {
@@ -29,6 +30,7 @@ namespace FPS
         [SerializeField] Animator anim;
         [SerializeField] Transform headPosition;
         [SerializeField] Transform shootPosition;
+        [SerializeField] GameObject lineRenderer;
 
         [Header("----- UIComponents-----")]
         [SerializeField] GameObject enemyUIParent;
@@ -313,12 +315,20 @@ namespace FPS
         {
             HP -= dmg;
             
-
+            updateEnemyUI();
             if (HP <= 0)
             {
+                if (lineRenderer != null)
+                {
+                    lineRenderer.SetActive(false);
+                    
+                    Debug.Log("LineRendererOff");
+                }
                 StopAllCoroutines();
+                spottedUI.SetActive(false);
                 anim.SetBool("Death", true);
                 GameManager.instance.UpdateObjective(-1);
+                
                 agent.enabled = false;
                 GetComponent<CapsuleCollider>().enabled = false;
                 
@@ -332,7 +342,7 @@ namespace FPS
                 }
                 spotted = true;
                 StartCoroutine(flashColor());
-                updateEnemyUI();
+                
             }
         }
         void updateEnemyUI()
