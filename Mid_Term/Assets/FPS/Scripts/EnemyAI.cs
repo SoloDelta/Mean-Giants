@@ -28,14 +28,20 @@ namespace FPS
         [SerializeField] NavMeshAgent agent;
         [SerializeField] Transform headPosition;
         [SerializeField] Transform shootPosition;
-        GameObject player;
+
+        [Header("----- UIComponents-----")]
+        [SerializeField] GameObject enemyUIParent;
+        [SerializeField] public GameObject wholeHealthBar;
+        [SerializeField] Transform HPBar;
+        [SerializeField] GameObject spottingUI;
+        [SerializeField] GameObject spottedUI;
+        [SerializeField] Transform qmarkTransform;
 
         [Header("-----Enemy Stats-----")]
         [SerializeField] int HP;
         [SerializeField] float speed;
         [SerializeField] int playerFaceSpeed;
         [SerializeField] int viewConeAngle;
-
         [SerializeField] bool atStart;
 
         [Header("-----Roaming-----")]
@@ -66,6 +72,13 @@ namespace FPS
         float stoppingDistanceOriginal;
         bool isPatrolling;
         int currentPointIndex;
+        GameObject player;
+
+        int enemyHPOriginal;
+        //bool seesPlayer;
+        float percentSpotted;
+        bool spotted = false;
+        Coroutine losingPlayerCopy;
 
 
         void Start()
@@ -75,6 +88,7 @@ namespace FPS
             player = GameManager.instance.player;
             startingPos = transform.position;
             agent.speed = speed;
+            enemyHPOriginal = HP;
             numOfPatrolSpots = patrolSpots.Count;
             stoppingDistanceOriginal = agent.stoppingDistance;
 
@@ -86,18 +100,25 @@ namespace FPS
             {
                 isPatrolling = false;
             }
-
+          
         }
 
         void Update()
         {
-            seesPlayer = isFollowingPlayer();
-            patrolCirculation();
+            if (agent.isActiveAndEnabled)
+            {
+                rotateUI();
+                seesPlayer = isFollowingPlayer();
+                patrolCirculation();
+            }
+            
         }
 
         public void TakeDamage(int dmg)
         {
             HP -= dmg;
+            updateEnemyUI();
+        
             agent.SetDestination(GameManager.instance.player.transform.position);
             StartCoroutine(flashColor());
             if (HP <= 0)
@@ -105,6 +126,61 @@ namespace FPS
                 GameManager.instance.UpdateObjective(-1);
                 Destroy(gameObject);
             }
+            else
+            {
+                agent.SetDestination(GameManager.instance.player.transform.position);
+                if(!spotted)
+                {
+                    StartCoroutine(spottedUIon());
+                }
+                spotted = true;
+                StartCoroutine(flashColor());
+            }
+        }
+        void spotting(float _deltaTime)
+        {
+            if (seesPlayer && percentSpotted < 1)
+            {
+                percentSpotted += 0.5f * _deltaTime;
+                qmarkTransform.localScale = new Vector3((4 * percentSpotted), qmarkTransform.localScale.y, qmarkTransform.localScale.z);
+                //Debug.Log(percentSpotted);
+
+            }
+            else if (!seesPlayer && percentSpotted > 0)
+            {
+                percentSpotted -= 0.25f * _deltaTime;
+                qmarkTransform.localScale = new Vector3((4 * percentSpotted), qmarkTransform.localScale.y, qmarkTransform.localScale.z);
+            }
+            if (percentSpotted >= 1)
+            {
+                spotted = true;
+                spottingUI.SetActive(false);
+                StartCoroutine(spottedUIon());
+                Debug.Log(spotted);
+            }
+            if (percentSpotted <= 0)
+            {
+                spottingUI.SetActive(false);
+            }
+        }
+        void rotateUI()
+        {
+            if (wholeHealthBar.activeInHierarchy || spottedUI.activeInHierarchy || spottingUI.activeInHierarchy) //if the health bar is active, set its x rotation to that of the camera and set the y rotation to that of the player
+            {
+                Vector3 eulerAngleRots = new Vector3(Camera.main.transform.rotation.eulerAngles.x, GameManager.instance.player.transform.rotation.eulerAngles.y, 0.0f);
+                Quaternion rotation = Quaternion.Euler(eulerAngleRots);
+                enemyUIParent.transform.rotation = rotation;
+            }
+        }
+        IEnumerator spottedUIon()
+        {
+            if (spottingUI.activeInHierarchy)
+            {
+                spottingUI.SetActive(false);
+            }
+            spottedUI.SetActive(true);
+            yield return new WaitForSeconds(3.0f);
+            spottedUI.SetActive(false);
         }
 
         IEnumerator flashColor()
@@ -169,6 +245,10 @@ namespace FPS
         {
             Quaternion rot = Quaternion.LookRotation(new Vector3(playerDirection.x, 0, playerDirection.z));
             transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * playerFaceSpeed);
+        }
+        void updateEnemyUI()
+        {
+            HPBar.transform.localScale = new Vector3((float)HP / enemyHPOriginal, HPBar.localScale.y, HPBar.localScale.y);
         }
         IEnumerator shoot()
         {
