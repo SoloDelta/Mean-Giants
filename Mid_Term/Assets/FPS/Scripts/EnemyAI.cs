@@ -108,7 +108,7 @@ namespace FPS
             if (agent.isActiveAndEnabled)
             {
                 rotateUI();
-                if(playerInRange)
+                if(true) //removed playerinrange
                 {
                     seesPlayer = canSeePlayer();
                     enemyNav();
@@ -161,12 +161,14 @@ namespace FPS
                 if (spotted)
                 {
                     agent.stoppingDistance = 0;
-                    if (agent.destination == transform.position)
+
+                    if (agent.destination.x == transform.position.x && agent.destination.z == transform.position.z)
                     {
                         Debug.Log("At last spot");
                         if (losingPlayerCopy == null)
                         {
                             losingPlayerCopy = StartCoroutine(losingPlayer());
+                            Debug.Log("starte losing plyer");
                         }
                         //Start look around routine
                         //
@@ -181,23 +183,27 @@ namespace FPS
         }
         bool canSeePlayer()
         {
-            playerDirection = GameManager.instance.player.transform.position; // - headPosition.position
-            angleToPlayer = Vector3.Angle(new Vector3(playerDirection.x, 0, playerDirection.z), transform.forward);
-            Debug.DrawRay(headPosition.position, playerDirection);
-            RaycastHit hit;
-            if (Physics.Raycast(headPosition.position, playerDirection, out hit))
+            if (playerInRange)
             {
-                if (hit.collider.CompareTag("Player") && angleToPlayer <= viewConeAngle)
+                playerDirection = new Vector3(0, 1, 0) + GameManager.instance.player.transform.position - headPosition.position;
+                angleToPlayer = Vector3.Angle(new Vector3(playerDirection.x, 0, playerDirection.z), transform.forward);
+                Debug.DrawRay(headPosition.position, playerDirection);
+                RaycastHit hit;
+                if (Physics.Raycast(headPosition.position, playerDirection, out hit))
                 {
-               
-                    if (!spotted)
+                    if (hit.collider.CompareTag("Player") && angleToPlayer <= viewConeAngle)
                     {
-                        spottingUI.SetActive(true);
 
+                        if (!spotted)
+                        {
+                            spottingUI.SetActive(true);
+
+                        }
+                        return true;
                     }
-                    return true;
                 }
             }
+            
             //agent.stoppingDistance = 0;
             return false;
         }
