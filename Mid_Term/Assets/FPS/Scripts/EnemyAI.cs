@@ -312,14 +312,16 @@ namespace FPS
         public void TakeDamage(int dmg)
         {
             HP -= dmg;
-            updateEnemyUI();
-        
-            agent.SetDestination(GameManager.instance.player.transform.position);
-            StartCoroutine(flashColor());
+            
+
             if (HP <= 0)
             {
+                StopAllCoroutines();
+                anim.SetBool("Death", true);
                 GameManager.instance.UpdateObjective(-1);
-                Destroy(gameObject);
+                agent.enabled = false;
+                GetComponent<CapsuleCollider>().enabled = false;
+                
             }
             else
             {
@@ -330,6 +332,7 @@ namespace FPS
                 }
                 spotted = true;
                 StartCoroutine(flashColor());
+                updateEnemyUI();
             }
         }
         void updateEnemyUI()
