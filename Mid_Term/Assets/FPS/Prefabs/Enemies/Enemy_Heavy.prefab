@@ -36,7 +36,7 @@ Transform:
   - {fileID: 4985809184009955570}
   - {fileID: 2391725429352122720}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2468239736151083540
 MonoBehaviour:
@@ -52,6 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   model: {fileID: 4985809183998490728}
   agent: {fileID: -6136169086223922386}
+  anim: {fileID: 8023880046079818132}
   headPosition: {fileID: 5604599237879478406}
   shootPosition: {fileID: 5604599237879478406}
   enemyUIParent: {fileID: 2629138474111896771}

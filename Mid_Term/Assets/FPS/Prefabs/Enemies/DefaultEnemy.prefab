@@ -52,6 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   model: {fileID: 4985809183998490728}
   agent: {fileID: -6136169086223922386}
+  anim: {fileID: 4107223165494711687}
   headPosition: {fileID: 5604599237879478406}
   shootPosition: {fileID: 5604599237879478406}
   enemyUIParent: {fileID: 1624333775914895109}
