@@ -44,7 +44,8 @@ namespace FPS
         private Vector3 move;
         bool isShooting;
         int playerHpOrig;
-        
+        Coroutine lastRun;
+
         private void Start()
         {
             
@@ -71,6 +72,7 @@ namespace FPS
             {
                 GameManager.instance.removeCorner();
             }
+            showEnemyHP();
         }
 
         void Movement()
@@ -135,7 +137,34 @@ namespace FPS
 
             
         }
+        void showEnemyHP()
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
+            {
 
+                if (hit.collider.CompareTag("Enemy"))
+                {
+                    if (lastRun != null)
+                    {
+                        StopCoroutine(lastRun);
+                    }
+                    hit.collider.GetComponent<EnemyAI>().wholeHealthBar.SetActive(true);
+                    lastRun = StartCoroutine(turnOffEnemyHP(hit));
+
+                }
+
+            }
+        }
+        IEnumerator turnOffEnemyHP(RaycastHit _hit)
+        {
+            yield return new WaitForSeconds(1);
+            if (_hit.collider != null)
+            {
+                _hit.collider.GetComponent<EnemyAI>().wholeHealthBar.SetActive(false);
+            }
+
+        }
         public void TakeDamage(int damage)
         {
             health -= damage;
