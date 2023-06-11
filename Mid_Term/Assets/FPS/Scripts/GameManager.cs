@@ -23,7 +23,8 @@ public class GameManager : MonoBehaviour
     public GameObject playerFlashUI;
     public GameObject loseMenu;
     public TextMeshProUGUI enemiesRemainingText;
-    public GameObject healthCorner; 
+    public GameObject healthCorner;
+    
 
     [Header("----- Objectives -----")]
     int enemiesRemaining;

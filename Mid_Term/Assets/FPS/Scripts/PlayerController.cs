@@ -11,6 +11,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 
 namespace FPS
@@ -37,7 +38,12 @@ namespace FPS
         [Range(1, 1000)][SerializeField] int shootDistance;
         [SerializeField] GameObject hitEffect;
 
+        [Header("----- Weapon Componenets -----")]
+        public AudioSource gunshotSource;
+        public AudioClip gClip;
         public ParticleSystem muzzleFlash;
+
+
         private int jumpedTimes;
         private Vector3 playerVelocity;
         private bool groundedPlayer;
@@ -120,8 +126,11 @@ namespace FPS
         IEnumerator shoot()
         {
             muzzleFlash.Play();
+            gunshotSource.PlayOneShot(gClip);
             isShooting = true;
             RaycastHit hit;
+            
+            
           
             if(Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
             {
