@@ -39,7 +39,7 @@ namespace FPS
         [SerializeField] GameObject hitEffect;
 
         [Header("----- Weapon Componenets -----")]
-        public AudioSource gunshotSource;
+        //public AudioSource gunshotSource;
         public AudioClip gClip;
         public ParticleSystem muzzleFlash;
 
@@ -126,7 +126,7 @@ namespace FPS
         IEnumerator shoot()
         {
             muzzleFlash.Play();
-            gunshotSource.PlayOneShot(gClip);   
+            //gunshotSource.PlayOneShot(gClip);   
             isShooting = true;
             RaycastHit hit;
             
