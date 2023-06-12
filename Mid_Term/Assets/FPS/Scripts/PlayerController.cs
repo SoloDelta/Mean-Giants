@@ -64,6 +64,7 @@ namespace FPS
         {
             Movement();
             crouch();
+
             if (Input.GetButton("Shoot") && !isShooting)
             {
                 StartCoroutine(shoot());
@@ -125,7 +126,7 @@ namespace FPS
         IEnumerator shoot()
         {
             muzzleFlash.Play();
-           // gunshotSource.PlayOneShot(gClip);
+            gunshotSource.PlayOneShot(gClip);   
             isShooting = true;
             RaycastHit hit;
             
