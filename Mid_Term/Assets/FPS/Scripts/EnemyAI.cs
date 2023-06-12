@@ -55,7 +55,7 @@ namespace FPS
 
         [Header("-----Pathfinding-----")]
         [SerializeField] List<Vector3> patrolSpots = new List<Vector3>();
-
+        [SerializeField] List<int> patrolRotations = new List<int>();
 
 
         [Header("-----Enemy Stats-----")]
@@ -82,7 +82,9 @@ namespace FPS
         float percentSpotted;
         bool spotted = false;
         Coroutine losingPlayerCopy;
-
+        Coroutine lookAroundCopy;
+        bool sawPlayerTemp = false;
+        float timeCount = 0.0f;
 
         void Start()
         {
@@ -98,6 +100,14 @@ namespace FPS
             if (patrolSpots.Count > 0)
             {
                 isPatrolling = true;
+                if(patrolSpots.Count - patrolRotations.Count != 0)
+                {
+                    
+                    while(patrolRotations.Count < patrolSpots.Count)
+                    {
+                        patrolRotations.Add(0);
+                    }
+                }
             }
             else
             {
@@ -108,6 +118,7 @@ namespace FPS
 
         void Update()
         {
+            
             if (agent.isActiveAndEnabled)
             {
                 anim.SetFloat("Enemy Speed", agent.velocity.normalized.magnitude);
@@ -133,10 +144,11 @@ namespace FPS
             }
             if (seesPlayer) //if the enemy sees the player
             {
+                
                 if (!spotted) //if the player has not been spotted
                 {
                     agent.isStopped = true;
-
+                    sawPlayerTemp = true;
                 }
                 else
                 {
@@ -162,18 +174,19 @@ namespace FPS
             }
             else
             {
-                agent.isStopped = false;
+                
                 if (spotted)
                 {
+                    agent.isStopped = false;
                     agent.stoppingDistance = 0;
 
                     if (agent.destination.x == transform.position.x && agent.destination.z == transform.position.z)
                     {
-                        Debug.Log("At last spot");
+
                         if (losingPlayerCopy == null)
                         {
                             losingPlayerCopy = StartCoroutine(losingPlayer());
-                            Debug.Log("starte losing plyer");
+
                         }
                         //Start look around routine
                         //
@@ -182,12 +195,25 @@ namespace FPS
                 }
                 else
                 {
+                    if(sawPlayerTemp)
+                    {
+
+                        //Quaternion rotationAmount = transform.rotation * Quaternion.Euler(0, patrolRotations[currentPointIndex], 0);
+                        //Debug.Log(rotationAmount);
+                        //transform.rotation = Quaternion.Slerp(transform.rotation, rotationAmount, 10.0f);
+
+                        //timeCount = timeCount + Time.deltaTime;
+                        
+                        //MAKE NEW COROUTINE
+
+                    }
                     if(isPatrolling)
                     {
                         patrolCirculation();
                     }
                     else
                     {
+                        agent.isStopped = false;
                         StartCoroutine(roam());
                     }
                     
@@ -253,14 +279,27 @@ namespace FPS
             {
                 agent.stoppingDistance = 0;
                 agent.SetDestination(patrolSpots[currentPointIndex]);
-                if (new Vector3(transform.position.x, patrolSpots[currentPointIndex].y, transform.position.z) == patrolSpots[currentPointIndex])
-                {
 
-                    currentPointIndex++;
-                    if (currentPointIndex > numOfPatrolSpots - 1)
+                if (new Vector3(transform.position.x, patrolSpots[currentPointIndex].y, transform.position.z) == patrolSpots[currentPointIndex]) //TRY AND CHECK IF PLAYER IS AT LEAST CLOSE TO POINT 
+                {
+                    
+                    if(!agent.isStopped)
                     {
-                        currentPointIndex = 0;
+                        StartCoroutine(lookAround());
                     }
+                    Debug.Log(agent.isStopped);
+                    
+                    
+                        
+                    Quaternion rotationAmount = Quaternion.Euler(0, patrolRotations[currentPointIndex], 0);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, rotationAmount, timeCount);
+                    timeCount += Time.deltaTime / 10;
+                    Debug.Log(timeCount);
+
+                }
+                else
+                {
+                   // agent.isStopped = false;
                 }
             }
             else { StartCoroutine(roam()); }
@@ -440,23 +479,40 @@ namespace FPS
             yield return new WaitForSeconds(0.1f);
             model.material.color = Color.white;
         }
-
-        
-       
-       
-       
         IEnumerator shootBurst()
         {
-            Debug.Log("BRRAPP");
             Instantiate(bullet, shootPosition.position, transform.rotation);
             yield return new WaitForSeconds(burstRate);
             Instantiate(bullet, shootPosition.position, transform.rotation);
             yield return new WaitForSeconds(burstRate);
             Instantiate(bullet, shootPosition.position, transform.rotation);
         }
-        
+        IEnumerator lookAround()
+        {
+            //if spotted look 45 left, 45 right, 180, 45 left 45 right
+            //if patrolling rotate player based on index in int list
+ 
+            //Quaternion rotationAmount = transform.rotation * Quaternion.Euler(0, patrolRotations[currentPointIndex], 0);
+            //transform.rotation *= rotationAmount;
+         
+            agent.isStopped = true;
+            //transform.rotation.SetFromToRotation(transform.rotation.eulerAngles, rotationAmount.eulerAngles);
+            //transform.rotation.SetLookRotation(rotationAmount.eulerAngles);
 
-        
+            //transform.rotation = Quaternion.Slerp(transform.rotation, rotationAmount, 0.1f);
+            
+            
+            yield return new WaitForSeconds(3.0f);
+            Debug.Log("Rotated");
+            agent.isStopped = false;
+            sawPlayerTemp = false;
+            currentPointIndex++;
+            if (currentPointIndex > numOfPatrolSpots - 1)
+            {
+                currentPointIndex = 0;
+            }
+            timeCount = 0;
+        }
 
     }
 }
