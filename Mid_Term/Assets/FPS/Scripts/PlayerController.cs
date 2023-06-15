@@ -33,6 +33,8 @@ namespace FPS
         [Range(2, 5)][SerializeField] int sprint;
 
         [Header("----- Gun Stats -----")]
+        [SerializeField] List<GunStats> gunList = new List<GunStats>();
+        [SerializeField] GameObject gunModel;
         [Range(0.1f, 3)][SerializeField] float shootRate;
         [Range(1, 10)][SerializeField] int shootDamage;
         [Range(1, 1000)][SerializeField] int shootDistance;
@@ -50,6 +52,7 @@ namespace FPS
         private Vector3 move;
         bool isShooting;
         int playerHpOrig;
+        int selectedGun;
         Coroutine lastRun;
 
         private void Start()
@@ -212,5 +215,42 @@ namespace FPS
             yield return new WaitForSeconds(0.1f);
             GameManager.instance.bulletFlash.SetActive(false);
         }*/
+
+        public void PickupGun(GunStats gunstat)
+        {
+            gunList.Add(gunstat);
+
+            shootDamage = gunstat.shootDamage;
+            shootDistance = gunstat.shootDistance;
+            shootRate = gunstat.shootRate;
+
+            gunModel.GetComponent<MeshFilter>().mesh = gunstat.model.GetComponent<MeshFilter>().sharedMesh;
+            gunModel.GetComponent<MeshRenderer>().material = gunstat.model.GetComponent<MeshRenderer>().sharedMaterial;
+            selectedGun = gunList.Count - 1;
+        }
+
+        public void swapGun()
+        {
+            if(Input.GetAxis("Mouse ScrollWheel") > 0 && selectedGun < gunList.Count - 1)
+            {
+                selectedGun++;
+                swapGunStats();
+            }
+            else if(Input.GetAxis("Mouse ScrollWheel") < 0 && selectedGun > 0)
+            {
+                selectedGun--;
+                swapGunStats();
+            }
+        }
+
+        void swapGunStats()
+        {
+            shootDamage = gunList[selectedGun].shootDamage;
+            shootDistance = gunList[selectedGun].shootDistance;
+            shootRate = gunList[selectedGun].shootRate;
+            
+            gunModel.GetComponent<MeshFilter>().mesh = gunList[selectedGun].model.GetComponent<MeshFilter>().sharedMesh;
+            gunModel.GetComponent<MeshRenderer>().material = gunList[selectedGun].model.GetComponent<MeshRenderer>().sharedMaterial;
+        }
     }
 }
