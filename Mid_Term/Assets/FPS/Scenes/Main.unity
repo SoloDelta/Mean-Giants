@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 8360.693, g: 5493.016, b: 4097.9614, a: 1}
+  m_IndirectSpecularColor: {r: 8698.132, g: 5910.9927, b: 4897.4224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -522,8 +522,7 @@ PrefabInstance:
       value: UI
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 6504503999938181822, guid: 90fc07a8e308f2a418005fc96b0abb90, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90fc07a8e308f2a418005fc96b0abb90, type: 3}
@@ -711,14 +710,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3516337068024487520, guid: 279e1c08b64de3a4c8023e8a3cdefe0a, type: 3}
-      propertyPath: gunModel
-      value: 
-      objectReference: {fileID: 1749677245}
-    - target: {fileID: 7199943587455136806, guid: 279e1c08b64de3a4c8023e8a3cdefe0a, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7638439082459081696, guid: 279e1c08b64de3a4c8023e8a3cdefe0a, type: 3}
       propertyPath: m_Name
       value: Adam Player
@@ -1126,11 +1117,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentTime: 0
   dayLengthMinutes: 60
---- !u!1 &1749677245 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6680098411237278510, guid: 279e1c08b64de3a4c8023e8a3cdefe0a, type: 3}
-  m_PrefabInstance: {fileID: 1538002071}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1854389041
 PrefabInstance:
   m_ObjectHideFlags: 0

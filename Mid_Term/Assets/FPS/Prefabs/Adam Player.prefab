@@ -9944,7 +9944,7 @@ GameObject:
   - component: {fileID: 1937083980173918058}
   - component: {fileID: 1376304987302428695}
   - component: {fileID: 4435901273764921481}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -11036,7 +11036,7 @@ Transform:
   - {fileID: 3109836862248262469}
   - {fileID: 2644143366454979452}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3516337068024487520
 MonoBehaviour:
@@ -11058,7 +11058,7 @@ MonoBehaviour:
   jumpMax: 2
   sprint: 4
   gunList: []
-  gunModel: {fileID: 0}
+  gunModel: {fileID: 6680098411237278510}
   shootRate: 0.41
   shootDamage: 1
   shootDistance: 115
@@ -19249,6 +19249,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 931ae83003f522b4cb5d8a3ad9b941a3, type: 3}
+--- !u!1 &6680098411237278510 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 931ae83003f522b4cb5d8a3ad9b941a3, type: 3}
+  m_PrefabInstance: {fileID: 6680098411237246350}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6680098411237383950 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 931ae83003f522b4cb5d8a3ad9b941a3, type: 3}
