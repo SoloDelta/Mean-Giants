@@ -19,7 +19,7 @@ namespace FPS
     /**----------------------------------------------------------------
      * @brief
      */
-    public class PlayerController : MonoBehaviour, IDamage
+    public class PlayerController : MonoBehaviour, IDamage, IAmmo
     {
         [Header("----- Components -----")]
         [SerializeField] CharacterController controller;
@@ -67,6 +67,7 @@ namespace FPS
         {
             Movement();
             crouch();
+            swapGun();
 
             if (Input.GetButton("Shoot") && !isShooting)
             {
@@ -128,25 +129,28 @@ namespace FPS
         }
         IEnumerator shoot()
         {
-            muzzleFlash.Play();
-            //gunshotSource.PlayOneShot(gClip);   
-            isShooting = true;
-            RaycastHit hit;
-            
-            
-          
-            if(Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
+            if (gunList[selectedGun].curAmmo > 0)
             {
-               
-                IDamage damageable = hit.collider.GetComponent<IDamage>();
-                if (damageable != null)
-                {
-                    damageable.TakeDamage(shootDamage);
-                }
-            }
-            yield return new WaitForSeconds(shootRate);
-            isShooting = false;
+                muzzleFlash.Play();
+                gunList[selectedGun].curAmmo--;
+                //gunshotSource.PlayOneShot(gClip);   
+                isShooting = true;
+                RaycastHit hit;
 
+
+
+                if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
+                {
+
+                    IDamage damageable = hit.collider.GetComponent<IDamage>();
+                    if (damageable != null)
+                    {
+                        damageable.TakeDamage(shootDamage);
+                    }
+                }
+                yield return new WaitForSeconds(shootRate);
+                isShooting = false;
+            }
             
         }
         void showEnemyHP()
@@ -251,6 +255,28 @@ namespace FPS
             
             gunModel.GetComponent<MeshFilter>().mesh = gunList[selectedGun].model.GetComponent<MeshFilter>().sharedMesh;
             gunModel.GetComponent<MeshRenderer>().material = gunList[selectedGun].model.GetComponent<MeshRenderer>().sharedMaterial;
+        }
+
+        public void AmmoPickup(int amount, GameObject obj)
+        {
+            if(gunList.Count> 0)
+            {
+                int ammoDiffer = gunList[selectedGun].maxAmmo - gunList[selectedGun].curAmmo;
+                gunList[selectedGun].curAmmo += amount;
+
+                if (gunList[selectedGun].curAmmo > gunList[selectedGun].maxAmmo)
+                {
+                    gunList[selectedGun].curAmmo = gunList[selectedGun].maxAmmo;
+                }
+
+                PickupAmmo ammoPickup = obj.GetComponent<PickupAmmo>();
+                ammoPickup.ammoAmount -= ammoDiffer;
+
+                if(ammoPickup.ammoAmount <= 0)
+                {
+                    Destroy(obj);
+                }
+            }
         }
     }
 }
