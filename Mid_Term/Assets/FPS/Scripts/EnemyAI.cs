@@ -86,6 +86,9 @@ namespace FPS
         bool sawPlayerTemp = false;
         float timeCount = 0.0f;
 
+        /**----------------------------------------------------------------
+         * @brief MonoBehaviour override.
+         */
         void Start()
         {
             GameManager.instance.UpdateObjective(1);
@@ -116,6 +119,9 @@ namespace FPS
           
         }
 
+        /**----------------------------------------------------------------
+         * @brief MonoBehaviour override.
+         */
         void Update()
         {
             
@@ -133,9 +139,10 @@ namespace FPS
             }
             
         }
-        ////////////
-        ///Enemy Logic  
-        ////////////
+
+        /**----------------------------------------------------------------
+         * @brief
+         */
         void enemyNav()
         {
             if (!spotted) //if the player has not been spotted update percent spotted
@@ -220,6 +227,10 @@ namespace FPS
                 }
             }
         }
+
+        /**----------------------------------------------------------------
+         * @brief
+         */
         bool canSeePlayer()
         {
             if (playerInRange)
@@ -246,6 +257,10 @@ namespace FPS
             //agent.stoppingDistance = 0;
             return false;
         }
+
+        /**----------------------------------------------------------------
+         * @brief
+         */
         void spotting(float _deltaTime)
         {
             if (seesPlayer && percentSpotted < 1)
@@ -273,6 +288,10 @@ namespace FPS
                 spottingUI.SetActive(false);
             }
         }
+
+        /**----------------------------------------------------------------
+         * @brief
+         */
         void patrolCirculation() //controls the logic for pathing. if the enemy has a patrol route and doesnt see the player, he patrols. if he doesnt have a patrol he roams.
         {
             if (isPatrolling && !seesPlayer)
@@ -333,9 +352,10 @@ namespace FPS
             return false;
         }
         */
-        ////////////
-        //Misc  
-        ////////////
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
         void rotateUI()
         {
             if (wholeHealthBar.activeInHierarchy || spottedUI.activeInHierarchy || spottingUI.activeInHierarchy) //if the health bar is active, set its x rotation to that of the camera and set the y rotation to that of the player
@@ -345,6 +365,10 @@ namespace FPS
                 enemyUIParent.transform.rotation = rotation;
             }
         }
+
+        /**----------------------------------------------------------------
+         * @brief
+         */
         void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Player"))
@@ -353,6 +377,9 @@ namespace FPS
             }
         }
 
+        /**----------------------------------------------------------------
+         * @brief
+         */
         void OnTriggerExit(Collider other)
         {
             if (other.CompareTag("Player"))
@@ -360,6 +387,10 @@ namespace FPS
                 playerInRange = false;
             }
         }
+
+        /**----------------------------------------------------------------
+         * @brief
+         */
         public void TakeDamage(int dmg)
         {
             HP -= dmg;
@@ -394,22 +425,35 @@ namespace FPS
                 
             }
         }
+
+        /**----------------------------------------------------------------
+         * @brief
+         */
         void updateEnemyUI()
         {
             HPBar.transform.localScale = new Vector3((float)HP / enemyHPOriginal, HPBar.localScale.y, HPBar.localScale.y);
         }
+
+        /**----------------------------------------------------------------
+         * @brief
+         */
         void facePlayer() //faces the player. Called when enemy is at stopping distance
         {
             Quaternion rot = Quaternion.LookRotation(new Vector3(playerDirection.x, 0, playerDirection.z));
             transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * playerFaceSpeed);
         }
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
         public void createBullet()
         {
             Instantiate(bullet, shootPosition.position, transform.rotation); //no shooting at the player, need to be changed
         }
-        ////////////////////////////
-        ////IENUMERATORS
-        ////////////////////////////
+
+        /**----------------------------------------------------------------
+         * @brief
+         */
         IEnumerator shoot()
         {
             isShooting = true;
@@ -426,6 +470,10 @@ namespace FPS
             yield return new WaitForSeconds(shootRate);
             isShooting = false;
         }
+
+        /**----------------------------------------------------------------
+         * @brief
+         */        
         IEnumerator roam() //enemy chooses a random spot in roamDist and paths to it
         {
             if (!destinationChosen && agent.remainingDistance < 0.05f)
@@ -447,6 +495,10 @@ namespace FPS
                 agent.SetDestination(hit.position);
             }
         }
+
+        /**----------------------------------------------------------------
+         * @brief
+         */
         IEnumerator spottedUIon()
         {
             if (spottingUI.activeInHierarchy)
@@ -457,6 +509,10 @@ namespace FPS
             yield return new WaitForSeconds(3.0f);
             spottedUI.SetActive(false);
         }
+
+        /**----------------------------------------------------------------
+         * @brief
+         */
         IEnumerator losingPlayer()
         {
             roamDist = 10;
@@ -473,12 +529,20 @@ namespace FPS
             Debug.Log("PlayerLost");
             percentSpotted = 0;
         }
+
+        /**----------------------------------------------------------------
+         * @brief
+         */
         IEnumerator flashColor()
         {
             model.material.color = Color.red;
             yield return new WaitForSeconds(0.1f);
             model.material.color = Color.white;
         }
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
         IEnumerator shootBurst()
         {
             Instantiate(bullet, shootPosition.position, transform.rotation);
@@ -487,6 +551,10 @@ namespace FPS
             yield return new WaitForSeconds(burstRate);
             Instantiate(bullet, shootPosition.position, transform.rotation);
         }
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
         IEnumerator lookAround()
         {
             //if spotted look 45 left, 45 right, 180, 45 left 45 right
@@ -501,7 +569,6 @@ namespace FPS
 
             //transform.rotation = Quaternion.Slerp(transform.rotation, rotationAmount, 0.1f);
             
-            
             yield return new WaitForSeconds(3.0f);
             Debug.Log("Rotated");
             agent.isStopped = false;
@@ -513,6 +580,5 @@ namespace FPS
             }
             timeCount = 0;
         }
-
     }
 }

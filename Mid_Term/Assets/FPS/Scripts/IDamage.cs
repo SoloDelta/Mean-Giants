@@ -15,10 +15,13 @@ using UnityEngine;
 namespace FPS
 {
     /**----------------------------------------------------------------
-     * @brief
+     * @brief Interface for implementing damagable objects.
      */
     public interface IDamage
     {
+        /**----------------------------------------------------------------
+         * @brief
+         */
         void TakeDamage(int dmg);
     }
 }

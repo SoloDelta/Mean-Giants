@@ -2,7 +2,8 @@
  * Copyright (c) 2023 - 2023, The Mean Giants, All Rights Reserved.
  *
  * Authors
- * Todd Zipp
+ *  - Todd Zipp
+ *  - Daniel I. Dorn <didorn@student.fullsail.edu>
  */
 
 //-----------------------------------------------------------------
@@ -12,7 +13,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
-
 
 namespace FPS
 {
@@ -55,6 +55,9 @@ namespace FPS
         int selectedGun;
         Coroutine lastRun;
 
+        /**----------------------------------------------------------------
+         * @brief MonoBehaviour override.
+         */
         private void Start()
         {
             
@@ -63,6 +66,9 @@ namespace FPS
             SpawnPlayer();
         }
 
+        /**----------------------------------------------------------------
+         * @brief MonoBehaviour override.
+         */
         private void Update()
         {
             Movement();

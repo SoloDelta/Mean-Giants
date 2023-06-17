@@ -28,14 +28,18 @@ namespace FPS
 
         float xRotation;
 
-        // Start is called before the first frame update
+        /**----------------------------------------------------------------
+         * @brief MonoBehaviour override.
+         */
         void Start()
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
         }
 
-        // Update is called once per frame
+        /**----------------------------------------------------------------
+         * @brief MonoBehaviour override.
+         */
         void Update()
         {
             //get input
@@ -59,8 +63,6 @@ namespace FPS
 
             //rotate the player on the Y-axis
             transform.parent.Rotate(Vector3.up * mouseX);
-
-
         }
     }
 }

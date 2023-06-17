@@ -1,29 +1,43 @@
+/**
+ * Copyright (c) 2023 - 2023, The Mean Giants, All Rights Reserved.
+ *
+ * Authors
+ *  - 
+ */
+
+//-----------------------------------------------------------------
+// Using Namespaces
+//-----------------------------------------------------------------
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AimScript : MonoBehaviour
+namespace FPS
 {
-
-    public GameObject Gun;
-
-    // Start is called before the first frame update
-    void Start()
+    /**----------------------------------------------------------------
+     * @brief
+     */
+    public class AimScript : MonoBehaviour
     {
-        
-    }
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        public GameObject Gun;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(1))
+        /**----------------------------------------------------------------
+         * @brief MonoBehaviour override.
+         */
+        void Update()
         {
-            Gun.GetComponent<Animator>().Play("Aim");
-        }
+            if (Input.GetMouseButtonDown(1))
+            {
+                Gun.GetComponent<Animator>().Play("Aim");
+            }
 
-        if (Input.GetMouseButtonUp(1))
-        {
-            Gun.GetComponent<Animator>().Play("UnAim");
+            if (Input.GetMouseButtonUp(1))
+            {
+                Gun.GetComponent<Animator>().Play("UnAim");
+            }
         }
     }
 }

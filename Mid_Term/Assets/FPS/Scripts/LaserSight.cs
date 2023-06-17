@@ -1,32 +1,51 @@
+/**
+ * Copyright (c) 2023 - 2023, The Mean Giants, All Rights Reserved.
+ *
+ * Authors
+ *  - 
+ */
+
+//-----------------------------------------------------------------
+// Using Namespaces
+//-----------------------------------------------------------------
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
 
-public class LaserSight : MonoBehaviour
+namespace FPS
 {
-
-    LineRenderer lineRenderer;
-    // Start is called before the first frame update
-    void Start()
+    /**----------------------------------------------------------------
+     * @brief 
+     */
+    public class LaserSight : MonoBehaviour
     {
-        lineRenderer = GetComponent<LineRenderer>();
+        LineRenderer lineRenderer;
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        lineRenderer.SetPosition(0, transform.position);
-        RaycastHit hit;
-        if(Physics.Raycast(transform.position, transform.forward, out hit))
+        /**----------------------------------------------------------------
+         * @brief MonoBehaviour override.
+         */
+        void Start()
         {
-            lineRenderer.SetPosition(1, hit.point);
-
+            lineRenderer = GetComponent<LineRenderer>();
         }
-        else
+
+        /**----------------------------------------------------------------
+         * @brief MonoBehaviour override.
+         */
+        void Update()
         {
-            lineRenderer.SetPosition(1, transform.position +  (transform.forward * 5000));
+            lineRenderer.SetPosition(0, transform.position);
+            RaycastHit hit;
+            if(Physics.Raycast(transform.position, transform.forward, out hit))
+            {
+                lineRenderer.SetPosition(1, hit.point);
+
+            }
+            else
+            {
+                lineRenderer.SetPosition(1, transform.position +  (transform.forward * 5000));
+            }
         }
     }
 }

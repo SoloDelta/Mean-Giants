@@ -1,25 +1,41 @@
+/**
+ * Copyright (c) 2023 - 2023, The Mean Giants, All Rights Reserved.
+ *
+ * Authors
+ *  - 
+ */
+
+//-----------------------------------------------------------------
+// Using Namespaces
+//-----------------------------------------------------------------
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickupAmmo : MonoBehaviour
+namespace FPS
 {
-    public int ammoAmount;
-
-    // Start is called before the first frame update
-    void Start()
+    /**----------------------------------------------------------------
+     * @brief Simple class to handle picking up addition ammo.
+     */
+    public class PickupAmmo : MonoBehaviour
     {
-        
-    }
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        public int ammoAmount;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        IAmmo hasAmmo = other.GetComponent<IAmmo>();
-
-        if (hasAmmo != null)
+        /**----------------------------------------------------------------
+         * @brief MonoBehaviour override.
+         */
+        private void OnTriggerEnter(Collider other)
         {
-            hasAmmo.AmmoPickup(ammoAmount, gameObject);
-        }
-    }
+            IAmmo hasAmmo = other.GetComponent<IAmmo>();
 
+            if (hasAmmo != null)
+            {
+                hasAmmo.AmmoPickup(ammoAmount, gameObject);
+            }
+        }
+
+    }
 }

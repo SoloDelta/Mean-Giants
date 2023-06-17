@@ -17,16 +17,24 @@ namespace FPS
      */
     public class DayNightCycle : MonoBehaviour
     {
+        /**----------------------------------------------------------------
+         * @brief
+         */
         public float currentTime;
         public float dayLengthMinutes;
-
         float rotationSpeed;
+
+        /**----------------------------------------------------------------
+         * @brief MonoBehaviour override.
+         */
         private void Start()
         {
             rotationSpeed = 360 / dayLengthMinutes / 60;
         }
 
-        // Update is called once per frame
+        /**----------------------------------------------------------------
+         * @brief MonoBehaviour override.
+         */
         void Update()
         {
             currentTime += 1 * Time.deltaTime;

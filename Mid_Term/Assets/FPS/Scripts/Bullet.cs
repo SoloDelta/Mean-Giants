@@ -15,7 +15,7 @@ using UnityEngine;
 namespace FPS
 {
     /**----------------------------------------------------------------
-     * @brief
+     * @brief Represents a bullet in our game.
      */
     public class Bullet : MonoBehaviour
     {
@@ -26,14 +26,18 @@ namespace FPS
 
         [SerializeField] Rigidbody rb;
 
-        // Start is called before the first frame update
+        /**----------------------------------------------------------------
+         * @brief MonoBehaviour override.
+         */
         void Start()
         {
             Destroy(gameObject, destroyTime);
             rb.velocity = transform.forward * speed;
         }
 
-        // Update is called once per frame
+        /**----------------------------------------------------------------
+         * @brief MonoBehaviour override.
+         */
         private void OnTriggerEnter(Collider other)
         {
             IDamage dam = other.GetComponent<IDamage>();

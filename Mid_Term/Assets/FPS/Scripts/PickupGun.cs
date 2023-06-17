@@ -1,23 +1,40 @@
+/**
+ * Copyright (c) 2023 - 2023, The Mean Giants, All Rights Reserved.
+ *
+ * Authors
+ *  - 
+ */
+
+//-----------------------------------------------------------------
+// Using Namespaces
+//-----------------------------------------------------------------
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickupGun : MonoBehaviour
+namespace FPS
 {
-    [SerializeField] GunStats gun;
-    // Start is called before the first frame update
-    void Start()
+    /**----------------------------------------------------------------
+     * @brief Handles picking weapons when within trigger.
+     */
+    public class PickupGun : MonoBehaviour
     {
-        
-    }
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        [SerializeField] GunStats gun;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
+        /**----------------------------------------------------------------
+         * @brief MonoBehaviour override.
+         */
+        private void OnTriggerEnter(Collider other)
         {
-            GameManager.instance.playerScript.PickupGun(gun);
-            Destroy(gameObject);
+            if (other.CompareTag("Player"))
+            {
+                GameManager.instance.playerScript.PickupGun(gun);
+                Destroy(gameObject);
+            }
         }
-    }
 
+    }
 }
