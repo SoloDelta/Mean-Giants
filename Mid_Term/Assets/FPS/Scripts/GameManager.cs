@@ -52,15 +52,15 @@ namespace FPS
         //-----------------------------------------------------------------
 
         [Header("----- Objectives -----")]
-        int enemiesRemaining;
+        private int enemiesRemaining;
 
         public bool isPaused;
-        float timeScaleOriginal;
+        private float timeScaleOriginal;
 
         /**----------------------------------------------------------------
          * @brief MonoBehaviour override.
          */
-        void Awake()
+        private void Awake()
         {
             instance = this;
             timeScaleOriginal = Time.timeScale;
@@ -72,7 +72,7 @@ namespace FPS
         /**----------------------------------------------------------------
          * @brief MonoBehaviour override.
          */
-        void Update()
+        private void Update()
         {
             if (Input.GetButtonDown("Cancel") && activeMenu == null)
             {
@@ -112,7 +112,7 @@ namespace FPS
             }
         }
 
-        IEnumerator YouWin()
+        private IEnumerator YouWin()
         {
             yield return new WaitForSeconds(3);
             activeMenu = winMenu;

@@ -19,19 +19,19 @@ namespace FPS
      */
     public class CameraControl : MonoBehaviour
     {
-        [SerializeField] int sensitivity;
+        [SerializeField] private int sensitivity;
 
-        [SerializeField] int lockVerMin;
-        [SerializeField] int lockVerMax;
+        [SerializeField] private int lockVerMin;
+        [SerializeField] private int lockVerMax;
 
-        [SerializeField] bool invertY;
+        [SerializeField] private bool invertY;
 
-        float xRotation;
+        private float xRotation;
 
         /**----------------------------------------------------------------
          * @brief MonoBehaviour override.
          */
-        void Start()
+        private void Start()
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
@@ -40,7 +40,7 @@ namespace FPS
         /**----------------------------------------------------------------
          * @brief MonoBehaviour override.
          */
-        void Update()
+        private void Update()
         {
             //get input
             float mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * sensitivity;

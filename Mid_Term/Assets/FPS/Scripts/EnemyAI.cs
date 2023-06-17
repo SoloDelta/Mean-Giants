@@ -25,71 +25,241 @@ namespace FPS
     public class EnemyAI : MonoBehaviour, IDamage
     {
         [Header("-----Components-----")]
-        [SerializeField] Renderer model;
-        [SerializeField] NavMeshAgent agent;
-        [SerializeField] Animator anim;
-        [SerializeField] Transform headPosition;
-        [SerializeField] Transform shootPosition;
-        [SerializeField] GameObject lineRenderer;
+
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        [SerializeField] private Renderer model;
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        [SerializeField] private NavMeshAgent agent;
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        [SerializeField] private Animator anim;
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        [SerializeField] private Transform headPosition;
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        [SerializeField] private Transform shootPosition;
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        [SerializeField] private GameObject lineRenderer;
 
         [Header("----- UIComponents-----")]
-        [SerializeField] GameObject enemyUIParent;
+
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        [SerializeField] private GameObject enemyUIParent;
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
         [SerializeField] public GameObject wholeHealthBar;
-        [SerializeField] Transform HPBar;
-        [SerializeField] GameObject spottingUI;
-        [SerializeField] GameObject spottedUI;
-        [SerializeField] Transform qmarkTransform;
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        [SerializeField] private Transform HPBar;
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        [SerializeField] private GameObject spottingUI;
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        [SerializeField] private GameObject spottedUI;
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        [SerializeField] private Transform qmarkTransform;
 
         [Header("-----Enemy Stats-----")]
-        [SerializeField] int HP;
-        [SerializeField] float speed;
-        [SerializeField] int playerFaceSpeed;
-        [SerializeField] int viewConeAngle;
-        [SerializeField] bool atStart;
+
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        [SerializeField] private int HP;
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        [SerializeField] private float speed;
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        [SerializeField] private int playerFaceSpeed;
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        [SerializeField] private int viewConeAngle;
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        [SerializeField] private bool atStart;
 
         [Header("-----Roaming-----")]
-        [SerializeField, Range(1, 10)] float roamTimer;
-        [SerializeField, Range(10, 100)] int roamDist;
 
-
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        [SerializeField, Range(1, 10)] private float roamTimer;
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        [SerializeField, Range(10, 100)] private int roamDist;
 
         [Header("-----Pathfinding-----")]
-        [SerializeField] List<Vector3> patrolSpots = new List<Vector3>();
-        [SerializeField] List<int> patrolRotations = new List<int>();
-
+       
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        [SerializeField] private List<Vector3> patrolSpots = new List<Vector3>();
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        [SerializeField] private List<int> patrolRotations = new List<int>();
 
         [Header("-----Enemy Stats-----")]
-        [SerializeField] float shootRate;
-        [SerializeField] GameObject bullet;
-        [SerializeField] float burstRate;
-        [SerializeField] bool isBurstShot;
 
-        int numOfPatrolSpots;
-        Vector3 playerDirection;
-        bool playerInRange;
-        float angleToPlayer;
-        bool isShooting;
-        bool seesPlayer;
-        bool destinationChosen;
-        Vector3 startingPos;
-        float stoppingDistanceOriginal;
-        bool isPatrolling;
-        int currentPointIndex;
-        GameObject player;
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        [SerializeField] private float shootRate;
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        [SerializeField] private GameObject bullet;
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        [SerializeField] private float burstRate;
 
-        int enemyHPOriginal;
-        //bool seesPlayer;
-        float percentSpotted;
-        bool spotted = false;
-        Coroutine losingPlayerCopy;
-        Coroutine lookAroundCopy;
-        bool sawPlayerTemp = false;
-        float timeCount = 0.0f;
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        [SerializeField] private bool isBurstShot;
+
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        private int numOfPatrolSpots;
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        private Vector3 playerDirection;
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        private bool playerInRange;
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        private float angleToPlayer;
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        private bool isShooting;
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        private bool seesPlayer;
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        private bool destinationChosen;
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        private Vector3 startingPos;
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        private float stoppingDistanceOriginal;
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        private bool isPatrolling;
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        private int currentPointIndex;
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        private GameObject player;
+
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        private int enemyHPOriginal;
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        private float percentSpotted;
+
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        private bool spotted = false;
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        private Coroutine losingPlayerCopy;
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        private Coroutine lookAroundCopy;
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        private bool sawPlayerTemp = false;
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        private float timeCount = 0.0f;
 
         /**----------------------------------------------------------------
          * @brief MonoBehaviour override.
          */
-        void Start()
+        private void Start()
         {
             GameManager.instance.UpdateObjective(1);
             //player = GameObject.FindGameObjectWithTag("Player");
@@ -122,7 +292,7 @@ namespace FPS
         /**----------------------------------------------------------------
          * @brief MonoBehaviour override.
          */
-        void Update()
+        private void Update()
         {
             
             if (agent.isActiveAndEnabled)
@@ -143,7 +313,7 @@ namespace FPS
         /**----------------------------------------------------------------
          * @brief
          */
-        void enemyNav()
+        private void enemyNav()
         {
             if (!spotted) //if the player has not been spotted update percent spotted
             {
@@ -231,7 +401,7 @@ namespace FPS
         /**----------------------------------------------------------------
          * @brief
          */
-        bool canSeePlayer()
+        private bool canSeePlayer()
         {
             if (playerInRange)
             {
@@ -261,7 +431,7 @@ namespace FPS
         /**----------------------------------------------------------------
          * @brief
          */
-        void spotting(float _deltaTime)
+        private void spotting(float _deltaTime)
         {
             if (seesPlayer && percentSpotted < 1)
             {
@@ -292,7 +462,7 @@ namespace FPS
         /**----------------------------------------------------------------
          * @brief
          */
-        void patrolCirculation() //controls the logic for pathing. if the enemy has a patrol route and doesnt see the player, he patrols. if he doesnt have a patrol he roams.
+        private void patrolCirculation() //controls the logic for pathing. if the enemy has a patrol route and doesnt see the player, he patrols. if he doesnt have a patrol he roams.
         {
             if (isPatrolling && !seesPlayer)
             {
@@ -323,40 +493,11 @@ namespace FPS
             }
             else { StartCoroutine(roam()); }
         }
-
-        /* ///RETIRED 
-        bool isFollowingPlayer() //checks to see if the enemy can see the play then tracks the player and shoots at the player
-        {
-            if (playerInRange)
-            {
-                player = GameManager.instance.player;
-                playerDirection = new Vector3(player.transform.position.x, player.transform.position.y + 1, player.transform.position.z) - headPosition.transform.position;
-                angleToPlayer = Vector3.Angle(new Vector3(playerDirection.x, 0, playerDirection.z), transform.forward);
-                Debug.DrawRay(headPosition.position, playerDirection);
-
-                RaycastHit hit;
-                if (Physics.Raycast(headPosition.position, playerDirection, out hit))
-                {
-                    if (hit.collider.CompareTag("Player") && angleToPlayer <= viewConeAngle)
-                    {
-                        spottingUI.SetActive(true);
-                        agent.stoppingDistance = stoppingDistanceOriginal;
-                        agent.SetDestination(player.transform.position);
-
-
-                        return true;
-                    }
-                }
-            }
-            agent.stoppingDistance = 0;
-            return false;
-        }
-        */
         
         /**----------------------------------------------------------------
          * @brief
          */
-        void rotateUI()
+        private void rotateUI()
         {
             if (wholeHealthBar.activeInHierarchy || spottedUI.activeInHierarchy || spottingUI.activeInHierarchy) //if the health bar is active, set its x rotation to that of the camera and set the y rotation to that of the player
             {
@@ -369,7 +510,7 @@ namespace FPS
         /**----------------------------------------------------------------
          * @brief
          */
-        void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Player"))
             {
@@ -380,7 +521,7 @@ namespace FPS
         /**----------------------------------------------------------------
          * @brief
          */
-        void OnTriggerExit(Collider other)
+        private void OnTriggerExit(Collider other)
         {
             if (other.CompareTag("Player"))
             {
@@ -429,7 +570,7 @@ namespace FPS
         /**----------------------------------------------------------------
          * @brief
          */
-        void updateEnemyUI()
+        private void updateEnemyUI()
         {
             HPBar.transform.localScale = new Vector3((float)HP / enemyHPOriginal, HPBar.localScale.y, HPBar.localScale.y);
         }
@@ -437,7 +578,7 @@ namespace FPS
         /**----------------------------------------------------------------
          * @brief
          */
-        void facePlayer() //faces the player. Called when enemy is at stopping distance
+        private void facePlayer() //faces the player. Called when enemy is at stopping distance
         {
             Quaternion rot = Quaternion.LookRotation(new Vector3(playerDirection.x, 0, playerDirection.z));
             transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * playerFaceSpeed);
@@ -452,9 +593,9 @@ namespace FPS
         }
 
         /**----------------------------------------------------------------
-         * @brief
+         * @brief Coroutine to make enemy shoot at the player.
          */
-        IEnumerator shoot()
+        private IEnumerator shoot()
         {
             isShooting = true;
             if (isBurstShot)
@@ -472,9 +613,9 @@ namespace FPS
         }
 
         /**----------------------------------------------------------------
-         * @brief
+         * @brief Coroutine to make enemy roam around the nav mesh.
          */        
-        IEnumerator roam() //enemy chooses a random spot in roamDist and paths to it
+        private IEnumerator roam() //enemy chooses a random spot in roamDist and paths to it
         {
             if (!destinationChosen && agent.remainingDistance < 0.05f)
             {
@@ -499,7 +640,7 @@ namespace FPS
         /**----------------------------------------------------------------
          * @brief
          */
-        IEnumerator spottedUIon()
+        private IEnumerator spottedUIon()
         {
             if (spottingUI.activeInHierarchy)
             {
@@ -511,9 +652,9 @@ namespace FPS
         }
 
         /**----------------------------------------------------------------
-         * @brief
+         * @brief 
          */
-        IEnumerator losingPlayer()
+        private IEnumerator losingPlayer()
         {
             roamDist = 10;
             //make some function for looking around after stopping
@@ -531,9 +672,9 @@ namespace FPS
         }
 
         /**----------------------------------------------------------------
-         * @brief
+         * @brief Coroutine to make the enemy flash red when damaged.
          */
-        IEnumerator flashColor()
+        private IEnumerator flashColor()
         {
             model.material.color = Color.red;
             yield return new WaitForSeconds(0.1f);
@@ -541,9 +682,9 @@ namespace FPS
         }
         
         /**----------------------------------------------------------------
-         * @brief
+         * @brief Corouting to shoot burst fire at player.
          */
-        IEnumerator shootBurst()
+        private IEnumerator shootBurst()
         {
             Instantiate(bullet, shootPosition.position, transform.rotation);
             yield return new WaitForSeconds(burstRate);
@@ -553,9 +694,9 @@ namespace FPS
         }
         
         /**----------------------------------------------------------------
-         * @brief
+         * @brief Coroutine to make enemy look around for player.
          */
-        IEnumerator lookAround()
+        private IEnumerator lookAround()
         {
             //if spotted look 45 left, 45 right, 180, 45 left 45 right
             //if patrolling rotate player based on index in int list

@@ -20,12 +20,12 @@ namespace FPS
      */
     public class LaserSight : MonoBehaviour
     {
-        LineRenderer lineRenderer;
+        private LineRenderer lineRenderer;
 
         /**----------------------------------------------------------------
          * @brief MonoBehaviour override.
          */
-        void Start()
+        private void Start()
         {
             lineRenderer = GetComponent<LineRenderer>();
         }
@@ -33,7 +33,7 @@ namespace FPS
         /**----------------------------------------------------------------
          * @brief MonoBehaviour override.
          */
-        void Update()
+        private void Update()
         {
             lineRenderer.SetPosition(0, transform.position);
             RaycastHit hit;

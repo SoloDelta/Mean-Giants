@@ -22,7 +22,7 @@ namespace FPS
          */
         public float currentTime;
         public float dayLengthMinutes;
-        float rotationSpeed;
+        private float rotationSpeed;
 
         /**----------------------------------------------------------------
          * @brief MonoBehaviour override.
@@ -35,7 +35,7 @@ namespace FPS
         /**----------------------------------------------------------------
          * @brief MonoBehaviour override.
          */
-        void Update()
+        private void Update()
         {
             currentTime += 1 * Time.deltaTime;
 

@@ -22,23 +22,23 @@ namespace FPS
     public class PlayerController : MonoBehaviour, IDamage, IAmmo
     {
         [Header("----- Components -----")]
-        [SerializeField] CharacterController controller;
+        [SerializeField] private CharacterController controller;
 
         [Header("----- Player Stats -----")]
-        [SerializeField] int health;
-        [Range(3, 8)][SerializeField] float playerSpeed;
-        [Range(8, 25)][SerializeField] float jumpHeight;
-        [Range(10, 50)][SerializeField] float gravityValue;
-        [Range(1, 3)][SerializeField] int jumpMax;
-        [Range(2, 5)][SerializeField] int sprint;
+        [SerializeField] private int health;
+        [Range(3, 8)][SerializeField] private float playerSpeed;
+        [Range(8, 25)][SerializeField] private float jumpHeight;
+        [Range(10, 50)][SerializeField] private float gravityValue;
+        [Range(1, 3)][SerializeField] private int jumpMax;
+        [Range(2, 5)][SerializeField] private int sprint;
 
         [Header("----- Gun Stats -----")]
-        [SerializeField] List<GunStats> gunList = new List<GunStats>();
-        [SerializeField] GameObject gunModel;
-        [Range(0.1f, 3)][SerializeField] float shootRate;
-        [Range(1, 10)][SerializeField] int shootDamage;
-        [Range(1, 1000)][SerializeField] int shootDistance;
-        [SerializeField] GameObject hitEffect;
+        [SerializeField] private List<GunStats> gunList = new List<GunStats>();
+        [SerializeField] private GameObject gunModel;
+        [Range(0.1f, 3)][SerializeField] private float shootRate;
+        [Range(1, 10)][SerializeField] private int shootDamage;
+        [Range(1, 1000)][SerializeField] private int shootDistance;
+        [SerializeField] private GameObject hitEffect;
 
         [Header("----- Weapon Componenets -----")]
         //public AudioSource gunshotSource;
@@ -50,10 +50,10 @@ namespace FPS
         private Vector3 playerVelocity;
         private bool groundedPlayer;
         private Vector3 move;
-        bool isShooting;
-        int playerHpOrig;
-        int selectedGun;
-        Coroutine lastRun;
+        private bool isShooting;
+        private int playerHpOrig;
+        private int selectedGun;
+        private Coroutine lastRun;
 
         /**----------------------------------------------------------------
          * @brief MonoBehaviour override.
@@ -91,7 +91,10 @@ namespace FPS
             showEnemyHP();
         }
 
-        void Movement()
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        private void Movement()
         {
             groundedPlayer = controller.isGrounded;
             if (groundedPlayer && playerVelocity.y < 0)
@@ -122,6 +125,9 @@ namespace FPS
             controller.Move(playerVelocity * Time.deltaTime);
         }
 
+        /**----------------------------------------------------------------
+         * @brief
+         */
         public void crouch()
         {
             if (Input.GetButtonDown("Crouch"))
@@ -133,7 +139,11 @@ namespace FPS
                 controller.height = controller.height * 2;
             }
         }
-        IEnumerator shoot()
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        private IEnumerator shoot()
         {
             if (gunList[selectedGun].curAmmo > 0)
             {
@@ -159,7 +169,11 @@ namespace FPS
             }
             
         }
-        void showEnemyHP()
+
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        private void showEnemyHP()
         {
             RaycastHit hit;
             if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
@@ -178,7 +192,11 @@ namespace FPS
 
             }
         }
-        IEnumerator turnOffEnemyHP(RaycastHit _hit)
+
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        private IEnumerator turnOffEnemyHP(RaycastHit _hit)
         {
             yield return new WaitForSeconds(1);
             if (_hit.collider != null)
@@ -187,6 +205,10 @@ namespace FPS
             }
 
         }
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
         public void TakeDamage(int damage)
         {
             health -= damage;
@@ -199,11 +221,17 @@ namespace FPS
             StartCoroutine(playerFlashDamage());
         }
 
+        /**----------------------------------------------------------------
+         * @brief
+         */
         public void UpdatePlayerHp()
         {
             GameManager.instance.playerHpBar.fillAmount = (float) health / playerHpOrig;
         }
 
+        /**----------------------------------------------------------------
+         * @brief
+         */
         public void SpawnPlayer()
         {
             controller.enabled = false;
@@ -213,19 +241,19 @@ namespace FPS
             UpdatePlayerHp();
         }
 
-        IEnumerator playerFlashDamage()
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        private IEnumerator playerFlashDamage()
         {
             GameManager.instance.playerFlashUI.SetActive(true);
             yield return new WaitForSeconds(0.1f);
             GameManager.instance.playerFlashUI.SetActive(false);
         }
-       /* IEnumerator Flash()
-        {
-            GameManager.instance.bulletFlash.SetActive(true);
-            yield return new WaitForSeconds(0.1f);
-            GameManager.instance.bulletFlash.SetActive(false);
-        }*/
 
+        /**----------------------------------------------------------------
+         * @brief
+         */
         public void PickupGun(GunStats gunstat)
         {
             gunList.Add(gunstat);
@@ -239,6 +267,9 @@ namespace FPS
             selectedGun = gunList.Count - 1;
         }
 
+        /**----------------------------------------------------------------
+         * @brief
+         */
         public void swapGun()
         {
             if(Input.GetAxis("Mouse ScrollWheel") > 0 && selectedGun < gunList.Count - 1)
@@ -253,7 +284,10 @@ namespace FPS
             }
         }
 
-        void swapGunStats()
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        private void swapGunStats()
         {
             shootDamage = gunList[selectedGun].shootDamage;
             shootDistance = gunList[selectedGun].shootDistance;
@@ -263,6 +297,9 @@ namespace FPS
             gunModel.GetComponent<MeshRenderer>().material = gunList[selectedGun].model.GetComponent<MeshRenderer>().sharedMaterial;
         }
 
+        /**----------------------------------------------------------------
+         * @brief
+         */
         public void AmmoPickup(int amount, GameObject obj)
         {
             if(gunList.Count> 0)

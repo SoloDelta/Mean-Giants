@@ -22,7 +22,7 @@ namespace FPS
         /**----------------------------------------------------------------
          * @brief
          */
-        [SerializeField] GunStats gun;
+        [SerializeField] private GunStats gun;
 
         /**----------------------------------------------------------------
          * @brief MonoBehaviour override.

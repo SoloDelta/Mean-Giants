@@ -27,7 +27,7 @@ namespace FPS
         /**----------------------------------------------------------------
          * @brief MonoBehaviour override.
          */
-        void Update()
+        private void Update()
         {
             if (Input.GetMouseButtonDown(1))
             {

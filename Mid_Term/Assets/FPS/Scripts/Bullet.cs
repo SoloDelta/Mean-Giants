@@ -29,7 +29,7 @@ namespace FPS
         /**----------------------------------------------------------------
          * @brief MonoBehaviour override.
          */
-        void Start()
+        private void Start()
         {
             Destroy(gameObject, destroyTime);
             rb.velocity = transform.forward * speed;
