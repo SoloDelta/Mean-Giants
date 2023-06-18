@@ -108,7 +108,8 @@ namespace FPS
 
         private void Update()
         {
-            
+            playerDirection = new Vector3(0, 1, 0) + GameManager.instance.player.transform.position - shootPosition.position;
+            Debug.DrawRay(shootPosition.position, playerDirection);
             if (agent.isActiveAndEnabled)
             {
                 anim.SetFloat("Enemy Speed", agent.velocity.normalized.magnitude);
@@ -341,6 +342,7 @@ namespace FPS
                 }
                 StopAllCoroutines();
                 spottedUI.SetActive(false);
+                wholeHealthBar.SetActive(false);
                 anim.SetBool("Death", true);
                 GameManager.instance.UpdateObjective(-1);
                 
@@ -377,7 +379,9 @@ namespace FPS
 
         public void createBullet() //spawns the bullet at a position. needs work
         {
-            Instantiate(bullet, shootPosition.position, transform.rotation); //no shooting at the player, need to be changed
+            playerDirection =  new Vector3(0,1,0) + GameManager.instance.player.transform.position - shootPosition.position;
+            Instantiate(bullet, shootPosition.position, Quaternion.LookRotation(playerDirection));
+            Debug.DrawRay(shootPosition.position, playerDirection);
         }
 
         /**----------------------------------------------------------------
@@ -466,11 +470,11 @@ namespace FPS
       
         private IEnumerator shootBurst() //burst that shoots 3 bullets 
         {
-            Instantiate(bullet, shootPosition.position, transform.rotation);
+            createBullet();
             yield return new WaitForSeconds(burstRate);
-            Instantiate(bullet, shootPosition.position, transform.rotation);
+            createBullet();
             yield return new WaitForSeconds(burstRate);
-            Instantiate(bullet, shootPosition.position, transform.rotation);
+            createBullet();
         }
         
     

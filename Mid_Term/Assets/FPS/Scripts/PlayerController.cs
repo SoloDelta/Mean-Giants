@@ -76,10 +76,14 @@ namespace FPS
             crouch();
             swapGun();
 
-            if (Input.GetButton("Shoot") && !isShooting)
+            if (gunList.Count > 0)
             {
-                StartCoroutine(shoot());
+                if (Input.GetButton("Shoot") && !isShooting)
+                {
+                    StartCoroutine(shoot());
+                }
             }
+            
 
             if (playerHpOrig == health)
             {
@@ -170,8 +174,10 @@ namespace FPS
          */
         private IEnumerator shoot()
         {
+            Debug.Log(gunList[selectedGun].curAmmo);
             if (gunList[selectedGun].curAmmo > 0)
             {
+                
                 muzzleFlash.Play();
                 gunList[selectedGun].curAmmo--;
                 //gunshotSource.PlayOneShot(gClip);   
