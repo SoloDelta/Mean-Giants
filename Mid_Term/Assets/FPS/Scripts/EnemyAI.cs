@@ -25,240 +25,60 @@ namespace FPS
     public class EnemyAI : MonoBehaviour, IDamage
     {
         [Header("-----Components-----")]
-
-        /**----------------------------------------------------------------
-         * @brief
-         */
         [SerializeField] private Renderer model;
-        
-        /**----------------------------------------------------------------
-         * @brief
-         */
         [SerializeField] private NavMeshAgent agent;
-        
-        /**----------------------------------------------------------------
-         * @brief
-         */
         [SerializeField] private Animator anim;
-        
-        /**----------------------------------------------------------------
-         * @brief
-         */
         [SerializeField] private Transform headPosition;
-        
-        /**----------------------------------------------------------------
-         * @brief
-         */
         [SerializeField] private Transform shootPosition;
-        
-        /**----------------------------------------------------------------
-         * @brief
-         */
         [SerializeField] private GameObject lineRenderer;
 
         [Header("----- UIComponents-----")]
-
-        /**----------------------------------------------------------------
-         * @brief
-         */
         [SerializeField] private GameObject enemyUIParent;
-        
-        /**----------------------------------------------------------------
-         * @brief
-         */
         [SerializeField] public GameObject wholeHealthBar;
-        
-        /**----------------------------------------------------------------
-         * @brief
-         */
         [SerializeField] private Transform HPBar;
-        
-        /**----------------------------------------------------------------
-         * @brief
-         */
         [SerializeField] private GameObject spottingUI;
-        
-        /**----------------------------------------------------------------
-         * @brief
-         */
         [SerializeField] private GameObject spottedUI;
-        
-        /**----------------------------------------------------------------
-         * @brief
-         */
         [SerializeField] private Transform qmarkTransform;
 
         [Header("-----Enemy Stats-----")]
-
-        /**----------------------------------------------------------------
-         * @brief
-         */
         [SerializeField] private int HP;
-        
-        /**----------------------------------------------------------------
-         * @brief
-         */
         [SerializeField] private float speed;
-        
-        /**----------------------------------------------------------------
-         * @brief
-         */
         [SerializeField] private int playerFaceSpeed;
-        
-        /**----------------------------------------------------------------
-         * @brief
-         */
         [SerializeField] private int viewConeAngle;
-        
-        /**----------------------------------------------------------------
-         * @brief
-         */
         [SerializeField] private bool atStart;
 
         [Header("-----Roaming-----")]
-
-        /**----------------------------------------------------------------
-         * @brief
-         */
         [SerializeField, Range(1, 10)] private float roamTimer;
-        
-        /**----------------------------------------------------------------
-         * @brief
-         */
         [SerializeField, Range(10, 100)] private int roamDist;
 
         [Header("-----Pathfinding-----")]
-       
-        /**----------------------------------------------------------------
-         * @brief
-         */
         [SerializeField] private List<Vector3> patrolSpots = new List<Vector3>();
-        
-        /**----------------------------------------------------------------
-         * @brief
-         */
         [SerializeField] private List<int> patrolRotations = new List<int>();
 
         [Header("-----Enemy Stats-----")]
-
-        /**----------------------------------------------------------------
-         * @brief
-         */
         [SerializeField] private float shootRate;
-        
-        /**----------------------------------------------------------------
-         * @brief
-         */
         [SerializeField] private GameObject bullet;
-        
-        /**----------------------------------------------------------------
-         * @brief
-         */
         [SerializeField] private float burstRate;
-
-        /**----------------------------------------------------------------
-         * @brief
-         */
         [SerializeField] private bool isBurstShot;
-
-        /**----------------------------------------------------------------
-         * @brief
-         */
         private int numOfPatrolSpots;
-        
-        /**----------------------------------------------------------------
-         * @brief
-         */
         private Vector3 playerDirection;
-        
-        /**----------------------------------------------------------------
-         * @brief
-         */
         private bool playerInRange;
-        
-        /**----------------------------------------------------------------
-         * @brief
-         */
         private float angleToPlayer;
-        
-        /**----------------------------------------------------------------
-         * @brief
-         */
         private bool isShooting;
-        
-        /**----------------------------------------------------------------
-         * @brief
-         */
         private bool seesPlayer;
-        
-        /**----------------------------------------------------------------
-         * @brief
-         */
         private bool destinationChosen;
-        
-        /**----------------------------------------------------------------
-         * @brief
-         */
         private Vector3 startingPos;
-        
-        /**----------------------------------------------------------------
-         * @brief
-         */
         private float stoppingDistanceOriginal;
-        
-        /**----------------------------------------------------------------
-         * @brief
-         */
         private bool isPatrolling;
-        
-        /**----------------------------------------------------------------
-         * @brief
-         */
         private int currentPointIndex;
-        
-        /**----------------------------------------------------------------
-         * @brief
-         */
         private GameObject player;
-
-        /**----------------------------------------------------------------
-         * @brief
-         */
         private int enemyHPOriginal;
-        
-        /**----------------------------------------------------------------
-         * @brief
-         */
         private float percentSpotted;
-
-        /**----------------------------------------------------------------
-         * @brief
-         */
         private bool spotted = false;
-        
-        /**----------------------------------------------------------------
-         * @brief
-         */
         private Coroutine losingPlayerCopy;
-        
-        /**----------------------------------------------------------------
-         * @brief
-         */
         private Coroutine lookAroundCopy;
-        
-        /**----------------------------------------------------------------
-         * @brief
-         */
         private bool sawPlayerTemp = false;
-        
-        /**----------------------------------------------------------------
-         * @brief
-         */
         private float timeCount = 0.0f;
-
-        /**----------------------------------------------------------------
-         * @brief MonoBehaviour override.
-         */
         private void Start()
         {
             GameManager.instance.UpdateObjective(1);
