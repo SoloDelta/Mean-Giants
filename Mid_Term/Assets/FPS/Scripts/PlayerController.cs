@@ -11,6 +11,7 @@
 //-----------------------------------------------------------------
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -89,7 +90,31 @@ namespace FPS
                 GameManager.instance.removeCorner();
             }
             showEnemyHP();
+            /////wrote this to collect the cube, not sure if this is the best place to call it but it works. - john
+            RaycastHit hit;
+            if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
+            {
+                if (hit.collider.CompareTag("Pickup"))
+                {
+                    if (hit.distance < 3)
+                    {
+                        if (Input.GetButtonDown("Interact"))
+                        {
+
+                            StartCoroutine(collectedText(hit));
+                            Destroy(hit.collider.gameObject);
+                            Debug.Log("Cube Collected");
+                        }
+
+                    }
+
+                }
+            }
+                
+
+
         }
+        
 
         /**----------------------------------------------------------------
          * @brief
@@ -235,7 +260,7 @@ namespace FPS
         public void SpawnPlayer()
         {
             controller.enabled = false;
-            transform.position = GameManager.instance.playerSpawnPos.transform.position;
+            transform.position = GameManager.instance.playerSpawnPos.transform.position; 
             controller.enabled = true;
             health = playerHpOrig;
             UpdatePlayerHp();
@@ -320,6 +345,14 @@ namespace FPS
                     Destroy(obj);
                 }
             }
+        }
+
+        IEnumerator collectedText(RaycastHit hit)
+        {
+            GameManager.instance.itemCollectedText.text = hit.collider.gameObject.name + (" collected");
+            GameManager.instance.itemCollectedText.gameObject.SetActive(true);
+            yield return new WaitForSeconds(2);
+            GameManager.instance.itemCollectedText.gameObject.SetActive(false);
         }
     }
 }

@@ -46,7 +46,8 @@ namespace FPS
         public GameObject loseMenu;
         public TextMeshProUGUI enemiesRemainingText;
         public GameObject healthCorner;
-        
+        public TextMeshProUGUI itemCollectedText;
+
         //-----------------------------------------------------------------
         // Objective Variables
         //-----------------------------------------------------------------

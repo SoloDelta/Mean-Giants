@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PlayerSpawnPos
   - Enemy
+  - Pickup
   layers:
   - Default
   - TransparentFX
