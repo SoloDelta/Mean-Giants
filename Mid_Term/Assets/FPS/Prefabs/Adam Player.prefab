@@ -11005,7 +11005,6 @@ GameObject:
   - component: {fileID: 7977670783724381172}
   - component: {fileID: 3516337068024487520}
   - component: {fileID: 8220044977229747923}
-  - component: {fileID: 8741640544759367908}
   m_Layer: 6
   m_Name: Adam Player
   m_TagString: Player
@@ -11063,6 +11062,9 @@ MonoBehaviour:
   shootDamage: 1
   shootDistance: 115
   hitEffect: {fileID: 9039188317509268069, guid: 23ce5da2306c5d24c9fb630218af08d4, type: 3}
+  zoomIn: 15
+  zoomInSpeed: 3
+  zoomOutSpeed: 8
   gClip: {fileID: 8300000, guid: 7851402729693df4e8beba3d6c130a1f, type: 3}
   muzzleFlash: {fileID: 2257200925341249052}
 --- !u!143 &8220044977229747923
@@ -11091,19 +11093,6 @@ CharacterController:
   m_SkinWidth: 0.06
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.95, z: 0}
---- !u!114 &8741640544759367908
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7638439082459081696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca8f5922a8ea704478fba0aa4b55f5a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Gun: {fileID: 0}
 --- !u!1 &7662810704999779758
 GameObject:
   m_ObjectHideFlags: 0
