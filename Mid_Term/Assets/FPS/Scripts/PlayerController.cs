@@ -40,6 +40,9 @@ namespace FPS
         [Range(1, 10)][SerializeField] private int shootDamage;
         [Range(1, 1000)][SerializeField] private int shootDistance;
         [SerializeField] private GameObject hitEffect;
+        [SerializeField] float zoomIn;
+        [Range(1, 15)][SerializeField] private int zoomInSpeed;
+        [Range(1, 15)][SerializeField] private int zoomOutSpeed;
 
         [Header("----- Weapon Componenets -----")]
         //public AudioSource gunshotSource;
@@ -55,68 +58,72 @@ namespace FPS
         private int playerHpOrig;
         private int selectedGun;
         private Coroutine lastRun;
+        float zoomOrig;
 
         /**----------------------------------------------------------------
          * @brief MonoBehaviour override.
          */
         private void Start()
-        {
-            
+        {     
             playerHpOrig = health;
             UpdatePlayerHp();
             SpawnPlayer();
+            zoomOrig = Camera.main.fieldOfView;
         }
 
         /**----------------------------------------------------------------
          * @brief MonoBehaviour override.
          */
-        private void Update()
+        void Update()
         {
-            Movement();
-            crouch();
-            swapGun();
+            zoomSights();
 
-            if (gunList.Count > 0)
+            if (GameManager.instance.activeMenu == null)
             {
-                if (Input.GetButton("Shoot") && !isShooting)
-                {
-                    StartCoroutine(shoot());
-                }
-            }
-            
+                Movement();
+                crouch();
 
-            if (playerHpOrig == health)
-            {
-                GameManager.instance.addCorner();
-            }
-            else
-            {
-                GameManager.instance.removeCorner();
-            }
-            showEnemyHP();
-            /////wrote this to collect the cube, not sure if this is the best place to call it but it works. - john
-            RaycastHit hit;
-            if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
-            {
-                if (hit.collider.CompareTag("Pickup"))
+                if (gunList.Count > 0)
                 {
-                    if (hit.distance < 3)
+                    swapGun();
+
+                    if (Input.GetButton("Shoot") && !isShooting)
                     {
-                        if (Input.GetButtonDown("Interact"))
-                        {
+                        StartCoroutine(shoot());
+                    }
+                }
 
-                            StartCoroutine(collectedText(hit));
-                            Destroy(hit.collider.gameObject);
-                            Debug.Log("Cube Collected");
+
+                if (playerHpOrig == health)
+                {
+                    GameManager.instance.addCorner();
+                }
+                else
+                {
+                    GameManager.instance.removeCorner();
+                }
+                showEnemyHP();
+                /////wrote this to collect the cube, not sure if this is the best place to call it but it works. - john
+                RaycastHit hit;
+                if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
+                {
+                    if (hit.collider.CompareTag("Pickup"))
+                    {
+                        if (hit.distance < 3)
+                        {
+                            if (Input.GetButtonDown("Interact"))
+                            {
+
+                                StartCoroutine(collectedText(hit));
+                                Destroy(hit.collider.gameObject);
+                                Debug.Log("Cube Collected");
+                            }
+
                         }
 
                     }
-
                 }
             }
-                
-
-
         }
         
 
@@ -374,6 +381,18 @@ namespace FPS
             {
                 GameManager.instance.ammoCurText.text = gunList[selectedGun].curAmmo.ToString("F0");
                 GameManager.instance.ammoMaxText.text = gunList[selectedGun].maxAmmo.ToString("F0");
+            }
+        }
+
+        void zoomSights()
+        {
+            if (Input.GetButton("Zoom"))
+            {
+                Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, zoomIn, Time.deltaTime * zoomInSpeed);
+            }
+            else
+            {
+                Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, zoomOrig, Time.deltaTime * zoomOutSpeed);
             }
         }
     }
