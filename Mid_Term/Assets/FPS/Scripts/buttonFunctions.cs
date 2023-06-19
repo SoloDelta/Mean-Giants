@@ -30,6 +30,34 @@ namespace FPS
         }
 
         /**----------------------------------------------------------------
+         * @brief
+         */
+
+        public void PlayGame()
+        {
+            SceneManager.LoadScene("Main");
+        }
+
+        /**----------------------------------------------------------------
+        * @brief
+        */
+
+        public void PlayTutorial()
+        {
+            SceneManager.LoadScene("Tutorial");
+        }
+
+        /**----------------------------------------------------------------
+         * @brief
+         */
+
+        public void MainMenu()
+        {
+            SceneManager.LoadScene("MainMenu");
+            GameManager.instance.PausedState();
+        }
+
+        /**----------------------------------------------------------------
          * @brief 
          */
         public void RespawnPlayer()
