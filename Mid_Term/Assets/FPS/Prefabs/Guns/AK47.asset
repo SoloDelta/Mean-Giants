@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d85a3a5190c4cb941a500ad996588ae9, type: 3}
+  m_Name: AK47
+  m_EditorClassIdentifier: 
+  shootDistance: 500
+  shootDamage: 3
+  shootRate: 0.5
+  maxAmmo: 30
+  curAmmo: 24
+  model: {fileID: 2111051678436261933, guid: 6a6e64b144df2264d9b8f5e5c737eb5b, type: 3}
+  hitEffect: {fileID: 0}

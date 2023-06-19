@@ -183,6 +183,7 @@ namespace FPS
                 //gunshotSource.PlayOneShot(gClip);   
                 isShooting = true;
                 RaycastHit hit;
+                updateAmmoUI();
 
 
 
@@ -270,6 +271,7 @@ namespace FPS
             controller.enabled = true;
             health = playerHpOrig;
             UpdatePlayerHp();
+            updateAmmoUI();
         }
 
         /**----------------------------------------------------------------
@@ -296,6 +298,8 @@ namespace FPS
             gunModel.GetComponent<MeshFilter>().mesh = gunstat.model.GetComponent<MeshFilter>().sharedMesh;
             gunModel.GetComponent<MeshRenderer>().material = gunstat.model.GetComponent<MeshRenderer>().sharedMaterial;
             selectedGun = gunList.Count - 1;
+
+            updateAmmoUI();
         }
 
         /**----------------------------------------------------------------
@@ -326,6 +330,8 @@ namespace FPS
             
             gunModel.GetComponent<MeshFilter>().mesh = gunList[selectedGun].model.GetComponent<MeshFilter>().sharedMesh;
             gunModel.GetComponent<MeshRenderer>().material = gunList[selectedGun].model.GetComponent<MeshRenderer>().sharedMaterial;
+
+            updateAmmoUI();
         }
 
         /**----------------------------------------------------------------
@@ -350,6 +356,7 @@ namespace FPS
                 {
                     Destroy(obj);
                 }
+                updateAmmoUI();
             }
         }
 
@@ -359,6 +366,15 @@ namespace FPS
             GameManager.instance.itemCollectedText.gameObject.SetActive(true);
             yield return new WaitForSeconds(2);
             GameManager.instance.itemCollectedText.gameObject.SetActive(false);
+        }
+
+        public void updateAmmoUI()
+        {
+            if(gunList.Count > 0)
+            {
+                GameManager.instance.ammoCurText.text = gunList[selectedGun].curAmmo.ToString("F0");
+                GameManager.instance.ammoMaxText.text = gunList[selectedGun].maxAmmo.ToString("F0");
+            }
         }
     }
 }
