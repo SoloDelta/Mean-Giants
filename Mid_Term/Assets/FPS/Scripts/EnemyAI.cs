@@ -90,7 +90,6 @@ namespace FPS
             enemyHPOriginal = HP;
             numOfPatrolSpots = patrolSpots.Count;
             stoppingDistanceOriginal = agent.stoppingDistance;
-            GameManager.instance.UpdateObjective(1);
 
             if (patrolSpots.Count > 0)
             {
