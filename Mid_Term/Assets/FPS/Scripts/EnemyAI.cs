@@ -186,7 +186,7 @@ namespace FPS
                 {
                     if(sawPlayerTemp)
                     {
-
+                        agent.isStopped = false;
                         //Quaternion rotationAmount = transform.rotation * Quaternion.Euler(0, patrolRotations[currentPointIndex], 0);
                         //Debug.Log(rotationAmount);
                         //transform.rotation = Quaternion.Slerp(transform.rotation, rotationAmount, 10.0f);
@@ -242,6 +242,7 @@ namespace FPS
         {
             if (seesPlayer && percentSpotted < 1)
             {
+                anim.SetBool("Aiming", true);
                 percentSpotted += 0.5f * _deltaTime;
                 qmarkTransform.localScale = new Vector3((4 * percentSpotted), qmarkTransform.localScale.y, qmarkTransform.localScale.z);
             }
@@ -259,6 +260,7 @@ namespace FPS
             }
             if (percentSpotted <= 0)
             {
+                
                 spottingUI.SetActive(false);
             }
         }
@@ -389,6 +391,8 @@ namespace FPS
         private IEnumerator shoot() //coroutine to control shooting logic. Shoots a bullet, shoots a burst if needed
         {
             isShooting = true;
+            
+            anim.SetTrigger("Shoot");
             if (isBurstShot)
             {
                 StartCoroutine(shootBurst());
@@ -398,8 +402,9 @@ namespace FPS
             {
                 createBullet();
             }
-
+ 
             yield return new WaitForSeconds(shootRate);
+            
             isShooting = false;
         }
 
@@ -456,6 +461,7 @@ namespace FPS
             spotted = false;
             Debug.Log("PlayerLost");
             percentSpotted = 0;
+            anim.SetBool("Aiming", false);
         }
 
  
