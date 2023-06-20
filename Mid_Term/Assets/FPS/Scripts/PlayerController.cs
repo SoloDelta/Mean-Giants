@@ -24,6 +24,7 @@ namespace FPS
     {
         [Header("----- Components -----")]
         [SerializeField] private CharacterController controller;
+        [SerializeField] private Gradient healthBarGradient;
 
         [Header("----- Player Stats -----")]
         [SerializeField] private int health;
@@ -58,7 +59,7 @@ namespace FPS
         private int selectedGun;
         private Coroutine lastRun;
         float zoomOrig;
-
+        
         /**----------------------------------------------------------------
          * @brief MonoBehaviour override.
          */
@@ -208,9 +209,7 @@ namespace FPS
             
         }
 
-        
 
-        
 
         /**----------------------------------------------------------------
          * @brief
@@ -269,6 +268,7 @@ namespace FPS
         public void UpdatePlayerHp()
         {
             GameManager.instance.playerHpBar.fillAmount = (float) health / playerHpOrig;
+            
         }
 
         /**----------------------------------------------------------------
