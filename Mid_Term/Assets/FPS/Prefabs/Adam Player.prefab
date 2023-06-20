@@ -129,6 +129,37 @@ Transform:
   m_Father: {fileID: 5383715960200756813}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &168037315638279721
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4488594420779033682}
+  m_Layer: 0
+  m_Name: ThrowPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4488594420779033682
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 168037315638279721}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2644143366454979452}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &296567202365476953
 GameObject:
   m_ObjectHideFlags: 0
@@ -9965,6 +9996,7 @@ Transform:
   m_Children:
   - {fileID: 6680098411237383950}
   - {fileID: 3863965577313912244}
+  - {fileID: 4488594420779033682}
   m_Father: {fileID: 7977670783724381172}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11007,6 +11039,7 @@ GameObject:
   - component: {fileID: 8220044977229747923}
   - component: {fileID: 8426195686097962700}
   - component: {fileID: 1321223059709637405}
+  - component: {fileID: 5969234395311703542}
   m_Layer: 6
   m_Name: Adam Player
   m_TagString: Player
@@ -11100,6 +11133,7 @@ MonoBehaviour:
   muzzleFlash: {fileID: 2257200925341249052}
   pickupSource: {fileID: 8426195686097962700}
   pickupClip: {fileID: 8300000, guid: 55ed87af97cd5424fbab8237e565fe93, type: 3}
+  isCrouching: 0
 --- !u!143 &8220044977229747923
 CharacterController:
   m_ObjectHideFlags: 0
@@ -11318,6 +11352,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5969234395311703542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7638439082459081696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee849a33ae0cb34aad10ec881032442, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 2644143366454979452}
+  attackPoint: {fileID: 4488594420779033682}
+  objectToThrow: {fileID: 0}
+  totalThrows: 100
+  throwCooldown: 0.1
+  throwKey: 323
+  throwForce: 40
+  throwUpwardForce: 0
 --- !u!1 &7662810704999779758
 GameObject:
   m_ObjectHideFlags: 0
