@@ -25,6 +25,7 @@ namespace FPS
         [Header("----- Components -----")]
         [SerializeField] private CharacterController controller;
         [SerializeField] private Gradient healthBarGradient;
+        [SerializeField] private Animator anim;
 
         [Header("----- Player Stats -----")]
         [SerializeField] private int health;
@@ -67,6 +68,7 @@ namespace FPS
         float zoomOrig;
         public bool isCrouching;
         bool isSprinting;
+        bool notMoving;
         
         /**----------------------------------------------------------------
          * @brief MonoBehaviour override.
@@ -164,8 +166,15 @@ namespace FPS
                 jumpedTimes++;
                 playerVelocity.y = jumpHeight;
             }
-
-
+            if(move.normalized.magnitude <= 0)
+            {
+                notMoving = true;
+                anim.SetFloat("Speed", 0);
+            }
+            else
+            {
+                notMoving = false;
+            }
             playerVelocity.y -= gravityValue * Time.deltaTime;
             controller.Move(playerVelocity * Time.deltaTime);
         }
@@ -176,11 +185,13 @@ namespace FPS
             {
                 isSprinting = true;
                 playerSpeed *= sprint;
+                anim.SetFloat("Speed", 1);
             }
             else if (Input.GetButtonUp("Sprint"))
             {
                 isSprinting = false;
                 playerSpeed /= sprint;
+                anim.SetFloat("Speed", 0.5f);
             }
         }
 

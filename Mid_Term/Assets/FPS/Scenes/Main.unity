@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 8701.028, g: 5911.1724, b: 4891.735, a: 1}
+  m_IndirectSpecularColor: {r: 8360.756, g: 5493.012, b: 4097.946, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1845,6 +1845,14 @@ PrefabInstance:
       propertyPath: sensitivity
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 3516337068024487520, guid: 279e1c08b64de3a4c8023e8a3cdefe0a, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 1832569662}
+    - target: {fileID: 3516337068024487520, guid: 279e1c08b64de3a4c8023e8a3cdefe0a, type: 3}
+      propertyPath: sprint
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7638439082459081696, guid: 279e1c08b64de3a4c8023e8a3cdefe0a, type: 3}
       propertyPath: m_Name
       value: Adam Player
@@ -2360,8 +2368,8 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1832569655}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: f12f2d44b2688054986e54861cc211dc, type: 3}
+  m_Controller: {fileID: 9100000, guid: 02c828f75e270754db6b763574d05654, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
