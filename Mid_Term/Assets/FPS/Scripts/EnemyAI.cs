@@ -478,10 +478,11 @@ namespace FPS
  
         private IEnumerator flashColor() //make the enemy model flash when taking damage
         {
-            
+
+            Color originalColor = model.material.color;
             model.material.color = Color.red;
             yield return new WaitForSeconds(0.1f);
-            model.material.color = Color.white;
+            model.material.color = originalColor;
         }
         
       
