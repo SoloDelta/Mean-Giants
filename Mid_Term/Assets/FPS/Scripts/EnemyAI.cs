@@ -78,8 +78,7 @@ namespace FPS
         private bool sawPlayerTemp = false; //did a raycast connect but not long enough for the player to be spotted
         private float timeCount = 0.0f; //time variable for slerping after a patrol
         private void Start()
-        {
-            GameManager.instance.UpdateObjective(1); 
+        { 
             //initializing variables
             startingPos = transform.position;
             agent.speed = speed;
