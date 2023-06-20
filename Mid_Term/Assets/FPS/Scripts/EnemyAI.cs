@@ -39,6 +39,8 @@ namespace FPS
         [SerializeField] private GameObject spottingUI; // question mark UI
         [SerializeField] private GameObject spottedUI; //exclamation point UI
         [SerializeField] private Transform qmarkTransform; //the red question mark that gets scaled with being spotted
+        public AudioSource hmSource;
+        public AudioClip hmClip;
 
         [Header("-----Enemy Stats-----")]
         [SerializeField] private int HP; //the health of the enemy
@@ -78,8 +80,10 @@ namespace FPS
         private bool sawPlayerTemp = false; //did a raycast connect but not long enough for the player to be spotted
         private float timeCount = 0.0f; //time variable for slerping after a patrol
         private void Start()
-        { 
+        {
             //initializing variables
+            hmSource = GetComponent<AudioSource>();
+            hmSource.clip = hmClip;
             startingPos = transform.position;
             agent.speed = speed;
             enemyHPOriginal = HP;
@@ -107,6 +111,7 @@ namespace FPS
 
         private void Update()
         {
+            
             playerDirection = new Vector3(0, 1, 0) + GameManager.instance.player.transform.position - shootPosition.position;
             Debug.DrawRay(shootPosition.position, playerDirection);
             if (agent.isActiveAndEnabled)
@@ -331,7 +336,8 @@ namespace FPS
         public void TakeDamage(int dmg) //logic for taking damage. 
         {
             HP -= dmg;
-            
+            hmSource.Play();
+
             updateEnemyUI();
             if (HP <= 0) //if the enemy is dead, turns of lasersight, stops all active coroutines, stops animations, and turns off collision.
             {
@@ -467,6 +473,7 @@ namespace FPS
  
         private IEnumerator flashColor() //make the enemy model flash when taking damage
         {
+            
             model.material.color = Color.red;
             yield return new WaitForSeconds(0.1f);
             model.material.color = Color.white;
