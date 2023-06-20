@@ -69,6 +69,7 @@ namespace FPS
         public bool isCrouching;
         bool isSprinting;
         bool notMoving;
+        float speedOrig;
         
         /**----------------------------------------------------------------
          * @brief MonoBehaviour override.
@@ -81,6 +82,7 @@ namespace FPS
             //gSource = GetComponent<AudioSource>();
             //gSource.clip = gClip;
 
+            speedOrig = playerSpeed;
             playerHpOrig = health;
             UpdatePlayerHp();
             SpawnPlayer();
@@ -181,18 +183,18 @@ namespace FPS
 
         void Sprint()
         {
-            if (Input.GetButtonDown("Sprint"))
-            {
-                isSprinting = true;
-                playerSpeed *= sprint;
-                anim.SetFloat("Speed", 1);
-            }
-            else if (Input.GetButtonUp("Sprint"))
-            {
-                isSprinting = false;
-                playerSpeed /= sprint;
-                anim.SetFloat("Speed", 0.5f);
-            }
+                if (Input.GetButtonDown("Sprint") && !isCrouching)
+                {
+                    isSprinting = true;
+                    playerSpeed *= sprint; 
+                    anim.SetFloat("Speed", 1);
+                }
+                else if (Input.GetButtonUp("Sprint"))
+                {
+                    isSprinting = false;
+                    playerSpeed = speedOrig;
+                    anim.SetFloat("Speed", 0.5f);
+                }
         }
 
         /**----------------------------------------------------------------
@@ -202,12 +204,13 @@ namespace FPS
         {
             if (Input.GetButtonDown("Crouch"))
             {
-
+                playerSpeed /= 2;
                 controller.height = controller.height / 2;
                 isCrouching = true;
             }
             else if (Input.GetButtonUp("Crouch"))
             {
+                playerSpeed = speedOrig;
                 controller.height = controller.height * 2;
                 isCrouching = false;
             }
