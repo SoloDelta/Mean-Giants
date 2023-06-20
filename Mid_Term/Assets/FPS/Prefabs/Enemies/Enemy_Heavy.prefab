@@ -62,10 +62,10 @@ MonoBehaviour:
   spottingUI: {fileID: 806812189629019472}
   spottedUI: {fileID: 6174868364962135508}
   qmarkTransform: {fileID: 7495687372393941843}
-  HP: 6
-  speed: 1
-  playerFaceSpeed: 6
-  viewConeAngle: 90
+  HP: 25
+  speed: 2
+  playerFaceSpeed: 100
+  viewConeAngle: 100
   atStart: 1
   roamTimer: 2.03
   roamDist: 23
@@ -139,7 +139,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 15
+  m_Radius: 20
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &8023880046079818132
 Animator:
