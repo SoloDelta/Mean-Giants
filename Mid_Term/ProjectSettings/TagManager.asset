@@ -7,6 +7,10 @@ TagManager:
   - PlayerSpawnPos
   - Enemy
   - Pickup
+  - Smg
+  - Heavy
+  - AssaultRifle
+  - Pistol
   layers:
   - Default
   - TransparentFX
