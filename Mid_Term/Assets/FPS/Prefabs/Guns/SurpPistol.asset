@@ -17,5 +17,6 @@ MonoBehaviour:
   shootRate: 0.7
   maxAmmo: 12
   curAmmo: 12
+  weaponClass: 3
   model: {fileID: 7173141573949889470, guid: 44115abda65645c45839478bb93a40a9, type: 3}
   hitEffect: {fileID: 0}

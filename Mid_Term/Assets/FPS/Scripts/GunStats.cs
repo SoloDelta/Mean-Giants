@@ -24,8 +24,15 @@ namespace FPS
         public float shootRate;
         public int maxAmmo;
         public int curAmmo;
+        public weaponClasses weaponClass;
 
         public GameObject model;
         public ParticleSystem hitEffect;
+
     }
+}
+
+public enum weaponClasses
+{
+    Heavy, Smg, AssualtRifle, Pistol
 }
