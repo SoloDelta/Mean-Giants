@@ -33,7 +33,7 @@ Transform:
   - {fileID: 5195232513789647531}
   - {fileID: 7910885084769073374}
   m_Father: {fileID: 0}
-  m_RootOrder: 29
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &854282903442892154
 MonoBehaviour:
@@ -48,8 +48,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToSpawn: {fileID: 843911144030581328, guid: 9ddf81a757e81794cb7a0273feab12a3, type: 3}
-  spawnPos: []
-  timeBetweenSpawns: 0
+  spawnPos:
+  - {fileID: 5195232513789647531}
+  - {fileID: 7910885084769073374}
+  timeBetweenSpawns: 1
   numberToSpawn: 2
 --- !u!65 &3324778349698732195
 BoxCollider:
