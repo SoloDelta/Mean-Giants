@@ -16,6 +16,7 @@ using UnityEngine.UIElements;
 using static System.Net.Mime.MediaTypeNames;
 using System.Threading;
 using System.ComponentModel;
+using Unity.VisualScripting;
 
 namespace FPS
 {
@@ -246,10 +247,14 @@ namespace FPS
 
         private void spotting(float _deltaTime) //starts detecting the player over time
         {
-            if (seesPlayer && percentSpotted < 1)
+            if (seesPlayer && percentSpotted < 1) //spots the player at a rate dependent on whetehr the player is crouching and how far away the player is.
             {
                 anim.SetBool("Aiming", true);
-                percentSpotted += 0.5f * _deltaTime;
+                float spottingCrouchScale;
+                if (GameManager.instance.playerScript.isCrouching) { spottingCrouchScale = 0.5f; }
+                else { spottingCrouchScale = 1f; }
+                float playerDistanceScale = (20 - Vector3.Distance(transform.position, GameManager.instance.player.transform.position)) / 20;
+                percentSpotted += spottingCrouchScale * playerDistanceScale * _deltaTime;
                 qmarkTransform.localScale = new Vector3((4 * percentSpotted), qmarkTransform.localScale.y, qmarkTransform.localScale.z);
             }
             else if (!seesPlayer && percentSpotted > 0)

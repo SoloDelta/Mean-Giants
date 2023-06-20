@@ -65,6 +65,7 @@ namespace FPS
         private int selectedGun;
         private Coroutine lastRun;
         float zoomOrig;
+        public bool isCrouching;
         
         /**----------------------------------------------------------------
          * @brief MonoBehaviour override.
@@ -181,11 +182,14 @@ namespace FPS
         {
             if (Input.GetButtonDown("Crouch"))
             {
+
                 controller.height = controller.height / 2;
+                isCrouching = true;
             }
             else if (Input.GetButtonUp("Crouch"))
             {
                 controller.height = controller.height * 2;
+                isCrouching = false;
             }
         }
         
