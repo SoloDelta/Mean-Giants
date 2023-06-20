@@ -83,6 +83,7 @@ namespace FPS
         private void Start()
         {
             //initializing variables
+            anim.SetBool("Aiming", true);
             hmSource = GetComponent<AudioSource>();
             hmSource.clip = hmClip;
             startingPos = transform.position;
@@ -248,7 +249,7 @@ namespace FPS
         {
             if (seesPlayer && percentSpotted < 1) //spots the player at a rate dependent on whetehr the player is crouching and how far away the player is.
             {
-                anim.SetBool("Aiming", true);
+                //anim.SetBool("Aiming", true);
                 float spottingCrouchScale;
                 if (GameManager.instance.playerScript.isCrouching) { spottingCrouchScale = 0.5f; }
                 else { spottingCrouchScale = 1f; }
@@ -355,6 +356,8 @@ namespace FPS
                 StopAllCoroutines();
                 spottedUI.SetActive(false);
                 wholeHealthBar.SetActive(false);
+
+                anim.SetBool("Aiming", false);
                 anim.SetBool("Death", true);
                 GameManager.instance.UpdateObjective(-1);
                 
@@ -472,7 +475,7 @@ namespace FPS
             spotted = false;
             Debug.Log("PlayerLost");
             percentSpotted = 0;
-            anim.SetBool("Aiming", false);
+            //anim.SetBool("Aiming", false);
         }
 
  
