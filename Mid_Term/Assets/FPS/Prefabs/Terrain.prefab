@@ -28,11 +28,11 @@ Transform:
   m_GameObject: {fileID: 403190757385842830}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.04, y: 0.04, z: 0.04}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!218 &6289752681652662583
 Terrain:
@@ -121,5 +121,5 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: f99fbaf4fb7223f4fbdd7f95f7585ab5, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: bd12348439867a54ea33634167feb705, type: 2}
   m_BuildHeightMesh: 0
