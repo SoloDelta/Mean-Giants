@@ -66,6 +66,7 @@ namespace FPS
         private Coroutine lastRun;
         float zoomOrig;
         public bool isCrouching;
+        bool isSprinting;
         
         /**----------------------------------------------------------------
          * @brief MonoBehaviour override.
@@ -90,6 +91,7 @@ namespace FPS
          */
         void Update()
         {
+            Sprint();
             zoomSights();
 
             if (GameManager.instance.activeMenu == null)
@@ -162,17 +164,24 @@ namespace FPS
                 jumpedTimes++;
                 playerVelocity.y = jumpHeight;
             }
-            if(Input.GetButtonDown("Sprint"))
-            {
-                playerSpeed += sprint;
-            }
-            if(Input.GetButtonUp("Sprint"))
-            {
-                playerSpeed -= sprint;
-            }
+
 
             playerVelocity.y -= gravityValue * Time.deltaTime;
             controller.Move(playerVelocity * Time.deltaTime);
+        }
+
+        void Sprint()
+        {
+            if (Input.GetButtonDown("Sprint"))
+            {
+                isSprinting = true;
+                playerSpeed *= sprint;
+            }
+            else if (Input.GetButtonUp("Sprint"))
+            {
+                isSprinting = false;
+                playerSpeed /= sprint;
+            }
         }
 
         /**----------------------------------------------------------------
