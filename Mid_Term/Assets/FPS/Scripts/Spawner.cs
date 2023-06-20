@@ -19,7 +19,7 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameManager.instance.UpdateObjective(numberToSpawn);
+        //GameManager.instance.UpdateObjective(numberToSpawn); I am removing this line because some enemies cant be spawned in, so they need the updateobjective in their respective start - john
     }
 
     // Update is called once per frame
