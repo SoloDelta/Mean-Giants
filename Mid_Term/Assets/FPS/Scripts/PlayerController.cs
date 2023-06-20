@@ -45,10 +45,9 @@ namespace FPS
         [Range(1, 15)][SerializeField] private int zoomOutSpeed;
 
         [Header("----- Weapon Componenets -----")]
-        //public AudioSource gunshotSource;
-        public AudioClip gClip;
+        //public AudioSource gunshotSource; 
         public ParticleSystem muzzleFlash;
-
+        GunShots shootGun;
 
         private int jumpedTimes;
         private Vector3 playerVelocity;
@@ -64,12 +63,14 @@ namespace FPS
          * @brief MonoBehaviour override.
          */
         private void Start()
-        {     
+        {
+            
             playerHpOrig = health;
             UpdatePlayerHp();
             SpawnPlayer();
             zoomOrig = Camera.main.fieldOfView;
         }
+        
 
         /**----------------------------------------------------------------
          * @brief MonoBehaviour override.
@@ -184,14 +185,12 @@ namespace FPS
             Debug.Log(gunList[selectedGun].curAmmo);
             if (gunList[selectedGun].curAmmo > 0)
             {
-                
                 muzzleFlash.Play();
-                gunList[selectedGun].curAmmo--;
-                //gunshotSource.PlayOneShot(gClip);   
+                //shootGun.shootsound();
+                gunList[selectedGun].curAmmo--;   
                 isShooting = true;
                 RaycastHit hit;
                 updateAmmoUI();
-
 
 
                 if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
@@ -208,6 +207,10 @@ namespace FPS
             }
             
         }
+
+        
+
+        
 
         /**----------------------------------------------------------------
          * @brief
