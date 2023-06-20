@@ -19179,7 +19179,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 931ae83003f522b4cb5d8a3ad9b941a3, type: 3}
       propertyPath: m_Name
-      value: Rifle
+      value: GunPos
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 931ae83003f522b4cb5d8a3ad9b941a3, type: 3}
       propertyPath: m_RootOrder
