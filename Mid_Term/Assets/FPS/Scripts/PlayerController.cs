@@ -49,6 +49,12 @@ namespace FPS
         //public AudioSource gunshotSource; 
         public ParticleSystem muzzleFlash;
         GunShots shootGun;
+        public AudioSource pickupSource;
+        public AudioClip pickupClip;
+
+
+        //public AudioSource gSource;
+        //public AudioClip gClip;
 
         private int jumpedTimes;
         private Vector3 playerVelocity;
@@ -65,7 +71,12 @@ namespace FPS
          */
         private void Start()
         {
-            
+            pickupSource = GetComponent<AudioSource>();
+            pickupSource.clip = pickupClip;
+
+            //gSource = GetComponent<AudioSource>();
+            //gSource.clip = gClip;
+
             playerHpOrig = health;
             UpdatePlayerHp();
             SpawnPlayer();
@@ -187,6 +198,9 @@ namespace FPS
             if (gunList[selectedGun].curAmmo > 0)
             {
                 muzzleFlash.Play();
+
+                //gSource.Play();
+
                 //shootGun.shootsound();
                 gunList[selectedGun].curAmmo--;   
                 isShooting = true;
@@ -300,6 +314,7 @@ namespace FPS
         public void PickupGun(GunStats gunstat)
         {
             gunList.Add(gunstat);
+            pickupSource.Play();
 
             shootDamage = gunstat.shootDamage;
             shootDistance = gunstat.shootDistance;
@@ -396,6 +411,13 @@ namespace FPS
             else
             {
                 Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, zoomOrig, Time.deltaTime * zoomOutSpeed);
+            }
+        }
+        void UiSwitch()
+        {
+            if (gunList[selectedGun].maxAmmo == 30)
+            {
+                GameManager.instance.assaultRifle.gameObject.SetActive(true);
             }
         }
     }

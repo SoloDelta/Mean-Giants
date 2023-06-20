@@ -49,6 +49,10 @@ namespace FPS
         public TextMeshProUGUI itemCollectedText;
         public TextMeshProUGUI ammoMaxText;
         public TextMeshProUGUI ammoCurText;
+        public Image heavy;
+        public Image smg;
+        public Image assaultRifle;
+        public Image pistol;
 
         //-----------------------------------------------------------------
         // Objective Variables
@@ -139,5 +143,7 @@ namespace FPS
         {
             healthCorner.SetActive(true);
         }
+
+        
     }
 }
