@@ -15,15 +15,15 @@ public class ProjectileStick : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (targetHit)
+        if (targetHit)  //sticks to first object collided   
             return;
         else
             targetHit = true;
 
 
-        rb.isKinematic = true;
+        rb.isKinematic = true; //sticks to surface
 
-        transform.SetParent(collision.transform);
+        transform.SetParent(collision.transform); //moves with object stuck to
         
     }
 

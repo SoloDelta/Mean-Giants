@@ -11,18 +11,21 @@ public class Throwing : MonoBehaviour
     public GameObject objectToThrow;
 
     [Header("Settings")]
+    [SerializeField] float destroyTime;
     public int totalThrows;
     public float throwCooldown;
-
+    
     [Header("Throwing")]
     public KeyCode throwKey = KeyCode.Mouse0;
     public float throwForce;
     public float throwUpwardForce;
 
+
     bool readyToThrow;
 
     private void Start()
     {
+        
         readyToThrow = true; 
     }
 
@@ -31,9 +34,15 @@ public class Throwing : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F) && readyToThrow && totalThrows > 0)
         {
             Throw();
+            DestroyeKnife();
         }
     }
 
+    public IEnumerator DestroyeKnife()
+    {
+        yield return new WaitForSeconds(3);
+        Destroy(gameObject);
+    }
     private void Throw()
     {
         readyToThrow = false;
@@ -59,6 +68,7 @@ public class Throwing : MonoBehaviour
 
         Invoke(nameof(ResetThrow), throwCooldown);
 
+        
 
     }
 
