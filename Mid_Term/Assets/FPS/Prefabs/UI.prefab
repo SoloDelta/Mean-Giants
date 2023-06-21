@@ -1827,10 +1827,10 @@ RectTransform:
   m_Father: {fileID: 1213577174545264586}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -859.3, y: -451.7}
-  m_SizeDelta: {x: 223.3, y: 81}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 100.70001, y: 91.70001}
+  m_SizeDelta: {x: 223.29999, y: 81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2558849903003371710
 CanvasRenderer:
@@ -2919,7 +2919,7 @@ GameObject:
   - component: {fileID: 8397179982389436242}
   - component: {fileID: 5219377689689527835}
   m_Layer: 5
-  m_Name: ResumeTitle
+  m_Name: MainMenuTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4575,7 +4575,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4058510473432738591
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6085,7 +6085,7 @@ RectTransform:
   - {fileID: 7674606869539382212}
   - {fileID: 6103180172831821979}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

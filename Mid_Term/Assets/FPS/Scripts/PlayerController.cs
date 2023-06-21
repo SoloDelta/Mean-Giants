@@ -20,7 +20,7 @@ namespace FPS
     /**----------------------------------------------------------------
      * @brief
      */
-    public class PlayerController : MonoBehaviour, IDamage, IAmmo
+    public class PlayerController : MonoBehaviour, IDamage, IHealth
     {
         [Header("----- Components -----")]
         [SerializeField] private CharacterController controller;
@@ -410,6 +410,16 @@ namespace FPS
                     Destroy(obj);
                 }
                 updateAmmoUI();
+            }
+        }
+
+        public void healthPickup(int amount, GameObject obj)
+        {
+            if (health < playerHpOrig)
+            {
+                health = playerHpOrig;
+                UpdatePlayerHp();
+                Destroy(obj);
             }
         }
 
