@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4263793669857813708}
   - component: {fileID: 8495045745207770437}
   - component: {fileID: 1049564870141571446}
+  - component: {fileID: 7779237708411872671}
   m_Layer: 0
   m_Name: Red Knife
   m_TagString: Untagged
@@ -33,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4269860422688111464
 MeshFilter:
@@ -133,3 +134,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.1784882, y: 0.027062368, z: 0.0040817936}
   m_Center: {x: 0.0030816048, y: 0.0000000023283064, z: -0.0020400563}
+--- !u!114 &7779237708411872671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504577379926585868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e54c144ff3b07340bdb3301c86826b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  x: 7
+  y: -1
+  z: 11
