@@ -175,7 +175,9 @@ namespace FPS
             }
             else
             {
+                anim.SetFloat("Speed", 0.5f);
                 notMoving = false;
+                
             }
             playerVelocity.y -= gravityValue * Time.deltaTime;
             controller.Move(playerVelocity * Time.deltaTime);
@@ -183,7 +185,6 @@ namespace FPS
 
         void Sprint()
         {
-<<<<<<< Updated upstream
                 if (Input.GetButtonDown("Sprint") && !isCrouching)
                 {
                     isSprinting = true;
@@ -194,21 +195,7 @@ namespace FPS
                 {
                     isSprinting = false;
                     playerSpeed = speedOrig;
-                    anim.SetFloat("Speed", 0.5f);
                 }
-=======
-            if (Input.GetButtonDown("Sprint"))
-            {
-                isSprinting = true;
-                playerSpeed *= sprint;
-                anim.SetFloat("Speed", 1);
-            }
-            else if (Input.GetButtonUp("Sprint"))
-            {
-                isSprinting = false;
-                playerSpeed /= sprint;
-            }
->>>>>>> Stashed changes
         }
 
         /**----------------------------------------------------------------
