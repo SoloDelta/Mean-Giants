@@ -76,7 +76,6 @@ namespace FPS
         float zoomOrig;
         public bool isCrouching;
         bool isSprinting;
-        bool notMoving;
         float speedOrig;
         bool stepsPlaying;
         
@@ -187,13 +186,11 @@ namespace FPS
             }
             if(move.normalized.magnitude <= 0)
             {
-                notMoving = true;
                 anim.SetFloat("Speed", 0);
             }
             else if(!isSprinting && !isCrouching)
             {
                 anim.SetFloat("Speed", 0.5f);
-                notMoving = false;
                 
             }
             playerVelocity.y -= gravityValue * Time.deltaTime;
