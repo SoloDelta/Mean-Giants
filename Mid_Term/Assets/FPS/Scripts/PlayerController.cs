@@ -20,7 +20,7 @@ namespace FPS
     /**----------------------------------------------------------------
      * @brief
      */
-    public class PlayerController : MonoBehaviour, IDamage, IHealth
+    public class PlayerController : MonoBehaviour, IDamage, IHealth, IAmmo
     {
         [Header("----- Components -----")]
         [SerializeField] private CharacterController controller;
@@ -222,7 +222,7 @@ namespace FPS
          */
         private IEnumerator shoot()
         {
-            Debug.Log(gunList[selectedGun].curAmmo);
+            //Debug.Log(gunList[selectedGun].curAmmo);
             if (gunList[selectedGun].curAmmo > 0)
             {
                 muzzleFlash.Play();
@@ -392,7 +392,7 @@ namespace FPS
          */
         public void AmmoPickup(int amount, GameObject obj)
         {
-            if(gunList.Count> 0)
+            if(gunList.Count > 0)
             {
                 int ammoDiffer = gunList[selectedGun].maxAmmo - gunList[selectedGun].curAmmo;
                 gunList[selectedGun].curAmmo += amount;

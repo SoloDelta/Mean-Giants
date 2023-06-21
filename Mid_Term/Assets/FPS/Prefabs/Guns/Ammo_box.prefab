@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3997702160072786645}
-  - component: {fileID: 4386958927055285195}
+  - component: {fileID: -1117053251729135408}
   - component: {fileID: 2845070264087443936}
   - component: {fileID: 3342159474107282407}
   - component: {fileID: 5224434381628382567}
@@ -27,15 +27,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4317561656049840088}
-  m_LocalRotation: {x: 0.09150629, y: -0.09150627, z: -0.27086562, w: 0.953879}
+  m_LocalRotation: {x: 0.09150905, y: -0.09150783, z: -0.270866, w: 0.9538784}
   m_LocalPosition: {x: 217.798, y: 8.924, z: 251.15656}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 7.181, y: -13.057, z: -32.528}
---- !u!114 &4386958927055285195
+--- !u!114 &-1117053251729135408
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,5 +117,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0551353, y: 0.43353096, z: 0.62653434}
-  m_Center: {x: 0.0010621548, y: 0.21676542, z: -0.0019042939}
+  m_Size: {x: 1.315867, y: 0.433531, z: 0.7980288}
+  m_Center: {x: 0.044902653, y: 0.21676591, z: -0.009656428}
