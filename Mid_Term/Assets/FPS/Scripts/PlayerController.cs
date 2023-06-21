@@ -67,6 +67,9 @@ namespace FPS
         [Range(0, 1)][SerializeField] float audHurtVol;
         [SerializeField] AudioClip audReload;
         [Range(0, 1)][SerializeField] float audReloadVol;
+        [SerializeField] AudioClip healthClip;
+        [SerializeField][Range(0, 1)] float healthVol;
+
 
 
         private int jumpedTimes;
@@ -474,6 +477,7 @@ namespace FPS
         {
             if (health < playerHpOrig)
             {
+                aud.PlayOneShot(healthClip, healthVol);
                 health = playerHpOrig;
                 UpdatePlayerHp();
                 Destroy(obj);
