@@ -265,7 +265,7 @@ namespace FPS
                 
                 gunList[selectedGun].curAmmo--;   
                 isShooting = true;
-                aud.PlayOneShot(gunShot);
+                aud.PlayOneShot(gunShot, shotVol);
                 RaycastHit hit;
                 updateAmmoUI();
 
