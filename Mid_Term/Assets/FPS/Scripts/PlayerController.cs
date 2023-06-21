@@ -20,7 +20,7 @@ namespace FPS
     /**----------------------------------------------------------------
      * @brief
      */
-    public class PlayerController : MonoBehaviour, IDamage, IHealth
+    public class PlayerController : MonoBehaviour, IDamage, IHealth, IAmmo
     {
         [Header("----- Components -----")]
         [SerializeField] private CharacterController controller;
