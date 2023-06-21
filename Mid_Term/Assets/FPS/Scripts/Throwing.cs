@@ -20,6 +20,10 @@ public class Throwing : MonoBehaviour
     public float throwForce;
     public float throwUpwardForce;
 
+    public AudioSource aud;
+    [SerializeField] AudioClip audKnife;
+    [Range(0, 1)][SerializeField] float audKnifeVol;
+
 
     bool readyToThrow;
 
@@ -34,6 +38,7 @@ public class Throwing : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F) && readyToThrow && totalThrows > 0)
         {
             Throw();
+            aud.PlayOneShot(audKnife, audKnifeVol);
             DestroyeKnife();
         }
     }
@@ -67,6 +72,7 @@ public class Throwing : MonoBehaviour
         totalThrows--;
 
         Invoke(nameof(ResetThrow), throwCooldown);
+
 
         
 

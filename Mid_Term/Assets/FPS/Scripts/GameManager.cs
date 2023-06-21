@@ -53,6 +53,8 @@ namespace FPS
         public Image smg;
         public Image assaultRifle;
         public Image pistol;
+        public Image hitMark;
+        public Image hitMarkKill;
 
         //-----------------------------------------------------------------
         // Objective Variables

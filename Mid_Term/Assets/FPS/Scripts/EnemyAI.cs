@@ -339,15 +339,34 @@ namespace FPS
             }
         }
 
-
+        IEnumerator HitMarker()
+        {
+            if (HP > 1)
+            {
+                GameManager.instance.hitMark.gameObject.SetActive(true);
+                yield return new WaitForSeconds(0.1f);
+                GameManager.instance.hitMark.gameObject.SetActive(false);
+            }
+            else if (HP <= 0)
+            {
+                GameManager.instance.hitMarkKill.gameObject.SetActive(true);
+                yield return new WaitForSeconds(0.1f);
+                GameManager.instance.hitMarkKill.gameObject.SetActive(false);
+            }
+            
+        }
         public void TakeDamage(int dmg) //logic for taking damage. 
         {
             HP -= dmg;
             hmSource.Play();
+            StartCoroutine(HitMarker());
+            
 
             updateEnemyUI();
             if (HP <= 0) //if the enemy is dead, turns of lasersight, stops all active coroutines, stops animations, and turns off collision.
             {
+                
+                GameManager.instance.hitMarkKill.gameObject.SetActive(false);
                 if (lineRenderer != null)
                 {
                     lineRenderer.SetActive(false);
@@ -362,7 +381,9 @@ namespace FPS
                 anim.SetBool("Aiming", false);
                 anim.SetBool("Death", true);
                 GameManager.instance.UpdateObjective(-1);
-                
+
+                StartCoroutine(HitMarker());
+
                 agent.enabled = false;
                 GetComponent<CapsuleCollider>().enabled = false;
                 
