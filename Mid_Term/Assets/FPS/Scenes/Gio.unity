@@ -894,7 +894,7 @@ PrefabInstance:
     - target: {fileID: 5969234395311703542, guid: 279e1c08b64de3a4c8023e8a3cdefe0a, type: 3}
       propertyPath: objectToThrow
       value: 
-      objectReference: {fileID: 3614694195951083139}
+      objectReference: {fileID: 504577379926585868, guid: 65c6da165cb5e8041bf55a28f26156a0, type: 3}
     - target: {fileID: 7638439082459081696, guid: 279e1c08b64de3a4c8023e8a3cdefe0a, type: 3}
       propertyPath: m_Name
       value: Adam Player
@@ -1192,11 +1192,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 966efaf78a72d9246baec79801d6f808, type: 3}
---- !u!1 &3614694195951083139 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 504577379926585868, guid: 65c6da165cb5e8041bf55a28f26156a0, type: 3}
-  m_PrefabInstance: {fileID: 5780253625870948959}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5780253625870948959
 PrefabInstance:
   m_ObjectHideFlags: 0
