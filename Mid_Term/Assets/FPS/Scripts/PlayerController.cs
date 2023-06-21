@@ -173,7 +173,7 @@ namespace FPS
                 notMoving = true;
                 anim.SetFloat("Speed", 0);
             }
-            else
+            else if(!isSprinting && !isCrouching)
             {
                 anim.SetFloat("Speed", 0.5f);
                 notMoving = false;
