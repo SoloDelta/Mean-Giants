@@ -20,7 +20,7 @@ namespace FPS
     /**----------------------------------------------------------------
      * @brief
      */
-    public class PlayerController : MonoBehaviour, IDamage, IHealth, IAmmo
+    public class PlayerController : MonoBehaviour, IDamage, IHealth
     {
         [Header("----- Components -----")]
         [SerializeField] private CharacterController controller;
@@ -51,12 +51,13 @@ namespace FPS
         public ParticleSystem muzzleFlash;
         GunShots shootGun;
 
-        [Header("---- Audio ----")]
-        public AudioSource pickupSource;
-        public AudioClip pickupClip;
+        [Header("----- Audio -----")]
+        public AudioSource aud;
+        [SerializeField] AudioClip pickupClip;
+        [SerializeField][Range(0, 1)] float pickupVol;
+        [SerializeField] AudioClip gunShot;
+        [SerializeField][Range(0, 1)] float shotVol;
 
-        //public AudioSource gSource;
-        //public AudioClip gClip;
 
         private int jumpedTimes;
         private Vector3 playerVelocity;
@@ -77,11 +78,7 @@ namespace FPS
          */
         private void Start()
         {
-            pickupSource = GetComponent<AudioSource>();
-            pickupSource.clip = pickupClip;
 
-            //gSource = GetComponent<AudioSource>();
-            //gSource.clip = gClip;
 
             speedOrig = playerSpeed;
             playerHpOrig = health;
@@ -223,17 +220,15 @@ namespace FPS
          */
         private IEnumerator shoot()
         {
-            //Debug.Log(gunList[selectedGun].curAmmo);
+         //   Debug.Log(gunList[selectedGun].curAmmo);
             if (gunList[selectedGun].curAmmo > 0)
             {
-                
                 muzzleFlash.Play();
 
-                //gSource.Play();
-
-                //shootGun.shootsound();
+                
                 gunList[selectedGun].curAmmo--;   
                 isShooting = true;
+                aud.PlayOneShot(gunShot);
                 RaycastHit hit;
                 updateAmmoUI();
 
@@ -344,7 +339,7 @@ namespace FPS
         public void PickupGun(GunStats gunstat)
         {
             gunList.Add(gunstat);
-            pickupSource.Play();
+            aud.PlayOneShot(pickupClip);
 
             shootDamage = gunstat.shootDamage;
             shootDistance = gunstat.shootDistance;
@@ -394,7 +389,7 @@ namespace FPS
          */
         public void AmmoPickup(int amount, GameObject obj)
         {
-            if(gunList.Count > 0)
+            if(gunList.Count> 0)
             {
                 int ammoDiffer = gunList[selectedGun].maxAmmo - gunList[selectedGun].curAmmo;
                 gunList[selectedGun].curAmmo += amount;
