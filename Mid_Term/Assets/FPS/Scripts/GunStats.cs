@@ -29,10 +29,21 @@ namespace FPS
         public GameObject model;
         public ParticleSystem hitEffect;
 
+        public AudioSource gSource;
+        [SerializeField][Range(0, 1)] AudioClip gClip;
+
+        public void ShootSounds()
+        {
+            gSource.PlayOneShot(gClip);
+        }
     }
+
+  
+
 }
 
 public enum weaponClasses
 {
     Heavy, Smg, AssualtRifle, Pistol
 }
+

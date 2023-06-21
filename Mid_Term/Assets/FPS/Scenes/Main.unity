@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 8698.597, g: 5917.4653, b: 4915.688, a: 1}
+  m_IndirectSpecularColor: {r: 8360.662, g: 5493.012, b: 4097.946, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1202,6 +1202,71 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ffbadab563939048a30c1263d60fca6, type: 3}
+--- !u!1001 &1027707049
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 820111670902810597, guid: 17bc53f0a0989994a94837a3802e69ad, type: 3}
+      propertyPath: m_RootOrder
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 820111670902810597, guid: 17bc53f0a0989994a94837a3802e69ad, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 398.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 820111670902810597, guid: 17bc53f0a0989994a94837a3802e69ad, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 820111670902810597, guid: 17bc53f0a0989994a94837a3802e69ad, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 385.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 820111670902810597, guid: 17bc53f0a0989994a94837a3802e69ad, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 820111670902810597, guid: 17bc53f0a0989994a94837a3802e69ad, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 820111670902810597, guid: 17bc53f0a0989994a94837a3802e69ad, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 820111670902810597, guid: 17bc53f0a0989994a94837a3802e69ad, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 820111670902810597, guid: 17bc53f0a0989994a94837a3802e69ad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 820111670902810597, guid: 17bc53f0a0989994a94837a3802e69ad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 820111670902810597, guid: 17bc53f0a0989994a94837a3802e69ad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 854282903442892154, guid: 17bc53f0a0989994a94837a3802e69ad, type: 3}
+      propertyPath: objectToSpawn
+      value: 
+      objectReference: {fileID: 843911144030581328, guid: 9ddf81a757e81794cb7a0273feab12a3, type: 3}
+    - target: {fileID: 7021747681484827355, guid: 17bc53f0a0989994a94837a3802e69ad, type: 3}
+      propertyPath: m_Name
+      value: Heavy Enemy Spawner
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 17bc53f0a0989994a94837a3802e69ad, type: 3}
 --- !u!1 &1046494805
 GameObject:
   m_ObjectHideFlags: 0
@@ -1527,7 +1592,7 @@ Transform:
   - {fileID: 341172888}
   - {fileID: 685186073}
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1263133437
 GameObject:
@@ -3090,67 +3155,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 393e48708a08f2f41862a784a8f5bb2b, type: 3}
---- !u!1001 &4323421216780310862
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 820111670902810597, guid: 17bc53f0a0989994a94837a3802e69ad, type: 3}
-      propertyPath: m_RootOrder
-      value: 27
-      objectReference: {fileID: 0}
-    - target: {fileID: 820111670902810597, guid: 17bc53f0a0989994a94837a3802e69ad, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 398.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 820111670902810597, guid: 17bc53f0a0989994a94837a3802e69ad, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 10.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 820111670902810597, guid: 17bc53f0a0989994a94837a3802e69ad, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 385.57
-      objectReference: {fileID: 0}
-    - target: {fileID: 820111670902810597, guid: 17bc53f0a0989994a94837a3802e69ad, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 820111670902810597, guid: 17bc53f0a0989994a94837a3802e69ad, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 820111670902810597, guid: 17bc53f0a0989994a94837a3802e69ad, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 820111670902810597, guid: 17bc53f0a0989994a94837a3802e69ad, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 820111670902810597, guid: 17bc53f0a0989994a94837a3802e69ad, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 820111670902810597, guid: 17bc53f0a0989994a94837a3802e69ad, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 820111670902810597, guid: 17bc53f0a0989994a94837a3802e69ad, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7021747681484827355, guid: 17bc53f0a0989994a94837a3802e69ad, type: 3}
-      propertyPath: m_Name
-      value: Heavy Enemy Spawner
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 17bc53f0a0989994a94837a3802e69ad, type: 3}
 --- !u!1001 &5370938984317596918
 PrefabInstance:
   m_ObjectHideFlags: 0

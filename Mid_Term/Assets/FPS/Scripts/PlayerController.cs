@@ -52,10 +52,8 @@ namespace FPS
         GunShots shootGun;
         public AudioSource pickupSource;
         public AudioClip pickupClip;
+        public AudioSource gunAudio;
 
-
-        //public AudioSource gSource;
-        //public AudioClip gClip;
 
         private int jumpedTimes;
         private Vector3 playerVelocity;
@@ -78,9 +76,6 @@ namespace FPS
         {
             pickupSource = GetComponent<AudioSource>();
             pickupSource.clip = pickupClip;
-
-            //gSource = GetComponent<AudioSource>();
-            //gSource.clip = gClip;
 
             speedOrig = playerSpeed;
             playerHpOrig = health;
@@ -222,16 +217,15 @@ namespace FPS
          */
         private IEnumerator shoot()
         {
-            Debug.Log(gunList[selectedGun].curAmmo);
+         //   Debug.Log(gunList[selectedGun].curAmmo);
             if (gunList[selectedGun].curAmmo > 0)
             {
                 muzzleFlash.Play();
 
-                //gSource.Play();
-
-                //shootGun.shootsound();
+                
                 gunList[selectedGun].curAmmo--;   
                 isShooting = true;
+                GunStats.
                 RaycastHit hit;
                 updateAmmoUI();
 

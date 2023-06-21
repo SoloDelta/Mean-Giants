@@ -42,7 +42,7 @@ public class Spawner : MonoBehaviour
     IEnumerator Spawn()
     {
         isSpawning = true;
-        Instantiate(objectToSpawn, spawnPos[Random.Range(0, spawnPos.Length)].position, transform.rotation);
+        Instantiate(objectToSpawn , spawnPos[Random.Range(0, spawnPos.Length)].position, transform.rotation);
         numberSpawn++;
         yield return new WaitForSeconds(timeBetweenSpawns);
         isSpawning = false;
