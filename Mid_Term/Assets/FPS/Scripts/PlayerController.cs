@@ -183,6 +183,7 @@ namespace FPS
 
         void Sprint()
         {
+<<<<<<< Updated upstream
                 if (Input.GetButtonDown("Sprint") && !isCrouching)
                 {
                     isSprinting = true;
@@ -195,6 +196,19 @@ namespace FPS
                     playerSpeed = speedOrig;
                     anim.SetFloat("Speed", 0.5f);
                 }
+=======
+            if (Input.GetButtonDown("Sprint"))
+            {
+                isSprinting = true;
+                playerSpeed *= sprint;
+                anim.SetFloat("Speed", 1);
+            }
+            else if (Input.GetButtonUp("Sprint"))
+            {
+                isSprinting = false;
+                playerSpeed /= sprint;
+            }
+>>>>>>> Stashed changes
         }
 
         /**----------------------------------------------------------------
