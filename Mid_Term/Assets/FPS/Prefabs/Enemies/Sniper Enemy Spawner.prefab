@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6728898885184732398}
   - component: {fileID: 1641469786055436800}
   - component: {fileID: 6045368600981431015}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sniper Enemy Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82,7 +82,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7671740405356898202}
   - component: {fileID: 7632809140850077961}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pos1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

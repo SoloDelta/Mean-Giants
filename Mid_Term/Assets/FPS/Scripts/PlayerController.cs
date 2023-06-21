@@ -154,22 +154,11 @@ namespace FPS
          */
         private void Movement()
         {
-
-
-
             groundedPlayer = controller.isGrounded;
-            if (groundedPlayer)
+            if (groundedPlayer && playerVelocity.y < 0)
             {
-                if (!stepsPlaying && move.normalized.magnitude > 0.5f)
-                {
-                    StartCoroutine(PlaySteps());
-                }
-                if (playerVelocity.y < 0)
-                {
-                    playerVelocity.y = 0f;
-                    jumpedTimes = 0;
-                }
-
+                playerVelocity.y = 0f;
+                jumpedTimes = 0;
             }
 
             move = (transform.right * Input.GetAxis("Horizontal")) + (transform.forward * Input.GetAxis("Vertical"));
@@ -320,16 +309,14 @@ namespace FPS
          */
         public void TakeDamage(int damage)
         {
-            aud.PlayOneShot(audDamage[Random.Range(0, audDamage.Length)], audDamageVol);
             health -= damage;
-            StartCoroutine(playerFlashDamage());
-
+            
             if (health <= 0)
             {
                 GameManager.instance.YouLose();
             }
             UpdatePlayerHp();
-            
+            StartCoroutine(playerFlashDamage());
         }
 
         /**----------------------------------------------------------------
@@ -369,9 +356,11 @@ namespace FPS
          */
         public void PickupGun(GunStats gunstat)
         {
+            
             gunList.Add(gunstat);
+            
             aud.PlayOneShot(pickupClip);
-
+            Debug.Log("Called");
             shootDamage = gunstat.shootDamage;
             shootDistance = gunstat.shootDistance;
             shootRate = gunstat.shootRate;

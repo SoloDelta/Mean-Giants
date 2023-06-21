@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4061564914283201991}
   - component: {fileID: 3963199237206422860}
   - component: {fileID: 2659887661260951502}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Assult  Enemy Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   m_Component:
   - component: {fileID: 189921897333890516}
   - component: {fileID: 1018703819768482610}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pos1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8488379841807591572}
   - component: {fileID: 4193866927589032917}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pos2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,7 +194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7473350395908950634}
   - component: {fileID: 3512613728417103202}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pos3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,7 +247,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5640478540297516020}
   - component: {fileID: 8803652451119074854}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pos4
   m_TagString: Untagged
   m_Icon: {fileID: 0}

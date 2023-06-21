@@ -49,7 +49,8 @@ namespace FPS
         [SerializeField] private int playerFaceSpeed; //the speed at which the enemy rotates to the player when stopped
         [SerializeField] private int viewConeAngle; //the angle from which the enemy can see the player (calculated from middle)
         [SerializeField] private bool atStart; //a visual bool just to show if the AI is where it started.
-
+        [SerializeField] private bool sawPlayerTemp = false;
+        [SerializeField] private bool spotted = false;
         [Header("-----Roaming-----")]
         [SerializeField, Range(1, 10)] private float roamTimer; //how long the enemy waits before roaming
         [SerializeField, Range(10, 100)] private int roamDist; //how far away the enemy will roam
@@ -76,9 +77,9 @@ namespace FPS
         private int currentPointIndex; //the index of the last patrol spot the enemy was at
         private int enemyHPOriginal; //starting hp of the enemy
         private float percentSpotted; //float repressenting how much the player has been spotted
-        private bool spotted = false; //has the enemy spotted the player
+        //has the enemy spotted the player
         private Coroutine losingPlayerCopy; //a variable to store the last coroutine of "losingPlayer"
-        private bool sawPlayerTemp = false; //did a raycast connect but not long enough for the player to be spotted
+         //did a raycast connect but not long enough for the player to be spotted
         private float timeCount = 0.0f; //time variable for slerping after a patrol
         private void Start()
         {
@@ -355,6 +356,7 @@ namespace FPS
                 }
                 StopAllCoroutines();
                 spottedUI.SetActive(false);
+                spottingUI.SetActive(false);
                 wholeHealthBar.SetActive(false);
 
                 anim.SetBool("Aiming", false);

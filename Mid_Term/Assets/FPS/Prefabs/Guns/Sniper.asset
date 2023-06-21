@@ -16,7 +16,7 @@ MonoBehaviour:
   shootDamage: 5
   shootRate: 1
   maxAmmo: 5
-  curAmmo: 3
+  curAmmo: 0
   weaponClass: 0
   model: {fileID: 918156923274867334, guid: 0087fc2889caecb43b3011fb63bc0844, type: 3}
   hitEffect: {fileID: 0}
