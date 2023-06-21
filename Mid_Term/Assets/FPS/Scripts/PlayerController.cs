@@ -46,10 +46,8 @@ namespace FPS
         [Range(1, 15)][SerializeField] private int zoomInSpeed;
         [Range(1, 15)][SerializeField] private int zoomOutSpeed;
 
-        [Header("----- Weapon Componenets -----")]
-        //public AudioSource gunshotSource; 
+        [Header("----- Weapon Componenets -----")] 
         public ParticleSystem muzzleFlash;
-        GunShots shootGun;
 
         [Header("----- Audio -----")]
         public AudioSource aud;
@@ -422,7 +420,7 @@ namespace FPS
          */
         public void AmmoPickup(int amount, GameObject obj)
         {
-            if(gunList.Count> 0)
+            if(gunList.Count > 0)
             {
                 int ammoDiffer = gunList[selectedGun].maxAmmo - gunList[selectedGun].curAmmo;
                 gunList[selectedGun].curAmmo += amount;
