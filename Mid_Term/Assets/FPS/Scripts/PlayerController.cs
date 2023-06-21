@@ -50,9 +50,10 @@ namespace FPS
         //public AudioSource gunshotSource; 
         public ParticleSystem muzzleFlash;
         GunShots shootGun;
+
+        [Header("---- Audio ----")]
         public AudioSource pickupSource;
         public AudioClip pickupClip;
-
 
         //public AudioSource gSource;
         //public AudioClip gClip;
@@ -225,6 +226,7 @@ namespace FPS
             //Debug.Log(gunList[selectedGun].curAmmo);
             if (gunList[selectedGun].curAmmo > 0)
             {
+                
                 muzzleFlash.Play();
 
                 //gSource.Play();

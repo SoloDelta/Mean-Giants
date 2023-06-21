@@ -229,10 +229,10 @@ MonoBehaviour:
   qmarkTransform: {fileID: 6552841388151472277}
   hmSource: {fileID: 4999548604075193952}
   hmClip: {fileID: 8300000, guid: bb68e4bbc8dab2948bf18d12b8c6ad99, type: 3}
-  HP: 5
+  HP: 15
   speed: 3
   playerFaceSpeed: 6
-  viewConeAngle: 45
+  viewConeAngle: 60
   atStart: 0
   roamTimer: 2.03
   roamDist: 23
@@ -251,7 +251,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 843911144030581328}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1
+  m_Radius: 2
   m_Speed: 20
   m_Acceleration: 30
   avoidancePriority: 50
@@ -306,7 +306,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 20
+  m_Radius: 50
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &4107223165494711687
 Animator:
