@@ -57,6 +57,12 @@ namespace FPS
         [SerializeField][Range(0, 1)] float pickupVol;
         [SerializeField] AudioClip gunShot;
         [SerializeField][Range(0, 1)] float shotVol;
+        [SerializeField] AudioClip[] audJump;
+        [Range(0, 1)][SerializeField] float audJumpVol;
+        [SerializeField] AudioClip[] audDamage;
+        [Range(0, 1)][SerializeField] float audDamageVol;
+        [SerializeField] AudioClip[] audSteps;
+        [Range(0, 1)][SerializeField] float audStepsVol;
 
 
         private int jumpedTimes;
@@ -72,6 +78,7 @@ namespace FPS
         bool isSprinting;
         bool notMoving;
         float speedOrig;
+        bool stepsPlaying;
         
         /**----------------------------------------------------------------
          * @brief MonoBehaviour override.
@@ -163,6 +170,7 @@ namespace FPS
             // Changes the height position of the player
             if (Input.GetButtonDown("Jump") && jumpedTimes < jumpMax)
             {
+                aud.PlayOneShot(audJump[Random.Range(0, audJump.Length)], audJumpVol);
                 jumpedTimes++;
                 playerVelocity.y = jumpHeight;
             }
@@ -179,6 +187,21 @@ namespace FPS
             }
             playerVelocity.y -= gravityValue * Time.deltaTime;
             controller.Move(playerVelocity * Time.deltaTime);
+        }
+        IEnumerator PlaySteps()
+        {
+            stepsPlaying = true;
+            aud.PlayOneShot(audSteps[Random.Range(0, audSteps.Length)], audStepsVol);
+
+            if (!isSprinting)
+            {
+                yield return new WaitForSeconds(0.5f);
+            }
+            else if (isSprinting)
+            {
+                yield return new WaitForSeconds(0.3f);
+            }
+            stepsPlaying = false;
         }
 
         void Sprint()
