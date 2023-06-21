@@ -61,6 +61,12 @@ namespace FPS
         [Range(0, 1)][SerializeField] float audDamageVol;
         [SerializeField] AudioClip[] audSteps;
         [Range(0, 1)][SerializeField] float audStepsVol;
+        [SerializeField] AudioClip audCrouch;
+        [Range(0, 1)][SerializeField] float audCrouchVol;
+        [SerializeField] AudioClip[] audHurt;
+        [Range(0, 1)][SerializeField] float audHurtVol;
+        [SerializeField] AudioClip audReload;
+        [Range(0, 1)][SerializeField] float audReloadVol;
 
 
         private int jumpedTimes;
@@ -76,14 +82,15 @@ namespace FPS
         bool isSprinting;
         float speedOrig;
         bool stepsPlaying;
-        
+        private bool soundPlayed = false;
+
         /**----------------------------------------------------------------
          * @brief MonoBehaviour override.
          */
         private void Start()
         {
 
-
+            
             speedOrig = playerSpeed;
             playerHpOrig = health;
             UpdatePlayerHp();
@@ -115,6 +122,8 @@ namespace FPS
                     }
                 }
 
+                StartCoroutine(Reload());
+                
 
                 if (playerHpOrig == health)
                 {
@@ -224,12 +233,14 @@ namespace FPS
                 playerSpeed /= 2;
                 controller.height = controller.height / 2;
                 isCrouching = true;
+                aud.PlayOneShot(audCrouch);
             }
             else if (Input.GetButtonUp("Crouch"))
             {
                 playerSpeed = speedOrig;
                 controller.height = controller.height * 2;
                 isCrouching = false;
+                
             }
         }
         
@@ -303,14 +314,19 @@ namespace FPS
             }
 
         }
-        
+
         /**----------------------------------------------------------------
          * @brief
          */
-        public void TakeDamage(int damage)
+
+
+
+    public void TakeDamage(int damage)
         {
             health -= damage;
-            
+
+            aud.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)], audHurtVol);
+
             if (health <= 0)
             {
                 GameManager.instance.YouLose();
@@ -427,6 +443,22 @@ namespace FPS
                     Destroy(obj);
                 }
                 updateAmmoUI();
+            }
+        }
+
+        IEnumerator Reload()
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                if (gunList[selectedGun].curAmmo < gunList[selectedGun].maxAmmo) //Need to subtract from Ammo
+                {
+                    aud.PlayOneShot(audReload);
+                    yield return new WaitForSeconds(1.5f);
+                    gunList[selectedGun].curAmmo = gunList[selectedGun].maxAmmo;
+                    updateAmmoUI();
+                }
+                
+
             }
         }
 
