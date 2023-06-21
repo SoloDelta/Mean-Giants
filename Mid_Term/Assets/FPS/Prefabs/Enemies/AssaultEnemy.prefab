@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 4107223165494711687}
   - component: {fileID: 4999548604075193952}
   m_Layer: 7
-  m_Name: DefaultEnemy
+  m_Name: AssaultEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
