@@ -612,11 +612,17 @@ MonoBehaviour:
   qmarkTransform: {fileID: 1633721811448451732}
   hmSource: {fileID: -280405040407030693}
   hmClip: {fileID: 8300000, guid: bb68e4bbc8dab2948bf18d12b8c6ad99, type: 3}
+  shootSound: {fileID: 8300000, guid: b373f3331acb15d4991ad995a6017e92, type: 3}
+  shootSoundVol: 1
+  deathSound: {fileID: 8300000, guid: 985c7bdb7154ba94d8cac565e96e91ca, type: 3}
+  deathSoundVol: 0.5
   HP: 20
   speed: 3
   playerFaceSpeed: 6
   viewConeAngle: 90
   atStart: 0
+  sawPlayerTemp: 0
+  spotted: 0
   roamTimer: 3.94
   roamDist: 29
   patrolSpots: []
@@ -712,9 +718,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 100
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -747,7 +753,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

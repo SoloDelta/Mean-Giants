@@ -40,8 +40,14 @@ namespace FPS
         [SerializeField] private GameObject spottingUI; // question mark UI
         [SerializeField] private GameObject spottedUI; //exclamation point UI
         [SerializeField] private Transform qmarkTransform; //the red question mark that gets scaled with being spotted
+
+        [Header("-----Audio-----")]
         public AudioSource hmSource;
         public AudioClip hmClip;
+        public AudioClip shootSound;
+        [SerializeField]float shootSoundVol;
+        public AudioClip deathSound;
+        [SerializeField] float deathSoundVol;
 
         [Header("-----Enemy Stats-----")]
         [SerializeField] private int HP; //the health of the enemy
@@ -115,10 +121,12 @@ namespace FPS
         private void Update()
         {
             
-            playerDirection = new Vector3(0, 1, 0) + GameManager.instance.player.transform.position - shootPosition.position;
-            Debug.DrawRay(shootPosition.position, playerDirection);
+            
+            
             if (agent.isActiveAndEnabled)
             {
+                playerDirection = new Vector3(0, 1, 0) + GameManager.instance.player.transform.position - shootPosition.position;
+                Debug.DrawRay(shootPosition.position, playerDirection);
                 anim.SetFloat("Enemy Speed", agent.velocity.normalized.magnitude);
                 rotateUI();
                 if(true) //removed playerinrange. Needs fix
@@ -380,6 +388,7 @@ namespace FPS
 
                 anim.SetBool("Aiming", false);
                 anim.SetBool("Death", true);
+                hmSource.PlayOneShot(deathSound, deathSoundVol);
                 GameManager.instance.UpdateObjective(-1);
 
                 StartCoroutine(HitMarker());
@@ -419,6 +428,7 @@ namespace FPS
         {
             playerDirection =  new Vector3(0,1,0) + GameManager.instance.player.transform.position - shootPosition.position;
             Instantiate(bullet, shootPosition.position, Quaternion.LookRotation(playerDirection));
+            hmSource.PlayOneShot(shootSound, shootSoundVol);
             Debug.DrawRay(shootPosition.position, playerDirection);
         }
 
