@@ -55,6 +55,7 @@ namespace FPS
         public Image pistol;
         public Image hitMark;
         public Image hitMarkKill;
+        public GameObject checkPointPopup;
 
         //-----------------------------------------------------------------
         // Objective Variables
