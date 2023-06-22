@@ -1,14 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
+/**
+ * Copyright (c) 2023 - 2023, The Mean Giants, All Rights Reserved.
+ *
+ * Authors
+ *  - 
+ */
+
+//-----------------------------------------------------------------
+// Using Namespaces
+//-----------------------------------------------------------------
 using UnityEngine;
 
-public class KnifeRotation : MonoBehaviour
+namespace FPS
 {
-    [Range(-40, 40)][SerializeField] private int x;
-    [Range(-40, 40)][SerializeField] private int y;
-    [Range(-40, 40)][SerializeField] private int z;
-    void Update()
+    /**----------------------------------------------------------------
+     * @brief
+     */
+    public class KnifeRotation : MonoBehaviour
     {
-        transform.Rotate(x,y,z);
+        [Range(-40, 40)][SerializeField] private int x;
+        [Range(-40, 40)][SerializeField] private int y;
+        [Range(-40, 40)][SerializeField] private int z;
+        void Update()
+        {
+            transform.Rotate(x,y,z);
+        }
     }
 }

@@ -8,12 +8,18 @@
 //-----------------------------------------------------------------
 // Using Namespaces
 //-----------------------------------------------------------------
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace FPS
 {
+    /**----------------------------------------------------------------
+     * @brief 
+     */
+    public enum WeaponClasses
+    {
+        Heavy, Smg, AssualtRifle, Pistol
+    }
+
     /**----------------------------------------------------------------
      * @brief Data class to set different gun stats.
      */
@@ -24,15 +30,9 @@ namespace FPS
         public float shootRate;
         public int maxAmmo;
         public int curAmmo;
-        public weaponClasses weaponClass;
+        public WeaponClasses weaponClass;
 
         public GameObject model;
         public ParticleSystem hitEffect;
-
     }
-}
-
-public enum weaponClasses
-{
-    Heavy, Smg, AssualtRifle, Pistol
 }

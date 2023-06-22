@@ -12,11 +12,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UIElements;
-using static System.Net.Mime.MediaTypeNames;
-using System.Threading;
-using System.ComponentModel;
-using Unity.VisualScripting;
 
 namespace FPS
 {

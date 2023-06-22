@@ -8,8 +8,6 @@
 //-----------------------------------------------------------------
 // Using Namespaces
 //-----------------------------------------------------------------
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace FPS
@@ -19,6 +17,9 @@ namespace FPS
      */
     public class Bullet : MonoBehaviour
     {
+        /**----------------------------------------------------------------
+         * @brief
+         */
         [Header("Bullet")]
         [SerializeField] int damage;
         [SerializeField] int speed;

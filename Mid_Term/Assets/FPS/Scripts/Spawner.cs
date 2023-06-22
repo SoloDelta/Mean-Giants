@@ -1,52 +1,64 @@
-using FPS;
+/**
+ * Copyright (c) 2023 - 2023, The Mean Giants, All Rights Reserved.
+ *
+ * Authors
+ *  - 
+ */
+
+//-----------------------------------------------------------------
+// Using Namespaces
+//-----------------------------------------------------------------
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+namespace FPS
 {
-    [SerializeField] GameObject objectToSpawn;
-    [SerializeField] Transform[] spawnPos;
-    [SerializeField] float timeBetweenSpawns;
-    [SerializeField] int numberToSpawn;
-
-
-    int numberSpawn;
-    bool playerInRange;
-    bool isSpawning;
-
-
-    // Start is called before the first frame update
-    void Start()
+    /**----------------------------------------------------------------
+     * @brief
+     */
+    public class Spawner : MonoBehaviour
     {
-        GameManager.instance.UpdateObjective(numberToSpawn); 
-    }
+        [SerializeField] GameObject objectToSpawn;
+        [SerializeField] Transform[] spawnPos;
+        [SerializeField] float timeBetweenSpawns;
+        [SerializeField] int numberToSpawn;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (playerInRange && !isSpawning && numberSpawn < numberToSpawn)
+
+        int numberSpawn;
+        bool playerInRange;
+        bool isSpawning;
+
+
+        // Start is called before the first frame update
+        void Start()
         {
-            StartCoroutine(Spawn());
+            GameManager.instance.UpdateObjective(numberToSpawn); 
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (playerInRange && !isSpawning && numberSpawn < numberToSpawn)
+            {
+                StartCoroutine(Spawn());
+            }
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Player"))
+            {
+                playerInRange = true;
+            }
+        }
+
+        IEnumerator Spawn()
+        {
+            isSpawning = true;
+            Instantiate(objectToSpawn , spawnPos[Random.Range(0, spawnPos.Length)].position, transform.rotation);
+            numberSpawn++;
+            yield return new WaitForSeconds(timeBetweenSpawns);
+            isSpawning = false;
         }
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            playerInRange = true;
-        }
-    }
-
-    IEnumerator Spawn()
-    {
-        isSpawning = true;
-        Instantiate(objectToSpawn , spawnPos[Random.Range(0, spawnPos.Length)].position, transform.rotation);
-        numberSpawn++;
-        yield return new WaitForSeconds(timeBetweenSpawns);
-        isSpawning = false;
-    }
-
-
 }

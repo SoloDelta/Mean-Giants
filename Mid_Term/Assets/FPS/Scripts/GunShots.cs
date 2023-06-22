@@ -1,20 +1,31 @@
-using FPS;
-using System.Collections;
-using System.Collections.Generic;
+/**
+ * Copyright (c) 2023 - 2023, The Mean Giants, All Rights Reserved.
+ *
+ * Authors
+ *
+ */
+
+//-----------------------------------------------------------------
+// Using Namespaces
+//-----------------------------------------------------------------
 using UnityEngine;
 
-
-public class GunShots : MonoBehaviour
+namespace FPS
 {
-   
-    // Start is called before the first frame update
-    void Start()
+    /**----------------------------------------------------------------
+     * @brief 
+     */
+    public class GunShots : MonoBehaviour
     {
-    }
+        // Start is called before the first frame update
+        void Start()
+        {
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // Update is called once per frame
+        void Update()
+        {
+            
+        }
     }
 }

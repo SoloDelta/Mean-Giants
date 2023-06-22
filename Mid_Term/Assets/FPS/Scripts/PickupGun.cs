@@ -8,8 +8,6 @@
 //-----------------------------------------------------------------
 // Using Namespaces
 //-----------------------------------------------------------------
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace FPS
@@ -35,6 +33,5 @@ namespace FPS
                 Destroy(gameObject);
             }
         }
-
     }
 }

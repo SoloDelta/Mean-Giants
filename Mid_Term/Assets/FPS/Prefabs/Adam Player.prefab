@@ -10092,7 +10092,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7199943587455136806}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 714034a707ed68946ac8a5dfbb9164c3, type: 3}
+  m_Script: {fileID: 11500000, guid: 7486a1efaef61504683d257145b5b9d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 200
@@ -11153,7 +11153,11 @@ Transform:
   - {fileID: 3109836862248262469}
   - {fileID: 2644143366454979452}
   m_Father: {fileID: 0}
+<<<<<<< Updated upstream
   m_RootOrder: 5
+=======
+  m_RootOrder: 0
+>>>>>>> Stashed changes
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3516337068024487520
 MonoBehaviour:
@@ -11253,8 +11257,13 @@ MonoBehaviour:
   audHurtVol: 0.129
   audReload: {fileID: 8300000, guid: 7d1ee53133a34a846bae95995ae4622a, type: 3}
   audReloadVol: 0.083
+<<<<<<< Updated upstream
   healthClip: {fileID: 8300000, guid: 54ccf1a7754d2234e8dd1aae79006817, type: 3}
   healthVol: 0.561
+=======
+  healthClip: {fileID: 0}
+  healthVol: 0
+>>>>>>> Stashed changes
   isCrouching: 0
 --- !u!143 &8220044977229747923
 CharacterController:

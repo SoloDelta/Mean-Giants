@@ -1,85 +1,94 @@
+/**
+ * Copyright (c) 2023 - 2023, The Mean Giants, All Rights Reserved.
+ *
+ * Authors
+ *  - 
+ */
+
+//-----------------------------------------------------------------
+// Using Namespaces
+//-----------------------------------------------------------------
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
-public class Throwing : MonoBehaviour
+namespace FPS
 {
-    [Header("References")]
-    public Transform cam;
-    public Transform attackPoint;
-    public GameObject objectToThrow;
-
-    [Header("Settings")]
-    [SerializeField] float destroyTime;
-    public int totalThrows;
-    public float throwCooldown;
-    
-    [Header("Throwing")]
-    public KeyCode throwKey = KeyCode.Mouse0;
-    public float throwForce;
-    public float throwUpwardForce;
-
-    public AudioSource aud;
-    [SerializeField] AudioClip audKnife;
-    [Range(0, 1)][SerializeField] float audKnifeVol;
-
-
-    bool readyToThrow;
-
-    private void Start()
+    /**----------------------------------------------------------------
+     * @brief
+     */
+    public class Throwing : MonoBehaviour
     {
+        [Header("References")]
+        public Transform cam;
+        public Transform attackPoint;
+        public GameObject objectToThrow;
+
+        [Header("Settings")]
+        [SerializeField] float destroyTime;
+        public int totalThrows;
+        public float throwCooldown;
         
-        readyToThrow = true; 
-    }
+        [Header("Throwing")]
+        public KeyCode throwKey = KeyCode.Mouse0;
+        public float throwForce;
+        public float throwUpwardForce;
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F) && readyToThrow && totalThrows > 0)
+        public AudioSource aud;
+        [SerializeField] AudioClip audKnife;
+        [Range(0, 1)][SerializeField] float audKnifeVol;
+
+        bool readyToThrow;
+
+        private void Start()
         {
-            Throw();
-            aud.PlayOneShot(audKnife, audKnifeVol);
-            DestroyeKnife();
-        }
-    }
-
-    public IEnumerator DestroyeKnife()
-    {
-        yield return new WaitForSeconds(3);
-        Destroy(gameObject);
-    }
-    private void Throw()
-    {
-        readyToThrow = false;
-
-        GameObject projectile = Instantiate(objectToThrow, attackPoint.position, cam.rotation); //Int Object
-
-        Rigidbody projectileRb = projectile.GetComponent<Rigidbody>(); //Ridigbody component
-
-        Vector3 forceDirection = cam.transform.forward; //direction
-
-        RaycastHit hit;
-
-        if (Physics.Raycast(cam.position, cam.forward, out hit, 500f))
-        {
-            forceDirection = (hit.point - attackPoint.position).normalized;
+            
+            readyToThrow = true; 
         }
 
-        Vector3 forceToAdd = forceDirection * throwForce + transform.up * throwUpwardForce; // Force 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.F) && readyToThrow && totalThrows > 0)
+            {
+                Throw();
+                aud.PlayOneShot(audKnife, audKnifeVol);
+                DestroyeKnife();
+            }
+        }
 
-        projectileRb.AddForce(forceToAdd, ForceMode.Impulse);
+        public IEnumerator DestroyeKnife()
+        {
+            yield return new WaitForSeconds(3);
+            Destroy(gameObject);
+        }
+        private void Throw()
+        {
+            readyToThrow = false;
 
-        totalThrows--;
+            GameObject projectile = Instantiate(objectToThrow, attackPoint.position, cam.rotation); //Int Object
 
-        Invoke(nameof(ResetThrow), throwCooldown);
+            Rigidbody projectileRb = projectile.GetComponent<Rigidbody>(); //Ridigbody component
 
+            Vector3 forceDirection = cam.transform.forward; //direction
 
-        
+            RaycastHit hit;
 
-    }
+            if (Physics.Raycast(cam.position, cam.forward, out hit, 500f))
+            {
+                forceDirection = (hit.point - attackPoint.position).normalized;
+            }
 
-    private void ResetThrow()
-    {
-        readyToThrow = true;
+            Vector3 forceToAdd = forceDirection * throwForce + transform.up * throwUpwardForce; // Force 
+
+            projectileRb.AddForce(forceToAdd, ForceMode.Impulse);
+
+            totalThrows--;
+
+            Invoke(nameof(ResetThrow), throwCooldown);
+        }
+
+        private void ResetThrow()
+        {
+            readyToThrow = true;
+        }
     }
 }

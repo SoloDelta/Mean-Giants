@@ -8,9 +8,7 @@
 //-----------------------------------------------------------------
 // Using Namespaces
 //-----------------------------------------------------------------
-using FPS;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -146,7 +144,5 @@ namespace FPS
         {
             healthCorner.SetActive(true);
         }
-
-        
     }
 }
