@@ -38,11 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-<<<<<<< Updated upstream
   m_IndirectSpecularColor: {r: 8698.118, g: 5910.938, b: 4897.477, a: 1}
-=======
-  m_IndirectSpecularColor: {r: 8699.151, g: 5921.844, b: 4925.813, a: 1}
->>>>>>> Stashed changes
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3027,7 +3023,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061564914283201991, guid: 585ef68b878b1344895433dc179fbb25, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 287.6
+      value: 288.3
       objectReference: {fileID: 0}
     - target: {fileID: 4061564914283201991, guid: 585ef68b878b1344895433dc179fbb25, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3035,7 +3031,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061564914283201991, guid: 585ef68b878b1344895433dc179fbb25, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 275.5
+      value: 276
       objectReference: {fileID: 0}
     - target: {fileID: 4061564914283201991, guid: 585ef68b878b1344895433dc179fbb25, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3602,10 +3598,6 @@ PrefabInstance:
       value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 6728898885184732398, guid: 3f28bd6bf898a7b46bfef39895a8eebe, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 12.7369995
-      objectReference: {fileID: 0}
-    - target: {fileID: 6728898885184732398, guid: 3f28bd6bf898a7b46bfef39895a8eebe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 247.4
       objectReference: {fileID: 0}
@@ -3644,22 +3636,6 @@ PrefabInstance:
     - target: {fileID: 6728898885184732398, guid: 3f28bd6bf898a7b46bfef39895a8eebe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7671740405356898202, guid: 3f28bd6bf898a7b46bfef39895a8eebe, type: 3}
-      propertyPath: m_LocalScale.z
-      value: -0.00129128
-      objectReference: {fileID: 0}
-    - target: {fileID: 7671740405356898202, guid: 3f28bd6bf898a7b46bfef39895a8eebe, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 28.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 7671740405356898202, guid: 3f28bd6bf898a7b46bfef39895a8eebe, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7671740405356898202, guid: 3f28bd6bf898a7b46bfef39895a8eebe, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.0059
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
