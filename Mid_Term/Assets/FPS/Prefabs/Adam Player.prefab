@@ -11153,7 +11153,7 @@ Transform:
   - {fileID: 3109836862248262469}
   - {fileID: 2644143366454979452}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3516337068024487520
 MonoBehaviour:
@@ -11219,7 +11219,7 @@ MonoBehaviour:
   pickupClip: {fileID: 8300000, guid: 55ed87af97cd5424fbab8237e565fe93, type: 3}
   pickupVol: 0.474
   gunShot: {fileID: 8300000, guid: dabc55f425ecece4bbe52f188e6c6027, type: 3}
-  shotVol: 0.54
+  shotVol: 0.317
   audJump:
   - {fileID: 8300000, guid: d3bb89ffc382b0244a500aa844a4d2f0, type: 3}
   - {fileID: 8300000, guid: 23f9873ddb40578458b7b9b2d5be6517, type: 3}
@@ -11253,6 +11253,8 @@ MonoBehaviour:
   audHurtVol: 0.129
   audReload: {fileID: 8300000, guid: 7d1ee53133a34a846bae95995ae4622a, type: 3}
   audReloadVol: 0.083
+  healthClip: {fileID: 8300000, guid: 54ccf1a7754d2234e8dd1aae79006817, type: 3}
+  healthVol: 0.561
   isCrouching: 0
 --- !u!143 &8220044977229747923
 CharacterController:
@@ -12405,7 +12407,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
