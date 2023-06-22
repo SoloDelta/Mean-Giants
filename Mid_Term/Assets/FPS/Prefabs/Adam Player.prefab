@@ -10054,7 +10054,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2644143366454979452}
-  - component: {fileID: 2082850419592269774}
+  - component: {fileID: 4308315272495094208}
   - component: {fileID: 1937083980173918058}
   - component: {fileID: 1376304987302428695}
   - component: {fileID: 4435901273764921481}
@@ -10083,7 +10083,7 @@ Transform:
   m_Father: {fileID: 7977670783724381172}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2082850419592269774
+--- !u!114 &4308315272495094208
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11153,11 +11153,7 @@ Transform:
   - {fileID: 3109836862248262469}
   - {fileID: 2644143366454979452}
   m_Father: {fileID: 0}
-<<<<<<< Updated upstream
   m_RootOrder: 5
-=======
-  m_RootOrder: 0
->>>>>>> Stashed changes
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3516337068024487520
 MonoBehaviour:
@@ -11257,13 +11253,8 @@ MonoBehaviour:
   audHurtVol: 0.129
   audReload: {fileID: 8300000, guid: 7d1ee53133a34a846bae95995ae4622a, type: 3}
   audReloadVol: 0.083
-<<<<<<< Updated upstream
   healthClip: {fileID: 8300000, guid: 54ccf1a7754d2234e8dd1aae79006817, type: 3}
   healthVol: 0.561
-=======
-  healthClip: {fileID: 0}
-  healthVol: 0
->>>>>>> Stashed changes
   isCrouching: 0
 --- !u!143 &8220044977229747923
 CharacterController:
