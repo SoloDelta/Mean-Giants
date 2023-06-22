@@ -194,7 +194,7 @@ Transform:
   - {fileID: 7673505998525536585}
   - {fileID: 2122138439867605637}
   m_Father: {fileID: 0}
-  m_RootOrder: 35
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: -30, z: 0}
 --- !u!114 &3603885331776156054
 MonoBehaviour:
@@ -214,7 +214,7 @@ MonoBehaviour:
   - {fileID: 8676666702140303803}
   - {fileID: 8676666702140303803}
   - {fileID: 8676666702140303803}
-  timeBetweenSpawns: 5
+  timeBetweenSpawns: 2
   numberToSpawn: 15
 --- !u!65 &1016203523566799400
 BoxCollider:

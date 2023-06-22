@@ -11201,7 +11201,7 @@ MonoBehaviour:
   anim: {fileID: 8901510203275350524}
   health: 100
   playerSpeed: 4.21
-  jumpHeight: 11.9
+  jumpHeight: 8.8
   gravityValue: 22.3
   jumpMax: 1
   sprint: 2
@@ -11256,6 +11256,7 @@ MonoBehaviour:
   healthClip: {fileID: 8300000, guid: 54ccf1a7754d2234e8dd1aae79006817, type: 3}
   healthVol: 0.561
   isCrouching: 0
+  ammoStorage: 0
 --- !u!143 &8220044977229747923
 CharacterController:
   m_ObjectHideFlags: 0
