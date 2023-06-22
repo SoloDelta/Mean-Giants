@@ -46,6 +46,7 @@ namespace FPS
         public GameObject healthCorner;
         public TextMeshProUGUI itemCollectedText;
         public TextMeshProUGUI ammoMaxText;
+        public TextMeshProUGUI ammoStorageText;
         public TextMeshProUGUI ammoCurText;
         public Image heavy;
         public Image smg;

@@ -83,6 +83,7 @@ namespace FPS
         bool isSprinting;
         float speedOrig;
         bool stepsPlaying;
+        public int ammoStorage;
         private bool soundPlayed = false;
 
         /**----------------------------------------------------------------
@@ -434,36 +435,39 @@ namespace FPS
          */
         public void AmmoPickup(int amount, GameObject obj)
         {
-            if(gunList.Count > 0)
-            {
-                int ammoDiffer = gunList[selectedGun].maxAmmo - gunList[selectedGun].curAmmo;
-                gunList[selectedGun].curAmmo += amount;
+            PickupAmmo ammoPickup = obj.GetComponent<PickupAmmo>();
 
-                if (gunList[selectedGun].curAmmo > gunList[selectedGun].maxAmmo)
-                {
-                    gunList[selectedGun].curAmmo = gunList[selectedGun].maxAmmo;
-                }
+            ammoStorage = ammoPickup.ammoAmount + ammoStorage;
+            
+            Destroy(obj);
 
-                PickupAmmo ammoPickup = obj.GetComponent<PickupAmmo>();
-                ammoPickup.ammoAmount -= ammoDiffer;
-
-                if(ammoPickup.ammoAmount <= 0)
-                {
-                    Destroy(obj);
-                }
-                updateAmmoUI();
-            }
+            updateAmmoUI();
         }
 
         IEnumerator Reload()
         {
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.R) && ammoStorage != 0)
             {
                 if (gunList[selectedGun].curAmmo < gunList[selectedGun].maxAmmo) //Need to subtract from Ammo
                 {
                     aud.PlayOneShot(audReload);
                     yield return new WaitForSeconds(1.5f);
-                    gunList[selectedGun].curAmmo = gunList[selectedGun].maxAmmo;
+                    if (gunList.Count > 0)
+                    {
+                        int ammoDiffer = gunList[selectedGun].maxAmmo - gunList[selectedGun].curAmmo;
+                        gunList[selectedGun].curAmmo += ammoStorage;
+
+                        if (gunList[selectedGun].curAmmo > gunList[selectedGun].maxAmmo)
+                        {
+                            gunList[selectedGun].curAmmo = gunList[selectedGun].maxAmmo;
+                        }
+
+                        ammoStorage -= ammoDiffer;
+                    }
+                    if (ammoStorage <= 0)
+                    {
+                        ammoStorage = 0;
+                    }
                     updateAmmoUI();
                 }
                 
@@ -495,7 +499,8 @@ namespace FPS
             if(gunList.Count > 0)
             {
                 GameManager.instance.ammoCurText.text = gunList[selectedGun].curAmmo.ToString("F0");
-                GameManager.instance.ammoMaxText.text = gunList[selectedGun].maxAmmo.ToString("F0");
+                GameManager.instance.ammoStorageText.text = ammoStorage.ToString("F0");
+                //GameManager.instance.ammoMaxText.text = gunList[selectedGun].maxAmmo.ToString("F0");
             }
         }
 
@@ -512,7 +517,7 @@ namespace FPS
         }
         void UiSwitch()
         {
-            if (gunList[selectedGun].maxAmmo == 30)
+            if (gunList[selectedGun].curAmmo == 30)
             {
                 GameManager.instance.assaultRifle.gameObject.SetActive(true);
             }
