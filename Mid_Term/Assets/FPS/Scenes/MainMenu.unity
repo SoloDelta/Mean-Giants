@@ -516,6 +516,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Menu
       objectReference: {fileID: 0}
+    - target: {fileID: 4540859641308383826, guid: efe9843a2d1c41949827e72ef2338217, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 558
+      objectReference: {fileID: 0}
+    - target: {fileID: 4540859641308383826, guid: efe9843a2d1c41949827e72ef2338217, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -62
+      objectReference: {fileID: 0}
     - target: {fileID: 5795878585966998755, guid: efe9843a2d1c41949827e72ef2338217, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -612,8 +620,17 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 580
       objectReference: {fileID: 0}
+    - target: {fileID: 7835243658379325459, guid: efe9843a2d1c41949827e72ef2338217, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977350536468359785, guid: efe9843a2d1c41949827e72ef2338217, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 77
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7835243658379325459, guid: efe9843a2d1c41949827e72ef2338217, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efe9843a2d1c41949827e72ef2338217, type: 3}
