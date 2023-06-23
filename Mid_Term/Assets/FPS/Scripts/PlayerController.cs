@@ -84,7 +84,6 @@ namespace FPS
         float speedOrig;
         bool stepsPlaying;
         public int ammoStorage;
-        private bool soundPlayed = false;
 
         /**----------------------------------------------------------------
          * @brief MonoBehaviour override.
