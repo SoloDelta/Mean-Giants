@@ -56,7 +56,7 @@ namespace FPS
 
         private void OnValidate()
         {
-            skyVolume.profile.TryGet(out sky);
+           //skyVolume.profile.TryGet(out sky);
             UpdateTime();
         }
 
