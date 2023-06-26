@@ -71,10 +71,11 @@ MonoBehaviour:
   HP: 30
   speed: 2
   playerFaceSpeed: 100
-  viewConeAngle: 100
+  viewConeAngle: 50
   atStart: 1
   sawPlayerTemp: 0
   spotted: 0
+  spottingDistance: 40
   roamTimer: 2.03
   roamDist: 23
   patrolSpots: []
