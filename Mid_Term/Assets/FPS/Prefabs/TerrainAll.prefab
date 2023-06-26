@@ -121,7 +121,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 0959e0802b4d96d419402fef679ffddb, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 29e53424bb5163745afb87b2403aeb34, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &2815135943432104953
 GameObject:
@@ -161,7 +161,7 @@ Transform:
   - {fileID: 8759221957288025677}
   - {fileID: 1980287746154648478}
   m_Father: {fileID: 0}
-  m_RootOrder: 35
+  m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2886082803592423318
 GameObject:
@@ -811,7 +811,7 @@ GameObject:
   - component: {fileID: 1980287746154648478}
   - component: {fileID: 7305745514259306060}
   - component: {fileID: 563025935901109889}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: River
   m_TagString: Untagged
   m_Icon: {fileID: 0}

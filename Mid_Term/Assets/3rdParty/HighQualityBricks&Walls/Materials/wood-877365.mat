@@ -8,19 +8,20 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: wood-877365
-  m_Shader: {fileID: -6465566751694194690, guid: aefc63699cf4eff49a6bbb7c9ef5d160, type: 3}
+  m_Shader: {fileID: 4800000, guid: 99134b1f0c27d54469a840832a28fadf, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - _WINDQUALITY_NONE
+  m_InvalidKeywords:
   - _DISABLE_DECALS
   - _DISABLE_SSR
   - _DISABLE_SSR_TRANSPARENT
   - _DOUBLESIDED_ON
-  m_InvalidKeywords: []
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
-  m_CustomRenderQueue: 2000
+  m_CustomRenderQueue: -1
   stringTagMap:
     MotionVector: User
   disabledShaderPasses:
@@ -61,6 +62,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ExtraTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -108,6 +113,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: ad7831b8cdb09ab4b83fc9e2970cdab7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SubsurfaceTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _node_6801:
         m_Texture: {fileID: 2800000, guid: 66bac1f73fc6f734c95ec83aae131f18, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -130,6 +139,8 @@ Material:
     - _AlphaCutoffEnable: 0
     - _AlphaDstBlend: 0
     - _AlphaSrcBlend: 1
+    - _BillboardKwToggle: 0
+    - _BillboardShadowFade: 0.5
     - _BlendMode: 0
     - _BumpScale: 1
     - _COAT_IOR: 1.4
@@ -150,9 +161,11 @@ Material:
     - _EnableFogOnTransparent: 1
     - _Gloss: 0.88
     - _Glossiness: 0.5
+    - _HueVariationKwToggle: 0
     - _METALNESS: 0
     - _Metallic: 0.259
     - _Mode: 0
+    - _NormalMapKwToggle: 0
     - _OPACITY: 1
     - _OcclusionStrength: 1
     - _OpaqueCullMode: 2
@@ -175,6 +188,8 @@ Material:
     - _StencilWriteMaskDepth: 9
     - _StencilWriteMaskDistortionVec: 4
     - _StencilWriteMaskMV: 43
+    - _SubsurfaceIndirect: 0.25
+    - _SubsurfaceKwToggle: 0
     - _SupportDecals: 0
     - _SurfaceType: 0
     - _TransparentBackfaceEnable: 0
@@ -184,8 +199,10 @@ Material:
     - _TransparentSortPriority: 0
     - _TransparentWritingMotionVec: 0
     - _TransparentZWrite: 0
+    - _TwoSided: 2
     - _UVSec: 0
     - _UseShadowThreshold: 0
+    - _WindQuality: 0
     - _ZTestDepthEqualForOpaque: 3
     - _ZTestTransparent: 4
     - _ZWrite: 1
@@ -196,7 +213,9 @@ Material:
     - _DoubleSidedConstants: {r: -1, g: -1, b: -1, a: 0}
     - _EMISSION_COLOR: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _HueVariationColor: {r: 1, g: 0.5, b: 0, a: 0.1}
     - _SPECULAR_COLOR: {r: 1, g: 1, b: 1, a: 0}
+    - _SubsurfaceColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &8992958438953534451
 MonoBehaviour:
