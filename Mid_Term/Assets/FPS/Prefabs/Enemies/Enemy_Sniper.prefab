@@ -619,10 +619,11 @@ MonoBehaviour:
   HP: 20
   speed: 3
   playerFaceSpeed: 6
-  viewConeAngle: 90
+  viewConeAngle: 70
   atStart: 0
   sawPlayerTemp: 0
   spotted: 0
+  spottingDistance: 100
   roamTimer: 3.94
   roamDist: 29
   patrolSpots: []

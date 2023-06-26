@@ -240,6 +240,7 @@ MonoBehaviour:
   atStart: 0
   sawPlayerTemp: 0
   spotted: 0
+  spottingDistance: 50
   roamTimer: 2.03
   roamDist: 23
   patrolSpots: []

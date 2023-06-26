@@ -52,6 +52,7 @@ namespace FPS
         [SerializeField] private bool atStart; //a visual bool just to show if the AI is where it started.
         [SerializeField] private bool sawPlayerTemp = false;
         [SerializeField] private bool spotted = false;
+        [SerializeField] private float spottingDistance;
         [Header("-----Roaming-----")]
         [SerializeField, Range(1, 10)] private float roamTimer; //how long the enemy waits before roaming
         [SerializeField, Range(10, 100)] private int roamDist; //how far away the enemy will roam
@@ -147,7 +148,7 @@ namespace FPS
                 
                 if (!spotted) //if the player has not been spotted
                 {
-                    agent.isStopped = true;
+                    //agent.isStopped = true;
                     sawPlayerTemp = true;
                 }
                 else //if the player has been spotted
@@ -159,7 +160,7 @@ namespace FPS
                         spottingUI.SetActive(false);
                         StartCoroutine(spottedUIon());
                     }
-                    agent.isStopped = false;
+
                     agent.stoppingDistance = stoppingDistanceOriginal;
                     agent.SetDestination(GameManager.instance.player.transform.position);
                     if (agent.remainingDistance <= agent.stoppingDistance) //ensures the enemy still tracks the player with rotation after reaching its stopping point
@@ -177,7 +178,6 @@ namespace FPS
                 
                 if (spotted) //if the player has been spotted, go to the players last seen location and look around. 
                 {
-                    agent.isStopped = false;
                     agent.stoppingDistance = 0;
 
                     if (agent.destination.x == transform.position.x && agent.destination.z == transform.position.z) 
@@ -197,7 +197,6 @@ namespace FPS
                 {
                     if(sawPlayerTemp)
                     {
-                        agent.isStopped = false;
                         //Quaternion rotationAmount = transform.rotation * Quaternion.Euler(0, patrolRotations[currentPointIndex], 0);
                         //Debug.Log(rotationAmount);
                         //transform.rotation = Quaternion.Slerp(transform.rotation, rotationAmount, 10.0f);
@@ -213,7 +212,6 @@ namespace FPS
                     }
                     else
                     {
-                        agent.isStopped = false;
                         StartCoroutine(roam());
                     }
                     
@@ -255,19 +253,22 @@ namespace FPS
             {
                 //anim.SetBool("Aiming", true);
                 float spottingCrouchScale;
+                agent.isStopped = true;
                 if (GameManager.instance.playerScript.isCrouching) { spottingCrouchScale = 0.5f; }
                 else { spottingCrouchScale = 1f; }
-                float playerDistanceScale = (20 - Vector3.Distance(transform.position, GameManager.instance.player.transform.position)) / 20;
+                float playerDistanceScale = (spottingDistance - Vector3.Distance(transform.position, GameManager.instance.player.transform.position)) / spottingDistance;
                 percentSpotted += spottingCrouchScale * playerDistanceScale * _deltaTime;
                 qmarkTransform.localScale = new Vector3((4 * percentSpotted), qmarkTransform.localScale.y, qmarkTransform.localScale.z);
             }
             else if (!seesPlayer && percentSpotted > 0)
             {
+                agent.isStopped = false;
                 percentSpotted -= 0.25f * _deltaTime;
                 qmarkTransform.localScale = new Vector3((4 * percentSpotted), qmarkTransform.localScale.y, qmarkTransform.localScale.z);
             }
             if (percentSpotted >= 1)
             {
+                agent.isStopped = false;
                 spotted = true;
                 spottingUI.SetActive(false);
                 StartCoroutine(spottedUIon());
@@ -275,7 +276,7 @@ namespace FPS
             }
             if (percentSpotted <= 0)
             {
-                
+                agent.isStopped = false;
                 spottingUI.SetActive(false);
             }
         }
