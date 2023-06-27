@@ -11200,11 +11200,11 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   anim: {fileID: 8901510203275350524}
   health: 100
-  playerSpeed: 4.21
+  playerSpeed: 6.29
   jumpHeight: 8.8
   gravityValue: 22.3
   jumpMax: 1
-  sprint: 2
+  sprint: 4
   gunList: []
   gunModel: {fileID: 6680098411237278510}
   shootRate: 0.41
@@ -19102,6 +19102,7 @@ GameObject:
   - component: {fileID: 994432723104276039}
   - component: {fileID: 3913954635994006261}
   - component: {fileID: 5455705424359749050}
+  - component: {fileID: 5971520914764041938}
   m_Layer: 0
   m_Name: Point Light
   m_TagString: Untagged
@@ -19308,6 +19309,29 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
+--- !u!114 &5971520914764041938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9103654355153811903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1 &9118441175133657838
 GameObject:
   m_ObjectHideFlags: 0
