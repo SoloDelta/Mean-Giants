@@ -293,7 +293,7 @@ namespace FPS
                 yield return new WaitForSeconds(shootRate);
                 isShooting = false;
             }
-            if (Input.GetButtonDown("Shoot") && gunList[selectedGun].curAmmo == 0)
+            if (Input.GetButtonDown("Shoot") && gunList[selectedGun].curAmmo == 0 && !isReloading)
             {
                 aud.PlayOneShot(emptyClipAud);
             }
