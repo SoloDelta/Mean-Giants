@@ -12,6 +12,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using static UnityEditorInternal.ReorderableList;
 
 namespace FPS
 {
@@ -60,6 +61,7 @@ namespace FPS
         [Header("-----Pathfinding-----")]
         [SerializeField] private List<Vector3> patrolSpots = new List<Vector3>(); //the locations the enemy will follow when patroling
         [SerializeField] private List<int> patrolRotations = new List<int>(); //the rotations the enemy will face too at once reaching a patrol spot
+        [SerializeField] private float patrolStoppingDistance;
 
         [Header("-----Enemy Stats-----")]
         [SerializeField] private float shootRate; //how fast the enemy shoots
@@ -83,6 +85,7 @@ namespace FPS
         private Coroutine losingPlayerCopy; //a variable to store the last coroutine of "losingPlayer"
          //did a raycast connect but not long enough for the player to be spotted
         private float timeCount = 0.0f; //time variable for slerping after a patrol
+        private bool patrolLookAround = false; //bool to check if the enemy is currenlty looking around after a patrol point (updated in lookAround()
         private void Start()
         {
             //initializing variables
@@ -94,6 +97,8 @@ namespace FPS
             enemyHPOriginal = HP;
             numOfPatrolSpots = patrolSpots.Count;
             stoppingDistanceOriginal = agent.stoppingDistance;
+
+            NavMesh.avoidancePredictionTime = 0.5f;
 
             if (patrolSpots.Count > 0)
             {
@@ -178,7 +183,7 @@ namespace FPS
                 
                 if (spotted) //if the player has been spotted, go to the players last seen location and look around. 
                 {
-                    agent.stoppingDistance = 0;
+                    agent.stoppingDistance = patrolStoppingDistance;
 
                     if (agent.destination.x == transform.position.x && agent.destination.z == transform.position.z) 
                     {
@@ -202,9 +207,9 @@ namespace FPS
                         //transform.rotation = Quaternion.Slerp(transform.rotation, rotationAmount, 10.0f);
 
                         //timeCount = timeCount + Time.deltaTime;
-                        
-                        //MAKE NEW COROUTINE
 
+                        //MAKE NEW COROUTINE
+                        agent.isStopped = false;
                     }
                     if(isPatrolling)
                     {
@@ -249,6 +254,7 @@ namespace FPS
 
         private void spotting(float _deltaTime) //starts detecting the player over time
         {
+            
             if (seesPlayer && percentSpotted < 1) //spots the player at a rate dependent on whetehr the player is crouching and how far away the player is.
             {
                 //anim.SetBool("Aiming", true);
@@ -262,7 +268,7 @@ namespace FPS
             }
             else if (!seesPlayer && percentSpotted > 0)
             {
-                agent.isStopped = false;
+                //agent.isStopped = false;
                 percentSpotted -= 0.25f * _deltaTime;
                 qmarkTransform.localScale = new Vector3((4 * percentSpotted), qmarkTransform.localScale.y, qmarkTransform.localScale.z);
             }
@@ -276,7 +282,7 @@ namespace FPS
             }
             if (percentSpotted <= 0)
             {
-                agent.isStopped = false;
+                //agent.isStopped = false;
                 spottingUI.SetActive(false);
             }
         }
@@ -284,30 +290,32 @@ namespace FPS
         {
             if (isPatrolling && !seesPlayer)
             {
-                agent.stoppingDistance = 0;
+                agent.stoppingDistance = patrolStoppingDistance;
                 agent.SetDestination(patrolSpots[currentPointIndex]);
-
-                if (new Vector3(transform.position.x, patrolSpots[currentPointIndex].y, transform.position.z) == patrolSpots[currentPointIndex]) //TRY AND CHECK IF PLAYER IS AT LEAST CLOSE TO POINT 
+                
+                if (Vector3.Distance(transform.position, agent.destination) <= patrolStoppingDistance + 1) //TRY AND CHECK IF PLAYER IS AT LEAST CLOSE TO POINT 
                 {
                     
-                    if(!agent.isStopped)
+                    if(!agent.isStopped && !patrolLookAround)
                     {
+                        Debug.Log("Reached point");
                         StartCoroutine(lookAround());
                     }
-                    Debug.Log(agent.isStopped);
-                    
-                    
-                        
                     Quaternion rotationAmount = Quaternion.Euler(0, patrolRotations[currentPointIndex], 0);
                     transform.rotation = Quaternion.Slerp(transform.rotation, rotationAmount, timeCount);
                     timeCount += Time.deltaTime / 10;
-                    Debug.Log(timeCount);
 
                 }
-                else
+                else if(agent.velocity.magnitude <1 && Vector3.Distance(transform.position, agent.destination) <= patrolStoppingDistance + 2)
                 {
-                   // agent.isStopped = false;
+                    
+                    if(!patrolLookAround)
+                    {
+                        Debug.Log("Call unstuck");
+                        StartCoroutine(lookAround());
+                    }
                 }
+
             }
             else { StartCoroutine(roam()); }
         }
@@ -322,7 +330,13 @@ namespace FPS
                 enemyUIParent.transform.rotation = rotation;
             }
         }
-
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.tag == "Enemy")
+            {
+                StartCoroutine(roam());
+            }
+        }
 
         private void OnTriggerEnter(Collider other) //sets player in range if in range
         {
@@ -454,16 +468,28 @@ namespace FPS
          
         private IEnumerator roam() //enemy chooses a random spot in roamDist and paths to it
         {
-            if (!destinationChosen && agent.remainingDistance < 0.05f)
+            if (!destinationChosen && agent.remainingDistance < 0.5f)
             {
 
                 destinationChosen = true;
-                agent.stoppingDistance = 0;
+                agent.stoppingDistance = patrolStoppingDistance;
 
                 yield return new WaitForSeconds(roamTimer);
 
                 destinationChosen = false;
-                Vector3 randomPos = Random.insideUnitCircle * roamDist;
+                Vector3 randomPos = Random.insideUnitSphere * roamDist;
+
+                randomPos += startingPos;
+                Debug.Log(randomPos);
+
+                NavMeshHit hit;
+                NavMesh.SamplePosition(randomPos, out hit, roamDist, 1);
+                agent.SetDestination(hit.position);
+            }
+            else if (!destinationChosen && agent.velocity.magnitude < 1 && Vector3.Distance(transform.position, agent.destination) <= patrolStoppingDistance + 2)
+            {
+                Debug.Log("Finding new roam");
+                Vector3 randomPos = Random.insideUnitSphere * roamDist;
 
                 randomPos += startingPos;
 
@@ -532,15 +558,11 @@ namespace FPS
         {
             //if spotted look 45 left, 45 right, 180, 45 left 45 right
             //if patrolling rotate player based on index in int list
- 
-            //Quaternion rotationAmount = transform.rotation * Quaternion.Euler(0, patrolRotations[currentPointIndex], 0);
-            //transform.rotation *= rotationAmount;
-         
-            agent.isStopped = true;
-            //transform.rotation.SetFromToRotation(transform.rotation.eulerAngles, rotationAmount.eulerAngles);
-            //transform.rotation.SetLookRotation(rotationAmount.eulerAngles);
 
-            //transform.rotation = Quaternion.Slerp(transform.rotation, rotationAmount, 0.1f);
+
+            patrolLookAround = true;
+            agent.isStopped = true;
+
             
             yield return new WaitForSeconds(3.0f);
             Debug.Log("Rotated");
@@ -552,6 +574,8 @@ namespace FPS
                 currentPointIndex = 0;
             }
             timeCount = 0;
+            Debug.Log(currentPointIndex);
+            patrolLookAround = false;
         }
     }
 }
