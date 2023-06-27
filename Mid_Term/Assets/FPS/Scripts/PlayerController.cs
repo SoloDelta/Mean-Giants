@@ -399,7 +399,6 @@ namespace FPS
             gunList.Add(gunstat);
             
             aud.PlayOneShot(pickupClip);
-            Debug.Log("Called");
             shootDamage = gunstat.shootDamage;
             shootDistance = gunstat.shootDistance;
             shootRate = gunstat.shootRate;
