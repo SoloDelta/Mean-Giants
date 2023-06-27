@@ -11153,7 +11153,7 @@ Transform:
   - {fileID: 3109836862248262469}
   - {fileID: 2644143366454979452}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3516337068024487520
 MonoBehaviour:
@@ -11255,6 +11255,8 @@ MonoBehaviour:
   audReloadVol: 0.083
   healthClip: {fileID: 8300000, guid: 54ccf1a7754d2234e8dd1aae79006817, type: 3}
   healthVol: 0.561
+  emptyClipAud: {fileID: 8300000, guid: 300fc2317917d8547a002c22d2661fab, type: 3}
+  emptyClipVol: 0
   isCrouching: 0
   ammoStorage: 0
 --- !u!143 &8220044977229747923
@@ -11393,7 +11395,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 2644143366454979452}
   attackPoint: {fileID: 4488594420779033682}
-  objectToThrow: {fileID: 0}
+  objectToThrow: {fileID: 504577379926585868, guid: 65c6da165cb5e8041bf55a28f26156a0, type: 3}
   destroyTime: 0
   totalThrows: 100
   throwCooldown: 0.1
