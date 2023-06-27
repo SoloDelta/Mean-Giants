@@ -67,6 +67,8 @@ namespace FPS
         [Range(0, 1)][SerializeField] float audReloadVol;
         [SerializeField] AudioClip healthClip;
         [SerializeField][Range(0, 1)] float healthVol;
+        [SerializeField] AudioClip emptyClipAud;
+        [Range(0, 1)][SerializeField] float emptyClipVol;
 
 
 
@@ -108,11 +110,13 @@ namespace FPS
         {
             Sprint();
             zoomSights();
+            
 
             if (GameManager.instance.activeMenu == null)
             {
                 Movement();
                 crouch();
+                
 
                 if (gunList.Count > 0)
                 {
@@ -126,6 +130,8 @@ namespace FPS
 
                 StartCoroutine(Reload());
                 
+
+
 
                 if (playerHpOrig == health)
                 {
@@ -271,6 +277,9 @@ namespace FPS
                 RaycastHit hit;
                 updateAmmoUI();
 
+                
+                
+
 
                 if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
                 {
@@ -284,9 +293,17 @@ namespace FPS
                 yield return new WaitForSeconds(shootRate);
                 isShooting = false;
             }
-            
+
+            if (gunList[selectedGun].curAmmo == 0)
+            {
+                
+                aud.PlayOneShot(emptyClipAud);
+                
+            }
+
         }
 
+        
 
 
         /**----------------------------------------------------------------
@@ -476,6 +493,9 @@ namespace FPS
 
             }
         }
+
+
+        
 
         public void healthPickup(int amount, GameObject obj)
         {
