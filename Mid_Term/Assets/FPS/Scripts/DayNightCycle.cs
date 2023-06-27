@@ -20,88 +20,91 @@ namespace FPS
      */
     public class DayNightCycle : MonoBehaviour
     {
-        [Header("----Time of Day----")]
-        [Tooltip("Length of Day in Minutes")]
-        [SerializeField] float dayLength;
-        [SerializeField] [Range(0 , 1)] float timeOfDay;
-        [SerializeField] int dayNumber;
-        [SerializeField] int yearNumber;
-        [SerializeField] int monthNumber;
-        [SerializeField] int yearLength;
-        private float timeScale;
-        
+        ///**----------------------------------------------------------------
+        // * @brief
+        // */
+        [Range(0, 24)][SerializeField] float timeOfDay;
+        public Light sun;
+        public Light moon;
+        public float orbitSpeed = 1.0f;
+        bool isNight;
+        public Volume skyVolume;
+        public PhysicallyBasedSky sky;
+        public AnimationCurve starsCurve;
 
-        [Header("----Sun Light----")]
-        [SerializeField]Transform dayRotation;
-        [SerializeField] Light sun;
-        [SerializeField] float sunIntensity;
-        [SerializeField] float sunVariation;
-        [SerializeField] float sunBaseIntensity;
-        [SerializeField] Gradient sunColor;
-
-
-        public bool pause = false;
-
-
-        private void Update()
+        /**----------------------------------------------------------------
+         * @brief MonoBehaviour override.
+         */
+        private void Start()
         {
-            if(!pause)
-            {
-                UpdateTimeScale();
-                UpdateTime();
-            }
-            SunRotation();
-            SunLightIntensity();
+            skyVolume.profile.TryGet(out sky);
         }
 
-        private void UpdateTimeScale()
+        /**----------------------------------------------------------------
+         * @brief MonoBehaviour override.
+         */
+        private void Update()
         {
-            // dayLength / 60 gives the fraction of a hour that we want the day to be. Then dividing 24 by that gives us the time scale.
-            timeScale = 24 / (dayLength / 60);
+            timeOfDay += Time.deltaTime * orbitSpeed;
+            if (timeOfDay > 24)
+            {
+                timeOfDay = 0;
+            }
+            UpdateTime();
+        }
+
+
+        private void OnValidate()
+        {
+           //skyVolume.profile.TryGet(out sky);
+            UpdateTime();
         }
 
         private void UpdateTime()
         {
-            // takes length of the last frame in seconds, 86400 is the amount of seconds in a 24 hour day, this gives you the current time.
-            timeOfDay += Time.deltaTime * timeScale / 86400;
-            // if true then it is a new day
-            if(timeOfDay > 1 )
+            float alpha = timeOfDay / 24.0f;
+            float sunRotation = Mathf.Lerp(-90, 270, alpha);
+            float moonRotations = sunRotation - 180;
+
+            sun.transform.rotation = Quaternion.Euler(sunRotation, 0, 0);
+            moon.transform.rotation = Quaternion.Euler(moonRotations, 0, 0);
+
+            sky.spaceEmissionMultiplier.value = starsCurve.Evaluate(alpha) * 100f;
+
+            DayToNight();
+        }
+
+        private void DayToNight()
+        {
+            if(isNight) 
             {
-                // increase our day
-                dayNumber++;
-                // subtract one from timeOfDay so the day restarts
-                timeOfDay -= 1;
-                // if true then it's a new year
-                if(dayNumber > yearLength ) 
+                if(moon.transform.rotation.eulerAngles.x > 180)
                 {
-                    yearNumber++;
-                    dayNumber = 0;
+                    StartDay();
+                }
+            }
+            else
+            {
+                if(sun.transform.rotation.eulerAngles.x > 180)
+                {
+                    StartNight();
                 }
             }
 
         }
 
-
-        private void SunRotation()
+        private void StartNight()
         {
-            float sunAngle = timeOfDay * 360;
-            //rotates the sun on the z axis
-            dayRotation.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, sunAngle));
+            isNight = true;
+            sun.shadows = LightShadows.None;
+            moon.shadows = LightShadows.Soft;
         }
 
-        private void SunLightIntensity()
+        private void StartDay()
         {
-            sunIntensity = Vector3.Dot(sun.transform.forward, Vector3.down);
-            // makes sure valuse is 0 and not negative
-            sunIntensity = Mathf.Clamp01(sunIntensity);
-
-            sun.intensity = sunIntensity * sunVariation + sunBaseIntensity;
+            isNight = false;
+            sun.shadows = LightShadows.Soft;
+            moon.shadows = LightShadows.None;
         }
-
-        private void ChangeSunColor()
-        {
-            sun.color = sunColor.Evaluate(sunIntensity);
-        }
-
     }
 }
