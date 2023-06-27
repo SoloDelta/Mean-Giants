@@ -20,6 +20,7 @@ namespace FPS
      */
     public class DayNightCycle : MonoBehaviour
     {
+<<<<<<< Updated upstream
         [Header("----Time of Day----")]
         [Tooltip("Length of Day in Minutes")]
         [SerializeField] float dayLength;
@@ -42,9 +43,40 @@ namespace FPS
 
         public bool pause = false;
 
+=======
+        ///**----------------------------------------------------------------
+        // * @brief
+        // */
+        [Range(0, 1)][SerializeField] float time;
+        [SerializeField] float dayLength;
+        [SerializeField] float timeStart;
+
+        private float timeRate;
+        public Vector3 noon;
+
+        public Light sun;
+        public Gradient sunColor;
+        public AnimationCurve sunIntensity;
+        public Light moon;
+        public Gradient moonColor;
+        public AnimationCurve moonIntensity;
+
+        public AnimationCurve lightingIntensityMulti;
+        public AnimationCurve reflectionIntensityMulti;
+
+        /**----------------------------------------------------------------
+         * @brief MonoBehaviour override.
+         */
+        private void Start()
+        {
+            timeRate = 1.0f / dayLength;
+            time = timeStart;
+        }
+>>>>>>> Stashed changes
 
         private void Update()
         {
+<<<<<<< Updated upstream
             if(!pause)
             {
                 UpdateTimeScale();
@@ -77,10 +109,26 @@ namespace FPS
                     yearNumber++;
                     dayNumber = 0;
                 }
+=======
+            // increase time
+            time += timeRate * Time.deltaTime;
+            if (time >= 1.0f) 
+            {
+                time = 0.0f;
+>>>>>>> Stashed changes
             }
 
+            // light rotation
+            sun.transform.eulerAngles = (time - 0.25f) * noon * 4.0f;
+            moon.transform.eulerAngles = (time - 0.75f) * noon * 4.0f;
+
+
+            // light intensity
+            sun.intensity = sunIntensity.Evaluate(time);
+            moon.intensity = moonIntensity.Evaluate(time);
         }
 
+<<<<<<< Updated upstream
 
         private void SunRotation()
         {
@@ -102,6 +150,9 @@ namespace FPS
         {
             sun.color = sunColor.Evaluate(sunIntensity);
         }
+=======
+
+>>>>>>> Stashed changes
 
     }
 }
