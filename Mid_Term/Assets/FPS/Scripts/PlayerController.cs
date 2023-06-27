@@ -83,6 +83,7 @@ namespace FPS
         bool isSprinting;
         float speedOrig;
         bool stepsPlaying;
+        bool isReloading;
         public int ammoStorage;
 
         /**----------------------------------------------------------------
@@ -445,10 +446,11 @@ namespace FPS
 
         IEnumerator Reload()
         {
-            if (Input.GetKeyDown(KeyCode.R) && ammoStorage != 0)
+            if (Input.GetKeyDown(KeyCode.R) && ammoStorage != 0 && !isReloading)
             {
                 if (gunList[selectedGun].curAmmo < gunList[selectedGun].maxAmmo) //Need to subtract from Ammo
                 {
+                    isReloading= true;
                     aud.PlayOneShot(audReload);
                     yield return new WaitForSeconds(1.5f);
                     if (gunList.Count > 0)
@@ -468,6 +470,7 @@ namespace FPS
                         ammoStorage = 0;
                     }
                     updateAmmoUI();
+                    isReloading = false;
                 }
                 
 
