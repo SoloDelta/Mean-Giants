@@ -51,7 +51,7 @@ namespace FPS
             {
                 Throw();
                 aud.PlayOneShot(audKnife, audKnifeVol);
-                DestroyeKnife();
+                StartCoroutine(DestroyeKnife());
             }
         }
 

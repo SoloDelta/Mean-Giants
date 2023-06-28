@@ -11122,6 +11122,7 @@ GameObject:
   - component: {fileID: 8220044977229747923}
   - component: {fileID: 8426195686097962700}
   - component: {fileID: 5969234395311703542}
+  - component: {fileID: 5234182585185864844}
   - component: {fileID: 8901510203275350524}
   m_Layer: 6
   m_Name: Adam Player
@@ -11396,15 +11397,39 @@ MonoBehaviour:
   cam: {fileID: 2644143366454979452}
   attackPoint: {fileID: 4488594420779033682}
   objectToThrow: {fileID: 504577379926585868, guid: 65c6da165cb5e8041bf55a28f26156a0, type: 3}
-  destroyTime: 0
+  destroyTime: 3
   totalThrows: 100
   throwCooldown: 0.1
   throwKey: 323
-  throwForce: 15
+  throwForce: 25
   throwUpwardForce: 0
   aud: {fileID: 8426195686097962700}
   audKnife: {fileID: 8300000, guid: 805df3abf9598064393762594fb4b473, type: 3}
   audKnifeVol: 0.061
+--- !u!114 &5234182585185864844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7638439082459081696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcc137cd6402ff947bc44838f8b736e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 2644143366454979452}
+  attackPoint: {fileID: 4488594420779033682}
+  grenadeObject: {fileID: 7105839012579932751, guid: b4242b65723c52a4885cc8befc6bf8fd, type: 3}
+  destroyTime: 0
+  totalThrows: 3
+  throwCooldown: 4
+  throwKey: 323
+  throwForce: 15
+  throwUpwardForce: 0
+  aud: {fileID: 8426195686097962700}
+  audGrenadeThrow: {fileID: 8300000, guid: ba97f0fb4fafb7a45994b62e29df527a, type: 3}
+  audGrenadeThrowVol: 0.211
 --- !u!95 &8901510203275350524
 Animator:
   serializedVersion: 5

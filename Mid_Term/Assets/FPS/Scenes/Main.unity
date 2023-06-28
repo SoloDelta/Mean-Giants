@@ -2303,8 +2303,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca41cba70b2473c4eb4723e59c513f4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayLength: 0.5
-  timeOfDay: 0
+  dayLength: 5000
+  timeOfDay: 0.727
   dayNumber: 0
   yearNumber: 0
   monthNumber: 0
