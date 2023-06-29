@@ -111,6 +111,7 @@ namespace FPS
          */
         void Update()
         {
+            
             Sprint();
             zoomSights();
 
@@ -228,13 +229,13 @@ namespace FPS
 
         void Sprint()
         {
-                if (Input.GetButtonDown("Sprint") && !isCrouching && stamina > 0)
+                if (Input.GetButtonDown("Sprint") && !isCrouching && stamina >= 0)
                 {
                     isSprinting = true;
                     playerSpeed *= sprint;
                     anim.SetFloat("Speed", 1);
                 }
-                else if (Input.GetButtonUp("Sprint"))
+                if (Input.GetButtonUp("Sprint") || stamina <= 0)
                 {
                     isSprinting = false;
                     playerSpeed = speedOrig;
@@ -368,7 +369,7 @@ namespace FPS
         public void UpdatePlayerStamina()
         {
             GameManager.instance.playerStaminaBar.fillAmount = (float)stamina / playerStaminaOrig;
-            if(isSprinting)
+            if(isSprinting && stamina > 0)
             {
                 stamina--;
             }
