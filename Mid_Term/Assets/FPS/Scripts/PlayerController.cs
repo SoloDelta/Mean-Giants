@@ -32,6 +32,7 @@ namespace FPS
         [Range(10, 50)][SerializeField] private float gravityValue;
         [Range(1, 3)][SerializeField] private int jumpMax;
         [Range(2, 5)][SerializeField] private int sprint;
+        [SerializeField] private int stamina;
 
         [Header("----- Gun Stats -----")]
         [SerializeField] private List<GunStats> gunList = new List<GunStats>();
@@ -78,6 +79,7 @@ namespace FPS
         private Vector3 move;
         private bool isShooting;
         private int playerHpOrig;
+        private int playerStaminaOrig;
         private int selectedGun;
         private Coroutine lastRun;
         float zoomOrig;
@@ -96,8 +98,10 @@ namespace FPS
         {  
             speedOrig = playerSpeed;
             playerHpOrig = health;
+            playerStaminaOrig = stamina;
             UpdatePlayerHp();
             SpawnPlayer();
+            UpdatePlayerStamina();
             zoomOrig = Camera.main.fieldOfView;
         }
         
@@ -224,10 +228,10 @@ namespace FPS
 
         void Sprint()
         {
-                if (Input.GetButtonDown("Sprint") && !isCrouching)
+                if (Input.GetButtonDown("Sprint") && !isCrouching && stamina > 0)
                 {
                     isSprinting = true;
-                    playerSpeed *= sprint; 
+                    playerSpeed *= sprint;
                     anim.SetFloat("Speed", 1);
                 }
                 else if (Input.GetButtonUp("Sprint"))
@@ -235,6 +239,7 @@ namespace FPS
                     isSprinting = false;
                     playerSpeed = speedOrig;
                 }
+                UpdatePlayerStamina();
         }
 
         /**----------------------------------------------------------------
@@ -359,6 +364,24 @@ namespace FPS
         /**----------------------------------------------------------------
          * @brief
          */
+
+        public void UpdatePlayerStamina()
+        {
+            GameManager.instance.playerStaminaBar.fillAmount = (float)stamina / playerStaminaOrig;
+            if(isSprinting)
+            {
+                stamina--;
+            }
+            else if(!isSprinting)
+            {
+                stamina++;
+            }
+            else if( stamina > playerStaminaOrig)
+            {
+                stamina = playerStaminaOrig;
+            }
+        }
+
         public void UpdatePlayerHp()
         {
             GameManager.instance.playerHpBar.fillAmount = (float) health / playerHpOrig;
