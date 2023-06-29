@@ -87,14 +87,13 @@ namespace FPS
         bool stepsPlaying;
         bool isReloading;
         public int ammoStorage;
+        bool hasCellKey = false;
 
         /**----------------------------------------------------------------
          * @brief MonoBehaviour override.
          */
         private void Start()
-        {
-
-            
+        {  
             speedOrig = playerSpeed;
             playerHpOrig = health;
             UpdatePlayerHp();
@@ -110,7 +109,6 @@ namespace FPS
         {
             Sprint();
             zoomSights();
-            
 
             if (GameManager.instance.activeMenu == null)
             {
@@ -542,7 +540,14 @@ namespace FPS
 
         private void OnTriggerStay(Collider other)
         {
-            if(other.tag == "CellDoor")
+            if(other.tag == "PlayerCell")
+            {
+                if (other.GetComponent<CellDoor>().Moving == false)
+                {
+                    other.GetComponent<CellDoor>().Moving = true;
+                }
+            }
+            if(other.tag == "CellDoor" && hasCellKey)
             {
                 if(other.GetComponent<CellDoor>().Moving == false)
                 {
