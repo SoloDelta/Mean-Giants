@@ -539,5 +539,16 @@ namespace FPS
                 GameManager.instance.assaultRifle.gameObject.SetActive(true);
             }
         }
+
+        private void OnTriggerStay(Collider other)
+        {
+            if(other.tag == "CellDoor")
+            {
+                if(other.GetComponent<CellDoor>().Moving == false)
+                {
+                    other.GetComponent<CellDoor>().Moving = true;
+                }
+            }
+        }
     }
 }
