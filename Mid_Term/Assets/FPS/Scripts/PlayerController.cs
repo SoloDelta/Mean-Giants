@@ -230,7 +230,9 @@ namespace FPS
 
         void Sprint()
         {
-                if (Input.GetButtonDown("Sprint") && !isCrouching && stamina >= 0)
+
+
+                if (Input.GetButtonDown("Sprint") && !isCrouching && move.normalized.magnitude > 0.0f && stamina > 0)
                 {
                     isSprinting = true;
                     playerSpeed *= sprint;
@@ -238,8 +240,8 @@ namespace FPS
                 }
                 if (Input.GetButtonUp("Sprint") || stamina <= 0)
                 {
-                    isSprinting = false;
-                    playerSpeed = speedOrig;
+                isSprinting = false;
+                playerSpeed = speedOrig;
                 }
                 UpdatePlayerStamina();
         }
