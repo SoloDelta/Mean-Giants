@@ -193,11 +193,12 @@ namespace FPS
             controller.Move(move * Time.deltaTime * playerSpeed);
 
             // Changes the height position of the player
-            if (Input.GetButtonDown("Jump") && jumpedTimes < jumpMax)
+            if (Input.GetButtonDown("Jump") && jumpedTimes < jumpMax  && stamina > 25)
             {
                 aud.PlayOneShot(audJump[Random.Range(0, audJump.Length)], audJumpVol);
                 jumpedTimes++;
                 playerVelocity.y = jumpHeight;
+                stamina -= 25;
             }
             if(move.normalized.magnitude <= 0)
             {
