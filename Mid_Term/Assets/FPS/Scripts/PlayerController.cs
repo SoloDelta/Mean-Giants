@@ -372,7 +372,7 @@ namespace FPS
             {
                 stamina--;
             }
-            else if(!isSprinting)
+            if(!isSprinting && stamina < playerStaminaOrig)
             {
                 stamina++;
             }
