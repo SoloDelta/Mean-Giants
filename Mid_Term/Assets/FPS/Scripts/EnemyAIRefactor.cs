@@ -231,8 +231,14 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
             }
         }
         agent.SetDestination(closestAlarm.transform.position);
+        
+    
+
         if (Vector3.Distance(transform.position, closestAlarm.transform.position) < 1)
         {
+            Vector3 alarmDirection = closestAlarm.transform.position - headPosition.position;
+            Quaternion rot = Quaternion.LookRotation(new Vector3(alarmDirection.x, 0, alarmDirection.z));
+            transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * playerFaceSpeed);
             StartCoroutine(PullingAlarm());
         }
     }
