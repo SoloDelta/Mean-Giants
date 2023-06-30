@@ -31,6 +31,7 @@ namespace FPS
         public int maxAmmo;
         public int curAmmo;
         public WeaponClasses weaponClass;
+        [Range(5, 5000)][SerializeField] public int weaponValue;
 
         public GameObject model;
         public ParticleSystem hitEffect;
