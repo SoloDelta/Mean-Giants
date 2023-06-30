@@ -11,6 +11,11 @@ public class DoorController : MonoBehaviour
     [Header("--- Storage ---")]
     [SerializeField] private KeyStorage _keyStorage = null;
 
+    public bool prisonDoor;
+    public bool PrisonCell;
+    public bool CompoundDoor;
+
+
     private bool doorOpen = false;
 
     private void Awake()
@@ -22,11 +27,24 @@ public class DoorController : MonoBehaviour
     {
         if (_keyStorage.hasprisonKey)
         {
-            OpenDoor();
+            if (prisonDoor)
+            {
+                OpenDoor();
+            }
         }
-        if(_keyStorage.hasCompoundKey)
+        else if (_keyStorage.hasPrisonCellKey)
         {
-            OpenDoor();
+            if (PrisonCell)
+            {
+                OpenDoor();
+            }
+        }
+        else if(_keyStorage.hasCompoundKey)
+        {
+            if (CompoundDoor)
+            {
+                OpenDoor();
+            }
         }
     }
 
