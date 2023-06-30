@@ -6,6 +6,7 @@ public enum Key
 {
     prisonKey,
     compoundKey,
+    prisonCellKey,
 }
 
 public class Keys : ScriptableObject

@@ -6,4 +6,5 @@ using UnityEngine;
     {
         public bool hasprisonKey = false;
         public bool hasCompoundKey = false;
+        public bool hasPrisonCellKey = false;
     }
