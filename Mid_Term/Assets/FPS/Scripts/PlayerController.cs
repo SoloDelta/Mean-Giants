@@ -11,6 +11,7 @@
 //-----------------------------------------------------------------
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace FPS
@@ -18,8 +19,9 @@ namespace FPS
     /**----------------------------------------------------------------
      * @brief
      */
-    public class PlayerController : MonoBehaviour, IDamage, IHealth, IAmmo
+    public class PlayerController : MonoBehaviour, IDamage, IHealth, IAmmo, IKey
     {
+        #region Variables
         [Header("----- Components -----")]
         [SerializeField] private CharacterController controller;
         [SerializeField] private Gradient healthBarGradient;
@@ -36,6 +38,7 @@ namespace FPS
 
         [Header("----- Gun Stats -----")]
         [SerializeField] private List<GunStats> gunList = new List<GunStats>();
+        [SerializeField] private KeyStorage keyStorage;
         [SerializeField] private GameObject gunModel;
         [Range(0.1f, 3)][SerializeField] private float shootRate;
         [Range(1, 10)][SerializeField] private int shootDamage;
@@ -90,7 +93,11 @@ namespace FPS
         bool isReloading;
         public int ammoStorage;
         bool hasCellKey = false;
+        public Key useableKeys;
 
+        #endregion
+
+        #region Start
         /**----------------------------------------------------------------
          * @brief MonoBehaviour override.
          */
@@ -104,8 +111,9 @@ namespace FPS
             UpdatePlayerStamina();
             zoomOrig = Camera.main.fieldOfView;
         }
-        
+        #endregion
 
+        #region Update
         /**----------------------------------------------------------------
          * @brief MonoBehaviour override.
          */
@@ -167,8 +175,9 @@ namespace FPS
                 }
             }
         }
-        
+        #endregion
 
+        #region Movement
         /**----------------------------------------------------------------
          * @brief
          */
@@ -228,6 +237,28 @@ namespace FPS
             stepsPlaying = false;
         }
 
+        /**----------------------------------------------------------------
+        * @brief
+        */
+
+        public void UpdatePlayerStamina()
+        {
+            GameManager.instance.playerStaminaBar.fillAmount = (float)stamina / playerStaminaOrig;
+            if (isSprinting && stamina > 0)
+            {
+                stamina--;
+            }
+            if (!isSprinting && stamina < playerStaminaOrig)
+            {
+                stamina++;
+            }
+            else if (stamina > playerStaminaOrig)
+            {
+                stamina = playerStaminaOrig;
+            }
+        }
+
+
         void Sprint()
         {
 
@@ -266,7 +297,9 @@ namespace FPS
                 
             }
         }
-        
+        #endregion
+
+        #region Shoot
         /**----------------------------------------------------------------
          * @brief
          */
@@ -306,9 +339,9 @@ namespace FPS
             }
         }
 
-        
+        #endregion
 
-
+        #region Health
         /**----------------------------------------------------------------
          * @brief
          */
@@ -348,10 +381,13 @@ namespace FPS
         /**----------------------------------------------------------------
          * @brief
          */
+        public void UpdatePlayerHp()
+        {
+            GameManager.instance.playerHpBar.fillAmount = (float)health / playerHpOrig;
 
+        }
 
-
-    public void TakeDamage(int damage)
+        public void TakeDamage(int damage)
         {
             health -= damage;
 
@@ -365,33 +401,20 @@ namespace FPS
             StartCoroutine(playerFlashDamage());
         }
 
+
         /**----------------------------------------------------------------
          * @brief
          */
-
-        public void UpdatePlayerStamina()
+        private IEnumerator playerFlashDamage()
         {
-            GameManager.instance.playerStaminaBar.fillAmount = (float)stamina / playerStaminaOrig;
-            if(isSprinting && stamina > 0)
-            {
-                stamina--;
-            }
-            if(!isSprinting && stamina < playerStaminaOrig)
-            {
-                stamina++;
-            }
-            else if( stamina > playerStaminaOrig)
-            {
-                stamina = playerStaminaOrig;
-            }
+            GameManager.instance.playerFlashUI.SetActive(true);
+            yield return new WaitForSeconds(0.1f);
+            GameManager.instance.playerFlashUI.SetActive(false);
         }
 
-        public void UpdatePlayerHp()
-        {
-            GameManager.instance.playerHpBar.fillAmount = (float) health / playerHpOrig;
-            
-        }
+        #endregion
 
+        #region Player Actions
         /**----------------------------------------------------------------
          * @brief
          */
@@ -404,37 +427,7 @@ namespace FPS
             UpdatePlayerHp();
             updateAmmoUI();
         }
-
-        /**----------------------------------------------------------------
-         * @brief
-         */
-        private IEnumerator playerFlashDamage()
-        {
-            GameManager.instance.playerFlashUI.SetActive(true);
-            yield return new WaitForSeconds(0.1f);
-            GameManager.instance.playerFlashUI.SetActive(false);
-        }
-
-        /**----------------------------------------------------------------
-         * @brief
-         */
-        public void PickupGun(GunStats gunstat)
-        {
-            
-            gunList.Add(gunstat);
-            
-            aud.PlayOneShot(pickupClip);
-            shootDamage = gunstat.shootDamage;
-            shootDistance = gunstat.shootDistance;
-            shootRate = gunstat.shootRate;
-
-            gunModel.GetComponent<MeshFilter>().mesh = gunstat.model.GetComponent<MeshFilter>().sharedMesh;
-            gunModel.GetComponent<MeshRenderer>().material = gunstat.model.GetComponent<MeshRenderer>().sharedMaterial;
-            selectedGun = gunList.Count - 1;
-
-            updateAmmoUI();
-        }
-
+ 
         /**----------------------------------------------------------------
          * @brief
          */
@@ -463,20 +456,6 @@ namespace FPS
             
             gunModel.GetComponent<MeshFilter>().mesh = gunList[selectedGun].model.GetComponent<MeshFilter>().sharedMesh;
             gunModel.GetComponent<MeshRenderer>().material = gunList[selectedGun].model.GetComponent<MeshRenderer>().sharedMaterial;
-
-            updateAmmoUI();
-        }
-
-        /**----------------------------------------------------------------
-         * @brief
-         */
-        public void AmmoPickup(int amount, GameObject obj)
-        {
-            PickupAmmo ammoPickup = obj.GetComponent<PickupAmmo>();
-
-            ammoStorage = ammoPickup.ammoAmount + ammoStorage;
-            
-            Destroy(obj);
 
             updateAmmoUI();
         }
@@ -513,9 +492,58 @@ namespace FPS
 
             }
         }
+        #endregion
 
+        #region Pickups
+        /**----------------------------------------------------------------
+        * @brief
+         */
+        public void PickupGun(GunStats gunstat)
+        {
 
-        
+            gunList.Add(gunstat);
+
+            aud.PlayOneShot(pickupClip);
+            shootDamage = gunstat.shootDamage;
+            shootDistance = gunstat.shootDistance;
+            shootRate = gunstat.shootRate;
+
+            gunModel.GetComponent<MeshFilter>().mesh = gunstat.model.GetComponent<MeshFilter>().sharedMesh;
+            gunModel.GetComponent<MeshRenderer>().material = gunstat.model.GetComponent<MeshRenderer>().sharedMaterial;
+            selectedGun = gunList.Count - 1;
+
+            updateAmmoUI();
+        }
+
+        /**----------------------------------------------------------------
+        * @brief
+        */
+        public void AmmoPickup(int amount, GameObject obj)
+        {
+            PickupAmmo ammoPickup = obj.GetComponent<PickupAmmo>();
+
+            ammoStorage = ammoPickup.ammoAmount + ammoStorage;
+
+            Destroy(obj);
+
+            updateAmmoUI();
+        }
+
+        public void PickupKey(Key name, GameObject obj)
+        {
+            PickupKeys keyPickup = obj.GetComponent<PickupKeys>();
+
+            if(Key.prisonKey == name)
+            {
+                keyStorage.hasprisonKey = true;
+            }
+            else if(Key.compoundKey == name)
+            {
+                keyStorage.hasCompoundKey = true;   
+            }
+            
+        }
+
 
         public void healthPickup(int amount, GameObject obj)
         {
@@ -528,6 +556,9 @@ namespace FPS
             }
         }
 
+        #endregion
+
+        #region UI
         IEnumerator collectedText(RaycastHit hit)
         {
             GameManager.instance.itemCollectedText.text = hit.collider.gameObject.name + (" collected");
@@ -565,6 +596,9 @@ namespace FPS
             }
         }
 
+        #endregion
+
+        #region Triggers
         private void OnTriggerStay(Collider other)
         {
             if(other.tag == "PlayerCell")
@@ -582,5 +616,6 @@ namespace FPS
                 }
             }
         }
+        #endregion
     }
 }
