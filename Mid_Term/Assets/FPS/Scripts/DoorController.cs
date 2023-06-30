@@ -6,6 +6,9 @@ public class DoorController : MonoBehaviour
 {
     private Animator doorAnim;
 
+    [SerializeField] private string openAnimation;
+    [SerializeField] private string closeAnimation;
+
     private bool doorOpen = false;
 
     private void Awake()
@@ -15,14 +18,19 @@ public class DoorController : MonoBehaviour
 
     public void PlayAnimation()
     {
+        OpenDoor();
+    }
+
+    private void OpenDoor()
+    {
         if (!doorOpen)
         {
-            doorAnim.Play("DoorOpen", 0, 0.0f);
+            doorAnim.Play(openAnimation, 0, 0.0f);
             doorOpen = true;
         }
         else
         {
-            doorAnim.Play("DoorClose", 0, 0.0f);
+            doorAnim.Play(closeAnimation, 0, 0.0f);
             doorOpen = false;
         }
     }

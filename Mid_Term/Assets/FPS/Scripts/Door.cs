@@ -11,7 +11,7 @@ public class Door : MonoBehaviour
 
     private DoorController raycastedObj;
 
-    [SerializeField] private KeyCode openDoorKey = KeyCode.Mouse1;
+    [SerializeField] private KeyCode openDoorKey = KeyCode.E;
 
     [SerializeField] private Image Reticle = null;
     private bool isReticleActive;
