@@ -14,6 +14,7 @@ TagManager:
   - CellDoor
   - Door
   - PlayerCell
+  - Alarm
   layers:
   - Default
   - TransparentFX

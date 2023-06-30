@@ -324,7 +324,7 @@ namespace FPS
                     {
                         StopCoroutine(lastRun);
                     }
-                    hit.collider.GetComponent<EnemyAI>().wholeHealthBar.SetActive(true);
+                    hit.collider.GetComponent<EnemyAIRefactor>().wholeHealthBar.SetActive(true);
                     lastRun = StartCoroutine(turnOffEnemyHP(hit));
 
                 }
@@ -340,7 +340,7 @@ namespace FPS
             yield return new WaitForSeconds(1);
             if (_hit.collider != null)
             {
-                _hit.collider.GetComponent<EnemyAI>().wholeHealthBar.SetActive(false);
+                _hit.collider.GetComponent<EnemyAIRefactor>().wholeHealthBar.SetActive(false);
             }
 
         }
