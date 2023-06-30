@@ -8,7 +8,6 @@ using static Unity.VisualScripting.Member;
 public class EnemyAIRefactor : MonoBehaviour, IDamage
 {
     [Header("-----Components-----")]
-    [SerializeField] private Renderer model; //the model of the enemy
     [SerializeField] private NavMeshAgent agent; //the enemy's navmesh
     [SerializeField] private Animator anim; //the enemy's animator
     [SerializeField] private Transform headPosition;
@@ -56,6 +55,7 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
     [SerializeField] private GameObject bullet; //the bullet the enemy shoots
     [SerializeField] private float burstRate; //how fast of a burst the enemy shoots
     [SerializeField] private bool isBurstShot; //if the enemy shoots regular or in burst
+    [SerializeField] private bool isShotgun;
     private int numOfPatrolSpots; //the number of spots the enemy patrols to
     private Vector3 playerDirection; //the direction from the enemy to the player
     private bool playerInRange; //is the player within range of the enemy
@@ -84,6 +84,7 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
     /// </summary>
     void Start()
     {
+       
         anim.SetBool("Aiming", true);
         audSource = GetComponent<AudioSource>();
         startingPos = transform.position;
@@ -108,11 +109,12 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
             patrolRotations.Add(0);
         }
         agent.destination = patrolSpots[0];
+        GameManager.instance.UpdateObjective(1);
     }
 
     // Update is called once per frame
     void Update()
-    {
+    {      
         if (agent.isActiveAndEnabled)
         {
             anim.SetFloat("Enemy Speed", agent.velocity.normalized.magnitude);
@@ -346,6 +348,28 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
         audSource.PlayOneShot(shootSound, shootSoundVol);
         Debug.DrawRay(shootPosition.position, playerDirection);
     }
+    void ShotgunBlast()
+    {
+        playerDirection = new Vector3(0, 1, 0) + GameManager.instance.player.transform.position - shootPosition.position;
+        Quaternion lookrotation = Quaternion.LookRotation(playerDirection);
+        //lookrotation.eulery
+        Vector3 randAngles = new Vector3(Random.Range(-5, 5), Random.Range(-5, 5), 0);
+        Instantiate(bullet, shootPosition.position, lookrotation * Quaternion.Euler(randAngles));
+        randAngles = new Vector3(Random.Range(-5, 5), Random.Range(-5, 5), 0);
+        Instantiate(bullet, shootPosition.position, lookrotation * Quaternion.Euler(randAngles));
+        randAngles = new Vector3(Random.Range(-5, 5), Random.Range(-5, 5), 0);
+        Instantiate(bullet, shootPosition.position, lookrotation * Quaternion.Euler(randAngles));
+        randAngles = new Vector3(Random.Range(-5, 5), Random.Range(-5, 5), 0);
+        Instantiate(bullet, shootPosition.position, lookrotation * Quaternion.Euler(randAngles));
+        randAngles = new Vector3(Random.Range(-5, 5), Random.Range(-5, 5), 0);
+        Instantiate(bullet, shootPosition.position, lookrotation * Quaternion.Euler(randAngles));
+
+
+
+        audSource.PlayOneShot(shootSound, shootSoundVol);
+        Debug.DrawRay(shootPosition.position, playerDirection);
+        
+    }
     ////////////////////
     ///COROUTINES
     ////////////////////
@@ -416,6 +440,7 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
         pullAlarm = false;
         anim.SetBool("Use", false);
         anim.SetBool("Aiming", true);
+        playerLastSeenAt = transform.position;
         highAlert = true;
     }
     IEnumerator spottedUIon() //turns the UI on if the player gets spotted. turns it off after 3seconds
@@ -461,6 +486,10 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
         {
             StartCoroutine(shootBurst());
 
+        }
+        if(isShotgun)
+        {
+            ShotgunBlast();
         }
         else
         {

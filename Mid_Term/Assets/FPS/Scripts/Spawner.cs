@@ -32,7 +32,7 @@ namespace FPS
         // Start is called before the first frame update
         void Start()
         {
-            GameManager.instance.UpdateObjective(numberToSpawn); 
+            //GameManager.instance.UpdateObjective(numberToSpawn); 
         }
 
         // Update is called once per frame
