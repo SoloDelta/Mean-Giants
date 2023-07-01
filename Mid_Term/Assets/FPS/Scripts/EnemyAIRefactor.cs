@@ -194,6 +194,7 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
             spotted = true;
             spottingUI.SetActive(false);
             StartCoroutine(spottedUIon());
+            StartCoroutine(ChangeStealthVals());
         }
         if (percentSpotted <= 0)
         {
@@ -206,7 +207,6 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
         agent.SetDestination(patrolSpots[currentPointIndex]);
         if (Vector3.Distance(agent.transform.position, patrolSpots[currentPointIndex]) < 0.1)
         {
-            Debug.Log("reachjed");
             if (!patrolTurnAround)
             {
                 StartCoroutine(PatrolTurnAround());
@@ -412,6 +412,7 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
         spottingUI.SetActive(false);
         searching = false;
         spotted = false;
+        StartCoroutine(ChangeStealthVals());
         percentSpotted = 0;
         StopCoroutine(Roam());
         Debug.Log("Search Complete");
@@ -505,5 +506,25 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
         yield return new WaitForSeconds(shootRate);
 
         isShooting = false;
+    }
+
+    IEnumerator ChangeStealthVals()
+    {
+
+        yield return new WaitForSeconds(1.5f);
+        if(spotted)
+        {
+            enemyHPOriginal *= 2;
+            HP *= 2;
+            viewConeAngle += 20;
+        }
+        else
+        {
+            enemyHPOriginal /= 2;
+            HP /= 2;
+            viewConeAngle -= 20;
+        }
+        
+        Debug.Log("HP: " + HP + "/ " + enemyHPOriginal);
     }
 }
