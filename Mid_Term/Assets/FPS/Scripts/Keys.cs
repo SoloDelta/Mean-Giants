@@ -9,7 +9,7 @@ public enum Key
     prisonCellKey,
 }
 
-public class Keys : ScriptableObject
+public class Keys : MonoBehaviour
 {
     public GameObject model;
     public Key key;

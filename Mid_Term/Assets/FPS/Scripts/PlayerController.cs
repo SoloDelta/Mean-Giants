@@ -95,6 +95,8 @@ namespace FPS
         bool hasCellKey = false;
         public Key useableKeys;
 
+        
+
         #endregion
 
         #region Start
@@ -531,8 +533,13 @@ namespace FPS
 
         public void PickupKey(Key name, GameObject obj)
         {
+            string key;
+
             PickupKeys keyPickup = obj.GetComponent<PickupKeys>();
 
+            key = keyPickup.ToString();
+
+            
             if(Key.prisonKey == name)
             {
                 keyStorage.hasprisonKey = true;
@@ -541,7 +548,9 @@ namespace FPS
             {
                 keyStorage.hasCompoundKey = true;   
             }
-            
+            Debug.Log("Destroy");
+            Destroy(obj);
+
         }
 
 
