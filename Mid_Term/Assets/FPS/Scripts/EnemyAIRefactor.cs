@@ -44,7 +44,6 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
     [Header("-----Pathfinding-----")]
     [SerializeField] private List<Vector3> patrolSpots = new List<Vector3>(); //the locations the enemy will follow when patroling
     [SerializeField] private List<int> patrolRotations = new List<int>(); //the rotations the enemy will face too at once reaching a patrol spot
-    [SerializeField] private float patrolStoppingDistance;
     [SerializeField] float patrolStopTime;
     [SerializeField] float highAlertPatrolStopTime;
     [Header("-----Roaming-----")]
@@ -205,8 +204,9 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
     {
         agent.stoppingDistance = 0;
         agent.SetDestination(patrolSpots[currentPointIndex]);
-        if (Vector3.Distance(transform.position, patrolSpots[currentPointIndex]) < 0.1)
+        if (Vector3.Distance(agent.transform.position, patrolSpots[currentPointIndex]) < 0.1)
         {
+            Debug.Log("reachjed");
             if (!patrolTurnAround)
             {
                 StartCoroutine(PatrolTurnAround());
@@ -394,7 +394,7 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
             NavMesh.SamplePosition(randomPos, out hit, roamDist, 1);
             agent.SetDestination(hit.position);
         }
-        else if (!destinationChosen && agent.velocity.magnitude < 1 && Vector3.Distance(transform.position, agent.destination) <= patrolStoppingDistance + 2)
+        else if (!destinationChosen && agent.velocity.magnitude < 1 && Vector3.Distance(transform.position, agent.destination) <= 2)
         {
             Debug.Log("Got Stuck, Finding new roam");
             Vector3 randomPos = Random.insideUnitSphere * roamDist;
