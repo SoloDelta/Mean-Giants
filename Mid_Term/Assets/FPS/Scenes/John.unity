@@ -7940,6 +7940,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2807137102161754535, guid: 891b0bcfb087b0e4eb557c2480d5cd8c, type: 3}
+      propertyPath: alertEnemiesRange
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 6805392318922559373, guid: 891b0bcfb087b0e4eb557c2480d5cd8c, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -7990,7 +7994,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9086229669747526578, guid: 891b0bcfb087b0e4eb557c2480d5cd8c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

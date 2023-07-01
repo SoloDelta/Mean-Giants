@@ -8,7 +8,7 @@ using static Unity.VisualScripting.Member;
 public class EnemyAIRefactor : MonoBehaviour, IDamage
 {
     [Header("-----Components-----")]
-    [SerializeField] private NavMeshAgent agent; //the enemy's navmesh
+    [SerializeField] public NavMeshAgent agent; //the enemy's navmesh
     [SerializeField] private Animator anim; //the enemy's animator
     [SerializeField] private Transform headPosition;
     [SerializeField] private Transform shootPosition;
@@ -33,7 +33,7 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
     [SerializeField] float deathSoundVol;
 
     [Header("-----Enemy Stats-----")]
-    [SerializeField] string currentState; //This variable is just a visual representation of the current state of the enemy.
+    [SerializeField] public string currentState; //This variable is just a visual representation of the current state of the enemy.
     [SerializeField] private int HP; //the health of the enemy
     [SerializeField] private float speed; //speed at which the enemy moves
     [SerializeField] private int playerFaceSpeed; //the speed at which the enemy rotates to the player when stopped
@@ -73,7 +73,10 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
     private float timeCount = 0.0f; //time variable for slerping after a patrol
     private bool isShooting;
 
-    ///newVars
+    ///newVars <summary>
+    /// newVars
+    /// </summary>
+    bool tryAlert = true;
     public bool pullAlarm = false;
     bool patrolTurnAround = false;
     bool searching = false;
@@ -138,8 +141,9 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
         }
         else if (seesPlayer && spotted) //will fight the player if spotted and currently seen
         {
-            currentState = "Engaging in Combat";
+            currentState = "Combat";
             Combat();
+            
         }
         else if (searching) //only called while searching
         {
@@ -288,6 +292,14 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
 
     void Combat()
     {
+        if(tryAlert)
+        {
+            baseManagerScript.PullAlarm(this.gameObject);
+            tryAlert = false;
+            StartCoroutine(ReCallAlarmPull());
+        }
+        
+
         if (searchCopy != null) //if the enemy has started losing the player, stop losing the player.
         {
             StopCoroutine(searchCopy);
@@ -463,7 +475,7 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
         anim.SetBool("Aiming", true);
         //playerLastSeenAt = transform.position;
         baseManagerScript.pullAlarm = false;
-        baseManagerScript.isPullingAlarm = false;
+       // baseManagerScript.isPullingAlarm = false;
         baseManagerScript.highAlert = true;
         highAlert = true;
     }
@@ -543,5 +555,16 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
         }
         
         Debug.Log("HP: " + HP + "/ " + enemyHPOriginal);
+    }
+
+    IEnumerator ReCallAlarmPull()
+    {
+
+        yield return new WaitForSeconds(15);
+        if(!baseManagerScript.highAlert)
+        {
+            Debug.Log("try again");
+            tryAlert = true;
+        }
     }
 }
