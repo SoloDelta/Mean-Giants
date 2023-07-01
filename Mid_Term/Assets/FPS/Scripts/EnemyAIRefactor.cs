@@ -12,6 +12,8 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
     [SerializeField] private Animator anim; //the enemy's animator
     [SerializeField] private Transform headPosition;
     [SerializeField] private Transform shootPosition;
+    [SerializeField] private GameObject baseManager;
+    [SerializeField] private BaseManager baseManagerScript;
 
     [Header("----- UIComponents-----")]
     [SerializeField] private GameObject enemyUIParent; //the entirety of enemy UI. Healthbar and detection.
@@ -38,7 +40,7 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
     [SerializeField] private int viewConeAngle; //the angle from which the enemy can see the player (calculated from middle)
     [SerializeField] private bool atStart; //a visual bool just to show if the AI is where it started.
     [SerializeField] private bool spotted = false;
-    [SerializeField] private bool highAlert = false;
+    [SerializeField] public bool highAlert = false;
     [SerializeField] private float spottingDistance;
 
     [Header("-----Pathfinding-----")]
@@ -83,7 +85,8 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
     /// </summary>
     void Start()
     {
-       
+        baseManager = transform.parent.transform.parent.gameObject;
+        baseManagerScript = baseManager.GetComponent<BaseManager>();
         anim.SetBool("Aiming", true);
         audSource = GetComponent<AudioSource>();
         startingPos = transform.position;
@@ -140,6 +143,7 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
         }
         else if (searching) //only called while searching
         {
+            spotted = true;
             currentState = "Search/Roaming";
             StartCoroutine(Roam());
         }
@@ -217,30 +221,29 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
         }
     }
     
-    void PullAlarm() //finds the closest alarm, paths to it, and pulls the alarm to summon reinforcements
+    public void PullAlarm() //finds the closest alarm, paths to it, and pulls the alarm to summon reinforcements
     {
         StopCoroutine(PatrolTurnAround());
         agent.stoppingDistance = 0;
-        GameObject[] alarms = GameObject.FindGameObjectsWithTag("Alarm");
-        GameObject closestAlarm = alarms[0];
-        for (int i = 0; i < alarms.Length; i++)
+        
+        GameObject closestAlarm = baseManagerScript.alarms[0];
+        for (int i = 0; i < baseManagerScript.alarms.Count; i++)
         {
-            if (Vector3.Distance(alarms[i].transform.position, transform.position) < Vector3.Distance(closestAlarm.transform.position, transform.position))
+            if (Vector3.Distance(baseManagerScript.alarms[i].transform.position, transform.position) < Vector3.Distance(closestAlarm.transform.position, transform.position))
             {
-                closestAlarm = alarms[i];
+                closestAlarm = baseManagerScript.alarms[i];
             }
         }
-        agent.SetDestination(closestAlarm.transform.position);
-        
-    
-
-        if (Vector3.Distance(transform.position, closestAlarm.transform.position) < 1)
+        agent.SetDestination(closestAlarm.transform.GetChild(1).transform.position);
+      
+        if (Vector3.Distance(transform.position, closestAlarm.transform.GetChild(1).transform.position) < 1.5)
         {
-            Vector3 alarmDirection = closestAlarm.transform.position - headPosition.position;
+            Vector3 alarmDirection = closestAlarm.transform.GetChild(1).transform.position - headPosition.position;
             Quaternion rot = Quaternion.LookRotation(new Vector3(alarmDirection.x, 0, alarmDirection.z));
             transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * playerFaceSpeed);
             StartCoroutine(PullingAlarm());
         }
+
     }
 
     bool canSeePlayer()
@@ -376,6 +379,10 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
         Debug.DrawRay(shootPosition.position, playerDirection);
         
     }
+    public void SearchBase()
+    {
+        StartCoroutine(Search());
+    }
     ////////////////////
     ///COROUTINES
     ////////////////////
@@ -404,9 +411,16 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
             agent.SetDestination(hit.position);
         }
     }
-    IEnumerator Search()
+    private IEnumerator Search()
     {
+        if(!spotted)
+        {
+            StartCoroutine(ChangeStealthVals());
+        }
+        spotted = true;
+        
         searching = true;
+        percentSpotted = 1.2f;
         spottingUI.SetActive(true);
         yield return new WaitForSeconds(15);
         spottingUI.SetActive(false);
@@ -447,7 +461,10 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
         pullAlarm = false;
         anim.SetBool("Use", false);
         anim.SetBool("Aiming", true);
-        playerLastSeenAt = transform.position;
+        //playerLastSeenAt = transform.position;
+        baseManagerScript.pullAlarm = false;
+        baseManagerScript.isPullingAlarm = false;
+        baseManagerScript.highAlert = true;
         highAlert = true;
     }
     IEnumerator spottedUIon() //turns the UI on if the player gets spotted. turns it off after 3seconds
