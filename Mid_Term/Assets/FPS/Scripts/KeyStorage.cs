@@ -4,7 +4,18 @@ using UnityEngine;
 
     public class KeyStorage : MonoBehaviour
     {
-        public bool hasprisonKey = false;
-        public bool hasCompoundKey = false;
-        public bool hasPrisonCellKey = false;
+        public bool _hasPrisonKey;
+        public bool _hasCompoundKey;
+
+        public bool HasPrisonKey
+        {
+            get { return _hasPrisonKey; }
+            set { _hasPrisonKey = value; }
+        }
+
+        public bool HasCompoundKey
+        {
+            get { return _hasCompoundKey; }
+            set { _hasCompoundKey = value; }
+        }
     }

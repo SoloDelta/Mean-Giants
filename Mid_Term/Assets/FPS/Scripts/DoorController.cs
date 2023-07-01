@@ -21,25 +21,19 @@ public class DoorController : MonoBehaviour
     private void Awake()
     {
         doorAnim = gameObject.GetComponent<Animator>();
+        _keyStorage = FindObjectOfType<KeyStorage>();
     }
 
     public void PlayAnimation()
     {
-        if (_keyStorage.hasprisonKey)
+        if (_keyStorage._hasPrisonKey)
         {
             if (prisonDoor)
             {
                 OpenDoor();
             }
         }
-        else if (_keyStorage.hasPrisonCellKey)
-        {
-            if (PrisonCell)
-            {
-                OpenDoor();
-            }
-        }
-        else if(_keyStorage.hasCompoundKey)
+        else if(_keyStorage._hasCompoundKey)
         {
             if (CompoundDoor)
             {

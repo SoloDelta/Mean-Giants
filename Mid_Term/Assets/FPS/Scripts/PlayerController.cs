@@ -533,24 +533,30 @@ namespace FPS
 
         public void PickupKey(Key name, GameObject obj)
         {
-            string key;
-
             PickupKeys keyPickup = obj.GetComponent<PickupKeys>();
 
-            key = keyPickup.ToString();
-
-            
-            if(Key.prisonKey == name)
+            if (keyPickup != null)
             {
-                keyStorage.hasprisonKey = true;
-            }
-            else if(Key.compoundKey == name)
-            {
-                keyStorage.hasCompoundKey = true;   
-            }
-            Debug.Log("Destroy");
-            Destroy(obj);
+                Debug.Log("Picking up key: " + name.ToString());
 
+                if (name == Key.prisonKey)
+                {
+                    keyStorage.HasPrisonKey = true;
+                    Debug.Log("hasPrisonKey is now true");
+                }
+                else if (name == Key.compoundKey)
+                {
+                    keyStorage.HasCompoundKey = true;
+                    Debug.Log("hasCompoundKey is now true");
+                }
+
+                Debug.Log("Destroying object: " + obj.name);
+                Destroy(obj);
+            }
+            else
+            {
+                Debug.LogError("The provided object does not have the PickupKeys component.");
+            }
         }
 
 

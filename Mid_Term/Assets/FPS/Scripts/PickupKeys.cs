@@ -6,7 +6,7 @@ using UnityEngine;
 public class PickupKeys : MonoBehaviour
 {
     [SerializeField] private Keys key;
-    private Key useableKey;
+    private readonly Key useableKey;
 
     public void OnTriggerEnter(Collider other)
     {
