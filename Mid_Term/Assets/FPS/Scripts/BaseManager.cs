@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BaseManager : MonoBehaviour
 {
+    #region Vars
     [SerializeField] GameObject enemiesParent;
     [SerializeField] GameObject alarmsParent;
     public List<GameObject> enemies = new List<GameObject>();
@@ -18,7 +19,9 @@ public class BaseManager : MonoBehaviour
     [SerializeField] int alertEnemiesRange; //this number decides how far away other enemies can be to hear alerts
     bool reinforced = false;
     bool playerInRange;
-    // Start is called before the first frame update
+    #endregion
+
+    #region Start
     void Start()
     {
         foreach (Transform child in enemiesParent.transform)
@@ -39,9 +42,10 @@ public class BaseManager : MonoBehaviour
         }
 
     }
+    #endregion
 
-    // Update is called once per frame
-    void Update()
+    #region Update
+    void Update() //If the base is on high alert, call reinforcements (if not done) and for every active enemy alert them and have them search the base
     {
         if (highAlert)
         {
@@ -67,7 +71,9 @@ public class BaseManager : MonoBehaviour
             
         }
     }
+    #endregion
 
+    #region Triggers
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -84,8 +90,10 @@ public class BaseManager : MonoBehaviour
             enemiesParent.SetActive(false);
         }
     }
+    #endregion
 
-    public void PullAlarm(GameObject _callingEnemy = null)
+    #region Alarm Stuff
+    public void PullAlarm(GameObject _callingEnemy = null) //for every alarm, find the closest enemy and have them pull the alarm
     {
         if(!isPullingAlarm)
         {
@@ -102,16 +110,6 @@ public class BaseManager : MonoBehaviour
         }
        
     }
-
-    IEnumerator Reinforcements()
-    {
-        for(int i = 0; i < numOfReinforcements; i++) 
-        {
-            if(Random.Range(0,2) == 0) { Instantiate(heavy, reinformentSpawnPos.transform); }
-            else { Instantiate(shotgun, reinformentSpawnPos.transform); }
-            yield return new WaitForSeconds(1);
-        }
-    }
     public GameObject FindClosestEnemy(GameObject _alarm, GameObject _callingEnemy)
     {
         /////
@@ -120,13 +118,13 @@ public class BaseManager : MonoBehaviour
         GameObject closestEnemy = null;
         foreach (GameObject enemy in enemies)
         {
-            if(enemy.GetComponent<EnemyAIRefactor>().agent.isActiveAndEnabled)
+            if (enemy.GetComponent<EnemyAIRefactor>().agent.isActiveAndEnabled)
             {
-                
+
                 if (_callingEnemy != enemy)
                 {
-                    
-                    if(_callingEnemy == null)
+
+                    if (_callingEnemy == null)
                     {
                         if (closestEnemy == null)
                         {
@@ -141,17 +139,27 @@ public class BaseManager : MonoBehaviour
                     {
                         if (alertEnemiesRange >= Vector3.Distance(_callingEnemy.transform.position, enemy.transform.position))
                         {
-                            if(closestEnemy == null) { closestEnemy = enemy; }
+                            if (closestEnemy == null) { closestEnemy = enemy; }
                             if (Vector3.Distance(_alarm.transform.position, closestEnemy.transform.position) > Vector3.Distance(_alarm.transform.position, enemy.transform.position))
                             {
                                 closestEnemy = enemy;
-                                
+
                             }
                         }
-                    }           
+                    }
                 }
             }
         }
         return closestEnemy;
     }
+    IEnumerator Reinforcements() //instantiates random enemies when the alarm is pulled
+    {
+        for(int i = 0; i < numOfReinforcements; i++) 
+        {
+            if(Random.Range(0,2) == 0) { Instantiate(heavy, reinformentSpawnPos.transform); }
+            else { Instantiate(shotgun, reinformentSpawnPos.transform); }
+            yield return new WaitForSeconds(1);
+        }
+    }
+    #endregion
 }

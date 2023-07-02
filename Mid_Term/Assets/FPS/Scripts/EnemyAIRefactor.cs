@@ -7,6 +7,7 @@ using static Unity.VisualScripting.Member;
 
 public class EnemyAIRefactor : MonoBehaviour, IDamage
 {
+    #region Editor Vars
     [Header("-----Components-----")]
     [SerializeField] public NavMeshAgent agent; //the enemy's navmesh
     [SerializeField] private Animator anim; //the enemy's animator
@@ -57,6 +58,9 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
     [SerializeField] private float burstRate; //how fast of a burst the enemy shoots
     [SerializeField] private bool isBurstShot; //if the enemy shoots regular or in burst
     [SerializeField] private bool isShotgun;
+    #endregion
+
+    #region Script Vars
     private int numOfPatrolSpots; //the number of spots the enemy patrols to
     private Vector3 playerDirection; //the direction from the enemy to the player
     private bool playerInRange; //is the player within range of the enemy
@@ -84,9 +88,9 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
     Vector3 playerLastSeenAt;
     // Start is called before the first frame update
 
-    /// <summary>
-    /// SCROLL DOWN TO END OF SCRIPT FOR CODE SUMMARY
-    /// </summary>
+    #endregion
+
+    #region Start
     void Start()
     {
         baseManager = transform.parent.transform.parent.gameObject;
@@ -117,8 +121,9 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
         agent.destination = patrolSpots[0];
         GameManager.instance.UpdateObjective(1);
     }
+    #endregion
 
-    // Update is called once per frame
+    #region Update
     void Update()
     {      
         if (agent.isActiveAndEnabled)
@@ -134,6 +139,9 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
             StateMachine();
         }
     }
+    #endregion
+
+    #region FSM
     void StateMachine()
     {
         if (pullAlarm)
@@ -145,7 +153,7 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
         {
             currentState = "Combat";
             Combat();
-            
+
         }
         else if (searching) //only called while searching
         {
@@ -157,7 +165,7 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
         {
             currentState = "Starting Search";
             agent.stoppingDistance = 0;
-            
+
             if (searchCopy == null) { searchCopy = StartCoroutine(Search()); }
         }
         else if (spotted && !seesPlayer) //goes the players last known location if the player has been spotted but isnt seen
@@ -172,14 +180,171 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
         }
         else if (canSeeBody()) //something to make enemy sus from player
         {
-            currentState = "Checking out Sus";
-            //Path to a game object: Noise, broken alarm
+            currentState = "Noticing dead body";
+            //Path to a game object: Notice dead body
+        }
+        else if (false)
+        {
+            currentState = "Going to sound";
+            //path to a sus sound
         }
         else //if nothing else, do the patrol route
         {
             currentState = "Patrolling";
             Patrol();
         }
+    }
+    #endregion
+
+    #region States
+    public void PullAlarm() //finds the closest alarm, paths to it, and pulls the alarm to summon reinforcements
+    {
+        StopCoroutine(PatrolTurnAround());
+        agent.stoppingDistance = 0;
+
+        GameObject closestAlarm = baseManagerScript.alarms[0];
+        for (int i = 0; i < baseManagerScript.alarms.Count; i++)
+        {
+            if (Vector3.Distance(baseManagerScript.alarms[i].transform.position, transform.position) < Vector3.Distance(closestAlarm.transform.position, transform.position))
+            {
+                closestAlarm = baseManagerScript.alarms[i];
+            }
+        }
+        agent.SetDestination(closestAlarm.transform.GetChild(1).transform.position);
+
+        if (Vector3.Distance(transform.position, closestAlarm.transform.GetChild(1).transform.position) < 1.5)
+        {
+            Vector3 alarmDirection = closestAlarm.transform.GetChild(1).transform.position - headPosition.position;
+            Quaternion rot = Quaternion.LookRotation(new Vector3(alarmDirection.x, 0, alarmDirection.z));
+            transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * playerFaceSpeed);
+            StartCoroutine(PullingAlarm());
+        }
+
+    }
+    void Combat()
+    {
+        if (tryAlert)
+        {
+            baseManagerScript.PullAlarm(this.gameObject);
+            tryAlert = false;
+            StartCoroutine(ReCallAlarmPull());
+        }
+
+
+        if (searchCopy != null) //if the enemy has started losing the player, stop losing the player.
+        {
+            StopCoroutine(searchCopy);
+            searchCopy = null;
+            spottingUI.SetActive(false);
+            StartCoroutine(spottedUIon());
+            searching = false;
+        }
+        agent.stoppingDistance = stoppingDistanceOriginal;
+        agent.SetDestination(GameManager.instance.player.transform.position);
+        playerLastSeenAt = GameManager.instance.player.transform.position;
+        if (agent.remainingDistance <= agent.stoppingDistance)
+        {
+            Quaternion rot = Quaternion.LookRotation(new Vector3(playerDirection.x, 0, playerDirection.z));
+            transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * playerFaceSpeed);
+        }
+        if (!isShooting)
+        {
+            StartCoroutine(shoot());
+        }
+    }
+    private IEnumerator Search()
+    {
+        if (!spotted)
+        {
+            StartCoroutine(ChangeStealthVals());
+        }
+        spotted = true;
+
+        searching = true;
+        percentSpotted = 1.2f;
+        spottingUI.SetActive(true);
+        yield return new WaitForSeconds(15);
+        spottingUI.SetActive(false);
+        searching = false;
+        shouldStartSearching = false;
+        spotted = false;
+        StartCoroutine(ChangeStealthVals());
+        percentSpotted = 0;
+        StopCoroutine(Roam());
+        Debug.Log("Search Complete");
+    }
+    bool canSeeBody()
+    {
+        foreach (GameObject deadEnemy in baseManagerScript.enemies)
+        {
+            if ((Vector3.Distance(deadEnemy.transform.position, this.gameObject.transform.position) < 10) && deadEnemy.layer == 13)
+            {
+                Vector3 deadDirection = deadEnemy.transform.position - headPosition.transform.position;
+                float angleToDead = Vector3.Angle(new Vector3(deadDirection.x, 0, deadDirection.z), transform.forward);
+                Debug.DrawRay(headPosition.position, deadDirection);
+                RaycastHit hit;
+                if (Physics.Raycast(headPosition.position, deadDirection, out hit))
+                {
+                    if (hit.collider.gameObject.layer == 13 && angleToDead <= viewConeAngle)
+                    {
+                        agent.stoppingDistance = 4;
+                        agent.SetDestination(deadEnemy.transform.position);
+                        if (Vector3.Distance(deadEnemy.transform.position, agent.transform.position) < 5)
+                        {
+                            if (tryAlert)
+                            {
+                                baseManagerScript.PullAlarm(this.gameObject);
+                                tryAlert = false;
+                                StartCoroutine(ReCallAlarmPull());
+                            }
+                            shouldStartSearching = true;
+                        }
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+    void Patrol() //follows a set patrol route, turning the set amount after reaching the spot
+    {
+        agent.stoppingDistance = 0;
+        agent.SetDestination(patrolSpots[currentPointIndex]);
+        if (Vector3.Distance(agent.transform.position, patrolSpots[currentPointIndex]) < 0.1)
+        {
+            if (!patrolTurnAround)
+            {
+                StartCoroutine(PatrolTurnAround());
+            }
+            Quaternion rotationAmount = Quaternion.Euler(0, patrolRotations[currentPointIndex], 0);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotationAmount, timeCount);
+            timeCount += Time.deltaTime / 10;
+        }
+    }
+    #endregion
+    
+    #region Detection
+    bool canSeePlayer()
+    {
+        if (playerInRange)
+        {
+            playerDirection = new Vector3(0, 1, 0) + GameManager.instance.player.transform.position - headPosition.position;
+            angleToPlayer = Vector3.Angle(new Vector3(playerDirection.x, 0, playerDirection.z), transform.forward);
+            Debug.DrawRay(headPosition.position, playerDirection);
+            RaycastHit hit;
+            if (Physics.Raycast(headPosition.position, playerDirection, out hit))
+            {
+                if (hit.collider.CompareTag("Player") && angleToPlayer <= viewConeAngle)
+                {
+                    if (!spotted)
+                    {
+                        spottingUI.SetActive(true);
+                    }
+                    return true;
+                }
+            }
+        }
+        return false;
     }
     private void Spotting() //starts detecting the player over time
     {
@@ -211,160 +376,41 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
             spottingUI.SetActive(false);
         }
     }
-    void Patrol() //follows a set patrol route, turning the set amount after reaching the spot
+    IEnumerator spottedUIon() //turns the UI on if the player gets spotted. turns it off after 3seconds
     {
-        agent.stoppingDistance = 0;
-        agent.SetDestination(patrolSpots[currentPointIndex]);
-        if (Vector3.Distance(agent.transform.position, patrolSpots[currentPointIndex]) < 0.1)
+        if (spottingUI.activeInHierarchy)
         {
-            if (!patrolTurnAround)
-            {
-                StartCoroutine(PatrolTurnAround());
-            }
-            Quaternion rotationAmount = Quaternion.Euler(0, patrolRotations[currentPointIndex], 0);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotationAmount, timeCount);
-            timeCount += Time.deltaTime / 10;
-        }
-    }
-    
-    public void PullAlarm() //finds the closest alarm, paths to it, and pulls the alarm to summon reinforcements
-    {
-        StopCoroutine(PatrolTurnAround());
-        agent.stoppingDistance = 0;
-        
-        GameObject closestAlarm = baseManagerScript.alarms[0];
-        for (int i = 0; i < baseManagerScript.alarms.Count; i++)
-        {
-            if (Vector3.Distance(baseManagerScript.alarms[i].transform.position, transform.position) < Vector3.Distance(closestAlarm.transform.position, transform.position))
-            {
-                closestAlarm = baseManagerScript.alarms[i];
-            }
-        }
-        agent.SetDestination(closestAlarm.transform.GetChild(1).transform.position);
-      
-        if (Vector3.Distance(transform.position, closestAlarm.transform.GetChild(1).transform.position) < 1.5)
-        {
-            Vector3 alarmDirection = closestAlarm.transform.GetChild(1).transform.position - headPosition.position;
-            Quaternion rot = Quaternion.LookRotation(new Vector3(alarmDirection.x, 0, alarmDirection.z));
-            transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * playerFaceSpeed);
-            StartCoroutine(PullingAlarm());
-        }
-
-    }
-
-    bool canSeePlayer()
-    {
-        if (playerInRange)
-        {
-            playerDirection = new Vector3(0, 1, 0) + GameManager.instance.player.transform.position - headPosition.position;
-            angleToPlayer = Vector3.Angle(new Vector3(playerDirection.x, 0, playerDirection.z), transform.forward);
-            Debug.DrawRay(headPosition.position, playerDirection);
-            RaycastHit hit;
-            if (Physics.Raycast(headPosition.position, playerDirection, out hit))
-            {
-                if (hit.collider.CompareTag("Player") && angleToPlayer <= viewConeAngle)
-                {
-                    if (!spotted)
-                    {
-                        spottingUI.SetActive(true);
-                    }
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-    bool canSeeBody()
-    {
-        foreach(GameObject deadEnemy in baseManagerScript.enemies)
-        {
-            if((Vector3.Distance(deadEnemy.transform.position, this.gameObject.transform.position) < 10) && deadEnemy.layer == 13)
-            {
-                Vector3 deadDirection = deadEnemy.transform.position - headPosition.transform.position;
-                float angleToDead = Vector3.Angle(new Vector3(deadDirection.x, 0, deadDirection.z), transform.forward);
-                Debug.DrawRay(headPosition.position, deadDirection);
-                RaycastHit hit;
-                if (Physics.Raycast(headPosition.position, deadDirection, out hit))
-                {
-                    if (hit.collider.gameObject.layer ==13 && angleToDead <= viewConeAngle)
-                    {
-                        agent.stoppingDistance = 4;
-                        agent.SetDestination(deadEnemy.transform.position);
-                        if(Vector3.Distance(deadEnemy.transform.position, agent.transform.position) < 5)
-                        {
-                            if (tryAlert)
-                            {
-                                baseManagerScript.PullAlarm(this.gameObject);
-                                tryAlert = false;
-                                StartCoroutine(ReCallAlarmPull());
-                            }
-                            shouldStartSearching = true;
-                        }
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.CompareTag("Player"))
-        {
-            playerInRange = true;
-        }
-        
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if(other.gameObject.CompareTag("Player"))
-        {
-            playerInRange = false;
-        }
-
-    }
-    void rotateUI() //rotates the enemy's UI towards the player
-    {
-        if (wholeHealthBar.activeInHierarchy || spottedUI.activeInHierarchy || spottingUI.activeInHierarchy) //if ui is active, set its x rotation to that of the camera and set the y rotation to that of the player
-        {
-            Vector3 eulerAngleRots = new Vector3(Camera.main.transform.rotation.eulerAngles.x, GameManager.instance.player.transform.rotation.eulerAngles.y, 0.0f);
-            Quaternion rotation = Quaternion.Euler(eulerAngleRots);
-            enemyUIParent.transform.rotation = rotation;
-        }
-    }
-
-    void Combat()
-    {
-        if(tryAlert)
-        {
-            baseManagerScript.PullAlarm(this.gameObject);
-            tryAlert = false;
-            StartCoroutine(ReCallAlarmPull());
-        }
-        
-
-        if (searchCopy != null) //if the enemy has started losing the player, stop losing the player.
-        {
-            StopCoroutine(searchCopy);
-            searchCopy = null;
             spottingUI.SetActive(false);
-            StartCoroutine(spottedUIon());
-            searching = false;
         }
-        agent.stoppingDistance = stoppingDistanceOriginal;
-        agent.SetDestination(GameManager.instance.player.transform.position);
-        playerLastSeenAt = GameManager.instance.player.transform.position;
-        if (agent.remainingDistance <= agent.stoppingDistance)
-        {
-            Quaternion rot = Quaternion.LookRotation(new Vector3(playerDirection.x, 0, playerDirection.z));
-            transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * playerFaceSpeed);
-        }
-        if(!isShooting)
-        {
-            StartCoroutine(shoot());
-        }
-        //equivalent of shoot
+        spottedUI.SetActive(true);
+        yield return new WaitForSeconds(3.0f);
+        spottedUI.SetActive(false);
     }
+
+
+    IEnumerator ChangeStealthVals()
+    {
+
+        yield return new WaitForSeconds(1.5f);
+        if (spotted)
+        {
+            enemyHPOriginal *= 2;
+            HP *= 2;
+            viewConeAngle += 20;
+        }
+        else
+        {
+            enemyHPOriginal /= 2;
+            HP /= 2;
+            viewConeAngle -= 20;
+        }
+
+        Debug.Log("HP: " + HP + "/ " + enemyHPOriginal);
+    }
+    #endregion
+
+    #region Combat Supplements
+
     public void TakeDamage(int dmg) //logic for taking damage. 
     {
         HP -= dmg;
@@ -403,10 +449,12 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
             spotted = true;
         }
     }
+
     private void updateEnemyUI() // Updates enemyHP bar
     {
         HPBar.transform.localScale = new Vector3((float)HP / enemyHPOriginal, HPBar.localScale.y, HPBar.localScale.y);
     }
+
     public void createBullet() //spawns the bullet at a position. needs work
     {
         playerDirection = new Vector3(0, 1, 0) + GameManager.instance.player.transform.position - shootPosition.position;
@@ -434,106 +482,7 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
 
         audSource.PlayOneShot(shootSound, shootSoundVol);
         Debug.DrawRay(shootPosition.position, playerDirection);
-        
-    }
-    public void SearchBase()
-    {
-        StartCoroutine(Search());
-    }
-    ////////////////////
-    ///COROUTINES
-    ////////////////////
-    IEnumerator Roam() //roams fast
-    {
-        agent.stoppingDistance = 0;
 
-        if (!destinationChosen && agent.remainingDistance < 1.5f)
-        {
-            destinationChosen = true;
-            yield return new WaitForSeconds(roamTimer);
-            destinationChosen = false;
-            Vector3 randomPos = Random.insideUnitSphere * roamDist;
-            randomPos += startingPos;
-            NavMeshHit hit;
-            NavMesh.SamplePosition(randomPos, out hit, roamDist, 1);
-            agent.SetDestination(hit.position);
-        }
-        else if (!destinationChosen && agent.velocity.magnitude < 1 && Vector3.Distance(transform.position, agent.destination) <= 2)
-        {
-            Debug.Log("Got Stuck, Finding new roam");
-            Vector3 randomPos = Random.insideUnitSphere * roamDist;
-            randomPos += startingPos;
-            NavMeshHit hit;
-            NavMesh.SamplePosition(randomPos, out hit, roamDist, 1);
-            agent.SetDestination(hit.position);
-        }
-    }
-    private IEnumerator Search()
-    {
-        if(!spotted)
-        {
-            StartCoroutine(ChangeStealthVals());
-        }
-        spotted = true;
-        
-        searching = true;
-        percentSpotted = 1.2f;
-        spottingUI.SetActive(true);
-        yield return new WaitForSeconds(15);
-        spottingUI.SetActive(false);
-        searching = false;
-        shouldStartSearching = false;
-        spotted = false;
-        StartCoroutine(ChangeStealthVals());
-        percentSpotted = 0;
-        StopCoroutine(Roam());
-        Debug.Log("Search Complete");
-    }
-    IEnumerator PatrolTurnAround()
-    {
-        patrolTurnAround = true;
-        agent.isStopped = true;
-        if (highAlert)
-        {
-            yield return new WaitForSeconds(highAlertPatrolStopTime);
-        }
-        else
-        {
-            yield return new WaitForSeconds(patrolStopTime);
-        }
-        agent.isStopped = false;
-        patrolTurnAround = false;
-        timeCount = 0;
-        currentPointIndex++;
-        if (currentPointIndex > numOfPatrolSpots - 1)
-        {
-            currentPointIndex = 0;
-        }
-    }
-
-    IEnumerator PullingAlarm()
-    {
-        anim.SetBool("Aiming", false);
-        anim.SetBool("Use", true);
-        yield return new WaitForSeconds(4);
-        pullAlarm = false;
-        anim.SetBool("Use", false);
-        anim.SetBool("Aiming", true);
-        //playerLastSeenAt = transform.position;
-        baseManagerScript.pullAlarm = false;
-       // baseManagerScript.isPullingAlarm = false;
-        baseManagerScript.highAlert = true;
-        highAlert = true;
-    }
-    IEnumerator spottedUIon() //turns the UI on if the player gets spotted. turns it off after 3seconds
-    {
-        if (spottingUI.activeInHierarchy)
-        {
-            spottingUI.SetActive(false);
-        }
-        spottedUI.SetActive(true);
-        yield return new WaitForSeconds(3.0f);
-        spottedUI.SetActive(false);
     }
     IEnumerator HitMarker()
     {
@@ -569,7 +518,7 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
             StartCoroutine(shootBurst());
 
         }
-        if(isShotgun)
+        if (isShotgun)
         {
             ShotgunBlast();
         }
@@ -582,35 +531,115 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
 
         isShooting = false;
     }
+    #endregion
 
-    IEnumerator ChangeStealthVals()
+    #region Pathing Supplements
+    public void SearchBase()
     {
+        StartCoroutine(Search());
+    }
 
-        yield return new WaitForSeconds(1.5f);
-        if(spotted)
+    IEnumerator Roam() //roams fast
+    {
+        agent.stoppingDistance = 0;
+
+        if (!destinationChosen && agent.remainingDistance < 1.5f)
         {
-            enemyHPOriginal *= 2;
-            HP *= 2;
-            viewConeAngle += 20;
+            destinationChosen = true;
+            yield return new WaitForSeconds(roamTimer);
+            destinationChosen = false;
+            Vector3 randomPos = Random.insideUnitSphere * roamDist;
+            randomPos += startingPos;
+            NavMeshHit hit;
+            NavMesh.SamplePosition(randomPos, out hit, roamDist, 1);
+            agent.SetDestination(hit.position);
+        }
+        else if (!destinationChosen && agent.velocity.magnitude < 1 && Vector3.Distance(transform.position, agent.destination) <= 2)
+        {
+            Debug.Log("Got Stuck, Finding new roam");
+            Vector3 randomPos = Random.insideUnitSphere * roamDist;
+            randomPos += startingPos;
+            NavMeshHit hit;
+            NavMesh.SamplePosition(randomPos, out hit, roamDist, 1);
+            agent.SetDestination(hit.position);
+        }
+    }
+
+    IEnumerator PatrolTurnAround()
+    {
+        patrolTurnAround = true;
+        agent.isStopped = true;
+        if (highAlert)
+        {
+            yield return new WaitForSeconds(highAlertPatrolStopTime);
         }
         else
         {
-            enemyHPOriginal /= 2;
-            HP /= 2;
-            viewConeAngle -= 20;
+            yield return new WaitForSeconds(patrolStopTime);
         }
-        
-        Debug.Log("HP: " + HP + "/ " + enemyHPOriginal);
+        agent.isStopped = false;
+        patrolTurnAround = false;
+        timeCount = 0;
+        currentPointIndex++;
+        if (currentPointIndex > numOfPatrolSpots - 1)
+        {
+            currentPointIndex = 0;
+        }
+    }
+
+    IEnumerator PullingAlarm()
+    {
+        anim.SetBool("Aiming", false);
+        anim.SetBool("Use", true);
+        yield return new WaitForSeconds(4);
+        pullAlarm = false;
+        anim.SetBool("Use", false);
+        anim.SetBool("Aiming", true);
+        //playerLastSeenAt = transform.position;
+        baseManagerScript.pullAlarm = false;
+        // baseManagerScript.isPullingAlarm = false;
+        baseManagerScript.highAlert = true;
+        highAlert = true;
+    }
+    #endregion
+
+    #region Misc
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            playerInRange = true;
+        }
+
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            playerInRange = false;
+        }
+
+    }
+    void rotateUI() //rotates the enemy's UI towards the player
+    {
+        if (wholeHealthBar.activeInHierarchy || spottedUI.activeInHierarchy || spottingUI.activeInHierarchy) //if ui is active, set its x rotation to that of the camera and set the y rotation to that of the player
+        {
+            Vector3 eulerAngleRots = new Vector3(Camera.main.transform.rotation.eulerAngles.x, GameManager.instance.player.transform.rotation.eulerAngles.y, 0.0f);
+            Quaternion rotation = Quaternion.Euler(eulerAngleRots);
+            enemyUIParent.transform.rotation = rotation;
+        }
     }
 
     IEnumerator ReCallAlarmPull()
     {
 
         yield return new WaitForSeconds(15);
-        if(!baseManagerScript.highAlert)
+        if (!baseManagerScript.highAlert)
         {
             Debug.Log("try again");
             tryAlert = true;
         }
     }
+    #endregion
+
 }
