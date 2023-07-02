@@ -26,7 +26,6 @@ public class BaseManager : MonoBehaviour
             if(child.gameObject.GetComponent<EnemyAIRefactor>() != null)
             {
                 enemies.Add(child.gameObject);
-                Debug.Log(child.gameObject);
             }
          
         }
@@ -44,10 +43,6 @@ public class BaseManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if(pullAlarm)
-        //{
-        //    PullAlarm();
-        //}
         if (highAlert)
         {
             if(!reinforced)
@@ -95,11 +90,8 @@ public class BaseManager : MonoBehaviour
         if(!isPullingAlarm)
         {
             isPullingAlarm = true;
-            Debug.Log("Called");
             foreach (GameObject alarm in alarms)
             {
-                Debug.Log("Alarm");
-                
                 FindClosestEnemy(alarm, _callingEnemy).GetComponent<EnemyAIRefactor>().pullAlarm = true;
             }
         }
@@ -118,7 +110,8 @@ public class BaseManager : MonoBehaviour
     public GameObject FindClosestEnemy(GameObject _alarm, GameObject _callingEnemy)
     {
         /////
-        ///This function searches all of the enemies in the base and finds the best enemy to pull the alarm. If this was called by an enemy, it sends the enemy closest to the alarm that is in callingEnemy's range. Otherwise it just sends the closest enemy
+        ///This function searches all of the enemies in the base and finds the best enemy to pull the alarm. 
+        ///If this was called by an enemy, it sends the enemy closest to the alarm that is in callingEnemy's range. Otherwise it just sends the closest enemy
         GameObject closestEnemy = null;
         foreach (GameObject enemy in enemies)
         {
@@ -138,11 +131,9 @@ public class BaseManager : MonoBehaviour
                         {
                             closestEnemy = enemy;
                         }
-                        
                     }
                     else if (_callingEnemy != null)
                     {
-                        Debug.Log("calling enemy not null");
                         if (alertEnemiesRange >= Vector3.Distance(_callingEnemy.transform.position, enemy.transform.position))
                         {
                             if(closestEnemy == null) { closestEnemy = enemy; }
@@ -152,9 +143,7 @@ public class BaseManager : MonoBehaviour
                                 
                             }
                         }
-                    }
-               
-                    Debug.Log("Enemy");
+                    }           
                 }
             }
         }
