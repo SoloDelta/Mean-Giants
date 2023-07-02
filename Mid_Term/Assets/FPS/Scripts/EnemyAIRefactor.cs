@@ -72,6 +72,7 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
     private Coroutine searchCopy; //a variable to store the last coroutine of "losingPlayer"        
     private float timeCount = 0.0f; //time variable for slerping after a patrol
     private bool isShooting;
+    public bool shouldStartSearching = false;
 
     ///newVars <summary>
     /// newVars
@@ -122,6 +123,7 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
     {      
         if (agent.isActiveAndEnabled)
         {
+            
             anim.SetFloat("Enemy Speed", agent.velocity.normalized.magnitude);
             seesPlayer = canSeePlayer();
             rotateUI();
@@ -151,7 +153,7 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
             currentState = "Search/Roaming";
             StartCoroutine(Roam());
         }
-        else if (!seesPlayer && Vector3.Distance(transform.position, playerLastSeenAt) <= 1.5) //starts searching if the enemy cant see the player and the enemy is at the players last known location
+        else if ((!seesPlayer && Vector3.Distance(transform.position, playerLastSeenAt) <= 1.5) || shouldStartSearching) //starts searching if the enemy cant see the player and the enemy is at the players last known location
         {
             currentState = "Starting Search";
             agent.stoppingDistance = 0;
@@ -168,7 +170,7 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
             currentState = "SpottingPlayer";
             agent.isStopped = true;
         }
-        else if (false) //something to make enemy sus from player
+        else if (canSeeBody()) //something to make enemy sus from player
         {
             currentState = "Checking out Sus";
             //Path to a game object: Noise, broken alarm
@@ -272,13 +274,54 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
         }
         return false;
     }
+    bool canSeeBody()
+    {
+        foreach(GameObject deadEnemy in baseManagerScript.enemies)
+        {
+            if((Vector3.Distance(deadEnemy.transform.position, this.gameObject.transform.position) < 10) && deadEnemy.layer == 13)
+            {
+                Vector3 deadDirection = deadEnemy.transform.position - headPosition.transform.position;
+                float angleToDead = Vector3.Angle(new Vector3(deadDirection.x, 0, deadDirection.z), transform.forward);
+                Debug.DrawRay(headPosition.position, deadDirection);
+                RaycastHit hit;
+                if (Physics.Raycast(headPosition.position, deadDirection, out hit))
+                {
+                    if (hit.collider.gameObject.layer ==13 && angleToDead <= viewConeAngle)
+                    {
+                        agent.stoppingDistance = 4;
+                        agent.SetDestination(deadEnemy.transform.position);
+                        if(Vector3.Distance(deadEnemy.transform.position, agent.transform.position) < 5)
+                        {
+                            if (tryAlert)
+                            {
+                                baseManagerScript.PullAlarm(this.gameObject);
+                                tryAlert = false;
+                                StartCoroutine(ReCallAlarmPull());
+                            }
+                            shouldStartSearching = true;
+                        }
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
     private void OnTriggerEnter(Collider other)
     {
-        playerInRange = true;
+        if(other.gameObject.CompareTag("Player"))
+        {
+            playerInRange = true;
+        }
+        
     }
     private void OnTriggerExit(Collider other)
     {
-        playerInRange = false;
+        if(other.gameObject.CompareTag("Player"))
+        {
+            playerInRange = false;
+        }
+
     }
     void rotateUI() //rotates the enemy's UI towards the player
     {
@@ -322,7 +365,6 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
         }
         //equivalent of shoot
     }
-
     public void TakeDamage(int dmg) //logic for taking damage. 
     {
         HP -= dmg;
@@ -345,8 +387,9 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
             StartCoroutine(HitMarker());
 
             agent.enabled = false;
-            GetComponent<CapsuleCollider>().enabled = false;
 
+            //GetComponent<CapsuleCollider>().enabled = false;
+            this.gameObject.layer = 13;
         }
         else //starts attacking the player and instantly spots them
         {
@@ -437,6 +480,7 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
         yield return new WaitForSeconds(15);
         spottingUI.SetActive(false);
         searching = false;
+        shouldStartSearching = false;
         spotted = false;
         StartCoroutine(ChangeStealthVals());
         percentSpotted = 0;
