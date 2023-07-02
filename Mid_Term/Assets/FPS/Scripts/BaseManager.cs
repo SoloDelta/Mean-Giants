@@ -92,7 +92,12 @@ public class BaseManager : MonoBehaviour
             isPullingAlarm = true;
             foreach (GameObject alarm in alarms)
             {
-                FindClosestEnemy(alarm, _callingEnemy).GetComponent<EnemyAIRefactor>().pullAlarm = true;
+                GameObject closestEnemy = FindClosestEnemy(alarm, _callingEnemy);
+                if(closestEnemy != null)
+                {
+                    closestEnemy.GetComponent<EnemyAIRefactor>().pullAlarm = true;
+                }
+                
             }
         }
        
