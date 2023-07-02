@@ -319,11 +319,12 @@ namespace FPS
                 RaycastHit hit;
                 updateAmmoUI();
 
-                
-                
+
+                LayerMask mask = LayerMask.GetMask("DeadEnemy");
+                mask = ~mask;
 
 
-                if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
+                if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance, mask))
                 {
 
                     IDamage damageable = hit.collider.GetComponent<IDamage>();
