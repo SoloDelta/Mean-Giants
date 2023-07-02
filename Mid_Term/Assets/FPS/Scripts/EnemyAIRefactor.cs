@@ -368,11 +368,13 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
     public void TakeDamage(int dmg) //logic for taking damage. 
     {
         HP -= dmg;
+        if (HP < 0) { HP = 0; }
         audSource.PlayOneShot(hmSound, hmSoundVol);
         StartCoroutine(HitMarker());
         updateEnemyUI();
         if (HP <= 0) //if the enemy is dead, turns of lasersight, stops all active coroutines, stops animations, and turns off collision.
         {
+
             GameManager.instance.hitMarkKill.gameObject.SetActive(false);
             StopAllCoroutines();
             spottedUI.SetActive(false);
