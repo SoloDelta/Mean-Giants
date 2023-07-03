@@ -540,12 +540,12 @@ namespace FPS
             {
                 Debug.Log("Picking up key: " + name.ToString());
 
-                if (name == Key.prisonKey)
+                if (keyPickup.CompareTag("PrisonKey"))
                 {
                     keyStorage.HasPrisonKey = true;
                     Debug.Log("hasPrisonKey is now true");
                 }
-                else if (name == Key.compoundKey)
+                else if (keyPickup.CompareTag("CompoundKey"))
                 {
                     keyStorage.HasCompoundKey = true;
                     Debug.Log("hasCompoundKey is now true");

@@ -9,7 +9,7 @@ public class DoorController : MonoBehaviour
     [SerializeField] private string openAnimation;
     [SerializeField] private string closeAnimation;
     [Header("--- Storage ---")]
-    [SerializeField] private KeyStorage _keyStorage = null;
+    [SerializeField] KeyStorage _keyStorage = null;
 
     public bool prisonDoor;
     public bool PrisonCell;
@@ -33,7 +33,7 @@ public class DoorController : MonoBehaviour
                 OpenDoor();
             }
         }
-        else if(_keyStorage._hasCompoundKey)
+        else
         {
             if (CompoundDoor)
             {

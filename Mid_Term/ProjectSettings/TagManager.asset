@@ -18,6 +18,8 @@ TagManager:
   - InteractableObject
   - Useable
   - AlarmParent
+  - CompoundKey
+  - PrisonKey
   layers:
   - Default
   - TransparentFX
