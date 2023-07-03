@@ -74,6 +74,12 @@ namespace FPS
         [SerializeField] AudioClip emptyClipAud;
         [Range(0, 1)][SerializeField] float emptyClipVol;
 
+        [Header("--- Boundry Collider")]
+        public Collider prisonCollider;
+        public GameObject[] PrisonColliders;
+        public Collider villageCollider;
+        public GameObject[] VillageColliders;
+
 
 
         private int jumpedTimes;
@@ -93,7 +99,9 @@ namespace FPS
         bool isReloading;
         public int ammoStorage;
         bool hasCellKey = false;
-        public Key useableKeys;
+       //public Key useableKeys;
+        bool hasPrisonObjective = false;
+        bool hasVillageObjective = false;
 
         
 
@@ -121,7 +129,7 @@ namespace FPS
          */
         void Update()
         {
-            
+            MissionColliderDiable();
             Sprint();
             zoomSights();
 
@@ -630,6 +638,30 @@ namespace FPS
                 {
                     other.GetComponent<CellDoor>().Moving = true;
                 }
+            }
+        }
+
+        private void MissionColliderDiable()
+        {
+            if(hasPrisonObjective)
+            {
+                foreach (GameObject PrisonColliders in PrisonColliders)
+                {
+                    PrisonColliders.SetActive(false);
+                }
+
+                prisonCollider.enabled = false;
+            }
+
+            else if(hasVillageObjective)
+            {
+
+                foreach (GameObject VillageColliders in VillageColliders)
+                {
+                    VillageColliders.SetActive(false);
+                }
+
+                villageCollider.enabled = false;
             }
         }
         #endregion
