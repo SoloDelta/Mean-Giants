@@ -11183,6 +11183,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7977670783724381172}
+  - component: {fileID: 4728173779827912965}
   - component: {fileID: 3516337068024487520}
   - component: {fileID: 8220044977229747923}
   - component: {fileID: 8426195686097962700}
@@ -11219,8 +11220,21 @@ Transform:
   - {fileID: 3109836862248262469}
   - {fileID: 2644143366454979452}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4728173779827912965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7638439082459081696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 662349111168179469d56ed7e446c317, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactRange: 0
 --- !u!114 &3516337068024487520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11273,6 +11287,7 @@ MonoBehaviour:
   sprint: 2
   stamina: 300
   gunList: []
+  keyStorage: {fileID: 0}
   gunModel: {fileID: 6680098411237278510}
   shootRate: 0.41
   shootDamage: 1
@@ -11324,6 +11339,18 @@ MonoBehaviour:
   healthVol: 0.561
   emptyClipAud: {fileID: 8300000, guid: 300fc2317917d8547a002c22d2661fab, type: 3}
   emptyClipVol: 0
+  prisonCollider: {fileID: 0}
+  PrisonColliders:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  villageCollider: {fileID: 0}
+  VillageColliders:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   isCrouching: 0
   ammoStorage: 0
 --- !u!143 &8220044977229747923

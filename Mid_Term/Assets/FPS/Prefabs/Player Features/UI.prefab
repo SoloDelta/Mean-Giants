@@ -1981,7 +1981,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.05747917, y: 0.063}
   m_AnchorMax: {x: 0.05747917, y: 0.063}
-  m_AnchoredPosition: {x: -10.299927, y: 22.2}
+  m_AnchoredPosition: {x: -10.299927, y: 22.25}
   m_SizeDelta: {x: 223.29999, y: 81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2558849903003371710
@@ -3660,7 +3660,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 219.4, y: 26.7}
+  m_AnchoredPosition: {x: 219.4, y: 26.75}
   m_SizeDelta: {x: 969.6, y: 49.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &814306152606924506
@@ -6801,7 +6801,7 @@ RectTransform:
   - {fileID: 3000694119705139033}
   - {fileID: 9140192647731957939}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -6843,6 +6843,7 @@ MonoBehaviour:
   hitMark: {fileID: 4822818567687412022}
   hitMarkKill: {fileID: 922596613911772312}
   checkPointPopup: {fileID: 3550383191661883924}
+  npcPrisonText: {fileID: 0}
   isPaused: 0
 --- !u!114 &7515381636653351116
 MonoBehaviour:

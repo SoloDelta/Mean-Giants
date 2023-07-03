@@ -7,8 +7,8 @@ using UnityEngine;
 
 public class NpcInteract : MonoBehaviour
 {
-    [SerializeField]public TextMeshProUGUI NpcTextMesh;
     bool isOn = false;
+    [SerializeField]KeyStorage key;
 
     public void Interact()
     {
@@ -25,13 +25,44 @@ public class NpcInteract : MonoBehaviour
         
     }
 
+
     public void TurnOnMessage()
     {
-        GameManager.instance.npcPrisonText.enabled = true;
+
+        if (PlayerHasPrisonKey())
+        {
+            GameManager.instance.npcPrisonText[1].enabled = true;
+        }
+        else
+        {
+            GameManager.instance.npcPrisonText[0].enabled = true;
+        }
     }
 
     public void TurnOffMessage()
     {
-        GameManager.instance.npcPrisonText.enabled = false;
+        if (PlayerHasPrisonKey())
+        {
+            GameManager.instance.npcPrisonText[1].enabled = false;
+        }
+        else
+        {
+            GameManager.instance.npcPrisonText[0].enabled = false;
+        }
+    }
+
+
+    public bool PlayerHasPrisonKey()
+    {
+        if (key.HasPrisonKey)
+        {
+            Debug.Log("Cell Key True");
+            return true;
+        }
+        else
+        {
+            Debug.Log("Cell Key False");
+            return false;
+        }
     }
 }

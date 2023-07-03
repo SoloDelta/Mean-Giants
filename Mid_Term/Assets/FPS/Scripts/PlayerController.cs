@@ -98,7 +98,7 @@ namespace FPS
         bool stepsPlaying;
         bool isReloading;
         public int ammoStorage;
-        bool hasCellKey = false;
+        public bool hasCellKey = false;
        //public Key useableKeys;
         bool hasPrisonObjective = false;
         bool hasVillageObjective = false;
@@ -120,6 +120,7 @@ namespace FPS
             SpawnPlayer();
             UpdatePlayerStamina();
             zoomOrig = Camera.main.fieldOfView;
+            hasCellKey = false;
         }
         #endregion
 
