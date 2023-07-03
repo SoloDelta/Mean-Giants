@@ -39,6 +39,7 @@ namespace FPS
         public GameObject activeMenu;
         public GameObject pauseMenu;
         public GameObject winMenu;
+        public GameObject settingsMenu;
         public Image playerHpBar;
         public Image playerStaminaBar;
         public GameObject playerFlashUI;
