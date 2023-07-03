@@ -18,8 +18,12 @@ TagManager:
   - InteractableObject
   - Useable
   - AlarmParent
+<<<<<<< Updated upstream
   - CompoundKey
   - PrisonKey
+=======
+  - LU
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX

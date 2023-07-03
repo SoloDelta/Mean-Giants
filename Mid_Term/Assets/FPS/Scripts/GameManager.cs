@@ -56,6 +56,7 @@ namespace FPS
         public Image hitMark;
         public Image hitMarkKill;
         public GameObject checkPointPopup;
+        public Canvas npcPrisonText;
 
         //-----------------------------------------------------------------
         // Objective Variables
@@ -146,5 +147,9 @@ namespace FPS
         {
             healthCorner.SetActive(true);
         }
+
+
     }
+
+ 
 }
