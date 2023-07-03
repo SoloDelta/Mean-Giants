@@ -255,7 +255,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 579360809488049401, guid: 90fc07a8e308f2a418005fc96b0abb90, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1213577174545264586, guid: 90fc07a8e308f2a418005fc96b0abb90, type: 3}
       propertyPath: m_Pivot.x
@@ -343,23 +343,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1436874052357908443, guid: 90fc07a8e308f2a418005fc96b0abb90, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1706391665556019925, guid: 90fc07a8e308f2a418005fc96b0abb90, type: 3}
+      propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1931854289559246097, guid: 90fc07a8e308f2a418005fc96b0abb90, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Settings
+      objectReference: {fileID: 0}
+    - target: {fileID: 1931854289559246097, guid: 90fc07a8e308f2a418005fc96b0abb90, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: FPS.ButtonFunctions, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2571402787578646572, guid: 90fc07a8e308f2a418005fc96b0abb90, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3021072307636156336, guid: 90fc07a8e308f2a418005fc96b0abb90, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3559493786459478425, guid: 90fc07a8e308f2a418005fc96b0abb90, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4392447713484785661, guid: 90fc07a8e308f2a418005fc96b0abb90, type: 3}
+      propertyPath: settingsMenu
+      value: 
+      objectReference: {fileID: 787248480}
     - target: {fileID: 5243612537944829004, guid: 90fc07a8e308f2a418005fc96b0abb90, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5599001298369600219, guid: 90fc07a8e308f2a418005fc96b0abb90, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7287673620058858306, guid: 90fc07a8e308f2a418005fc96b0abb90, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SettingsReturn
+      objectReference: {fileID: 0}
+    - target: {fileID: 7287673620058858306, guid: 90fc07a8e308f2a418005fc96b0abb90, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: FPS.ButtonFunctions, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 9133420919739505468, guid: 90fc07a8e308f2a418005fc96b0abb90, type: 3}
       propertyPath: m_Name
@@ -550,6 +578,11 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &787248480 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1706391665556019925, guid: 90fc07a8e308f2a418005fc96b0abb90, type: 3}
+  m_PrefabInstance: {fileID: 596616694}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &866032786
 PrefabInstance:
   m_ObjectHideFlags: 0

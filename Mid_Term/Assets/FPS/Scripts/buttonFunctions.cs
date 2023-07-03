@@ -80,5 +80,20 @@ namespace FPS
         {
             Application.Quit(); 
         }
+
+
+        public void Settings()
+        {
+            GameManager.instance.activeMenu.SetActive(false);
+            GameManager.instance.activeMenu = GameManager.instance.settingsMenu;
+            GameManager.instance.activeMenu.SetActive(true);
+        }
+
+        public void SettingsReturn()
+        {
+            GameManager.instance.activeMenu.SetActive(false);
+            GameManager.instance.activeMenu = GameManager.instance.pauseMenu;
+            GameManager.instance.activeMenu.SetActive(true);
+        }
     }
 }
