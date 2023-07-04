@@ -9,6 +9,7 @@ public class NpcInteract : MonoBehaviour
 {
     bool isOn = false;
     [SerializeField]KeyStorage key;
+    [SerializeField] float deletePrisonNpcTimer;
 
     [Header("--- Boundry Collider")]
     public Collider prisonCollider;
@@ -16,6 +17,7 @@ public class NpcInteract : MonoBehaviour
 
     bool hasPrisonObjective = false;
     bool hasVillageObjective = false;
+    bool deletePrisonNpc = false;
 
     public void Interact()
     {
@@ -43,7 +45,8 @@ public class NpcInteract : MonoBehaviour
             GameManager.instance.npcPrisonText[1].enabled = true;
             yield return new WaitForSeconds(5);
             GameManager.instance.npcPrisonText[1].enabled = false;
-
+            yield return new WaitForSeconds(deletePrisonNpcTimer);
+            Destroy(gameObject);
         }
         else
         {

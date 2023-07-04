@@ -35,7 +35,8 @@ public class PrisonToHqNpcSpawn : MonoBehaviour
         IEnumerator Spawn()
         {
             isSpawning = true;
-            Instantiate(objectToSpawn, spawnPos.position, transform.rotation);
+            Instantiate(objectToSpawn, spawnPos.position, Quaternion.identity);
+            objectToSpawn.transform.LookAt(Camera.main.transform);
             numberSpawn++;
             yield return new WaitForSeconds(timeBetweenSpawn);
             isSpawning = false;
