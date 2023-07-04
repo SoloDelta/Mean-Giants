@@ -4,26 +4,23 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - PlayerSpawnPos
+  - Door
+  - CellDoor
+  - PlayerCell
   - Enemy
+  - AlarmParent
+  - Alarm
+  - PrisonKey
+  - LU
+  - PlayerSpawnPos
   - Pickup
   - Smg
   - Heavy
   - AssaultRifle
   - Pistol
-  - CellDoor
-  - Door
-  - PlayerCell
-  - Alarm
   - InteractableObject
   - Useable
-  - AlarmParent
-<<<<<<< Updated upstream
   - CompoundKey
-  - PrisonKey
-=======
-  - LU
->>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
