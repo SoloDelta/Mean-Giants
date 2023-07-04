@@ -36,7 +36,7 @@ namespace FPS
         [Range(1, 3)][SerializeField] private int jumpMax;
         [Range(2, 5)][SerializeField] private int sprint;
         [SerializeField] private float stamina;
-        [SerializeField] float playerCurrency;
+        [SerializeField] public float playerCurrency;
 
         [Header("----- Gun Stats -----")]
         [SerializeField] private List<GunStats> gunList = new List<GunStats>();
