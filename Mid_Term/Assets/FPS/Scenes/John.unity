@@ -2621,6 +2621,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3179274910114873545, guid: 90fc07a8e308f2a418005fc96b0abb90, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -29.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4392447713484785661, guid: 90fc07a8e308f2a418005fc96b0abb90, type: 3}
       propertyPath: playerStaminaBar
       value: 

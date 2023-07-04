@@ -359,8 +359,10 @@ namespace FPS
          */
         private void showEnemyHP()
         {
+            LayerMask mask = LayerMask.GetMask("DeadEnemy");
+            mask = ~mask;
             RaycastHit hit;
-            if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
+            if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance, mask))
             {
 
                 if (hit.collider.CompareTag("Enemy"))
