@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Door
+  - CellDoor
+  - PlayerCell
+  - Enemy
+  - AlarmParent
+  - Alarm
+  - PrisonKey
+  - LU
+  - PlayerSpawnPos
   layers:
   - Default
   - TransparentFX
@@ -11,14 +20,14 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - Enemy Bullet
+  - triggers
+  - Door Componets
+  - Player Cell
+  - Interact
+  - DeadEnemy
   - 
   - 
   - 
