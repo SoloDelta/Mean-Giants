@@ -370,7 +370,15 @@ namespace FPS
                     {
                         StopCoroutine(lastRun);
                     }
-                    hit.collider.GetComponent<EnemyAIRefactor>().wholeHealthBar.SetActive(true);
+                    if(hit.collider.GetComponent<EnemyAIRefactor>())
+                    {
+                        hit.collider.GetComponent<EnemyAIRefactor>().wholeHealthBar.SetActive(true);
+                    }
+                    else
+                    {
+                        hit.collider.GetComponent<EnemyRoam>().wholeHealthBar.SetActive(true);
+                    }
+                   
                     lastRun = StartCoroutine(turnOffEnemyHP(hit));
 
                 }
@@ -386,7 +394,15 @@ namespace FPS
             yield return new WaitForSeconds(1);
             if (_hit.collider != null)
             {
-                _hit.collider.GetComponent<EnemyAIRefactor>().wholeHealthBar.SetActive(false);
+                if(_hit.collider.GetComponent<EnemyAIRefactor>())
+                {
+                    _hit.collider.GetComponent<EnemyAIRefactor>().wholeHealthBar.SetActive(false);
+                }
+                else
+                {
+                    _hit.collider.GetComponent<EnemyRoam>().wholeHealthBar.SetActive(false);
+                }
+               
             }
 
         }

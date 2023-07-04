@@ -55,7 +55,7 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
     [Header("-----Roaming-----")]
     [SerializeField, Range(1, 10)] private float roamTimer; //how long the enemy waits before roaming
     [SerializeField, Range(10, 100)] private int roamDist; //how far away the enemy will roam
-    [Header("-----Enemy Stats-----")]
+    [Header("-----Gun Stats-----")]
     [SerializeField] private float shootRate; //how fast the enemy shoots
     [SerializeField] private GameObject bullet; //the bullet the enemy shoots
     [SerializeField] private float burstRate; //how fast of a burst the enemy shoots
