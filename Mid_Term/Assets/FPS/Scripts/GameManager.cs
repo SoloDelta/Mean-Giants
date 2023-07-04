@@ -42,10 +42,10 @@ namespace FPS
         public GameObject settingsMenu;
         public Image playerHpBar;
         public Image playerStaminaBar;
+        public Image playerShieldBar;
         public GameObject playerFlashUI;
         public GameObject loseMenu;
         public TextMeshProUGUI enemiesRemainingText;
-        public GameObject healthCorner;
         public TextMeshProUGUI itemCollectedText;
         public TextMeshProUGUI ammoMaxText;
         public TextMeshProUGUI ammoStorageText;
@@ -139,15 +139,7 @@ namespace FPS
             activeMenu.SetActive(true);
         }
 
-        public void removeCorner()
-        {
-            healthCorner.SetActive(false);
-        }
 
-        public void addCorner()
-        {
-            healthCorner.SetActive(true);
-        }
 
 
     }

@@ -10075,7 +10075,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7199943587455136806}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0044403076, y: 1.533, z: 0.372}
+  m_LocalPosition: {x: 0.0044555664, y: 1.646, z: 0.476}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11234,7 +11234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 662349111168179469d56ed7e446c317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactRange: 8.5
+  interactRange: 1
 --- !u!114 &3516337068024487520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11280,12 +11280,14 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   anim: {fileID: 8901510203275350524}
   health: 100
+  shield: 50
   playerSpeed: 4.2
   jumpHeight: 8.8
   gravityValue: 22.3
   jumpMax: 1
   sprint: 2
   stamina: 300
+  playerCurrency: 5000
   gunList: []
   keyStorage: {fileID: 0}
   gunModel: {fileID: 6680098411237278510}
@@ -11471,7 +11473,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7638439082459081696}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ee849a33ae0cb34aad10ec881032442, type: 3}
   m_Name: 
@@ -11495,7 +11497,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7638439082459081696}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bcc137cd6402ff947bc44838f8b736e0, type: 3}
   m_Name: 
@@ -12483,7 +12485,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3863965577313912244
 Transform:
   m_ObjectHideFlags: 0
@@ -19218,7 +19220,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &994432723104276039
 Transform:
   m_ObjectHideFlags: 0

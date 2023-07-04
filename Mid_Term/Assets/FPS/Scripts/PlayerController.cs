@@ -29,6 +29,7 @@ namespace FPS
 
         [Header("----- Player Stats -----")]
         [SerializeField] private int health;
+        [SerializeField] private int shield;
         [Range(3, 8)][SerializeField] private float playerSpeed;
         [Range(8, 25)][SerializeField] private float jumpHeight;
         [Range(10, 50)][SerializeField] private float gravityValue;
@@ -93,6 +94,7 @@ namespace FPS
         bool isReloading;
         public int ammoStorage;
         public bool hasCellKey = false;
+        int shieldOrig;
        //public Key useableKeys;
 
         
@@ -108,7 +110,9 @@ namespace FPS
             speedOrig = playerSpeed;
             playerHpOrig = health;
             playerStaminaOrig = stamina;
+            shieldOrig = shield;
             UpdatePlayerHp();
+            UpdatePlayerShield();
             SpawnPlayer();
             UpdatePlayerStamina();
             zoomOrig = Camera.main.fieldOfView;
@@ -146,14 +150,7 @@ namespace FPS
 
 
 
-                if (playerHpOrig == health)
-                {
-                    GameManager.instance.addCorner();
-                }
-                else
-                {
-                    GameManager.instance.removeCorner();
-                }
+
                 showEnemyHP();
                 /////wrote this to collect the cube, not sure if this is the best place to call it but it works. - john
                 RaycastHit hit;
@@ -389,19 +386,33 @@ namespace FPS
         public void UpdatePlayerHp()
         {
             GameManager.instance.playerHpBar.fillAmount = (float)health / playerHpOrig;
+        }
 
+        public void UpdatePlayerShield()
+        {
+            GameManager.instance.playerShieldBar.fillAmount = (float)shield / shieldOrig;
         }
 
         public void TakeDamage(int damage)
         {
-            health -= damage;
-
-            aud.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)], audHurtVol);
-
-            if (health <= 0)
+            if (shield <= 0)
             {
-                GameManager.instance.YouLose();
+
+
+                health -= damage;
+
+                aud.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)], audHurtVol);
+
+                if (health <= 0)
+                {
+                    GameManager.instance.YouLose();
+                }
             }
+            else if (shield > 0)
+            {
+                shield -= damage;
+            }
+            UpdatePlayerShield();
             UpdatePlayerHp();
             StartCoroutine(playerFlashDamage());
         }
@@ -430,6 +441,7 @@ namespace FPS
             controller.enabled = true;
             health = playerHpOrig;
             UpdatePlayerHp();
+            UpdatePlayerShield();
             updateAmmoUI();
         }
  
