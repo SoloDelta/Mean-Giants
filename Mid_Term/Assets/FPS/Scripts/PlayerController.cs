@@ -508,6 +508,7 @@ namespace FPS
 
             if (playerCurrency >= gunstat.weaponValue)
             {
+                playerCurrency -= gunstat.weaponValue;
                 gunList.Add(gunstat);
 
                 aud.PlayOneShot(pickupClip);

@@ -28,8 +28,12 @@ public class NpcInteract : MonoBehaviour
     {
         if(!isOn)
         {
-            StartCoroutine(TurnOnMessage());
-            isOn = true;
+            if(!deletePrisonNpc)
+            {
+                StartCoroutine(TurnOnMessage());
+                isOn = true;
+            }
+            
         }
         else
         {
@@ -52,6 +56,7 @@ public class NpcInteract : MonoBehaviour
             GameManager.instance.npcPrisonText[1].enabled = false;
             yield return new WaitForSeconds(deletePrisonNpcTimer);
             Destroy(gameObject);
+            deletePrisonNpc = true;
         }
         else
         {
