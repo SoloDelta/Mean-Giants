@@ -14,7 +14,7 @@ public class NpcInteract : MonoBehaviour
     {
         if(!isOn)
         {
-            TurnOnMessage();
+            StartCoroutine(TurnOnMessage());
             isOn = true;
         }
         else
@@ -26,16 +26,21 @@ public class NpcInteract : MonoBehaviour
     }
 
 
-    public void TurnOnMessage()
+    public IEnumerator TurnOnMessage()
     {
 
         if (PlayerHasPrisonKey())
         {
             GameManager.instance.npcPrisonText[1].enabled = true;
+            yield return new WaitForSeconds(5);
+            GameManager.instance.npcPrisonText[1].enabled = false;
+
         }
         else
         {
             GameManager.instance.npcPrisonText[0].enabled = true;
+            yield return new WaitForSeconds(5);
+            GameManager.instance.npcPrisonText[0].enabled = false;
         }
     }
 
