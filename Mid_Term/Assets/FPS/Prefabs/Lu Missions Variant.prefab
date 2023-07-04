@@ -760,6 +760,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: {fileID: 0}
+  prisonCollider: {fileID: 0}
+  villageCollider: {fileID: 0}
 --- !u!136 &4845500625884910457
 CapsuleCollider:
   m_ObjectHideFlags: 0

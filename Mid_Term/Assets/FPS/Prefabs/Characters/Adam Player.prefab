@@ -11339,18 +11339,6 @@ MonoBehaviour:
   healthVol: 0.561
   emptyClipAud: {fileID: 8300000, guid: 300fc2317917d8547a002c22d2661fab, type: 3}
   emptyClipVol: 0
-  prisonCollider: {fileID: 0}
-  PrisonColliders:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  villageCollider: {fileID: 0}
-  VillageColliders:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   isCrouching: 0
   ammoStorage: 0
   hasCellKey: 0
