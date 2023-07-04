@@ -2,13 +2,20 @@ using FPS;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.VersionControl;
+//using UnityEditor.VersionControl;
 using UnityEngine;
 
 public class NpcInteract : MonoBehaviour
 {
     bool isOn = false;
     [SerializeField]KeyStorage key;
+
+    [Header("--- Boundry Collider")]
+    public Collider prisonCollider;
+    public Collider villageCollider;
+
+    bool hasPrisonObjective = false;
+    bool hasVillageObjective = false;
 
     public void Interact()
     {
@@ -31,6 +38,7 @@ public class NpcInteract : MonoBehaviour
 
         if (PlayerHasPrisonKey())
         {
+            MissionColliderDisable();
             GameManager.instance.npcPrisonText[1].enabled = true;
             yield return new WaitForSeconds(5);
             GameManager.instance.npcPrisonText[1].enabled = false;
@@ -68,6 +76,19 @@ public class NpcInteract : MonoBehaviour
         {
             Debug.Log("Cell Key False");
             return false;
+        }
+    }
+
+    private void MissionColliderDisable()
+    {
+        if (hasPrisonObjective)
+        {
+            prisonCollider.enabled = false;
+        }
+
+        else if (hasVillageObjective)
+        {
+            villageCollider.enabled = false;
         }
     }
 }

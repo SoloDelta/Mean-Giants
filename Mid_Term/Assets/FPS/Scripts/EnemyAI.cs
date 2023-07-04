@@ -12,7 +12,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using static UnityEditorInternal.ReorderableList;
+//using static UnityEditorInternal.ReorderableList;
 
 namespace FPS
 {
