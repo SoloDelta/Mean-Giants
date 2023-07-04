@@ -164,15 +164,19 @@ public class BaseManager : MonoBehaviour
     {
         foreach(GameObject enemy in enemies)
         {
-            if(enemy != _callingEnemy)
+            if (enemy.GetComponent<EnemyAIRefactor>().agent.isActiveAndEnabled)
             {
-                if(Vector3.Distance(enemy.transform.position, _callingEnemy.transform.position) < alertEnemiesRange)
+                if (enemy != _callingEnemy)
                 {
-                    Debug.Log("enem alerted");
-                    enemy.GetComponent<EnemyAIRefactor>().shouldStartSearching = true;
-                    enemy.GetComponent<EnemyAIRefactor>().agent.SetDestination(GameManager.instance.player.transform.position);
+                    if (Vector3.Distance(enemy.transform.position, _callingEnemy.transform.position) < alertEnemiesRange)
+                    {
+                        Debug.Log("enem alerted");
+                        enemy.GetComponent<EnemyAIRefactor>().shouldStartSearching = true;
+                        enemy.GetComponent<EnemyAIRefactor>().agent.SetDestination(GameManager.instance.player.transform.position);
+                    }
                 }
             }
+            
         }
 
     }

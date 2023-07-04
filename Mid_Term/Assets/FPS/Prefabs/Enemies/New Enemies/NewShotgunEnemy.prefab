@@ -201,7 +201,7 @@ Transform:
   - {fileID: 1425183598362641062}
   - {fileID: 2126655638854316355}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &296151237917793793
 MonoBehaviour:
@@ -454,9 +454,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4023702264410687898}
   - component: {fileID: 1912157368249408160}
+  - component: {fileID: 1901664818983907181}
   m_Layer: 7
   m_Name: SK_Soldier_Head
-  m_TagString: Untagged
+  m_TagString: EnemyHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -530,6 +531,29 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.39364445, y: 0.008824348, z: 0.000000074505806}
     m_Extent: {x: 0.17740639, y: 0.19346918, z: 0.13846613}
   m_DirtyAABB: 0
+--- !u!136 &1901664818983907181
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2104275431813260666}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.36
+  m_Height: 0.3869384
+  m_Direction: 1
+  m_Center: {x: -0.51, y: 0.008824336, z: -0.0000037718319}
 --- !u!1 &2277673319332912958
 GameObject:
   m_ObjectHideFlags: 0

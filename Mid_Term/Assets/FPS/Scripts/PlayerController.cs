@@ -323,9 +323,20 @@ namespace FPS
 
                 if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance, mask))
                 {
-
                     IDamage damageable = hit.collider.GetComponent<IDamage>();
-                    if (damageable != null)
+                    if ((hit.collider.CompareTag("EnemyHead")))
+                    {
+                        damageable = hit.collider.gameObject.transform.parent.transform.parent.GetComponent<IDamage>();
+                        if(damageable != null)
+                        {
+                            Debug.Log("HEADSHOT");
+                            damageable.TakeDamage(shootDamage * 2);
+                        }
+
+                        
+                    
+                    }
+                    else if (damageable != null)
                     {
                         damageable.TakeDamage(shootDamage);
                     }

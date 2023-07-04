@@ -413,41 +413,46 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
 
     public void TakeDamage(int dmg) //logic for taking damage. 
     {
-        HP -= dmg;
-        if (HP < 0) { HP = 0; }
-        audSource.PlayOneShot(hmSound, hmSoundVol);
-        StartCoroutine(HitMarker());
-        updateEnemyUI();
-        if (HP <= 0) //if the enemy is dead, turns of lasersight, stops all active coroutines, stops animations, and turns off collision.
+        if(agent.isActiveAndEnabled)
         {
-            DropItem();
-            GameManager.instance.hitMarkKill.gameObject.SetActive(false);
-            StopAllCoroutines();
-            spottedUI.SetActive(false);
-            spottingUI.SetActive(false);
-            wholeHealthBar.SetActive(false);
-
-            anim.SetBool("Aiming", false);
-            anim.SetBool("Death", true);
-            audSource.PlayOneShot(deathSound, deathSoundVol);
-            GameManager.instance.UpdateObjective(-1);
-
+            HP -= dmg;
+            if (HP < 0) { HP = 0; }
+            audSource.PlayOneShot(hmSound, hmSoundVol);
             StartCoroutine(HitMarker());
-
-            agent.enabled = false;
-
-            //GetComponent<CapsuleCollider>().enabled = false;
-            this.gameObject.layer = 13;
-        }
-        else //starts attacking the player and instantly spots them
-        {
-            agent.SetDestination(GameManager.instance.player.transform.position);
-            if (!spotted)
+            updateEnemyUI();
+            if (HP <= 0) //if the enemy is dead, turns of lasersight, stops all active coroutines, stops animations, and turns off collision.
             {
-                StartCoroutine(spottedUIon());
+                DropItem();
+                GameManager.instance.hitMarkKill.gameObject.SetActive(false);
+                StopAllCoroutines();
+                spottedUI.SetActive(false);
+                spottingUI.SetActive(false);
+                wholeHealthBar.SetActive(false);
+
+                anim.SetBool("Aiming", false);
+                anim.SetBool("Death", true);
+                audSource.PlayOneShot(deathSound, deathSoundVol);
+                GameManager.instance.UpdateObjective(-1);
+
+                StartCoroutine(HitMarker());
+
+                agent.enabled = false;
+
+                //GetComponent<CapsuleCollider>().enabled = false;
+                this.gameObject.layer = 13;
             }
-            spotted = true;
+            else //starts attacking the player and instantly spots them
+            {
+                agent.SetDestination(GameManager.instance.player.transform.position);
+                if (!spotted)
+                {
+                    StartCoroutine(spottedUIon());
+                }
+                spotted = true;
+            }
         }
+        
+        
     }
 
     void DropItem()
