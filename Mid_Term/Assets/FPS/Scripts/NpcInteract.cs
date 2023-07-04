@@ -19,6 +19,11 @@ public class NpcInteract : MonoBehaviour
     bool hasVillageObjective = false;
     bool deletePrisonNpc = false;
 
+    private void Update()
+    {
+        
+    }
+
     public void Interact()
     {
         if(!isOn)

@@ -34,7 +34,7 @@ namespace FPS
         [Range(10, 50)][SerializeField] private float gravityValue;
         [Range(1, 3)][SerializeField] private int jumpMax;
         [Range(2, 5)][SerializeField] private int sprint;
-        [SerializeField] private int stamina;
+        [SerializeField] private float stamina;
 
         [Header("----- Gun Stats -----")]
         [SerializeField] private List<GunStats> gunList = new List<GunStats>();
@@ -81,7 +81,7 @@ namespace FPS
         private Vector3 move;
         private bool isShooting;
         private int playerHpOrig;
-        private int playerStaminaOrig;
+        private float playerStaminaOrig;
         private int selectedGun;
         private Coroutine lastRun;
         float zoomOrig;
@@ -247,7 +247,7 @@ namespace FPS
             GameManager.instance.playerStaminaBar.fillAmount = (float)stamina / playerStaminaOrig;
             if (isSprinting && stamina > 0)
             {
-                stamina--;
+                stamina -= 0.3f;
             }
             if (!isSprinting && stamina < playerStaminaOrig)
             {
