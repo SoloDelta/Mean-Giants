@@ -1,3 +1,4 @@
+using FPS;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,9 +13,14 @@ public class PlayerInteract : MonoBehaviour
            Collider[] colliderArray =  Physics.OverlapSphere(transform.position, interactRange);
             foreach (Collider collider in colliderArray)
             {
-                if(collider.TryGetComponent(out NpcInteract interactable))
+                if (collider.TryGetComponent(out NpcInteract interactable))
                 {
-                    interactable.Interact();
+                   interactable.Interact();
+                }
+                if (collider.TryGetComponent(out PickupGun gunInteractable))
+                {
+                    Debug.Log(collider);
+                    gunInteractable.GunInteract();
                 }
             }
         }

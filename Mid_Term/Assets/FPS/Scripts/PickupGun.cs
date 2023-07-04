@@ -25,13 +25,9 @@ namespace FPS
         /**----------------------------------------------------------------
          * @brief MonoBehaviour override.
          */
-        private void OnTriggerEnter(Collider other)
+        public void GunInteract()
         {
-            if (other.CompareTag("Player"))
-            {
-                GameManager.instance.playerScript.PickupGun(gun);
-                Destroy(gameObject);
-            }
+            GameManager.instance.playerScript.PickupGun(gun);
         }
     }
 }

@@ -9825,8 +9825,8 @@ MonoBehaviour:
   hitMarkKill: {fileID: 922596613911772312}
   checkPointPopup: {fileID: 3550383191661883924}
   npcPrisonText:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 981750055077840997, guid: 9e7185cf96cd9f841bc53cbdf23f4cd4, type: 3}
+  - {fileID: 5954594758498189069, guid: 75a31034298061146bb8c644411a63bc, type: 3}
   isPaused: 0
 --- !u!114 &7515381636653351116
 MonoBehaviour:

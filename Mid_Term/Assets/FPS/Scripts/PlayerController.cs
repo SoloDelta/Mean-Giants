@@ -35,6 +35,7 @@ namespace FPS
         [Range(1, 3)][SerializeField] private int jumpMax;
         [Range(2, 5)][SerializeField] private int sprint;
         [SerializeField] private float stamina;
+        [SerializeField] float playerCurrency;
 
         [Header("----- Gun Stats -----")]
         [SerializeField] private List<GunStats> gunList = new List<GunStats>();
@@ -505,18 +506,21 @@ namespace FPS
         public void PickupGun(GunStats gunstat)
         {
 
-            gunList.Add(gunstat);
+            if (playerCurrency >= gunstat.weaponValue)
+            {
+                gunList.Add(gunstat);
 
-            aud.PlayOneShot(pickupClip);
-            shootDamage = gunstat.shootDamage;
-            shootDistance = gunstat.shootDistance;
-            shootRate = gunstat.shootRate;
+                aud.PlayOneShot(pickupClip);
+                shootDamage = gunstat.shootDamage;
+                shootDistance = gunstat.shootDistance;
+                shootRate = gunstat.shootRate;
 
-            gunModel.GetComponent<MeshFilter>().mesh = gunstat.model.GetComponent<MeshFilter>().sharedMesh;
-            gunModel.GetComponent<MeshRenderer>().material = gunstat.model.GetComponent<MeshRenderer>().sharedMaterial;
-            selectedGun = gunList.Count - 1;
+                gunModel.GetComponent<MeshFilter>().mesh = gunstat.model.GetComponent<MeshFilter>().sharedMesh;
+                gunModel.GetComponent<MeshRenderer>().material = gunstat.model.GetComponent<MeshRenderer>().sharedMaterial;
+                selectedGun = gunList.Count - 1;
 
-            updateAmmoUI();
+                updateAmmoUI();
+            }
         }
 
         /**----------------------------------------------------------------

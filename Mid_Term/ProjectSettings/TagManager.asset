@@ -21,6 +21,7 @@ TagManager:
   - InteractableObject
   - Useable
   - CompoundKey
+  - PlayerHead
   layers:
   - Default
   - TransparentFX
