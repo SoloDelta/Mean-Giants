@@ -119,7 +119,7 @@ namespace FPS
             if (enemiesRemaining <= 0)
             {
                 //win condition met
-                StartCoroutine(YouWin());
+                //StartCoroutine(YouWin());
             }
         }
 
