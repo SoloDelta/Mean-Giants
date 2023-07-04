@@ -11234,7 +11234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 662349111168179469d56ed7e446c317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactRange: 1
+  interactRange: 1.2
 --- !u!114 &3516337068024487520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11280,7 +11280,7 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   anim: {fileID: 8901510203275350524}
   health: 100
-  shield: 50
+  shield: 100
   playerSpeed: 4.2
   jumpHeight: 8.8
   gravityValue: 22.3
