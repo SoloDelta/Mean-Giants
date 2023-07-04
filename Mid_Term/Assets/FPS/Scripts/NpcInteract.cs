@@ -38,6 +38,7 @@ public class NpcInteract : MonoBehaviour
 
         if (PlayerHasPrisonKey())
         {
+            hasPrisonObjective = true;
             MissionColliderDisable();
             GameManager.instance.npcPrisonText[1].enabled = true;
             yield return new WaitForSeconds(5);
