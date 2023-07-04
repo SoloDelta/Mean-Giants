@@ -1,3 +1,4 @@
+using FPS;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,7 +19,6 @@ public class BaseManager : MonoBehaviour
     [SerializeField] int numOfReinforcements;
     [SerializeField] int alertEnemiesRange; //this number decides how far away other enemies can be to hear alerts
     bool reinforced = false;
-    bool playerInRange;
     #endregion
 
     #region Start
@@ -78,7 +78,6 @@ public class BaseManager : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            playerInRange = true;
             enemiesParent.SetActive(true);
         }
     }
@@ -86,7 +85,6 @@ public class BaseManager : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            playerInRange = false;
             enemiesParent.SetActive(false);
         }
     }
@@ -162,4 +160,20 @@ public class BaseManager : MonoBehaviour
         }
     }
     #endregion
+    public void AlertNearbyEnemies(GameObject _callingEnemy)
+    {
+        foreach(GameObject enemy in enemies)
+        {
+            if(enemy != _callingEnemy)
+            {
+                if(Vector3.Distance(enemy.transform.position, _callingEnemy.transform.position) < alertEnemiesRange)
+                {
+                    Debug.Log("enem alerted");
+                    enemy.GetComponent<EnemyAIRefactor>().shouldStartSearching = true;
+                    enemy.GetComponent<EnemyAIRefactor>().agent.SetDestination(GameManager.instance.player.transform.position);
+                }
+            }
+        }
+
+    }
 }
