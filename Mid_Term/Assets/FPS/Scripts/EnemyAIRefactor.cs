@@ -15,6 +15,8 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
     [SerializeField] private Transform shootPosition;
     [SerializeField] private GameObject baseManager;
     [SerializeField] private BaseManager baseManagerScript;
+    [SerializeField] private GameObject keyCard;
+    [SerializeField] GameObject ammoPrefab;
 
     [Header("----- UIComponents-----")]
     [SerializeField] private GameObject enemyUIParent; //the entirety of enemy UI. Healthbar and detection.
@@ -43,6 +45,7 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
     [SerializeField] private bool spotted = false;
     [SerializeField] public bool highAlert = false;
     [SerializeField] private float spottingDistance;
+    [SerializeField] float currencyDrop;
 
     [Header("-----Pathfinding-----")]
     [SerializeField] private List<Vector3> patrolSpots = new List<Vector3>(); //the locations the enemy will follow when patroling
@@ -420,7 +423,7 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
         updateEnemyUI();
         if (HP <= 0) //if the enemy is dead, turns of lasersight, stops all active coroutines, stops animations, and turns off collision.
         {
-
+            DropItem();
             GameManager.instance.hitMarkKill.gameObject.SetActive(false);
             StopAllCoroutines();
             spottedUI.SetActive(false);
@@ -450,6 +453,24 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
         }
     }
 
+    void DropItem()
+    {
+        if(keyCard != null)
+        {
+            Instantiate(keyCard, transform.position, transform.rotation);
+        }
+        else
+        {
+            if(Random.Range(0,2) == 0)
+            {
+                Instantiate(ammoPrefab,transform.position, transform.rotation);
+            }
+            else
+            {
+                GameManager.instance.playerScript.playerCurrency += currencyDrop;
+            }
+        }
+    }
     private void updateEnemyUI() // Updates enemyHP bar
     {
         HPBar.transform.localScale = new Vector3((float)HP / enemyHPOriginal, HPBar.localScale.y, HPBar.localScale.y);
