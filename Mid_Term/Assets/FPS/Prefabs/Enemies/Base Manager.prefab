@@ -29,7 +29,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 20977116404504651}
-  - {fileID: 7394090996493132833}
+  - {fileID: 8066204752008904673}
   - {fileID: 4614192429974132908}
   m_Father: {fileID: 6805392318922559373}
   m_RootOrder: -1
@@ -107,6 +107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6805392318922559373}
   - component: {fileID: 2807137102161754535}
+  - component: {fileID: 120727759515748989}
   m_Layer: 0
   m_Name: Base Manager
   m_TagString: Untagged
@@ -155,6 +156,28 @@ MonoBehaviour:
   shotgun: {fileID: 843911144030581328, guid: 85e102310be094a44ae9f76a95c051ee, type: 3}
   reinformentSpawnPos: {fileID: 4056820393001357060}
   numOfReinforcements: 3
+  alertEnemiesRange: 0
+--- !u!65 &120727759515748989
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9086229669747526578}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 50, y: 50, z: 50}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &659630535649133450
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -494,7 +517,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8885e2798e50ddc4280c37c0f10e49f8, type: 3}
---- !u!4 &7394090996493132833 stripped
+--- !u!4 &8066204752008904673 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 679477199479102401, guid: 8885e2798e50ddc4280c37c0f10e49f8, type: 3}
   m_PrefabInstance: {fileID: 7394090996493132832}

@@ -4664,7 +4664,7 @@ PrefabInstance:
     - target: {fileID: 5582555350775340396, guid: 891b0bcfb087b0e4eb557c2480d5cd8c, type: 3}
       propertyPath: ammoPrefab
       value: 
-      objectReference: {fileID: 4317561656049840088, guid: 8ffbadab563939048a30c1263d60fca6, type: 3}
+      objectReference: {fileID: 7480271169491415248, guid: 74922acd7405b014f9f064d8f2956b82, type: 3}
     - target: {fileID: 5582555350775340396, guid: 891b0bcfb087b0e4eb557c2480d5cd8c, type: 3}
       propertyPath: currencyDrop
       value: 100
@@ -4716,7 +4716,7 @@ PrefabInstance:
     - target: {fileID: 7098013237043722785, guid: 891b0bcfb087b0e4eb557c2480d5cd8c, type: 3}
       propertyPath: ammoPrefab
       value: 
-      objectReference: {fileID: 1728619453497436, guid: e7152d23c09aee845a9594ff1308f6a8, type: 3}
+      objectReference: {fileID: 7480271169491415248, guid: 74922acd7405b014f9f064d8f2956b82, type: 3}
     - target: {fileID: 7098013237043722785, guid: 891b0bcfb087b0e4eb557c2480d5cd8c, type: 3}
       propertyPath: currencyDrop
       value: 50

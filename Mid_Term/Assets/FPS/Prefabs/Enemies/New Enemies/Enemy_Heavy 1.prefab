@@ -54,6 +54,10 @@ MonoBehaviour:
   anim: {fileID: 4651341963198907832}
   headPosition: {fileID: 7654876015774955464}
   shootPosition: {fileID: 8856010466754016714}
+  baseManager: {fileID: 0}
+  baseManagerScript: {fileID: 0}
+  keyCard: {fileID: 0}
+  ammoPrefab: {fileID: 7480271169491415248, guid: 74922acd7405b014f9f064d8f2956b82, type: 3}
   enemyUIParent: {fileID: 2629138474111896771}
   wholeHealthBar: {fileID: 880736992575004294}
   HPBar: {fileID: 2805447693445801114}
@@ -76,9 +80,9 @@ MonoBehaviour:
   spotted: 0
   highAlert: 0
   spottingDistance: 35
+  currencyDrop: 0
   patrolSpots: []
   patrolRotations: 
-  patrolStoppingDistance: 0
   patrolStopTime: 0
   highAlertPatrolStopTime: 0
   roamTimer: 0
@@ -87,6 +91,8 @@ MonoBehaviour:
   bullet: {fileID: 2038235551928201043, guid: f2ce97644b3717d4faa19869302cd317, type: 3}
   burstRate: 0
   isBurstShot: 0
+  isShotgun: 0
+  shouldStartSearching: 0
   pullAlarm: 0
 --- !u!195 &-6136169086223922386
 NavMeshAgent:

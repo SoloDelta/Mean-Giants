@@ -185,17 +185,13 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
         {
             currentState = "Noticing dead body";
             //Path to a game object: Notice dead body
-        }
-        else if (false)
-        {
-            currentState = "Going to sound";
-            //path to a sus sound
-        }
+        } 
         else //if nothing else, do the patrol route
         {
             currentState = "Patrolling";
             Patrol();
         }
+        //else if (false) { currentState = "Going to sound"; } //path to a sus sound
     }
     #endregion
 
@@ -229,6 +225,7 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
         if (tryAlert)
         {
             baseManagerScript.PullAlarm(this.gameObject);
+            baseManagerScript.AlertNearbyEnemies(this.gameObject);
             tryAlert = false;
             StartCoroutine(ReCallAlarmPull());
         }
