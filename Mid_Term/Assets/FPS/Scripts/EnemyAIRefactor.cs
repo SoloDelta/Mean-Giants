@@ -80,7 +80,7 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
     private float timeCount = 0.0f; //time variable for slerping after a patrol
     private bool isShooting;
     public bool shouldStartSearching = false;
-
+    int maxHealth;
     ///newVars <summary>
     /// newVars
     /// </summary>
@@ -103,6 +103,7 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
         startingPos = transform.position;
         agent.speed = speed;
         enemyHPOriginal = HP;
+        maxHealth = enemyHPOriginal;
         numOfPatrolSpots = patrolSpots.Count;
         stoppingDistanceOriginal = agent.stoppingDistance;
 
@@ -174,6 +175,10 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
         else if (spotted && !seesPlayer) //goes the players last known location if the player has been spotted but isnt seen
         {
             currentState = "Going to last seen position";
+            if (agent.velocity.magnitude < 1 && Vector3.Distance(transform.position, agent.destination) <= 2)
+            {
+                shouldStartSearching = true;
+            }
             agent.stoppingDistance = 0;
         }
         else if (percentSpotted > 0.5) //stops to look at the player if spotting is over 50%
@@ -261,7 +266,7 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
     {
         if (!spotted)
         {
-            StartCoroutine(ChangeStealthVals());
+            StartCoroutine(ChangeStealthVals(true));
         }
         spotted = true;
 
@@ -273,7 +278,7 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
         searching = false;
         shouldStartSearching = false;
         spotted = false;
-        StartCoroutine(ChangeStealthVals());
+        StartCoroutine(ChangeStealthVals(false));
         percentSpotted = 0;
         StopCoroutine(Roam());
         Debug.Log("Search Complete");
@@ -380,7 +385,7 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
             shouldStartSearching = false;
             spottingUI.SetActive(false);
             StartCoroutine(spottedUIon());
-            StartCoroutine(ChangeStealthVals());
+            StartCoroutine(ChangeStealthVals(true));
         }
         if (percentSpotted <= 0)
         {
@@ -399,24 +404,24 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
     }
 
 
-    IEnumerator ChangeStealthVals()
+    IEnumerator ChangeStealthVals(bool _increase)
     {
 
         yield return new WaitForSeconds(1.5f);
-        if (spotted)
+        if(_increase && maxHealth != 2*enemyHPOriginal)
         {
-            enemyHPOriginal *= 2;
+            maxHealth *= 2;
             HP *= 2;
             viewConeAngle += 20;
         }
-        else
+        else if(maxHealth != enemyHPOriginal && !_increase)
         {
-            enemyHPOriginal /= 2;
+            maxHealth /= 2;
             HP /= 2;
             viewConeAngle -= 20;
         }
 
-        Debug.Log("HP: " + HP + "/ " + enemyHPOriginal);
+        Debug.Log("HP: " + HP + "/ " + maxHealth);
     }
     #endregion
 
@@ -487,7 +492,7 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
     }
     private void updateEnemyUI() // Updates enemyHP bar
     {
-        HPBar.transform.localScale = new Vector3((float)HP / enemyHPOriginal, HPBar.localScale.y, HPBar.localScale.y);
+        HPBar.transform.localScale = new Vector3((float)HP / maxHealth, HPBar.localScale.y, HPBar.localScale.y);
     }
 
     public void createBullet() //spawns the bullet at a position. needs work
@@ -654,6 +659,24 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
             playerInRange = false;
         }
 
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.gameObject.CompareTag("Enemy"))
+        {
+            
+            if (collision.collider.gameObject.GetComponent<EnemyAIRefactor>().agent.isActiveAndEnabled)
+            {
+                Debug.Log("Enemy collision");
+                if (Vector3.Distance(agent.transform.position, agent.destination) > 
+                    Vector3.Distance(collision.collider.gameObject.GetComponent<EnemyAIRefactor>().agent.transform.position, 
+                    collision.collider.gameObject.GetComponent<EnemyAIRefactor>().agent.destination))
+                {
+                    Debug.Log("Get out my way");
+                }
+            }
+
+        }
     }
     void rotateUI() //rotates the enemy's UI towards the player
     {

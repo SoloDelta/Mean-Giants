@@ -195,6 +195,7 @@ public class EnemyRoam : MonoBehaviour, IDamage
         {
             playerInRange = true;
         }
+        
 
     }
     private void OnTriggerExit(Collider other)
