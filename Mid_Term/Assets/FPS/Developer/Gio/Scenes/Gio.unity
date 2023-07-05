@@ -2009,13 +2009,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a5aa48c4ba991f4c9a5a1357c895c50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundSource: {fileID: 0}
   aud: {fileID: 1297666802}
   pickupClip: {fileID: 8300000, guid: 55ed87af97cd5424fbab8237e565fe93, type: 3}
   pickupVol: 1
   gunShot: {fileID: 8300000, guid: dabc55f425ecece4bbe52f188e6c6027, type: 3}
   shotVol: 1
   audJump:
-  - {fileID: 0}
+  - {fileID: 8300000, guid: d3bb89ffc382b0244a500aa844a4d2f0, type: 3}
+  - {fileID: 8300000, guid: 23f9873ddb40578458b7b9b2d5be6517, type: 3}
+  - {fileID: 8300000, guid: b2eecfbff25cb8243a0f281318ef493b, type: 3}
   audJumpVol: 1
   audDamage:
   - {fileID: 0}
@@ -2026,11 +2029,12 @@ MonoBehaviour:
   audCrouch: {fileID: 8300000, guid: 4a03aa78b261d5b419c5dd6c990a77bb, type: 3}
   audCrouchVol: 1
   audHurt:
-  - {fileID: 0}
+  - {fileID: 8300000, guid: a60e012d7dddd7c4ca427983954ff0ba, type: 3}
+  - {fileID: 8300000, guid: 173d7c13478568c4499e52d8656ac835, type: 3}
   audHurtVol: 1
   audReload: {fileID: 8300000, guid: 7d1ee53133a34a846bae95995ae4622a, type: 3}
   audReloadVol: 1
-  healthClip: {fileID: 0}
+  healthClip: {fileID: 8300000, guid: 54ccf1a7754d2234e8dd1aae79006817, type: 3}
   healthVol: 1
   emptyClipAud: {fileID: 8300000, guid: 300fc2317917d8547a002c22d2661fab, type: 3}
   emptyClipVol: 1
