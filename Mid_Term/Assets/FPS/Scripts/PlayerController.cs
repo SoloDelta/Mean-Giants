@@ -19,7 +19,7 @@ namespace FPS
     /**----------------------------------------------------------------
      * @brief
      */
-    public class PlayerController : MonoBehaviour, IDamage, IHealth, IAmmo, IKey, IDataPersistence
+    public class PlayerController : MonoBehaviour, IDamage, IHealth, IAmmo, IKey, IMoney, IDataPersistence
     {
         #region Variables
         [Header("----- Components -----")]
@@ -93,6 +93,7 @@ namespace FPS
         bool stepsPlaying;
         bool isReloading;
         public int ammoStorage;
+        public int moneyStorage;
         public bool hasCellKey = false;
         int shieldOrig;
        //public Key useableKeys;
@@ -615,6 +616,16 @@ namespace FPS
                 UpdatePlayerHp();
                 Destroy(obj);
             }
+        }
+
+        public void MoneyPickup(int amount, GameObject obj)
+        {
+            PickupMoney moneyPickup = obj.GetComponent<PickupMoney>();
+
+            moneyStorage = moneyPickup.moneyAmount;
+
+            Destroy(obj);
+
         }
 
         #endregion
