@@ -10100,7 +10100,7 @@ MonoBehaviour:
   rayLength: 5
   layerInteract:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4096
   excludeName: 
   openDoorKey: 101
   Reticle: {fileID: 0}
@@ -11221,7 +11221,7 @@ Transform:
   - {fileID: 3109836862248262469}
   - {fileID: 2644143366454979452}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4728173779827912965
 MonoBehaviour:
