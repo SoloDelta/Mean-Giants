@@ -54,6 +54,7 @@ namespace FPS
         public ParticleSystem muzzleFlash;
 
         [Header("----- Audio -----")]
+        public AudioMixer audioMixer;
         public AudioSource aud;
         [SerializeField] AudioClip pickupClip;
         [SerializeField][Range(0, 1)] float pickupVol;
@@ -108,7 +109,8 @@ namespace FPS
          * @brief MonoBehaviour override.
          */
         private void Start()
-        {  
+        {
+            audioMixer = FindObjectOfType<AudioMixer>();
             speedOrig = playerSpeed;
             playerHpOrig = health;
             playerStaminaOrig = stamina;
@@ -205,7 +207,7 @@ namespace FPS
             // Changes the height position of the player
             if (Input.GetButtonDown("Jump") && jumpedTimes < jumpMax  && stamina > 25)
             {
-                aud.PlayOneShot(audJump[Random.Range(0, audJump.Length)], audJumpVol);
+                audioMixer.JumpSound();
                 jumpedTimes++;
                 playerVelocity.y = jumpHeight;
                 stamina -= 25;
@@ -225,7 +227,7 @@ namespace FPS
         IEnumerator PlaySteps()
         {
             stepsPlaying = true;
-            aud.PlayOneShot(audSteps[Random.Range(0, audSteps.Length)], audStepsVol);
+            audioMixer.StepsSound();
 
             if (!isSprinting)
             {
@@ -288,7 +290,7 @@ namespace FPS
                 playerSpeed /= 2;
                 controller.height = controller.height / 2;
                 isCrouching = true;
-                aud.PlayOneShot(audCrouch);
+                audioMixer.CrouchSound();
             }
             else if (Input.GetButtonUp("Crouch"))
             {
@@ -314,7 +316,7 @@ namespace FPS
                 
                 gunList[selectedGun].curAmmo--;   
                 isShooting = true;
-                aud.PlayOneShot(gunShot, shotVol);
+                audioMixer.ShootSound();
                 RaycastHit hit;
                 updateAmmoUI();
 
@@ -348,7 +350,7 @@ namespace FPS
             }
             if (Input.GetButtonDown("Shoot") && gunList[selectedGun].curAmmo == 0 && !isReloading)
             {
-                aud.PlayOneShot(emptyClipAud);
+                audioMixer.EmptyClipSound();
             }
         }
 
@@ -430,7 +432,7 @@ namespace FPS
 
                 health -= damage;
 
-                aud.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)], audHurtVol);
+                audioMixer.HurtSound();
 
                 if (health <= 0)
                 {
@@ -514,7 +516,7 @@ namespace FPS
                 if (gunList[selectedGun].curAmmo < gunList[selectedGun].maxAmmo) //Need to subtract from Ammo
                 {
                     isReloading= true;
-                    aud.PlayOneShot(audReload);
+                    audioMixer.ReloadSound();
                     yield return new WaitForSeconds(1.5f);
                     if (gunList.Count > 0)
                     {
@@ -562,7 +564,7 @@ namespace FPS
                 playerCurrency -= gunstat.weaponValue;
                 gunList.Add(gunstat);
 
-                aud.PlayOneShot(pickupClip);
+                audioMixer.PickupClipSound();
                 shootDamage = gunstat.shootDamage;
                 shootDistance = gunstat.shootDistance;
                 shootRate = gunstat.shootRate;
@@ -622,7 +624,7 @@ namespace FPS
         {
             if (health < playerHpOrig)
             {
-                aud.PlayOneShot(healthClip, healthVol);
+                audioMixer.HealthPickupSound();
                 health = playerHpOrig;
                 UpdatePlayerHp();
                 Destroy(obj);
