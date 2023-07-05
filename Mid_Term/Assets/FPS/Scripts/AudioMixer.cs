@@ -46,7 +46,7 @@ namespace FPS
         float[] sfxGroup = new float[9];
 
 
-        void Start()
+       /* void Start()
         {
             sfxGroup[0] = pickupVol;
             sfxGroup[1] = shotVol;
@@ -59,7 +59,7 @@ namespace FPS
             sfxGroup[8] = emptyClipVol;
             sfxGroup[9] = audStepsVol;
 
-        }
+        }*/
 
 
 
