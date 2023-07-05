@@ -15,41 +15,12 @@ using UnityEngine;
 
 namespace FPS
 {
-<<<<<<< Updated upstream
+
     public class AudioMixer : MonoBehaviour
-=======
-    public AudioSource soundSource;
-    public AudioSource aud;
-    
-
-    [SerializeField] AudioClip pickupClip;
-    [SerializeField][Range(0, 1)] float pickupVol;
-    [SerializeField] AudioClip gunShot;
-    [SerializeField][Range(0, 1)] float shotVol;
-    [SerializeField] AudioClip[] audJump;
-    [Range(0, 1)][SerializeField] float audJumpVol;
-    [SerializeField] AudioClip[] audDamage;
-    [Range(0, 1)][SerializeField] float audDamageVol;
-    [SerializeField] AudioClip[] audSteps;
-    [Range(0, 1)][SerializeField] float audStepsVol;
-    [SerializeField] AudioClip audCrouch;
-    [Range(0, 1)][SerializeField] float audCrouchVol;
-    [SerializeField] AudioClip[] audHurt;
-    [Range(0, 1)][SerializeField] float audHurtVol;
-    [SerializeField] AudioClip audReload;
-    [Range(0, 1)][SerializeField] float audReloadVol;
-    [SerializeField] AudioClip healthClip;
-    [SerializeField][Range(0, 1)] float healthVol;
-    [SerializeField] AudioClip emptyClipAud;
-    [Range(0, 1)][SerializeField] float emptyClipVol;
-
-    public float[] sfxGroup = new float[9];
-    void Update()
->>>>>>> Stashed changes
     {
         public AudioSource soundSource;
         public AudioSource aud;
-        
+
 
         [SerializeField] AudioClip pickupClip;
         [SerializeField][Range(0, 1)] float pickupVol;
@@ -73,7 +44,9 @@ namespace FPS
         [Range(0, 1)][SerializeField] float emptyClipVol;
 
         float[] sfxGroup = new float[9];
-        void Update()
+
+
+        void Start()
         {
             sfxGroup[0] = pickupVol;
             sfxGroup[1] = shotVol;
@@ -85,7 +58,7 @@ namespace FPS
             sfxGroup[7] = healthVol;
             sfxGroup[8] = emptyClipVol;
             sfxGroup[9] = audStepsVol;
-            
+
         }
 
 
@@ -112,7 +85,7 @@ namespace FPS
 
         public void EmptyClipSound()
         {
-            aud.PlayOneShot(emptyClipAud,emptyClipVol);
+            aud.PlayOneShot(emptyClipAud, emptyClipVol);
         }
         public void HurtSound()
         {
@@ -121,7 +94,7 @@ namespace FPS
 
         public void ReloadSound()
         {
-            aud.PlayOneShot(audReload,audReloadVol);
+            aud.PlayOneShot(audReload, audReloadVol);
         }
 
         public void PickupClipSound()

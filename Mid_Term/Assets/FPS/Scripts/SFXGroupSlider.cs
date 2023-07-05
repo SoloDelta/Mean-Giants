@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class SFXGroupSlider : MonoBehaviour
 {
 
-    public AudioMixer audioMixer; // Reference to the AudioMixer script
+    public AudioMixer audioMixer; 
     public Slider slider;
     public int index;
 
@@ -19,6 +20,6 @@ public class SFXGroupSlider : MonoBehaviour
 
     private void OnSliderValueChanged(float value)
     {
-        audioMixer.sfxGroup[index] = value;
+        
     }
 }
