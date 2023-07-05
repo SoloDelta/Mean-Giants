@@ -10100,7 +10100,7 @@ MonoBehaviour:
   rayLength: 5
   layerInteract:
     serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 0
   excludeName: 
   openDoorKey: 101
   Reticle: {fileID: 0}
@@ -11190,6 +11190,7 @@ GameObject:
   - component: {fileID: 5969234395311703542}
   - component: {fileID: 5234182585185864844}
   - component: {fileID: 8901510203275350524}
+  - component: {fileID: 1444391037785437310}
   m_Layer: 6
   m_Name: Adam Player
   m_TagString: Player
@@ -11220,7 +11221,7 @@ Transform:
   - {fileID: 3109836862248262469}
   - {fileID: 2644143366454979452}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4728173779827912965
 MonoBehaviour:
@@ -11299,50 +11300,10 @@ MonoBehaviour:
   zoomInSpeed: 11
   zoomOutSpeed: 8
   muzzleFlash: {fileID: 2257200925341249052}
-  aud: {fileID: 8426195686097962700}
-  pickupClip: {fileID: 8300000, guid: 55ed87af97cd5424fbab8237e565fe93, type: 3}
-  pickupVol: 0.474
-  gunShot: {fileID: 8300000, guid: dabc55f425ecece4bbe52f188e6c6027, type: 3}
-  shotVol: 0.317
-  audJump:
-  - {fileID: 8300000, guid: d3bb89ffc382b0244a500aa844a4d2f0, type: 3}
-  - {fileID: 8300000, guid: 23f9873ddb40578458b7b9b2d5be6517, type: 3}
-  - {fileID: 8300000, guid: b2eecfbff25cb8243a0f281318ef493b, type: 3}
-  audJumpVol: 0.117
-  audDamage:
-  - {fileID: 8300000, guid: 32b2a2d4cc24b644aa82dd931fddb620, type: 3}
-  - {fileID: 8300000, guid: 3701591439d62044eb2ec54a4a8ad4d5, type: 3}
-  - {fileID: 8300000, guid: f066f3ebedc79dc429b921d5076e5491, type: 3}
-  - {fileID: 8300000, guid: 0e289649262c65c42a4c04f1a9cec8b3, type: 3}
-  - {fileID: 8300000, guid: 41e5ae6b5b278ca4188c620c1ce7bb37, type: 3}
-  audDamageVol: 0.511
-  audSteps:
-  - {fileID: 8300000, guid: b5dd223b1ef78854d80807dccf02f43b, type: 3}
-  - {fileID: 8300000, guid: d5342a7d85a7abf4093dd2f60abc260c, type: 3}
-  - {fileID: 8300000, guid: e652c62061addb646a22b2384d0e2891, type: 3}
-  - {fileID: 8300000, guid: 27057c28a7b76c744a5bea9079990871, type: 3}
-  - {fileID: 8300000, guid: 52e52cb76ee7fbc47bf660a86b3e1e34, type: 3}
-  - {fileID: 8300000, guid: 7b707d7ddc0168047a78c017531d412f, type: 3}
-  - {fileID: 8300000, guid: 5e3ef875b9e975b458e7f2573663b4aa, type: 3}
-  - {fileID: 8300000, guid: 753d6cb4ebc4c8046a6d26597012ee3e, type: 3}
-  - {fileID: 8300000, guid: 9de1d1bf6715a36438e414999b622299, type: 3}
-  audStepsVol: 0.066
-  audCrouch: {fileID: 8300000, guid: 4a03aa78b261d5b419c5dd6c990a77bb, type: 3}
-  audCrouchVol: 0.076
-  audHurt:
-  - {fileID: 8300000, guid: a60e012d7dddd7c4ca427983954ff0ba, type: 3}
-  - {fileID: 8300000, guid: 173d7c13478568c4499e52d8656ac835, type: 3}
-  - {fileID: 8300000, guid: 7e5e54212cf3d9047ad73dd2dba00d74, type: 3}
-  - {fileID: 8300000, guid: 0b3df88ca0fa576468793a0296fe6ec1, type: 3}
-  audHurtVol: 0.129
-  audReload: {fileID: 8300000, guid: 7d1ee53133a34a846bae95995ae4622a, type: 3}
-  audReloadVol: 0.083
-  healthClip: {fileID: 8300000, guid: 54ccf1a7754d2234e8dd1aae79006817, type: 3}
-  healthVol: 0.561
-  emptyClipAud: {fileID: 8300000, guid: 300fc2317917d8547a002c22d2661fab, type: 3}
-  emptyClipVol: 0
+  audioMixer: {fileID: 0}
   isCrouching: 0
   ammoStorage: 0
+  moneyStorage: 0
   hasCellKey: 0
 --- !u!143 &8220044977229747923
 CharacterController:
@@ -11535,6 +11496,57 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1444391037785437310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7638439082459081696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a5aa48c4ba991f4c9a5a1357c895c50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundSource: {fileID: 0}
+  aud: {fileID: 8426195686097962700}
+  pickupClip: {fileID: 8300000, guid: 55ed87af97cd5424fbab8237e565fe93, type: 3}
+  pickupVol: 1
+  gunShot: {fileID: 8300000, guid: dabc55f425ecece4bbe52f188e6c6027, type: 3}
+  shotVol: 1
+  audJump:
+  - {fileID: 8300000, guid: d3bb89ffc382b0244a500aa844a4d2f0, type: 3}
+  - {fileID: 8300000, guid: 23f9873ddb40578458b7b9b2d5be6517, type: 3}
+  - {fileID: 8300000, guid: b2eecfbff25cb8243a0f281318ef493b, type: 3}
+  audJumpVol: 1
+  audDamage:
+  - {fileID: 0}
+  audDamageVol: 1
+  audSteps:
+  - {fileID: 0}
+  audStepsVol: 1
+  audCrouch: {fileID: 8300000, guid: 4a03aa78b261d5b419c5dd6c990a77bb, type: 3}
+  audCrouchVol: 1
+  audHurt:
+  - {fileID: 8300000, guid: a60e012d7dddd7c4ca427983954ff0ba, type: 3}
+  - {fileID: 8300000, guid: 173d7c13478568c4499e52d8656ac835, type: 3}
+  audHurtVol: 1
+  audReload: {fileID: 8300000, guid: 7d1ee53133a34a846bae95995ae4622a, type: 3}
+  audReloadVol: 1
+  healthClip: {fileID: 8300000, guid: 54ccf1a7754d2234e8dd1aae79006817, type: 3}
+  healthVol: 1
+  emptyClipAud: {fileID: 8300000, guid: 300fc2317917d8547a002c22d2661fab, type: 3}
+  emptyClipVol: 1
+  sfxGroup:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
 --- !u!1 &7662810704999779758
 GameObject:
   m_ObjectHideFlags: 0
