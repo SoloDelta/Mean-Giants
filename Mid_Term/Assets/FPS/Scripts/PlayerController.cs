@@ -55,27 +55,7 @@ namespace FPS
 
         [Header("----- Audio -----")]
         public AudioMixer audioMixer;
-        public AudioSource aud;
-        [SerializeField] AudioClip pickupClip;
-        [SerializeField][Range(0, 1)] float pickupVol;
-        [SerializeField] AudioClip gunShot;
-        [SerializeField][Range(0, 1)] float shotVol;
-        [SerializeField] AudioClip[] audJump;
-        [Range(0, 1)][SerializeField] float audJumpVol;
-        [SerializeField] AudioClip[] audDamage;
-        [Range(0, 1)][SerializeField] float audDamageVol;
-        [SerializeField] AudioClip[] audSteps;
-        [Range(0, 1)][SerializeField] float audStepsVol;
-        [SerializeField] AudioClip audCrouch;
-        [Range(0, 1)][SerializeField] float audCrouchVol;
-        [SerializeField] AudioClip[] audHurt;
-        [Range(0, 1)][SerializeField] float audHurtVol;
-        [SerializeField] AudioClip audReload;
-        [Range(0, 1)][SerializeField] float audReloadVol;
-        [SerializeField] AudioClip healthClip;
-        [SerializeField][Range(0, 1)] float healthVol;
-        [SerializeField] AudioClip emptyClipAud;
-        [Range(0, 1)][SerializeField] float emptyClipVol;
+        
 
 
         private int jumpedTimes;

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 
@@ -8,6 +9,8 @@ public class AudioMixer : MonoBehaviour
 {
     public AudioSource soundSource;
     public AudioSource aud;
+    
+
     [SerializeField] AudioClip pickupClip;
     [SerializeField][Range(0, 1)] float pickupVol;
     [SerializeField] AudioClip gunShot;
@@ -28,6 +31,24 @@ public class AudioMixer : MonoBehaviour
     [SerializeField][Range(0, 1)] float healthVol;
     [SerializeField] AudioClip emptyClipAud;
     [Range(0, 1)][SerializeField] float emptyClipVol;
+
+    float[] sfxGroup = new float[9];
+    void Update()
+    {
+        sfxGroup[0] = pickupVol;
+        sfxGroup[1] = shotVol;
+        sfxGroup[2] = audJumpVol;
+        sfxGroup[3] = audDamageVol;
+        sfxGroup[4] = audCrouchVol;
+        sfxGroup[5] = audHurtVol;
+        sfxGroup[6] = audReloadVol;
+        sfxGroup[7] = healthVol;
+        sfxGroup[8] = emptyClipVol;
+        sfxGroup[9] = audStepsVol;
+        
+    }
+
+
 
     public void JumpSound()
     {
