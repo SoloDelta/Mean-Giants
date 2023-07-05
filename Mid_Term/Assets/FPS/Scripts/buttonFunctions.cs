@@ -18,6 +18,7 @@ namespace FPS
      */
     public class ButtonFunctions : MonoBehaviour
     {
+
         /**----------------------------------------------------------------
          * @brief
          */
@@ -96,6 +97,20 @@ namespace FPS
             GameManager.instance.activeMenu.SetActive(true);
         }
 
+        public void MenuSettings()
+        {
+            GameManager.instance.activeMenu.SetActive(false);
+            GameManager.instance.activeMenu = GameManager.instance.settingsMenu;
+            GameManager.instance.activeMenu.SetActive(true);
+        }
+
+        public void MenuSettingsReturn()
+        {
+            GameManager.instance.activeMenu.SetActive(false);
+            GameManager.instance.activeMenu = GameManager.instance.pauseMenu;
+            GameManager.instance.activeMenu.SetActive(true);
+        }
+
         public void Save()
         {
             DataPersistenceManager.Instance.SaveGame();
@@ -105,5 +120,7 @@ namespace FPS
         {
             DataPersistenceManager.Instance.LoadGame();
         }
+
+
     }
 }
