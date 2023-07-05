@@ -2062,6 +2062,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ammo_box
       objectReference: {fileID: 0}
+    - target: {fileID: 5224434381628382567, guid: 8ffbadab563939048a30c1263d60fca6, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8232,6 +8236,14 @@ PrefabInstance:
     - target: {fileID: 5474149766656031054, guid: 891b0bcfb087b0e4eb557c2480d5cd8c, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 5582555350775340396, guid: 891b0bcfb087b0e4eb557c2480d5cd8c, type: 3}
+      propertyPath: patrolSpots.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5582555350775340396, guid: 891b0bcfb087b0e4eb557c2480d5cd8c, type: 3}
+      propertyPath: patrolRotations.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6805392318922559373, guid: 891b0bcfb087b0e4eb557c2480d5cd8c, type: 3}
       propertyPath: m_RootOrder

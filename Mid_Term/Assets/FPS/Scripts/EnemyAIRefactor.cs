@@ -181,8 +181,9 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
             currentState = "SpottingPlayer";
             agent.isStopped = true;
         }
-        else if (canSeeBody()) //something to make enemy sus from player
+        else if (canSeeBody() && !baseManagerScript.highAlert) //something to make enemy sus from player
         {
+            agent.stoppingDistance = 4;
             currentState = "Noticing dead body";
             //Path to a game object: Notice dead body
         } 
@@ -200,7 +201,7 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
     {
         StopCoroutine(PatrolTurnAround());
         agent.stoppingDistance = 0;
-
+        agent.isStopped = false;
         GameObject closestAlarm = baseManagerScript.alarms[0];
         for (int i = 0; i < baseManagerScript.alarms.Count; i++)
         {
@@ -222,6 +223,7 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
     }
     void Combat()
     {
+        agent.isStopped = false;
         searching = false;
         shouldStartSearching = false;
         spottingUI.SetActive(false);
@@ -281,7 +283,7 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
         foreach (GameObject deadEnemy in baseManagerScript.enemies)
         {
             Vector3 deadDirection = deadEnemy.transform.position - headPosition.transform.position;
-            Debug.DrawRay(headPosition.position, deadDirection);
+            
             if ((Vector3.Distance(deadEnemy.transform.position, this.gameObject.transform.position) < 50) && deadEnemy.layer == 13)
             {
                 
@@ -290,9 +292,11 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
                 RaycastHit hit;
                 if (Physics.Raycast(headPosition.position, deadDirection, out hit))
                 {
-                    Debug.Log("Angle to body: " + angleToDead);
+                    
                     if (hit.collider.gameObject.layer == 13 && angleToDead <= viewConeAngle)
                     {
+                        Debug.DrawRay(headPosition.position, deadDirection);
+                        agent.isStopped = false;
                         agent.stoppingDistance = 4;
                         agent.SetDestination(deadEnemy.transform.position);
                         if (Vector3.Distance(deadEnemy.transform.position, agent.transform.position) < 5)

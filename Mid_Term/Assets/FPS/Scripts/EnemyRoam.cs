@@ -61,7 +61,6 @@ public class EnemyRoam : MonoBehaviour, IDamage
     private Coroutine searchCopy; //a variable to store the last coroutine of "losingPlayer"        
     private bool isShooting;
     public bool shouldStartSearching = false;
-    bool searching = false;
     Vector3 playerLastSeenAt;
     public Vector3 startingPos;
     // Start is called before the first frame update

@@ -79,6 +79,20 @@ public class BaseManager : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             enemiesParent.SetActive(true);
+
+            foreach (GameObject enemy in enemies)
+            {
+                if(enemy.layer == 13)
+                {
+
+                    enemy.SetActive(false);
+                }
+                else
+                {
+                    enemy.SetActive(true);
+                }
+            }
+            
         }
     }
     private void OnTriggerExit(Collider other)
