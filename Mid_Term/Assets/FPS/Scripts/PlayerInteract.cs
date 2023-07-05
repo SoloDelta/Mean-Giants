@@ -19,7 +19,6 @@ public class PlayerInteract : MonoBehaviour
                 }
                 if (collider.TryGetComponent(out PickupGun gunInteractable))
                 {
-                    Debug.Log(collider);
                     gunInteractable.GunInteract();
                 }
             }

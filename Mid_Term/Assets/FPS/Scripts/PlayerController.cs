@@ -19,7 +19,7 @@ namespace FPS
     /**----------------------------------------------------------------
      * @brief
      */
-    public class PlayerController : MonoBehaviour, IDamage, IHealth, IAmmo, IKey
+    public class PlayerController : MonoBehaviour, IDamage, IHealth, IAmmo, IKey, IDataPersistence
     {
         #region Variables
         [Header("----- Components -----")]
@@ -28,8 +28,8 @@ namespace FPS
         [SerializeField] private Animator anim;
 
         [Header("----- Player Stats -----")]
-        [SerializeField] private int health;
-        [SerializeField] private int shield;
+        [SerializeField] public int health;
+        [SerializeField] public int shield;
         [Range(3, 8)][SerializeField] private float playerSpeed;
         [Range(8, 25)][SerializeField] private float jumpHeight;
         [Range(10, 50)][SerializeField] private float gravityValue;
@@ -676,6 +676,20 @@ namespace FPS
                     other.GetComponent<CellDoor>().Moving = true;
                 }
             }
+        }
+        #endregion
+
+        #region Save/Load
+        public void SaveData(ref GameData gameData)
+        {
+            gameData.playerHp = this.health;
+            gameData.playerShield = this.shield;
+        }
+
+        public void LoadData(GameData gameData)
+        {
+            this.health = gameData.playerHp;
+            this.shield = gameData.playerShield;
         }
         #endregion
     }

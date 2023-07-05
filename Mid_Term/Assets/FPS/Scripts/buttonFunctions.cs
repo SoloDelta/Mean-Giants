@@ -95,5 +95,15 @@ namespace FPS
             GameManager.instance.activeMenu = GameManager.instance.pauseMenu;
             GameManager.instance.activeMenu.SetActive(true);
         }
+
+        public void Save()
+        {
+            DataPersistenceManager.Instance.SaveGame();
+        }
+
+        public void Load()
+        {
+            DataPersistenceManager.Instance.LoadGame();
+        }
     }
 }

@@ -12,6 +12,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 namespace FPS
 {
@@ -138,6 +139,7 @@ namespace FPS
             activeMenu = loseMenu;
             activeMenu.SetActive(true);
         }
+
 
 
 
