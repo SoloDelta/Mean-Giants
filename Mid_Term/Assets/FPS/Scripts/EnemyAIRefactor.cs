@@ -222,6 +222,9 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
     }
     void Combat()
     {
+        searching = false;
+        shouldStartSearching = false;
+        spottingUI.SetActive(false);
         if (tryAlert)
         {
             baseManagerScript.PullAlarm(this.gameObject);
@@ -370,6 +373,7 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
         {
             agent.isStopped = false;
             spotted = true;
+            shouldStartSearching = false;
             spottingUI.SetActive(false);
             StartCoroutine(spottedUIon());
             StartCoroutine(ChangeStealthVals());
@@ -449,6 +453,7 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
                 agent.SetDestination(GameManager.instance.player.transform.position);
                 if (!spotted)
                 {
+                    spottingUI.SetActive(false);
                     StartCoroutine(spottedUIon());
                 }
                 spotted = true;
