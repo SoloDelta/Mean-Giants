@@ -55,7 +55,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void SaveGame()
     {
-        //todo pass data to other scripts to update
+        //pass data to other scripts to update
         foreach (IDataPersistence dataObject in dataPersistenceObjects)
         {
             dataObject.SaveData(ref gameData);
