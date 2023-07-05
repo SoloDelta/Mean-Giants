@@ -63,7 +63,7 @@ public class EnemyRoam : MonoBehaviour, IDamage
     public bool shouldStartSearching = false;
     bool searching = false;
     Vector3 playerLastSeenAt;
-    Vector3 startingPos;
+    public Vector3 startingPos;
     // Start is called before the first frame update
     void Start()
     {
@@ -71,7 +71,7 @@ public class EnemyRoam : MonoBehaviour, IDamage
         audSource = GetComponent<AudioSource>();
         agent.speed = speed;
         enemyHPOriginal = HP;
-        startingPos = transform.position;
+        //startingPos = transform.position;
         stoppingDistanceOriginal = agent.stoppingDistance;
         GameManager.instance.UpdateObjective(1);
     }

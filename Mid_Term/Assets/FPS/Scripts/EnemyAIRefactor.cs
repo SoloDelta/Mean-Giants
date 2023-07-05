@@ -277,14 +277,17 @@ public class EnemyAIRefactor : MonoBehaviour, IDamage
     {
         foreach (GameObject deadEnemy in baseManagerScript.enemies)
         {
-            if ((Vector3.Distance(deadEnemy.transform.position, this.gameObject.transform.position) < 10) && deadEnemy.layer == 13)
+            Vector3 deadDirection = deadEnemy.transform.position - headPosition.transform.position;
+            Debug.DrawRay(headPosition.position, deadDirection);
+            if ((Vector3.Distance(deadEnemy.transform.position, this.gameObject.transform.position) < 50) && deadEnemy.layer == 13)
             {
-                Vector3 deadDirection = deadEnemy.transform.position - headPosition.transform.position;
-                float angleToDead = Vector3.Angle(new Vector3(deadDirection.x, 0, deadDirection.z), transform.forward);
-                Debug.DrawRay(headPosition.position, deadDirection);
+                
+                float angleToDead = Vector3.Angle(new Vector3(deadDirection.x, deadDirection.y, deadDirection.z), transform.forward);
+                
                 RaycastHit hit;
                 if (Physics.Raycast(headPosition.position, deadDirection, out hit))
                 {
+                    Debug.Log("Angle to body: " + angleToDead);
                     if (hit.collider.gameObject.layer == 13 && angleToDead <= viewConeAngle)
                     {
                         agent.stoppingDistance = 4;

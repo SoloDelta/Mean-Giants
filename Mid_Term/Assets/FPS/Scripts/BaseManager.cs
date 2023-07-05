@@ -155,7 +155,7 @@ public class BaseManager : MonoBehaviour
         for(int i = 0; i < numOfReinforcements; i++) 
         {
             if(Random.Range(0,2) == 0) { Instantiate(heavy, reinformentSpawnPos.transform); }
-            else { Instantiate(shotgun, reinformentSpawnPos.transform); }
+            else { Instantiate(shotgun, reinformentSpawnPos.transform.position, transform.rotation).GetComponent<EnemyRoam>().startingPos = this.transform.position; }
             yield return new WaitForSeconds(1);
         }
     }

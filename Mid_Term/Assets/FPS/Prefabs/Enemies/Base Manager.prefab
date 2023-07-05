@@ -152,8 +152,8 @@ MonoBehaviour:
   pullAlarm: 0
   isPullingAlarm: 0
   highAlert: 0
-  heavy: {fileID: 843911144030581328, guid: d8c5500e5c0ef804b8b2be9bc7216441, type: 3}
-  shotgun: {fileID: 843911144030581328, guid: 85e102310be094a44ae9f76a95c051ee, type: 3}
+  heavy: {fileID: 843911144030581328, guid: 24839c251f05e8d439124f6b95ee2a22, type: 3}
+  shotgun: {fileID: 843911144030581328, guid: 69a17d233655b324ba92b78fd54858f4, type: 3}
   reinformentSpawnPos: {fileID: 4056820393001357060}
   numOfReinforcements: 3
   alertEnemiesRange: 0
