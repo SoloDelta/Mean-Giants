@@ -464,10 +464,11 @@ namespace FPS
          */
         public void SpawnPlayer()
         {
+            health = playerHpOrig;
             controller.enabled = false;
             transform.position = GameManager.instance.playerSpawnPos.transform.position; 
             controller.enabled = true;
-            health = playerHpOrig;
+            
             UpdatePlayerHp();
             UpdatePlayerShield();
             updateAmmoUI();

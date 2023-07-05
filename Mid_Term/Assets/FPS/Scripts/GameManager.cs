@@ -101,7 +101,7 @@ namespace FPS
             Time.timeScale = 0;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Confined;
-            isPaused = !isPaused;
+            isPaused = true;
         }
 
         public void UnpausedState()
@@ -109,7 +109,7 @@ namespace FPS
             Time.timeScale = timeScaleOriginal;
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
-            isPaused = !isPaused;
+            isPaused = false;
             activeMenu.SetActive(isPaused);
             activeMenu = null;
         }
