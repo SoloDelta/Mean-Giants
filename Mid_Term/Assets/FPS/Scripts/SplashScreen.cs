@@ -8,14 +8,11 @@
 //-----------------------------------------------------------------
 // Using Namespaces
 //-----------------------------------------------------------------
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace FPS
 {
-    public interface IKey 
+    public class SplashScreen
     {
-        void PickupKey(Key name, GameObject obj);
+        
     }
 }

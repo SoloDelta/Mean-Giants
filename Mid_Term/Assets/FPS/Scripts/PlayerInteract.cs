@@ -1,25 +1,38 @@
+/**
+ * Copyright (c) 2023 - 2023, The Mean Giants, All Rights Reserved.
+ *
+ * Authors
+ *  - 
+ */
+
+//-----------------------------------------------------------------
+// Using Namespaces
+//-----------------------------------------------------------------
 using FPS;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInteract : MonoBehaviour
+namespace FPS
 {
-    [SerializeField][Range(0, 15)] float interactRange;
-    private void Update()
+    public class PlayerInteract : MonoBehaviour
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        [SerializeField][Range(0, 15)] float interactRange;
+        private void Update()
         {
-           Collider[] colliderArray =  Physics.OverlapSphere(transform.position, interactRange);
-            foreach (Collider collider in colliderArray)
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                if (collider.TryGetComponent(out NpcInteract interactable))
+            Collider[] colliderArray =  Physics.OverlapSphere(transform.position, interactRange);
+                foreach (Collider collider in colliderArray)
                 {
-                   interactable.Interact();
-                }
-                if (collider.TryGetComponent(out PickupGun gunInteractable))
-                {
-                    gunInteractable.GunInteract();
+                    if (collider.TryGetComponent(out NpcInteract interactable))
+                    {
+                    interactable.Interact();
+                    }
+                    if (collider.TryGetComponent(out PickupGun gunInteractable))
+                    {
+                        gunInteractable.GunInteract();
+                    }
                 }
             }
         }

@@ -1,58 +1,71 @@
+/**
+ * Copyright (c) 2023 - 2023, The Mean Giants, All Rights Reserved.
+ *
+ * Authors
+ *  - 
+ */
+
+//-----------------------------------------------------------------
+// Using Namespaces
+//-----------------------------------------------------------------
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorController : MonoBehaviour
+namespace FPS
 {
-    private Animator doorAnim;
-    [Header("--- Animation ---")]
-    [SerializeField] private string openAnimation;
-    [SerializeField] private string closeAnimation;
-    [Header("--- Storage ---")]
-    [SerializeField] KeyStorage _keyStorage = null;
-
-    public bool prisonDoor;
-    public bool PrisonCell;
-    public bool CompoundDoor;
-
-
-    private bool doorOpen = false;
-
-    private void Awake()
+    public class DoorController : MonoBehaviour
     {
-        doorAnim = gameObject.GetComponent<Animator>();
-        _keyStorage = FindObjectOfType<KeyStorage>();
-    }
+        private Animator doorAnim;
+        [Header("--- Animation ---")]
+        [SerializeField] private string openAnimation;
+        [SerializeField] private string closeAnimation;
+        [Header("--- Storage ---")]
+        [SerializeField] KeyStorage _keyStorage = null;
 
-    public void PlayAnimation()
-    {
-        if (_keyStorage._hasPrisonKey)
+        public bool prisonDoor;
+        public bool PrisonCell;
+        public bool CompoundDoor;
+
+
+        private bool doorOpen = false;
+
+        private void Awake()
         {
-            if (prisonDoor)
+            doorAnim = gameObject.GetComponent<Animator>();
+            _keyStorage = FindObjectOfType<KeyStorage>();
+        }
+
+        public void PlayAnimation()
+        {
+            if (_keyStorage._hasPrisonKey)
             {
-                OpenDoor();
+                if (prisonDoor)
+                {
+                    OpenDoor();
+                }
+            }
+            else
+            {
+                if (CompoundDoor)
+                {
+                    OpenDoor();
+                }
             }
         }
-        else
-        {
-            if (CompoundDoor)
-            {
-                OpenDoor();
-            }
-        }
-    }
 
-    private void OpenDoor()
-    {
-        if (!doorOpen)
+        private void OpenDoor()
         {
-            doorAnim.Play(openAnimation, 0, 0.0f);
-            doorOpen = true;
-        }
-        else
-        {
-            doorAnim.Play(closeAnimation, 0, 0.0f);
-            doorOpen = false;
+            if (!doorOpen)
+            {
+                doorAnim.Play(openAnimation, 0, 0.0f);
+                doorOpen = true;
+            }
+            else
+            {
+                doorAnim.Play(closeAnimation, 0, 0.0f);
+                doorOpen = false;
+            }
         }
     }
 }

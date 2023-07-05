@@ -1,16 +1,29 @@
+/**
+ * Copyright (c) 2023 - 2023, The Mean Giants, All Rights Reserved.
+ *
+ * Authors
+ *  - 
+ */
+
+//-----------------------------------------------------------------
+// Using Namespaces
+//-----------------------------------------------------------------
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Key
+namespace FPS
 {
-    prisonKey,
-    compoundKey,
-    prisonCellKey,
-}
+    public enum Key
+    {
+        prisonKey,
+        compoundKey,
+        prisonCellKey,
+    }
 
-public class Keys : MonoBehaviour
-{
-    public GameObject model;
-    public Key key;
+    public class Keys : MonoBehaviour
+    {
+        public GameObject model;
+        public Key key;
+    }
 }

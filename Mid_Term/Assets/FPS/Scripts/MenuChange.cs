@@ -1,14 +1,27 @@
+/**
+ * Copyright (c) 2023 - 2023, The Mean Giants, All Rights Reserved.
+ *
+ * Authors
+ *  - 
+ */
+
+//-----------------------------------------------------------------
+// Using Namespaces
+//-----------------------------------------------------------------
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MenuChange : MonoBehaviour
+namespace FPS
 {
-    public GameObject firstScreenCanvas;
-    public GameObject secondScreenCanvas;
-    public void FlipScreens()
+    public class MenuChange : MonoBehaviour
     {
-        firstScreenCanvas.SetActive(!firstScreenCanvas.activeSelf);
-        secondScreenCanvas.SetActive(!secondScreenCanvas.activeSelf);
+        public GameObject firstScreenCanvas;
+        public GameObject secondScreenCanvas;
+        public void FlipScreens()
+        {
+            firstScreenCanvas.SetActive(!firstScreenCanvas.activeSelf);
+            secondScreenCanvas.SetActive(!secondScreenCanvas.activeSelf);
+        }
     }
 }

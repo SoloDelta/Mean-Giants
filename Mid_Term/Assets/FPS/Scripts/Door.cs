@@ -1,72 +1,85 @@
+/**
+ * Copyright (c) 2023 - 2023, The Mean Giants, All Rights Reserved.
+ *
+ * Authors
+ *  - 
+ */
+
+//-----------------------------------------------------------------
+// Using Namespaces
+//-----------------------------------------------------------------
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Door : MonoBehaviour
+namespace FPS
 {
-    [Range(1, 50)][SerializeField] private int rayLength;
-    [SerializeField] private LayerMask layerInteract;
-    [SerializeField] private string excludeName = null;
-
-    private DoorController raycastedObj;
-
-    [SerializeField] private KeyCode openDoorKey = KeyCode.E;
-
-    [SerializeField] private Image Reticle = null;
-    private bool isReticleActive;
-    private bool doOnce;
-
-    private const string interactableTag = "Door";
-
-    private void Update()
+    public class Door : MonoBehaviour
     {
-        RaycastHit hit;
-        Vector3 fwd = transform.TransformDirection(Vector3.forward);
+        [Range(1, 50)][SerializeField] private int rayLength;
+        [SerializeField] private LayerMask layerInteract;
+        [SerializeField] private string excludeName = null;
 
-        int mask = 1 << LayerMask.NameToLayer(excludeName) | layerInteract.value;
+        private DoorController raycastedObj;
 
-        if (Physics.Raycast(transform.position, fwd, out hit, rayLength, mask))
+        [SerializeField] private KeyCode openDoorKey = KeyCode.E;
+
+        [SerializeField] private Image Reticle = null;
+        private bool isReticleActive;
+        private bool doOnce;
+
+        private const string interactableTag = "Door";
+
+        private void Update()
         {
-            if (hit.collider.CompareTag(interactableTag))
+            RaycastHit hit;
+            Vector3 fwd = transform.TransformDirection(Vector3.forward);
+
+            int mask = 1 << LayerMask.NameToLayer(excludeName) | layerInteract.value;
+
+            if (Physics.Raycast(transform.position, fwd, out hit, rayLength, mask))
             {
-                if (!doOnce)
+                if (hit.collider.CompareTag(interactableTag))
                 {
-                    raycastedObj = hit.collider.gameObject.GetComponent<DoorController>();
-                    ReticleChange(true);
+                    if (!doOnce)
+                    {
+                        raycastedObj = hit.collider.gameObject.GetComponent<DoorController>();
+                        ReticleChange(true);
+                    }
+
+                    isReticleActive = true;
+                    doOnce = true;
+
+                    if (Input.GetKeyDown(openDoorKey))
+                    {
+                        raycastedObj.PlayAnimation();
+                    }
                 }
+            }
 
-                isReticleActive = true;
-                doOnce = true;
-
-                if (Input.GetKeyDown(openDoorKey))
+            else
+            {
+                if (isReticleActive)
                 {
-                    raycastedObj.PlayAnimation();
+                    ReticleChange(false);
+                    doOnce = false;
                 }
             }
         }
 
-        else
+        void ReticleChange(bool on)
         {
-            if (isReticleActive)
+            if (on && !doOnce)
             {
-                ReticleChange(false);
-                doOnce = false;
+                Reticle.color = Color.white;
             }
-        }
-    }
 
-    void ReticleChange(bool on)
-    {
-        if (on && !doOnce)
-        {
-            Reticle.color = Color.white;
-        }
-
-        else
-        {
-            Reticle.color = Color.red;
-            isReticleActive = false;
+            else
+            {
+                Reticle.color = Color.red;
+                isReticleActive = false;
+            }
         }
     }
 }

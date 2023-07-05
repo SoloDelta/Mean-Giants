@@ -1,20 +1,33 @@
+/**
+ * Copyright (c) 2023 - 2023, The Mean Giants, All Rights Reserved.
+ *
+ * Authors
+ *  - 
+ */
+
+//-----------------------------------------------------------------
+// Using Namespaces
+//-----------------------------------------------------------------
 using FPS;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickupKeys : MonoBehaviour
+namespace FPS
 {
-    [SerializeField] private Keys key;
-    private readonly Key useableKey;
-
-    public void OnTriggerEnter(Collider other)
+    public class PickupKeys : MonoBehaviour
     {
-        IKey hasKey = other.GetComponent<IKey>();
+        [SerializeField] private Keys key;
+        private readonly Key useableKey;
 
-        if(hasKey != null)
+        public void OnTriggerEnter(Collider other)
         {
-            hasKey.PickupKey(useableKey, gameObject);
+            IKey hasKey = other.GetComponent<IKey>();
+
+            if(hasKey != null)
+            {
+                hasKey.PickupKey(useableKey, gameObject);
+            }
         }
     }
 }

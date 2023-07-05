@@ -1,19 +1,29 @@
+/**
+ * Copyright (c) 2023 - 2023, The Mean Giants, All Rights Reserved.
+ *
+ * Authors
+ *  - 
+ */
+
+//-----------------------------------------------------------------
+// Using Namespaces
+//-----------------------------------------------------------------
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PrisonToHqNpcSpawn : MonoBehaviour
+namespace FPS
 {
-    [SerializeField] GameObject objectToSpawn;
-    [SerializeField] Transform spawnPos;
-    [SerializeField] int numberToSpawn;
-    [SerializeField] float timeBetweenSpawn;
-
+    public class PrisonToHqNpcSpawn : MonoBehaviour
+    {
+        [SerializeField] GameObject objectToSpawn;
+        [SerializeField] Transform spawnPos;
+        [SerializeField] int numberToSpawn;
+        [SerializeField] float timeBetweenSpawn;
 
         int numberSpawn;
         bool playerInRange;
         bool isSpawning;
-
 
         // Update is called once per frame
         void Update()
@@ -31,7 +41,7 @@ public class PrisonToHqNpcSpawn : MonoBehaviour
                 playerInRange = true;
             }
         }
-
+        
         IEnumerator Spawn()
         {
             isSpawning = true;
@@ -41,5 +51,5 @@ public class PrisonToHqNpcSpawn : MonoBehaviour
             yield return new WaitForSeconds(timeBetweenSpawn);
             isSpawning = false;
         }
+    }
 }
-

@@ -2,52 +2,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnerEnable : MonoBehaviour
+namespace FPS
 {
-    public List<GameObject> enemiesInRange = new List<GameObject>();
-    bool initialQueryDone = false;
-    // Start is called before the first frame update
-    void Start()
+    public class SpawnerEnable : MonoBehaviour
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Enemy"))
+        public List<GameObject> enemiesInRange = new List<GameObject>();
+        bool initialQueryDone = false;
+        // Start is called before the first frame update
+        void Start()
         {
-            if (!initialQueryDone)
+
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            
+        }
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Enemy"))
             {
-                if (!enemiesInRange.Contains(other.gameObject))
+                if (!initialQueryDone)
                 {
-                    Debug.Log("Query");
-                    enemiesInRange.Add(other.gameObject);
-                    other.gameObject.SetActive(false);
+                    if (!enemiesInRange.Contains(other.gameObject))
+                    {
+                        Debug.Log("Query");
+                        enemiesInRange.Add(other.gameObject);
+                        other.gameObject.SetActive(false);
+                    }
+                }
+            }
+            
+
+            if(other.CompareTag("Player"))
+            {
+                for (int i = 0; i < enemiesInRange.Count; i++)
+                {
+                    enemiesInRange[i].SetActive(true);
                 }
             }
         }
-        
-
-        if(other.CompareTag("Player"))
+        private void OnTriggerExit(Collider other)
         {
-            for (int i = 0; i < enemiesInRange.Count; i++)
+            if (other.CompareTag("Player"))
             {
-                enemiesInRange[i].SetActive(true);
-            }
-        }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            for (int i = 0; i < enemiesInRange.Count; i++)
-            {
-                enemiesInRange[i].SetActive(false);
+                for (int i = 0; i < enemiesInRange.Count; i++)
+                {
+                    enemiesInRange[i].SetActive(false);
+                }
             }
         }
     }
