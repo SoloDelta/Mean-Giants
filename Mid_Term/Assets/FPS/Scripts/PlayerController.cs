@@ -77,6 +77,7 @@ namespace FPS
         public int moneyStorage;
         public bool hasCellKey = false;
         int shieldOrig;
+        NpcInteract npc;
        //public Key useableKeys;
 
         
@@ -520,6 +521,15 @@ namespace FPS
 
             }
         }
+
+        public void PlayerReward()
+        {
+            if(npc.hasPrisonObjective)
+            {
+                playerCurrency += 300;
+            }
+        }
+
         #endregion
 
         #region Pickups

@@ -15,7 +15,7 @@ public class NpcInteract : MonoBehaviour
     public Collider prisonCollider;
     public Collider villageCollider;
 
-    bool hasPrisonObjective = false;
+    public bool hasPrisonObjective = false;
     bool hasVillageObjective = false;
     bool deletePrisonNpc = false;
 
