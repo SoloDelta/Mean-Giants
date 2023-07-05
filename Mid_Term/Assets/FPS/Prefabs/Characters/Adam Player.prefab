@@ -11523,7 +11523,8 @@ MonoBehaviour:
   - {fileID: 0}
   audDamageVol: 1
   audSteps:
-  - {fileID: 0}
+  - {fileID: 8300000, guid: e652c62061addb646a22b2384d0e2891, type: 3}
+  - {fileID: 8300000, guid: 7b707d7ddc0168047a78c017531d412f, type: 3}
   audStepsVol: 1
   audCrouch: {fileID: 8300000, guid: 4a03aa78b261d5b419c5dd6c990a77bb, type: 3}
   audCrouchVol: 1
@@ -11537,16 +11538,6 @@ MonoBehaviour:
   healthVol: 1
   emptyClipAud: {fileID: 8300000, guid: 300fc2317917d8547a002c22d2661fab, type: 3}
   emptyClipVol: 1
-  sfxGroup:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
 --- !u!1 &7662810704999779758
 GameObject:
   m_ObjectHideFlags: 0
