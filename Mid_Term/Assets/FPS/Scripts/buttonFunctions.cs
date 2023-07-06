@@ -33,7 +33,7 @@ namespace FPS
 
         public void PlayGame()
         {
-            SceneManager.LoadScene("Main");
+            Loader.Instance.LoadNextLevel();
             Restart();
         }
 

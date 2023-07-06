@@ -5,7 +5,7 @@ using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class SFXGroupSlider : MonoBehaviour
-{
+{   
 
     public AudioMixer audioMixer; 
     public Slider slider;
