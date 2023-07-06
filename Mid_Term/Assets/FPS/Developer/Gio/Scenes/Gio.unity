@@ -245,6 +245,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ffbadab563939048a30c1263d60fca6, type: 3}
+--- !u!82 &470042908 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7951804076116842490, guid: 279e1c08b64de3a4c8023e8a3cdefe0a, type: 3}
+  m_PrefabInstance: {fileID: 1263660618}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &596616694
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1210,6 +1215,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8519337899452434272, guid: 6580ebe7a565cf043a219416f92ffadb, type: 3}
+      propertyPath: aud
+      value: 
+      objectReference: {fileID: 470042908}
     - target: {fileID: 8879026309323867878, guid: 6580ebe7a565cf043a219416f92ffadb, type: 3}
       propertyPath: m_Name
       value: Music&Audio
