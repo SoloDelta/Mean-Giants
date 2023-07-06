@@ -78,6 +78,7 @@ namespace FPS
         public bool hasCellKey = false;
         int shieldOrig;
         NpcInteract npc;
+        private RaycastHit lastHit;
        //public Key useableKeys;
 
         
@@ -350,7 +351,12 @@ namespace FPS
 
                 if (hit.collider.CompareTag("Enemy"))
                 {
-                    if (lastRun != null)
+                    if(lastHit.collider == null) { lastHit = hit; }
+                    if(lastHit.collider.gameObject == hit.collider.gameObject)
+                    {
+                        Debug.Log("Hit same collider");
+                    }
+                    if (lastRun != null && lastHit.collider.gameObject == hit.collider.gameObject)
                     {
                         StopCoroutine(lastRun);
                     }
@@ -362,7 +368,7 @@ namespace FPS
                     {
                         hit.collider.GetComponent<EnemyRoam>().wholeHealthBar.SetActive(true);
                     }
-                   
+                    lastHit = hit;
                     lastRun = StartCoroutine(turnOffEnemyHP(hit));
 
                 }
