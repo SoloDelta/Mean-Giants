@@ -24,8 +24,8 @@ namespace FPS
         private void Start()
         {
             //-----------------------------------------------------------------
-            // Start transition coroutine.
-            StartCoroutine(TransitionToMainMenuDelayed());
+            // Load next level
+            Loader.Instance.LoadNextLevel();
         }
 
         /**----------------------------------------------------------------
@@ -34,15 +34,6 @@ namespace FPS
         private void Update()
         {
             this.m_DirectionalLight.GetComponent<Transform>().Rotate(new Vector3(0.0f, -0.1f, 0.0f));
-        }
-
-        /**----------------------------------------------------------------
-         * @brief
-         */
-        IEnumerator TransitionToMainMenuDelayed()
-        {
-            yield return new WaitForSeconds(5);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 }
