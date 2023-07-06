@@ -336,6 +336,7 @@ namespace FPS
         {
             agent.stoppingDistance = 0;
             agent.SetDestination(patrolSpots[currentPointIndex]);
+            if (!patrolTurnAround) { agent.isStopped = false; }
             if (Vector3.Distance(agent.transform.position, patrolSpots[currentPointIndex]) < 0.1)
             {
                 if (!patrolTurnAround)
@@ -382,12 +383,14 @@ namespace FPS
                 else { spottingCrouchScale = 1f; }
                 float playerDistanceScale = (spottingDistance - Vector3.Distance(transform.position, GameManager.instance.player.transform.position)) / spottingDistance;
                 percentSpotted += spottingCrouchScale * playerDistanceScale * Time.deltaTime;
-                qmarkTransform.localScale = new Vector3((4 * percentSpotted), qmarkTransform.localScale.y, qmarkTransform.localScale.z);
+                qmarkTransform.localScale = new Vector3((0.35f * percentSpotted), (0.35f * percentSpotted), (0.35f * percentSpotted));
+                qmarkTransform.localPosition = new Vector3(qmarkTransform.localPosition.x, 2.5f * percentSpotted, qmarkTransform.localPosition.z);
             }
             else if (!seesPlayer && percentSpotted > 0)
             {
                 percentSpotted -= 0.25f * Time.deltaTime;
-                qmarkTransform.localScale = new Vector3((4 * percentSpotted), qmarkTransform.localScale.y, qmarkTransform.localScale.z);
+                qmarkTransform.localScale = new Vector3((0.35f * percentSpotted), (0.35f * percentSpotted), (0.35f * percentSpotted));
+                qmarkTransform.localPosition = new Vector3(qmarkTransform.localPosition.x, 2.5f * percentSpotted, qmarkTransform.localPosition.z);
             }
             if (percentSpotted >= 1)
             {
@@ -401,6 +404,10 @@ namespace FPS
             if (percentSpotted <= 0)
             {
                 spottingUI.SetActive(false);
+            }
+            if(percentSpotted >= 0.5f && !seesPlayer)
+            {
+                agent.isStopped = false;
             }
         }
         IEnumerator spottedUIon() //turns the UI on if the player gets spotted. turns it off after 3seconds
