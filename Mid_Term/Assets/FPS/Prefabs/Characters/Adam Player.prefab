@@ -11190,7 +11190,6 @@ GameObject:
   - component: {fileID: 5969234395311703542}
   - component: {fileID: 5234182585185864844}
   - component: {fileID: 8901510203275350524}
-  - component: {fileID: 1444391037785437310}
   m_Layer: 6
   m_Name: Adam Player
   m_TagString: Player
@@ -11221,7 +11220,7 @@ Transform:
   - {fileID: 3109836862248262469}
   - {fileID: 2644143366454979452}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4728173779827912965
 MonoBehaviour:
@@ -11496,48 +11495,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1444391037785437310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7638439082459081696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a5aa48c4ba991f4c9a5a1357c895c50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soundSource: {fileID: 0}
-  aud: {fileID: 8426195686097962700}
-  pickupClip: {fileID: 8300000, guid: 55ed87af97cd5424fbab8237e565fe93, type: 3}
-  pickupVol: 1
-  gunShot: {fileID: 8300000, guid: dabc55f425ecece4bbe52f188e6c6027, type: 3}
-  shotVol: 1
-  audJump:
-  - {fileID: 8300000, guid: d3bb89ffc382b0244a500aa844a4d2f0, type: 3}
-  - {fileID: 8300000, guid: 23f9873ddb40578458b7b9b2d5be6517, type: 3}
-  - {fileID: 8300000, guid: b2eecfbff25cb8243a0f281318ef493b, type: 3}
-  audJumpVol: 1
-  audDamage:
-  - {fileID: 0}
-  audDamageVol: 1
-  audSteps:
-  - {fileID: 8300000, guid: e652c62061addb646a22b2384d0e2891, type: 3}
-  - {fileID: 8300000, guid: 7b707d7ddc0168047a78c017531d412f, type: 3}
-  audStepsVol: 1
-  audCrouch: {fileID: 8300000, guid: 4a03aa78b261d5b419c5dd6c990a77bb, type: 3}
-  audCrouchVol: 1
-  audHurt:
-  - {fileID: 8300000, guid: a60e012d7dddd7c4ca427983954ff0ba, type: 3}
-  - {fileID: 8300000, guid: 173d7c13478568c4499e52d8656ac835, type: 3}
-  audHurtVol: 1
-  audReload: {fileID: 8300000, guid: 7d1ee53133a34a846bae95995ae4622a, type: 3}
-  audReloadVol: 1
-  healthClip: {fileID: 8300000, guid: 54ccf1a7754d2234e8dd1aae79006817, type: 3}
-  healthVol: 1
-  emptyClipAud: {fileID: 8300000, guid: 300fc2317917d8547a002c22d2661fab, type: 3}
-  emptyClipVol: 1
 --- !u!1 &7662810704999779758
 GameObject:
   m_ObjectHideFlags: 0
