@@ -43,7 +43,7 @@ namespace FPS
         [SerializeField] AudioClip emptyClipAud;
         [Range(0, 1)][SerializeField] float emptyClipVol;
 
-        float[] sfxGroup = new float[9];
+        //float[] sfxGroup = new float[9];
 
 
        /* void Start()
