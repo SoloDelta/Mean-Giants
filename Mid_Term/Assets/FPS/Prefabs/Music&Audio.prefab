@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &577578852212364257
 AudioSource:
@@ -43,9 +43,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 85acff33eb98e514aa129e758f2b79a3, type: 2}
-  m_audioClip: {fileID: 8300000, guid: c4be55eabddf49f40b56db2797845473, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 399357853ed950840ba87358fba3b4c0, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -146,7 +146,7 @@ MonoBehaviour:
   pickupClip: {fileID: 8300000, guid: 55ed87af97cd5424fbab8237e565fe93, type: 3}
   pickupVol: 0.5
   gunShot: {fileID: 8300000, guid: dabc55f425ecece4bbe52f188e6c6027, type: 3}
-  shotVol: 1
+  shotVol: 0.5
   audJump:
   - {fileID: 8300000, guid: d3bb89ffc382b0244a500aa844a4d2f0, type: 3}
   - {fileID: 8300000, guid: 23f9873ddb40578458b7b9b2d5be6517, type: 3}
