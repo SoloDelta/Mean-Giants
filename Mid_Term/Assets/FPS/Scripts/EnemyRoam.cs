@@ -60,6 +60,7 @@ namespace FPS
         [SerializeField] private float burstRate; //how fast of a burst the enemy shoots
         [SerializeField] private bool isBurstShot; //if the enemy shoots regular or in burst
         [SerializeField] private bool isShotgun;
+        [SerializeField] private float shotGunSpread = 2.5f;
 
         private Vector3 playerDirection; //the direction from the enemy to the player
         private bool playerInRange; //is the player within range of the enemy
@@ -322,15 +323,15 @@ namespace FPS
             playerDirection = new Vector3(0, 1, 0) + GameManager.instance.player.transform.position - shootPosition.position;
             Quaternion lookrotation = Quaternion.LookRotation(playerDirection);
             //lookrotation.eulery
-            Vector3 randAngles = new Vector3(Random.Range(-5, 5), Random.Range(-5, 5), 0);
+            Vector3 randAngles = new Vector3(Random.Range(-shotGunSpread, shotGunSpread), Random.Range(-shotGunSpread, shotGunSpread), 0);
             Instantiate(bullet, shootPosition.position, lookrotation * Quaternion.Euler(randAngles));
-            randAngles = new Vector3(Random.Range(-5, 5), Random.Range(-5, 5), 0);
+            randAngles = new Vector3(Random.Range(-shotGunSpread, shotGunSpread), Random.Range(-shotGunSpread, shotGunSpread), 0);
             Instantiate(bullet, shootPosition.position, lookrotation * Quaternion.Euler(randAngles));
-            randAngles = new Vector3(Random.Range(-5, 5), Random.Range(-5, 5), 0);
+            randAngles = new Vector3(Random.Range(-shotGunSpread, shotGunSpread), Random.Range(-shotGunSpread, shotGunSpread), 0);
             Instantiate(bullet, shootPosition.position, lookrotation * Quaternion.Euler(randAngles));
-            randAngles = new Vector3(Random.Range(-5, 5), Random.Range(-5, 5), 0);
+            randAngles = new Vector3(Random.Range(-shotGunSpread, shotGunSpread), Random.Range(-shotGunSpread, shotGunSpread), 0);
             Instantiate(bullet, shootPosition.position, lookrotation * Quaternion.Euler(randAngles));
-            randAngles = new Vector3(Random.Range(-5, 5), Random.Range(-5, 5), 0);
+            randAngles = new Vector3(Random.Range(-shotGunSpread, shotGunSpread), Random.Range(-shotGunSpread, shotGunSpread), 0);
             Instantiate(bullet, shootPosition.position, lookrotation * Quaternion.Euler(randAngles));
 
 
@@ -373,7 +374,7 @@ namespace FPS
                 StartCoroutine(shootBurst());
 
             }
-            if (isShotgun)
+            else if (isShotgun)
             {
                 ShotgunBlast();
             }
