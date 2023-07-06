@@ -35,6 +35,14 @@ namespace FPS
             
         }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            if(other.gameObject.name == villageCollider.name)
+            {
+                StartCoroutine(GameManager.instance.YouWin());
+            }
+        }
+
         public void Interact()
         {
             if(!isOn)
