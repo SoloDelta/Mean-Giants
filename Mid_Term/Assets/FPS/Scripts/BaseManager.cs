@@ -127,7 +127,9 @@ namespace FPS
                     if(closestEnemy != null)
                     {
                         closestEnemy.GetComponent<EnemyAIRefactor>().pullAlarm = true;
+
                     }
+
                     
                 }
             }

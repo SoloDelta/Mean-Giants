@@ -229,6 +229,11 @@ namespace FPS
                 if (HP <= 0) //if the enemy is dead, turns of lasersight, stops all active coroutines, stops animations, and turns off collision.
                 {
                     GameManager.instance.hitMarkKill.gameObject.SetActive(false);
+                    if (headPosition.parent.gameObject.GetComponent<Collider>())
+                    {
+                        headPosition.parent.gameObject.GetComponent<Collider>().enabled = false;
+                        Debug.Log("Foundhead");
+                    }
                     StopAllCoroutines();
                     spottedUI.SetActive(false);
                     spottingUI.SetActive(false);

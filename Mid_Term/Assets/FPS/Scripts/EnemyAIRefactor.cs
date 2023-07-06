@@ -48,7 +48,7 @@ namespace FPS
 
         [Header("-----Enemy Stats-----")]
         [SerializeField] public string currentState; //This variable is just a visual representation of the current state of the enemy.
-        [SerializeField] private int HP; //the health of the enemy
+        [SerializeField] public int HP; //the health of the enemy
         [SerializeField] private float speed; //speed at which the enemy moves
         [SerializeField] private int playerFaceSpeed; //the speed at which the enemy rotates to the player when stopped
         [SerializeField] private int viewConeAngle; //the angle from which the enemy can see the player (calculated from middle)
@@ -451,12 +451,18 @@ namespace FPS
                 {
                     DropItem();
                     GameManager.instance.hitMarkKill.gameObject.SetActive(false);
+                    if(headPosition.parent.gameObject.GetComponent<Collider>())
+                    {
+                        headPosition.parent.gameObject.GetComponent<Collider>().enabled = false;
+                        Debug.Log("Foundhead");
+                    }
                     StopAllCoroutines();
                     spottedUI.SetActive(false);
                     spottingUI.SetActive(false);
                     wholeHealthBar.SetActive(false);
 
                     anim.SetBool("Aiming", false);
+                    anim.SetBool("Use", false);
                     anim.SetBool("Death", true);
                     audSource.PlayOneShot(deathSound, deathSoundVol);
                     GameManager.instance.UpdateObjective(-1);
