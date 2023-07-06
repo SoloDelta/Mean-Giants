@@ -126,9 +126,9 @@ namespace FPS
             }
         }
 
-        private IEnumerator YouWin()
+        public IEnumerator YouWin()
         {
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(1);
             activeMenu = winMenu;
             activeMenu.SetActive(true);
             PausedState();
