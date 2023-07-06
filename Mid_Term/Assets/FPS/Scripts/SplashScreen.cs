@@ -25,7 +25,7 @@ namespace FPS
         {
             //-----------------------------------------------------------------
             // Load next level
-            Loader.Instance.LoadNextLevel();
+            Loader.instance.LoadNextLevel();
         }
 
         /**----------------------------------------------------------------

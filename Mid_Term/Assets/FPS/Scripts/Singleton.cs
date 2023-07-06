@@ -15,7 +15,7 @@ namespace FPS
 {
     public class Singleton<T> : MonoBehaviour where T : class
     {
-        public static T Instance
+        public static T instance
         {
             private set;
             get;
@@ -28,10 +28,10 @@ namespace FPS
 
         protected void Awake()
         {
-            if(Singleton<T>.Instance != default)
+            if(Singleton<T>.instance != default)
                 return;
 
-            Singleton<T>.Instance = (T)Convert.ChangeType(this, typeof(T));
+            Singleton<T>.instance = (T)Convert.ChangeType(this, typeof(T));
             GameObject.DontDestroyOnLoad(this);
         }
     }
