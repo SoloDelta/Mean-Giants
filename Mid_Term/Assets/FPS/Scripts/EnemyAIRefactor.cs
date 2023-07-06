@@ -198,6 +198,13 @@ namespace FPS
                 currentState = "SpottingPlayer";
                 agent.isStopped = true;
             }
+            else if(canHearRock())
+            {
+                //
+                //
+                //
+
+            }
             else if (canSeeBody() && !baseManagerScript.highAlert) //something to make enemy sus from player
             {
                 agent.stoppingDistance = 4;
@@ -332,6 +339,14 @@ namespace FPS
                 }
             }
             return false;
+        }
+        bool canHearRock()
+        {
+            //Logic
+            //Player throws rock > rock hits ground > player gets closest basemanager, FindClosestEnemy(rock) >if enemy wihtin (range) path to rock > destroy rock after 5 seconds
+            //player has a ref to the last rock thrown, assigned at instantiation
+            return true;
+
         }
         void Patrol() //follows a set patrol route, turning the set amount after reaching the spot
         {
