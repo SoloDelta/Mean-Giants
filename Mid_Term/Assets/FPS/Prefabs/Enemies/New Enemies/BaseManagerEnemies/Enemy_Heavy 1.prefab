@@ -71,6 +71,8 @@ MonoBehaviour:
   shootSoundVol: 0.5
   deathSound: {fileID: 8300000, guid: 985c7bdb7154ba94d8cac565e96e91ca, type: 3}
   deathSoundVol: 0.5
+  alarmNoise: {fileID: 8300000, guid: 2b3b12c96c720d64a8226667d239c953, type: 3}
+  alarmNoiseVol: 0.5
   currentState: 
   HP: 10
   speed: 2

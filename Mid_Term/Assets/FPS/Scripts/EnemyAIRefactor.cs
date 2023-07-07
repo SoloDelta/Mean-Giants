@@ -45,6 +45,8 @@ namespace FPS
         [SerializeField] float shootSoundVol;
         public AudioClip deathSound;
         [SerializeField] float deathSoundVol;
+        public AudioClip alarmNoise;
+        [SerializeField] float alarmNoiseVol = 0.5f;
 
         [Header("-----Enemy Stats-----")]
         [SerializeField] public string currentState; //This variable is just a visual representation of the current state of the enemy.
@@ -235,7 +237,7 @@ namespace FPS
                 }
             }
             agent.SetDestination(closestAlarm.transform.GetChild(1).transform.position);
-
+            agent.speed = speed * 1.5f;
             if (Vector3.Distance(transform.position, closestAlarm.transform.GetChild(1).transform.position) < 1.5)
             {
                 Vector3 alarmDirection = closestAlarm.transform.GetChild(1).transform.position - headPosition.position;
@@ -677,7 +679,9 @@ namespace FPS
             anim.SetBool("Aiming", true);
             //playerLastSeenAt = transform.position;
             baseManagerScript.pullAlarm = false;
+            audSource.PlayOneShot(alarmNoise, alarmNoiseVol);
             // baseManagerScript.isPullingAlarm = false;
+            agent.speed = speed;
             baseManagerScript.highAlert = true;
             highAlert = true;
         }

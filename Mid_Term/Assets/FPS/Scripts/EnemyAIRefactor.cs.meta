@@ -3,7 +3,27 @@ guid: a1ffb2c471a1ed042af5a94a72c455b8
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - agent: {instanceID: 0}
+  - anim: {instanceID: 0}
+  - headPosition: {instanceID: 0}
+  - shootPosition: {instanceID: 0}
+  - baseManager: {instanceID: 0}
+  - baseManagerScript: {instanceID: 0}
+  - keyCard: {instanceID: 0}
+  - ammoPrefab: {instanceID: 0}
+  - enemyUIParent: {instanceID: 0}
+  - wholeHealthBar: {instanceID: 0}
+  - HPBar: {instanceID: 0}
+  - spottingUI: {instanceID: 0}
+  - spottedUI: {instanceID: 0}
+  - qmarkTransform: {instanceID: 0}
+  - audSource: {instanceID: 0}
+  - hmSound: {instanceID: 0}
+  - shootSound: {instanceID: 0}
+  - deathSound: {instanceID: 0}
+  - alarmNoise: {fileID: 8300000, guid: 2b3b12c96c720d64a8226667d239c953, type: 3}
+  - bullet: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
