@@ -64,9 +64,11 @@ MonoBehaviour:
   hmSound: {fileID: 8300000, guid: bb68e4bbc8dab2948bf18d12b8c6ad99, type: 3}
   hmSoundVol: 0.5
   shootSound: {fileID: 8300000, guid: bcffc0465b419d64e8ddd080e33cdc15, type: 3}
-  shootSoundVol: 0.5
+  shootSoundVol: 0.25
   deathSound: {fileID: 8300000, guid: 985c7bdb7154ba94d8cac565e96e91ca, type: 3}
   deathSoundVol: 0.5
+  detectedSound: {fileID: 8300000, guid: 47b61d61b29689844a6efb03385e1f91, type: 3}
+  detectedSoundVol: 1
   currentState: 
   HP: 10
   speed: 2.5

@@ -23,6 +23,7 @@ MonoImporter:
   - shootSound: {instanceID: 0}
   - deathSound: {instanceID: 0}
   - alarmNoise: {fileID: 8300000, guid: 2b3b12c96c720d64a8226667d239c953, type: 3}
+  - detectedSound: {fileID: 8300000, guid: 47b61d61b29689844a6efb03385e1f91, type: 3}
   - bullet: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}

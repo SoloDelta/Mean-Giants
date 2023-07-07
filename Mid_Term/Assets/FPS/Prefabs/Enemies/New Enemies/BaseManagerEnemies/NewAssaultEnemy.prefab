@@ -238,6 +238,8 @@ MonoBehaviour:
   deathSoundVol: 0.5
   alarmNoise: {fileID: 8300000, guid: 2b3b12c96c720d64a8226667d239c953, type: 3}
   alarmNoiseVol: 0.5
+  detectedSound: {fileID: 8300000, guid: 47b61d61b29689844a6efb03385e1f91, type: 3}
+  detectedSoundVol: 0.5
   currentState: 
   HP: 5
   speed: 3

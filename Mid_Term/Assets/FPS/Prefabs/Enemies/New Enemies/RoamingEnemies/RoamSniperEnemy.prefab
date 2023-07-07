@@ -98,6 +98,8 @@ MonoBehaviour:
   shootSoundVol: 0.5
   deathSound: {fileID: 8300000, guid: 985c7bdb7154ba94d8cac565e96e91ca, type: 3}
   deathSoundVol: 0.5
+  detectedSound: {fileID: 8300000, guid: 47b61d61b29689844a6efb03385e1f91, type: 3}
+  detectedSoundVol: 1
   currentState: 
   HP: 7
   speed: 3
@@ -113,6 +115,7 @@ MonoBehaviour:
   burstRate: 0
   isBurstShot: 0
   isShotgun: 0
+  shotGunSpread: 2.5
   shouldStartSearching: 0
   startingPos: {x: 0, y: 0, z: 0}
 --- !u!195 &9104641024889529902

@@ -47,6 +47,8 @@ namespace FPS
         [SerializeField] float deathSoundVol;
         public AudioClip alarmNoise;
         [SerializeField] float alarmNoiseVol = 0.5f;
+        public AudioClip detectedSound;
+        [SerializeField] float detectedSoundVol = 1f;
 
         [Header("-----Enemy Stats-----")]
         [SerializeField] public string currentState; //This variable is just a visual representation of the current state of the enemy.
@@ -200,13 +202,6 @@ namespace FPS
                 currentState = "SpottingPlayer";
                 agent.isStopped = true;
             }
-            else if(canHearRock())
-            {
-                //
-                //
-                //
-
-            }
             else if (canSeeBody() && !baseManagerScript.highAlert) //something to make enemy sus from player
             {
                 agent.stoppingDistance = 4;
@@ -218,7 +213,7 @@ namespace FPS
                 currentState = "Patrolling";
                 Patrol();
             }
-            //else if (false) { currentState = "Going to sound"; } //path to a sus sound
+
         }
         #endregion
 
@@ -268,6 +263,7 @@ namespace FPS
                 searchCopy = null;
                 spottingUI.SetActive(false);
                 StartCoroutine(spottedUIon());
+                audSource.PlayOneShot(detectedSound, detectedSoundVol);
                 searching = false;
             }
             agent.stoppingDistance = stoppingDistanceOriginal;
@@ -342,14 +338,6 @@ namespace FPS
             }
             return false;
         }
-        bool canHearRock()
-        {
-            //Logic
-            //Player throws rock > rock hits ground > player gets closest basemanager, FindClosestEnemy(rock) >if enemy wihtin (range) path to rock > destroy rock after 5 seconds
-            //player has a ref to the last rock thrown, assigned at instantiation
-            return true;
-
-        }
         void Patrol() //follows a set patrol route, turning the set amount after reaching the spot
         {
             agent.stoppingDistance = 0;
@@ -413,6 +401,7 @@ namespace FPS
             if (percentSpotted >= 1)
             {
                 agent.isStopped = false;
+                if (!spotted) { audSource.PlayOneShot(detectedSound, detectedSoundVol); }
                 spotted = true;
                 shouldStartSearching = false;
                 spottingUI.SetActive(false);
@@ -506,6 +495,7 @@ namespace FPS
                     {
                         spottingUI.SetActive(false);
                         StartCoroutine(spottedUIon());
+                        audSource.PlayOneShot(detectedSound, detectedSoundVol);
                     }
                     spotted = true;
                 }

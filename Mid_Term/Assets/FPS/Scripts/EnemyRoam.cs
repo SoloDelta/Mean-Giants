@@ -39,6 +39,8 @@ namespace FPS
         [SerializeField] float shootSoundVol;
         public AudioClip deathSound;
         [SerializeField] float deathSoundVol;
+        public AudioClip detectedSound;
+        [SerializeField] float detectedSoundVol = 1f;
 
         [Header("-----Enemy Stats-----")]
         [SerializeField] public string currentState;
@@ -189,6 +191,7 @@ namespace FPS
             {
                 agent.isStopped = false;
                 spotted = true;
+                audSource.PlayOneShot(detectedSound, detectedSoundVol);
                 spottingUI.SetActive(false);
                 StartCoroutine(spottedUIon());
 
@@ -265,6 +268,7 @@ namespace FPS
                     if (!spotted)
                     {
                         StartCoroutine(spottedUIon());
+                        audSource.PlayOneShot(detectedSound, detectedSoundVol);
                     }
                     spotted = true;
                 }
