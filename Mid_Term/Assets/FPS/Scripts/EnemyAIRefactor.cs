@@ -696,7 +696,21 @@ namespace FPS
         }
         private void OnCollisionEnter(Collision collision)
         {
-            if(collision.collider.gameObject.CompareTag("Enemy"))
+            if (collision.gameObject.tag == "PlayerCell")
+            {
+                if (collision.gameObject.GetComponent<CellDoor>().Moving == false)
+                {
+                    collision.gameObject.GetComponent<CellDoor>().Moving = true;
+                }
+            }
+            if (collision.gameObject.tag == "CellDoor")
+            {
+                if (collision.gameObject.GetComponent<CellDoor>().Moving == false)
+                {
+                    collision.gameObject.GetComponent<CellDoor>().Moving = true;
+                }
+            }
+            if (collision.collider.gameObject.CompareTag("Enemy"))
             {
                 
                 if (collision.collider.gameObject.GetComponent<EnemyAIRefactor>().agent.isActiveAndEnabled)

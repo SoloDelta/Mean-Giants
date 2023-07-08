@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f1ca63a91b17724bbd99c8fa67e0180, type: 3}
+  m_Script: {fileID: 0}
   m_Name: Default Material Palette
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Unity.ProBuilder.Editor:UnityEditor.ProBuilder:MaterialPalette
   array:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: c74abc31c631e6949ac547b51fd5fb79, type: 2}
+  - {fileID: 2100000, guid: e66d282c1a589b740978ed3a03245fb4, type: 2}
+  - {fileID: 2100000, guid: 77826ad27882dcf4e8feded3f4ef9411, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
