@@ -87,6 +87,7 @@ namespace FPS
             //startingPos = transform.position;
             stoppingDistanceOriginal = agent.stoppingDistance;
             GameManager.instance.UpdateObjective(1);
+            agent.avoidancePriority = GameManager.instance.enemiesRemaining;
         }
 
         // Update is called once per frame

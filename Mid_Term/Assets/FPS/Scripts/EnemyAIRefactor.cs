@@ -140,6 +140,7 @@ namespace FPS
             }
             agent.destination = patrolSpots[0];
             GameManager.instance.UpdateObjective(1);
+            agent.avoidancePriority = GameManager.instance.enemiesRemaining;
         }
         #endregion
 

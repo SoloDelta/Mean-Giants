@@ -66,7 +66,7 @@ namespace FPS
         //-----------------------------------------------------------------
 
         [Header("----- Objectives -----")]
-        private int enemiesRemaining;
+        public int enemiesRemaining;
 
         public bool isPaused;
         private float timeScaleOriginal;
