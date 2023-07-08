@@ -220,6 +220,7 @@ namespace FPS
             }
             
 
+
         }
         private void OnTriggerExit(Collider other)
         {
@@ -228,6 +229,21 @@ namespace FPS
                 playerInRange = false;
             }
 
+        }
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.tag == "PlayerCell")
+            {
+                if (Vector3.Distance(transform.position, other.transform.position) < 4)
+                {
+                    if (other.GetComponent<CellDoor>().Moving == false)
+                    {
+                        other.GetComponent<CellDoor>().Moving = true;
+                    }
+                }
+                
+
+            }
         }
         public void TakeDamage(int dmg) //logic for taking damage. 
         {
