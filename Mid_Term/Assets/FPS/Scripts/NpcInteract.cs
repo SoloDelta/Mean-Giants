@@ -68,8 +68,6 @@ namespace FPS
                 npcText[1].enabled = true;
                 yield return new WaitForSeconds(5);
                 npcText[1].enabled = false;
-                yield return new WaitForSeconds(deletePrisonNpcTimer);
-                Destroy(gameObject);
                 deletePrisonNpc = true;
             }
             else
