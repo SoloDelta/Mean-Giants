@@ -43,8 +43,7 @@ public class DataPersistenceManager : MonoBehaviour
         //if no data to load
         if(this.gameData == null)
         {
-            Debug.Log("No Saved Game Found. Starting New Game.");
-            NewGame();
+            Debug.Log("No Saved Game Found.");
         }
         //todo push loaded data to other scripts that need it
         foreach(IDataPersistence dataObject in dataPersistenceObjects)

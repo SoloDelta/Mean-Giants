@@ -8,12 +8,15 @@ using UnityEngine;
 
 public class GameData
 {
+    PlayerController player;
     
     public int playerHp;
     public int playerShield;
+    public Vector3 playerPosition;
     public GameData() 
     {
-        playerHp = 100;
-        playerShield = 100;
+        playerHp = player.health;
+        playerShield = player.shield;
+        playerPosition = player.transform.position;
     }
 }

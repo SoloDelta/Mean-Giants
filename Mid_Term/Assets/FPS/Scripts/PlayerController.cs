@@ -692,14 +692,16 @@ namespace FPS
         #region Save/Load
         public void SaveData(ref GameData gameData)
         {
-            gameData.playerHp = this.health;
-            gameData.playerShield = this.shield;
+            gameData.playerHp = health;
+            gameData.playerShield = shield;
+            gameData.playerPosition = controller.transform.position;
         }
 
         public void LoadData(GameData gameData)
         {
-            this.health = gameData.playerHp;
-            this.shield = gameData.playerShield;
+            health = gameData.playerHp;
+            shield = gameData.playerShield;
+            controller.transform.position = gameData.playerPosition;
         }
         #endregion
     }

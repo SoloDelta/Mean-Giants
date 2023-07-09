@@ -19,7 +19,7 @@ namespace FPS
     public class NpcInteract : MonoBehaviour
     {
         bool isOn = false;
-        [SerializeField]KeyStorage key;
+        [SerializeField] KeyStorage key;
         [SerializeField] float deletePrisonNpcTimer;
 
         [Header("--- Boundry Collider")]
@@ -32,28 +32,28 @@ namespace FPS
 
         private void Update()
         {
-            
+
         }
 
 
 
         public void Interact()
         {
-            if(!isOn)
+            if (!isOn)
             {
-                if(!deletePrisonNpc)
+                if (!deletePrisonNpc)
                 {
                     StartCoroutine(TurnOnMessage());
                     isOn = true;
                 }
-                
+
             }
             else
             {
                 TurnOffMessage();
                 isOn = false;
             }
-            
+
         }
 
 
@@ -92,31 +92,68 @@ namespace FPS
         }
 
 
-    public bool PlayerHasPrisonKey()
-    {
-        if (key.HasPrisonKey)
+        public bool PlayerHasPrisonKey()
         {
-            Debug.Log("Cell Key True");
-            return true;
-        }
-        else
-        {
-            Debug.Log("Cell Key False");
-            return false;
-        }
-    }
-
-    private void MissionColliderDisable()
-    {
-        if (hasPrisonObjective)
-        {
-            prisonCollider.enabled = false;
+            if (key.HasPrisonKey)
+            {
+                Debug.Log("Cell Key True");
+                return true;
+            }
+            else
+            {
+                Debug.Log("Cell Key False");
+                return false;
+            }
         }
 
-        else if (hasVillageObjective)
+        private void MissionColliderDisable()
         {
-            villageCollider.enabled = false;
+            if (hasPrisonObjective)
+            {
+                prisonCollider.enabled = false;
+            }
+
+            else if (hasVillageObjective)
+            {
+                villageCollider.enabled = false;
+            }
         }
+
+        private void MissionOne()
+        {
+            // make prison mission
+        }
+
+        private void MissionTwo()
+        {
+            // kill enemy mission
+        }
+
+        private void MissionThree()
+        {
+            //steal item from base one
+        }
+
+        private void MissionFour()
+        {
+            // kill enemy mission
+        }
+
+        private void MissionFive()
+        {
+            //steal item from base two 
+        }
+
+        private void MissionSix()
+        {
+            //steal item 
+        }
+
+        private void MissionSeven()
+        {
+            //kill enemies
+        }
+
+
     }
-}
 }

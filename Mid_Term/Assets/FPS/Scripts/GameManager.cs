@@ -59,7 +59,7 @@ namespace FPS
         public Image hitMark;
         public Image hitMarkKill;
         public GameObject checkPointPopup;
-        public Canvas[] npcPrisonText;
+
 
         //-----------------------------------------------------------------
         // Objective Variables
