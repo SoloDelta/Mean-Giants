@@ -47,7 +47,7 @@ namespace FPS
         public Image playerShieldBar;
         public GameObject playerFlashUI;
         public GameObject loseMenu;
-        public TextMeshProUGUI enemiesRemainingText;
+        public TextMeshProUGUI objectiveText;
         public TextMeshProUGUI itemCollectedText;
         public TextMeshProUGUI ammoMaxText;
         public TextMeshProUGUI ammoStorageText;
@@ -115,10 +115,11 @@ namespace FPS
             activeMenu = null;
         }
 
-        public void UpdateObjective(int amount)
+        public void UpdateObjective()
         {
-            enemiesRemaining += amount;
-            enemiesRemainingText.text = enemiesRemaining.ToString("F0");
+            //enemiesRemaining += amount;
+            //enemiesRemainingText.text = enemiesRemaining.ToString("F0");
+
             if (enemiesRemaining <= 0)
             {
                 //win condition met

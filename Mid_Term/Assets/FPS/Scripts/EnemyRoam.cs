@@ -86,7 +86,7 @@ namespace FPS
             enemyHPOriginal = HP;
             //startingPos = transform.position;
             stoppingDistanceOriginal = agent.stoppingDistance;
-            GameManager.instance.UpdateObjective(1);
+            //GameManager.instance.UpdateObjective(1);
             agent.avoidancePriority = GameManager.instance.enemiesRemaining;
         }
 
@@ -270,7 +270,7 @@ namespace FPS
                     anim.SetBool("Aiming", false);
                     anim.SetBool("Death", true);
                     audSource.PlayOneShot(deathSound, deathSoundVol);
-                    GameManager.instance.UpdateObjective(-1);
+                    //GameManager.instance.UpdateObjective(-1);
 
                     StartCoroutine(HitMarker());
 

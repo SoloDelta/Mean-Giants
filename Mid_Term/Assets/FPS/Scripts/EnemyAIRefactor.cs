@@ -139,7 +139,7 @@ namespace FPS
                 patrolRotations.Add(0);
             }
             agent.destination = patrolSpots[0];
-            GameManager.instance.UpdateObjective(1);
+            //GameManager.instance.UpdateObjective(1);
             agent.avoidancePriority = GameManager.instance.enemiesRemaining;
         }
         #endregion
@@ -480,7 +480,7 @@ namespace FPS
                     anim.SetBool("Use", false);
                     anim.SetBool("Death", true);
                     audSource.PlayOneShot(deathSound, deathSoundVol);
-                    GameManager.instance.UpdateObjective(-1);
+                    //GameManager.instance.UpdateObjective(-1);
 
                     StartCoroutine(HitMarker());
 

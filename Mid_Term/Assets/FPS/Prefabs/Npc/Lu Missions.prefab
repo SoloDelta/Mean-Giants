@@ -169,7 +169,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Go through the mountain pass you will arrive at HQ. Speek to the commander
+  m_text: 'Go through the mountain pass you will arrive at HQ. Speak to the commander
     there. '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6135,10 +6135,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: {fileID: 0}
-  deletePrisonNpcTimer: 0.1
   npcText:
   - {fileID: 5081082812429199385}
   - {fileID: 8897342766437818951}
+  updateObjective:
+  - Speak to your cell mate.
+  - Go to HQ and see the commander.
   prisonCollider: {fileID: 0}
   villageCollider: {fileID: 0}
   hasPrisonObjective: 0

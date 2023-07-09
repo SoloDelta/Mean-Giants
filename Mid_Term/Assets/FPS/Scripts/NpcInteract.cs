@@ -11,7 +11,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-//using UnityEditor.VersionControl;
 using UnityEngine;
 
 namespace FPS
@@ -20,8 +19,8 @@ namespace FPS
     {
         bool isOn = false;
         [SerializeField] KeyStorage key;
-        [SerializeField] float deletePrisonNpcTimer;
         [SerializeField] Canvas[] npcText;
+        [SerializeField] string[] updateObjective;
 
         [Header("--- Boundry Collider")]
         public Collider prisonCollider;
@@ -31,10 +30,16 @@ namespace FPS
         bool hasVillageObjective = false;
         bool firstMissionCompleted = false;
         bool secondMissionCompleted = false;
+        bool thirdMissionCompleted = false;
 
         private void Update()
         {
+     
+        }
 
+        private void Start()
+        {
+            GameManager.instance.objectiveText.text = updateObjective[0];
         }
 
 
@@ -45,12 +50,13 @@ namespace FPS
             {
                 StartCoroutine(MissionOne());
             }
-            else if(firstMissionCompleted)
+            else if(firstMissionCompleted && !secondMissionCompleted)
             {
                 StartCoroutine(MissionTwo());
             }
 
         }
+
 
 
 
@@ -100,15 +106,18 @@ namespace FPS
                     hasPrisonObjective = true;
                     MissionColliderDisable();
                     npcText[1].enabled = true;
-                    yield return new WaitForSeconds(8);
+                    yield return new WaitForSeconds(15);
                     npcText[1].enabled = false;
                     firstMissionCompleted = true;
+                    GameManager.instance.objectiveText.text = updateObjective[1];
                 }
                 else
                 {
+                    
                     npcText[0].enabled = true;
-                    yield return new WaitForSeconds(8);
+                    yield return new WaitForSeconds(15);
                     npcText[0].enabled = false;
+                    GameManager.instance.objectiveText.text = updateObjective[0];
                 }
                 isOn = true;
             }

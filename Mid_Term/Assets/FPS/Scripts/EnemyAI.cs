@@ -399,7 +399,7 @@ namespace FPS
                 anim.SetBool("Aiming", false);
                 anim.SetBool("Death", true);
                 hmSource.PlayOneShot(deathSound, deathSoundVol);
-                GameManager.instance.UpdateObjective(-1);
+                //GameManager.instance.UpdateObjective(-1);
 
                 StartCoroutine(HitMarker());
 
