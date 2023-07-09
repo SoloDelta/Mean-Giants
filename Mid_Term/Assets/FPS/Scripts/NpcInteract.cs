@@ -21,6 +21,7 @@ namespace FPS
         bool isOn = false;
         [SerializeField] KeyStorage key;
         [SerializeField] float deletePrisonNpcTimer;
+        [SerializeField] Canvas[] npcText;
 
         [Header("--- Boundry Collider")]
         public Collider prisonCollider;
@@ -64,18 +65,18 @@ namespace FPS
             {
                 hasPrisonObjective = true;
                 MissionColliderDisable();
-                GameManager.instance.npcPrisonText[1].enabled = true;
+                npcText[1].enabled = true;
                 yield return new WaitForSeconds(5);
-                GameManager.instance.npcPrisonText[1].enabled = false;
+                npcText[1].enabled = false;
                 yield return new WaitForSeconds(deletePrisonNpcTimer);
                 Destroy(gameObject);
                 deletePrisonNpc = true;
             }
             else
             {
-                GameManager.instance.npcPrisonText[0].enabled = true;
+                npcText[0].enabled = true;
                 yield return new WaitForSeconds(5);
-                GameManager.instance.npcPrisonText[0].enabled = false;
+                npcText[0].enabled = false;
             }
         }
 
@@ -83,11 +84,11 @@ namespace FPS
         {
             if (PlayerHasPrisonKey())
             {
-                GameManager.instance.npcPrisonText[1].enabled = false;
+                npcText[1].enabled = false;
             }
             else
             {
-                GameManager.instance.npcPrisonText[0].enabled = false;
+                npcText[0].enabled = false;
             }
         }
 
