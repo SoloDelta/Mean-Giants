@@ -29,7 +29,8 @@ namespace FPS
 
         public bool hasPrisonObjective = false;
         bool hasVillageObjective = false;
-        bool deletePrisonNpc = false;
+        bool firstMissionCompleted = false;
+        bool secondMissionCompleted = false;
 
         private void Update()
         {
@@ -40,53 +41,25 @@ namespace FPS
 
         public void Interact()
         {
-            if (!isOn)
+            if(!firstMissionCompleted)
             {
-                if (!deletePrisonNpc)
-                {
-                    StartCoroutine(TurnOnMessage());
-                    isOn = true;
-                }
-
+                StartCoroutine(MissionOne());
             }
-            else
+            else if(firstMissionCompleted)
             {
-                TurnOffMessage();
-                isOn = false;
+                StartCoroutine(MissionTwo());
             }
 
         }
 
 
-        public IEnumerator TurnOnMessage()
-        {
 
-            if (PlayerHasPrisonKey())
-            {
-                hasPrisonObjective = true;
-                MissionColliderDisable();
-                npcText[1].enabled = true;
-                yield return new WaitForSeconds(5);
-                npcText[1].enabled = false;
-                deletePrisonNpc = true;
-            }
-            else
-            {
-                npcText[0].enabled = true;
-                yield return new WaitForSeconds(5);
-                npcText[0].enabled = false;
-            }
-        }
 
         public void TurnOffMessage()
         {
-            if (PlayerHasPrisonKey())
+            for(int i = 0; i < npcText.Length; i++)
             {
-                npcText[1].enabled = false;
-            }
-            else
-            {
-                npcText[0].enabled = false;
+                npcText[i].enabled = false;
             }
         }
 
@@ -118,14 +91,40 @@ namespace FPS
             }
         }
 
-        private void MissionOne()
+        private IEnumerator MissionOne()
         {
-            // make prison mission
+            if (!isOn)
+            {
+                if (PlayerHasPrisonKey())
+                {
+                    hasPrisonObjective = true;
+                    MissionColliderDisable();
+                    npcText[1].enabled = true;
+                    yield return new WaitForSeconds(8);
+                    npcText[1].enabled = false;
+                    firstMissionCompleted = true;
+                }
+                else
+                {
+                    npcText[0].enabled = true;
+                    yield return new WaitForSeconds(8);
+                    npcText[0].enabled = false;
+                }
+                isOn = true;
+            }
+            else
+            {
+                TurnOffMessage();
+                isOn = false;
+            }
         }
 
-        private void MissionTwo()
+        private IEnumerator MissionTwo()
         {
-            // kill enemy mission
+            npcText[2].enabled = true;
+            yield return new WaitForSeconds(8);
+            npcText[2].enabled = false;
+
         }
 
         private void MissionThree()
