@@ -28,9 +28,10 @@ namespace FPS
 
         public bool hasPrisonObjective = false;
         bool hasVillageObjective = false;
-        bool firstMissionCompleted = false;
-        bool secondMissionCompleted = false;
+        public bool firstMissionCompleted = false;
+        public bool secondMissionCompleted = false;
         bool thirdMissionCompleted = false;
+        PrisonToHqNpcSpawn spawned;
 
         private void Update()
         {
@@ -50,7 +51,7 @@ namespace FPS
             {
                 StartCoroutine(MissionOne());
             }
-            else if(firstMissionCompleted && !secondMissionCompleted)
+            if(firstMissionCompleted)
             {
                 StartCoroutine(MissionTwo());
             }
@@ -104,10 +105,10 @@ namespace FPS
                     hasPrisonObjective = true;
                     MissionColliderDisable();
                     npcText[1].enabled = true;
+                    GameManager.instance.objectiveText.text = updateObjective[1];
                     yield return new WaitForSeconds(15);
                     npcText[1].enabled = false;
                     firstMissionCompleted = true;
-                    GameManager.instance.objectiveText.text = updateObjective[1];
              }
              else
              {
@@ -125,6 +126,7 @@ namespace FPS
             npcText[2].enabled = true;
             yield return new WaitForSeconds(15);
             npcText[2].enabled = false;
+            GameManager.instance.objectiveText.text = updateObjective[2];
 
         }
 
