@@ -695,22 +695,24 @@ namespace FPS
             }
 
         }
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.tag == "PlayerCell")
+            {
+                if (Vector3.Distance(transform.position, other.transform.position) < 4)
+                {
+                    if (other.GetComponent<CellDoor>().Moving == false)
+                    {
+                        other.GetComponent<CellDoor>().Moving = true;
+                    }
+                }
+
+
+            }
+        }
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.tag == "PlayerCell")
-            {
-                if (collision.gameObject.GetComponent<CellDoor>().Moving == false)
-                {
-                    collision.gameObject.GetComponent<CellDoor>().Moving = true;
-                }
-            }
-            if (collision.gameObject.tag == "CellDoor")
-            {
-                if (collision.gameObject.GetComponent<CellDoor>().Moving == false)
-                {
-                    collision.gameObject.GetComponent<CellDoor>().Moving = true;
-                }
-            }
+            
             if (collision.collider.gameObject.CompareTag("Enemy"))
             {
                 
