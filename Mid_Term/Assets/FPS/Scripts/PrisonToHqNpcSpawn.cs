@@ -24,6 +24,7 @@ namespace FPS
         int numberSpawn;
         bool playerInRange;
         bool isSpawning;
+        public bool movedNpc = false;
 
         // Update is called once per frame
         void Update()
@@ -48,6 +49,7 @@ namespace FPS
             GameObject npc = Instantiate(objectToSpawn, spawnPos.position, Quaternion.identity);
             npc.transform.LookAt(Camera.main.transform);
             numberSpawn++;
+            movedNpc = true;
             yield return new WaitForSeconds(timeBetweenSpawn);
             isSpawning = false;
         }
