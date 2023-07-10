@@ -6141,6 +6141,7 @@ MonoBehaviour:
   updateObjective:
   - Speak to your cell mate.
   - Go to HQ and see the commander.
+  - time for mission 2
   prisonCollider: {fileID: 0}
   villageCollider: {fileID: 0}
   hasPrisonObjective: 0

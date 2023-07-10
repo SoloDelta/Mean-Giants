@@ -99,10 +99,8 @@ namespace FPS
 
         private IEnumerator MissionOne()
         {
-            if (!isOn)
+            if (PlayerHasPrisonKey())
             {
-                if (PlayerHasPrisonKey())
-                {
                     hasPrisonObjective = true;
                     MissionColliderDisable();
                     npcText[1].enabled = true;
@@ -110,28 +108,22 @@ namespace FPS
                     npcText[1].enabled = false;
                     firstMissionCompleted = true;
                     GameManager.instance.objectiveText.text = updateObjective[1];
-                }
-                else
-                {
-                    
+             }
+             else
+             {
                     npcText[0].enabled = true;
                     yield return new WaitForSeconds(15);
                     npcText[0].enabled = false;
                     GameManager.instance.objectiveText.text = updateObjective[0];
-                }
-                isOn = true;
-            }
-            else
-            {
-                TurnOffMessage();
-                isOn = false;
-            }
+                
+             }
+
         }
 
         private IEnumerator MissionTwo()
         {
             npcText[2].enabled = true;
-            yield return new WaitForSeconds(8);
+            yield return new WaitForSeconds(15);
             npcText[2].enabled = false;
 
         }

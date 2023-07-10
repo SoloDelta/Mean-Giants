@@ -2,6 +2,7 @@ using FPS;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [System.Serializable]
@@ -15,8 +16,8 @@ public class GameData
     public Vector3 playerPosition;
     public GameData() 
     {
-        playerHp = player.health;
-        playerShield = player.shield;
-        playerPosition = player.transform.position;
+        //this.playerHp = player.health;
+        //this.playerShield = player.shield;
+        //this.playerPosition = player.transform.position;
     }
 }
