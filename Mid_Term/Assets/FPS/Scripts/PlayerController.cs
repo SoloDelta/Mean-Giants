@@ -113,6 +113,7 @@ namespace FPS
         {
             Sprint();
             zoomSights();
+            updateCurrencyUI();
 
             if (GameManager.instance.activeMenu == null)
             {
@@ -461,6 +462,7 @@ namespace FPS
             UpdatePlayerHp();
             UpdatePlayerShield();
             updateAmmoUI();
+            updateCurrencyUI();
         }
  
         /**----------------------------------------------------------------
@@ -622,6 +624,7 @@ namespace FPS
             PickupMoney moneyPickup = obj.GetComponent<PickupMoney>();
 
             moneyStorage = moneyPickup.moneyAmount;
+            updateCurrencyUI();
 
             Destroy(obj);
 
@@ -646,6 +649,11 @@ namespace FPS
                 GameManager.instance.ammoStorageText.text = ammoStorage.ToString("F0");
                 //GameManager.instance.ammoMaxText.text = gunList[selectedGun].maxAmmo.ToString("F0");
             }
+        }
+
+        public void updateCurrencyUI()
+        {
+            GameManager.instance.currencyAmount.text = playerCurrency.ToString("F0");
         }
 
         void zoomSights()

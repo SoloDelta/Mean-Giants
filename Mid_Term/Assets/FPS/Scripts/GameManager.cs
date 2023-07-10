@@ -52,6 +52,7 @@ namespace FPS
         public TextMeshProUGUI ammoMaxText;
         public TextMeshProUGUI ammoStorageText;
         public TextMeshProUGUI ammoCurText;
+        public TextMeshProUGUI currencyAmount;
         public Image heavy;
         public Image smg;
         public Image assaultRifle;

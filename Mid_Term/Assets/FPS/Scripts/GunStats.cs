@@ -17,7 +17,7 @@ namespace FPS
      */
     public enum WeaponClasses
     {
-        Heavy, Smg, AssualtRifle, Pistol
+        Heavy, Smg, AssualtRifle, Pistol, Knife
     }
 
     /**----------------------------------------------------------------
