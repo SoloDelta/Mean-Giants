@@ -22,7 +22,7 @@ namespace FPS
         [SerializeField] private string closeAnimation;
         [Header("--- Storage ---")]
         [SerializeField] KeyStorage _keyStorage = null;
-
+        public AudioMixer audioMixer;
         public bool prisonDoor;
         public bool PrisonCell;
         public bool CompoundDoor;
@@ -59,11 +59,13 @@ namespace FPS
             if (!doorOpen)
             {
                 doorAnim.Play(openAnimation, 0, 0.0f);
+                audioMixer.DoorSound();
                 doorOpen = true;
             }
             else
             {
                 doorAnim.Play(closeAnimation, 0, 0.0f);
+                audioMixer.DoorSound();
                 doorOpen = false;
             }
         }

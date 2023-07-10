@@ -42,24 +42,26 @@ namespace FPS
         [SerializeField][Range(0, 1)] float healthVol;
         [SerializeField] AudioClip emptyClipAud;
         [Range(0, 1)][SerializeField] float emptyClipVol;
+        [SerializeField] AudioClip DoorAud;
+        [Range(0, 1)][SerializeField] float DoorVol;
 
         //float[] sfxGroup = new float[9];
 
 
-       /* void Start()
-        {
-            sfxGroup[0] = pickupVol;
-            sfxGroup[1] = shotVol;
-            sfxGroup[2] = audJumpVol;
-            sfxGroup[3] = audDamageVol;
-            sfxGroup[4] = audCrouchVol;
-            sfxGroup[5] = audHurtVol;
-            sfxGroup[6] = audReloadVol;
-            sfxGroup[7] = healthVol;
-            sfxGroup[8] = emptyClipVol;
-            sfxGroup[9] = audStepsVol;
+        /* void Start()
+         {
+             sfxGroup[0] = pickupVol;
+             sfxGroup[1] = shotVol;
+             sfxGroup[2] = audJumpVol;
+             sfxGroup[3] = audDamageVol;
+             sfxGroup[4] = audCrouchVol;
+             sfxGroup[5] = audHurtVol;
+             sfxGroup[6] = audReloadVol;
+             sfxGroup[7] = healthVol;
+             sfxGroup[8] = emptyClipVol;
+             sfxGroup[9] = audStepsVol;
 
-        }*/
+         }*/
 
 
 
@@ -105,6 +107,11 @@ namespace FPS
         public void HealthPickupSound()
         {
             aud.PlayOneShot(healthClip, healthVol);
+        }
+
+        public void DoorSound()
+        {
+            aud.PlayOneShot(DoorAud, DoorVol);
         }
 
     }
