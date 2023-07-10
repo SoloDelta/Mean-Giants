@@ -11,6 +11,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 
 namespace FPS
@@ -25,9 +26,12 @@ namespace FPS
         [Header("--- Boundry Collider")]
         public Collider prisonCollider;
         public Collider villageCollider;
+        public Mesh changeTo;
+        public MeshFilter prisonMeshFilter;
+        public MeshFilter villageMeshFilter;
 
         public bool hasPrisonObjective = false;
-        bool hasVillageObjective = false;
+        public bool hasVillageObjective = false;
         public bool firstMissionCompleted = false;
         public bool secondMissionCompleted = false;
         bool thirdMissionCompleted = false;
@@ -89,11 +93,13 @@ namespace FPS
         {
             if (hasPrisonObjective)
             {
+                prisonMeshFilter.mesh = changeTo;
                 prisonCollider.enabled = false;
             }
 
             else if (hasVillageObjective)
             {
+                villageMeshFilter.mesh = changeTo;
                 villageCollider.enabled = false;
             }
         }
