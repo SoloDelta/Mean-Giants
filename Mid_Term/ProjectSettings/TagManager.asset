@@ -23,6 +23,7 @@ TagManager:
   - CompoundKey
   - PlayerHead
   - EnemyHead
+  - Sound
   layers:
   - Default
   - TransparentFX

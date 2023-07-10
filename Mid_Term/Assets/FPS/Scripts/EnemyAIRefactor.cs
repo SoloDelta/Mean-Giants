@@ -697,18 +697,17 @@ namespace FPS
         }
         private void OnTriggerStay(Collider other)
         {
-            if (other.tag == "PlayerCell")
+            if(other.tag == "CellDoor"  || other.tag == "PlayerCell")
             {
-                if (Vector3.Distance(transform.position, other.transform.position) < 4)
+                if(Vector3.Distance(transform.position, other.transform.position) < 4)
                 {
                     if (other.GetComponent<CellDoor>().Moving == false)
                     {
                         other.GetComponent<CellDoor>().Moving = true;
                     }
                 }
-
-
             }
+           
         }
         private void OnCollisionEnter(Collision collision)
         {
