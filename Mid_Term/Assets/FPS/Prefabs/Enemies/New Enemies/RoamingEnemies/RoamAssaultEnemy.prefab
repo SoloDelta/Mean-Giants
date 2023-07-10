@@ -219,6 +219,7 @@ MonoBehaviour:
   anim: {fileID: 579045403795077653}
   headPosition: {fileID: 322947828981661347}
   shootPosition: {fileID: 3673811617980932059}
+  soundObject: {fileID: 4055122175757043238, guid: c248ced64963a9e4eb13f75aa90fc6a9, type: 3}
   enemyUIParent: {fileID: 1372724273113370008}
   wholeHealthBar: {fileID: 4272076940862595037}
   HPBar: {fileID: 1269598547724772801}

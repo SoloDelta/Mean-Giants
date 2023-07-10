@@ -22,6 +22,7 @@ namespace FPS
         [SerializeField] private Animator anim; //the enemy's animator
         [SerializeField] private Transform headPosition;
         [SerializeField] private Transform shootPosition;
+        [SerializeField] private GameObject soundObject;
 
         [Header("----- UIComponents-----")]
         [SerializeField] private GameObject enemyUIParent; //the entirety of enemy UI. Healthbar and detection.
@@ -137,6 +138,8 @@ namespace FPS
             agent.stoppingDistance = stoppingDistanceOriginal;
             agent.SetDestination(GameManager.instance.player.transform.position);
             playerLastSeenAt = GameManager.instance.player.transform.position;
+ 
+           
             if (agent.remainingDistance <= agent.stoppingDistance)
             {
                 Quaternion rot = Quaternion.LookRotation(new Vector3(playerDirection.x, 0, playerDirection.z));
@@ -209,6 +212,8 @@ namespace FPS
                 spottingUI.SetActive(false);
             }
             spottedUI.SetActive(true);
+            Destroy(Instantiate(soundObject, this.transform.position, this.transform.rotation), 0.5f);
+
             yield return new WaitForSeconds(3.0f);
             spottedUI.SetActive(false);
         }
@@ -217,6 +222,12 @@ namespace FPS
             if (other.gameObject.CompareTag("Player"))
             {
                 playerInRange = true;
+            }
+            if(other.gameObject.CompareTag("Sound"))
+            {
+                agent.SetDestination(GameManager.instance.player.transform.position);
+                spotted = true;
+                Debug.Log("Heard Noise");
             }
             
 
@@ -232,7 +243,7 @@ namespace FPS
         }
         private void OnTriggerStay(Collider other)
         {
-            if (other.tag == "PlayerCell")
+            if (other.tag == "CellDoor" || other.tag == "PlayerCell")
             {
                 if (Vector3.Distance(transform.position, other.transform.position) < 4)
                 {
@@ -241,8 +252,6 @@ namespace FPS
                         other.GetComponent<CellDoor>().Moving = true;
                     }
                 }
-                
-
             }
         }
         public void TakeDamage(int dmg) //logic for taking damage. 
