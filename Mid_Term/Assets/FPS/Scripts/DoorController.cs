@@ -53,6 +53,17 @@ namespace FPS
                 }
             }
         }
+        public void PlayAnimationEnemy()
+        {
+            if (!doorOpen)
+            {
+                doorAnim.Play(openAnimation, 0, 0.0f);
+                audioMixer.DoorSound();
+                doorOpen = true;
+                StartCoroutine(closeDoor());
+            }
+            
+        }
 
         private void OpenDoor()
         {
@@ -68,6 +79,15 @@ namespace FPS
                 audioMixer.DoorSound();
                 doorOpen = false;
             }
+        }
+        IEnumerator closeDoor()
+        {
+            yield return new WaitForSeconds(6.0f);
+            doorAnim.Play(closeAnimation, 0, 0.0f);
+            audioMixer.DoorSound();
+            yield return new WaitForSeconds(0.5f);
+            doorOpen = false;
+
         }
     }
 }
