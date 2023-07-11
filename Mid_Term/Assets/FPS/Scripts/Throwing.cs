@@ -10,6 +10,7 @@
 //-----------------------------------------------------------------
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 
 namespace FPS
 {
@@ -27,21 +28,20 @@ namespace FPS
         [SerializeField] float destroyTime;
         public int totalThrows;
         public float throwCooldown;
-        
+        public AudioMixer audioMixer;
+
         [Header("Throwing")]
         public KeyCode throwKey = KeyCode.Mouse0;
         public float throwForce;
         public float throwUpwardForce;
 
-        public AudioSource aud;
-        [SerializeField] AudioClip audKnife;
-        [Range(0, 1)][SerializeField] float audKnifeVol;
+        
 
         bool readyToThrow;
 
         private void Start()
         {
-            
+            audioMixer = FindObjectOfType<AudioMixer>();
             readyToThrow = true; 
         }
 
@@ -50,15 +50,15 @@ namespace FPS
             if (Input.GetKeyDown(KeyCode.F) && readyToThrow && totalThrows > 0)
             {
                 Throw();
-                aud.PlayOneShot(audKnife, audKnifeVol);
-                StartCoroutine(DestroyeKnife());
+                audioMixer.KnifeThrow();
+                StartCoroutine(DestroyKnife());
             }
         }
 
-        public IEnumerator DestroyeKnife()
+        public IEnumerator DestroyKnife()
         {
             yield return new WaitForSeconds(3);
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
         private void Throw()
         {

@@ -11220,7 +11220,6 @@ GameObject:
   - component: {fileID: 3516337068024487520}
   - component: {fileID: 8220044977229747923}
   - component: {fileID: 5969234395311703542}
-  - component: {fileID: 5234182585185864844}
   - component: {fileID: 8901510203275350524}
   - component: {fileID: 7951804076116842490}
   m_Layer: 6
@@ -11370,47 +11369,21 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7638439082459081696}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ee849a33ae0cb34aad10ec881032442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 2644143366454979452}
   attackPoint: {fileID: 4488594420779033682}
-  objectToThrow: {fileID: 504577379926585868, guid: 65c6da165cb5e8041bf55a28f26156a0, type: 3}
+  objectToThrow: {fileID: 342216328135408741, guid: 3a8f4401b7a77594aa2b6f68f92d3c46, type: 3}
   destroyTime: 3
-  totalThrows: 100
-  throwCooldown: 0.1
+  totalThrows: 3
+  throwCooldown: 0.3
+  audioMixer: {fileID: 0}
   throwKey: 323
   throwForce: 25
   throwUpwardForce: 0
-  aud: {fileID: 0}
-  audKnife: {fileID: 8300000, guid: 805df3abf9598064393762594fb4b473, type: 3}
-  audKnifeVol: 0.061
---- !u!114 &5234182585185864844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7638439082459081696}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcc137cd6402ff947bc44838f8b736e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 2644143366454979452}
-  attackPoint: {fileID: 4488594420779033682}
-  grenadeObject: {fileID: 7105839012579932751, guid: b4242b65723c52a4885cc8befc6bf8fd, type: 3}
-  destroyTime: 0
-  totalThrows: 3
-  throwCooldown: 4
-  throwKey: 323
-  throwForce: 15
-  throwUpwardForce: 0
-  aud: {fileID: 0}
-  audGrenadeThrow: {fileID: 8300000, guid: ba97f0fb4fafb7a45994b62e29df527a, type: 3}
-  audGrenadeThrowVol: 0.211
 --- !u!95 &8901510203275350524
 Animator:
   serializedVersion: 5
@@ -19695,8 +19668,43 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 91021689849465229, guid: 58097c5ef20074c4dbbd513cc6cfbc91, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3043143427675113692}
   m_SourcePrefab: {fileID: 100100000, guid: 58097c5ef20074c4dbbd513cc6cfbc91, type: 3}
+--- !u!1 &6243520853881285344 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 91021689849465229, guid: 58097c5ef20074c4dbbd513cc6cfbc91, type: 3}
+  m_PrefabInstance: {fileID: 6333801180757697389}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &3043143427675113692
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6243520853881285344}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!4 &8282814034259010303 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2671859329449312658, guid: 58097c5ef20074c4dbbd513cc6cfbc91, type: 3}

@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &577578852212364257
 AudioSource:
@@ -175,3 +175,5 @@ MonoBehaviour:
   DoorVol: 0
   knifeAud: {fileID: 8300000, guid: 73608bda2ae44194da03783702e1c23b, type: 3}
   knifeVol: 0.11
+  knifeThrowAud: {fileID: 8300000, guid: 805df3abf9598064393762594fb4b473, type: 3}
+  knifeThrowVol: 0.086
