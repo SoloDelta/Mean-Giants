@@ -227,9 +227,13 @@ namespace FPS
             }
             if(other.gameObject.CompareTag("Sound"))
             {
-                agent.SetDestination(GameManager.instance.player.transform.position);
-                spotted = true;
-                Debug.Log("Heard Noise");
+                if (Vector3.Distance(transform.position, other.transform.position) < 30)
+                {
+                    agent.SetDestination(GameManager.instance.player.transform.position);
+                    spotted = true;
+                    Debug.Log("Heard Noise");
+                }
+                
             }
             
 
@@ -281,7 +285,7 @@ namespace FPS
                     anim.SetBool("Aiming", false);
                     anim.SetBool("Death", true);
                     audSource.PlayOneShot(deathSound, deathSoundVol);
-                    //GameManager.instance.UpdateObjective(-1);
+                    //GameManager.instance.UpdateObjective(-1);9
 
                     StartCoroutine(HitMarker());
 
