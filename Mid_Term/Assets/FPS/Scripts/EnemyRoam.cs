@@ -96,6 +96,7 @@ namespace FPS
         {
             if(agent.isActiveAndEnabled)
             {
+                OpenDoors();
                 anim.SetFloat("Enemy Speed", agent.velocity.normalized.magnitude);
                 seesPlayer = canSeePlayer();
                 rotateUI();
@@ -416,6 +417,24 @@ namespace FPS
             yield return new WaitForSeconds(shootRate);
 
             isShooting = false;
+        }
+        void OpenDoors()
+        {
+            RaycastHit hit;
+            Vector3 fwd = transform.TransformDirection(Vector3.forward);
+
+            //int mask = 1 << LayerMask.NameToLayer(excludeName) | layerInteract.value;
+
+            if (Physics.Raycast(transform.position, fwd, out hit, 5))
+            {
+                if (hit.collider.CompareTag("Door"))
+                {
+                    raycastedObj = hit.collider.gameObject.GetComponent<DoorController>();
+                    Debug.Log("Open Door");
+                    if (raycastedObj != null) { raycastedObj.PlayAnimationEnemy(); }
+
+                }
+            }
         }
     }
 }
