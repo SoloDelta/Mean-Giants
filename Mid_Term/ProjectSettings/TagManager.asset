@@ -24,6 +24,7 @@ TagManager:
   - PlayerHead
   - EnemyHead
   - Sound
+  - Knife
   layers:
   - Default
   - TransparentFX
