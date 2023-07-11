@@ -78,6 +78,7 @@ namespace FPS
         public bool shouldStartSearching = false;
         Vector3 playerLastSeenAt;
         public Vector3 startingPos;
+        private DoorController raycastedObj;
         // Start is called before the first frame update
         void Start()
         {
