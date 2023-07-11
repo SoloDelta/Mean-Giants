@@ -131,7 +131,7 @@ Transform:
   - {fileID: 5266042015965346935}
   - {fileID: 5474149766656031054}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2807137102161754535
 MonoBehaviour:
@@ -190,6 +190,10 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 296151237917793793, guid: 8885e2798e50ddc4280c37c0f10e49f8, type: 3}
+      propertyPath: keyCard
+      value: 
+      objectReference: {fileID: 2087209461897856881, guid: 225270fd3b605c241a246dab82442167, type: 3}
     - target: {fileID: 296151237917793793, guid: 8885e2798e50ddc4280c37c0f10e49f8, type: 3}
       propertyPath: playerFaceSpeed
       value: 300
