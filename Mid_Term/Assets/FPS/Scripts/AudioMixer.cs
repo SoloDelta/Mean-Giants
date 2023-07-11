@@ -44,6 +44,8 @@ namespace FPS
         [Range(0, 1)][SerializeField] float emptyClipVol;
         [SerializeField] AudioClip DoorAud;
         [Range(0, 1)][SerializeField] float DoorVol;
+        [SerializeField] AudioClip knifeAud;
+        [Range(0, 1)][SerializeField] float knifeVol;
 
         //float[] sfxGroup = new float[9];
 
@@ -112,6 +114,10 @@ namespace FPS
         public void DoorSound()
         {
             aud.PlayOneShot(DoorAud, DoorVol);
+        }
+        public void KnifeSlash()
+        {
+            aud.PlayOneShot(knifeAud, knifeVol);
         }
 
     }

@@ -556,7 +556,6 @@ namespace FPS
                 shootDamage = gunstat.shootDamage;
                 shootDistance = gunstat.shootDistance;
                 shootRate = gunstat.shootRate;
-
                 gunModel.GetComponent<MeshFilter>().mesh = gunstat.model.GetComponent<MeshFilter>().sharedMesh;
                 gunModel.GetComponent<MeshRenderer>().material = gunstat.model.GetComponent<MeshRenderer>().sharedMaterial;
                 selectedGun = gunList.Count - 1;

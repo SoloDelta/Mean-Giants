@@ -1,21 +1,32 @@
+using FPS;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class KnifeHandler : MonoBehaviour
 {
+    public AudioMixer audioMixer;
     public GameObject Knife;
     public bool CanAttack = true;
     public float AttackCooldown = 1.0f;
-    
+
+
+
+    private void Start()
+    {
+        audioMixer = FindObjectOfType<AudioMixer>();
+    }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        
+        if (Input.GetKeyDown(KeyCode.LeftAlt))
         {
             if (CanAttack)
             {
                 KnifeAttack();
+                audioMixer.KnifeSlash();
             }
         }
     }

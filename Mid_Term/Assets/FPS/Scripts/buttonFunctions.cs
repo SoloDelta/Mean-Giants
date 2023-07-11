@@ -18,6 +18,7 @@ namespace FPS
      */
     public class ButtonFunctions : MonoBehaviour
     {
+        public GameObject targetObject;
 
         /**----------------------------------------------------------------
          * @brief
@@ -81,6 +82,12 @@ namespace FPS
             Application.Quit(); 
         }
 
+            
+
+        public void TurnOffTargetObject()
+        {
+            targetObject.SetActive(false);
+        }
 
         public void Settings()
         {
