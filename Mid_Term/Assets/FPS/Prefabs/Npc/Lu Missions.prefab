@@ -6301,7 +6301,7 @@ Transform:
   - {fileID: 5990336763876231185}
   - {fileID: 7989638586988592181}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: -93.299, z: 0}
 --- !u!114 &4401654792951189175
 MonoBehaviour:
@@ -6323,12 +6323,31 @@ MonoBehaviour:
   updateObjective:
   - Speak to your cell mate.
   - Go to HQ and see the commander.
-  - time for mission 2
+  - 'Wild Retreat Troops to Kill '
+  - Return to the Commander
+  - Steal Enemy Files
+  - Return to the Commander
+  - 'Phantom Fortress Troops to Kill '
+  - Return to the Commander
+  - Steal Power Source
+  - Return to the Commander
+  - Steal Spacecraft Plans
+  - Return to the Commander
+  - Survive The Wave
   prisonCollider: {fileID: 0}
   villageCollider: {fileID: 0}
+  changeTo: {fileID: 0}
+  prisonMeshFilter: {fileID: 0}
+  villageMeshFilter: {fileID: 0}
   hasPrisonObjective: 0
+  hasVillageObjective: 0
   firstMissionCompleted: 0
   secondMissionCompleted: 0
+  thirdMissionCompleted: 0
+  fourthMissionCompleted: 0
+  fifthMissionCompleted: 0
+  sixthMissionCompleted: 0
+  seventhMissionCompleted: 0
 --- !u!95 &7066545556762678222
 Animator:
   serializedVersion: 5

@@ -55,7 +55,10 @@ namespace FPS
         IEnumerator Spawn()
         {
             isSpawning = true;
-            Instantiate(objectToSpawn , spawnPos[Random.Range(0, spawnPos.Length)].position, transform.rotation);
+            for(int i = 0; i < spawnPos.Length; i++)
+            {
+                Instantiate(objectToSpawn , spawnPos[i].position, transform.rotation);
+            }
             numberSpawn++;
             yield return new WaitForSeconds(timeBetweenSpawns);
             isSpawning = false;

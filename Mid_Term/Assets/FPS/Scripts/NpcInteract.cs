@@ -34,11 +34,13 @@ namespace FPS
         public bool hasVillageObjective = false;
         public bool firstMissionCompleted = false;
         public bool secondMissionCompleted = false;
-        bool thirdMissionCompleted = false;
-        bool fourthMissionCompleted = false;
-        bool fifthMissionCompleted = false;
-        bool sixthMissionCompleted = false;
-        bool seventhMissionCompleted = false;
+        bool secondMissionStarted = false;
+        public bool thirdMissionCompleted = false;
+        bool thirdMissionStarted = false;
+        public bool fourthMissionCompleted = false;
+        public bool fifthMissionCompleted = false;
+        public bool sixthMissionCompleted = false;
+        public bool seventhMissionCompleted = false;
         PrisonToHqNpcSpawn spawned;
 
         private void Update()
@@ -61,6 +63,7 @@ namespace FPS
             }
             if(firstMissionCompleted)
             {
+
                 StartCoroutine(MissionTwo());
             }
 
@@ -72,15 +75,15 @@ namespace FPS
             {
                 GameManager.instance.objectiveText.text = updateObjective[0];
             }
-            if(firstMissionCompleted && !secondMissionCompleted)
+            if(firstMissionCompleted && !secondMissionStarted)
             {
                 GameManager.instance.objectiveText.text = updateObjective[1];
             }
-            if(secondMissionCompleted && !thirdMissionCompleted)
+            if(secondMissionStarted && !secondMissionCompleted)
             {
                 GameManager.instance.objectiveText.text = updateObjective[2];
             }
-            if(thirdMissionCompleted && !fourthMissionCompleted)
+            if(secondMissionCompleted && !thirdMissionStarted)
             {
                 GameManager.instance.objectiveText.text = updateObjective[3];
             }
@@ -117,28 +120,11 @@ namespace FPS
         {
             if (key.HasPrisonKey)
             {
-                Debug.Log("Cell Key True");
                 return true;
             }
             else
             {
-                Debug.Log("Cell Key False");
                 return false;
-            }
-        }
-
-        private void MissionColliderDisable()
-        {
-            if (hasPrisonObjective)
-            {
-                prisonMeshFilter.mesh = changeTo;
-                prisonCollider.enabled = false;
-            }
-
-            else if (hasVillageObjective)
-            {
-                villageMeshFilter.mesh = changeTo;
-                villageCollider.enabled = false;
             }
         }
 
@@ -147,16 +133,17 @@ namespace FPS
             if (PlayerHasPrisonKey())
             {
                     hasPrisonObjective = true;
-                    MissionColliderDisable();
+                    prisonMeshFilter.mesh = changeTo;
+                    prisonCollider.enabled = false;
                     npcText[1].enabled = true;
-                    yield return new WaitForSeconds(15);
+                    yield return new WaitForSeconds(10);
                     npcText[1].enabled = false;
                     firstMissionCompleted = true;
              }
              else
              {
                     npcText[0].enabled = true;
-                    yield return new WaitForSeconds(15);
+                    yield return new WaitForSeconds(10);
                     npcText[0].enabled = false;
              }
 
@@ -164,9 +151,13 @@ namespace FPS
 
         private IEnumerator MissionTwo()
         {
+            //kill enemies
+            villageMeshFilter.mesh = changeTo;
+            villageCollider.enabled = false;
             npcText[2].enabled = true;
             yield return new WaitForSeconds(15);
             npcText[2].enabled = false;
+            secondMissionStarted = true;
 
         }
 
