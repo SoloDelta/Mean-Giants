@@ -55,6 +55,7 @@ MonoBehaviour:
   headPosition: {fileID: 7654876015774955464}
   shootPosition: {fileID: 8856010466754016714}
   soundObject: {fileID: 4055122175757043238, guid: c248ced64963a9e4eb13f75aa90fc6a9, type: 3}
+  ammoPrefab: {fileID: 7480271169491415248, guid: 74922acd7405b014f9f064d8f2956b82, type: 3}
   enemyUIParent: {fileID: 1105632931579114837}
   wholeHealthBar: {fileID: 2815433014438602512}
   HPBar: {fileID: 992374218462665996}
@@ -78,6 +79,7 @@ MonoBehaviour:
   atStart: 0
   spotted: 0
   spottingDistance: 35
+  currencyDrop: 0
   roamTimer: 1.57
   roamDist: 16
   shootRate: 0.25
@@ -88,6 +90,7 @@ MonoBehaviour:
   shotGunSpread: 2.5
   shouldStartSearching: 0
   startingPos: {x: 0, y: 0, z: 0}
+  forMission: 0
 --- !u!195 &-6136169086223922386
 NavMeshAgent:
   m_ObjectHideFlags: 0

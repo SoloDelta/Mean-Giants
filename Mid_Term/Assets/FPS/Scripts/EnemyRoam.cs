@@ -23,6 +23,7 @@ namespace FPS
         [SerializeField] private Transform headPosition;
         [SerializeField] private Transform shootPosition;
         [SerializeField] private GameObject soundObject;
+        [SerializeField] GameObject ammoPrefab;
 
         [Header("----- UIComponents-----")]
         [SerializeField] private GameObject enemyUIParent; //the entirety of enemy UI. Healthbar and detection.
@@ -52,6 +53,7 @@ namespace FPS
         [SerializeField] private bool atStart;
         [SerializeField] private bool spotted = false;
         [SerializeField] private float spottingDistance;
+        [SerializeField] float currencyDrop;
 
         [Header("-----Roaming-----")]
         [SerializeField, Range(1, 10)] private float roamTimer; //how long the enemy waits before roaming
@@ -273,7 +275,8 @@ namespace FPS
                 updateEnemyUI();
                 if (HP <= 0) //if the enemy is dead, turns of lasersight, stops all active coroutines, stops animations, and turns off collision.
                 {
-                    if(forMission)
+                    DropItem();
+                    if (forMission)
                     {
                         GameManager.instance.UpdateObjective(-1);
                     }
@@ -313,6 +316,19 @@ namespace FPS
             }
 
 
+        }
+        void DropItem()
+        {
+            
+                if (Random.Range(0, 2) == 0)
+                {
+                    Instantiate(ammoPrefab, transform.position, transform.rotation);
+                }
+                else
+                {
+                    GameManager.instance.playerScript.playerCurrency += currencyDrop;
+                }
+            
         }
         void rotateUI() //rotates the enemy's UI towards the player
         {
