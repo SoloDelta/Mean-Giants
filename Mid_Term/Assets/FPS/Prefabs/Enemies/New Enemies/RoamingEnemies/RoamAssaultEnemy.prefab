@@ -244,7 +244,7 @@ MonoBehaviour:
   atStart: 0
   spotted: 0
   spottingDistance: 50
-  currencyDrop: 0
+  currencyDrop: 10
   roamTimer: 1.42
   roamDist: 20
   shootRate: 3

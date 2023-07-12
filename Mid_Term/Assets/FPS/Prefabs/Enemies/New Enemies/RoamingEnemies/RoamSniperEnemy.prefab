@@ -110,7 +110,7 @@ MonoBehaviour:
   atStart: 0
   spotted: 0
   spottingDistance: 100
-  currencyDrop: 0
+  currencyDrop: 75
   roamTimer: 0
   roamDist: 0
   shootRate: 5
