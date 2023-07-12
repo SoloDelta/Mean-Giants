@@ -61,7 +61,7 @@ namespace FPS
             {
                 StartCoroutine(MissionOne());
             }
-            if(firstMissionCompleted)
+            else if(firstMissionCompleted)
             {
 
                 StartCoroutine(MissionTwo());
@@ -75,11 +75,11 @@ namespace FPS
             {
                 GameManager.instance.objectiveText.text = updateObjective[0];
             }
-            if(firstMissionCompleted && !secondMissionStarted)
+            if(firstMissionCompleted)
             {
                 GameManager.instance.objectiveText.text = updateObjective[1];
             }
-            if(secondMissionStarted && !secondMissionCompleted)
+            if(secondMissionStarted)
             {
                 GameManager.instance.objectiveText.text = updateObjective[2];
             }
@@ -136,9 +136,9 @@ namespace FPS
                     prisonMeshFilter.mesh = changeTo;
                     prisonCollider.enabled = false;
                     npcText[1].enabled = true;
+                    firstMissionCompleted = true;
                     yield return new WaitForSeconds(10);
                     npcText[1].enabled = false;
-                    firstMissionCompleted = true;
              }
              else
              {
@@ -155,9 +155,9 @@ namespace FPS
             villageMeshFilter.mesh = changeTo;
             villageCollider.enabled = false;
             npcText[2].enabled = true;
+            secondMissionStarted = true;
             yield return new WaitForSeconds(15);
             npcText[2].enabled = false;
-            secondMissionStarted = true;
 
         }
 
