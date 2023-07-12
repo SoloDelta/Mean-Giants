@@ -116,7 +116,7 @@ namespace FPS
             activeMenu = null;
         }
 
-        public void UpdateObjective()
+        public void UpdateObjective(int obj)
         {
             //enemiesRemaining += amount;
             //enemiesRemainingText.text = enemiesRemaining.ToString("F0");

@@ -79,6 +79,8 @@ namespace FPS
         Vector3 playerLastSeenAt;
         public Vector3 startingPos;
         private DoorController raycastedObj;
+        public bool forMission = false;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -271,6 +273,10 @@ namespace FPS
                 updateEnemyUI();
                 if (HP <= 0) //if the enemy is dead, turns of lasersight, stops all active coroutines, stops animations, and turns off collision.
                 {
+                    if(forMission)
+                    {
+                        GameManager.instance.UpdateObjective(-1);
+                    }
                     GameManager.instance.hitMarkKill.gameObject.SetActive(false);
                     if (headPosition.parent.gameObject.GetComponent<Collider>())
                     {
