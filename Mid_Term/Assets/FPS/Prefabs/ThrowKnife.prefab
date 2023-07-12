@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 117972979844997551}
   - component: {fileID: 4490787293188764417}
   - component: {fileID: -6056254926571476589}
+  - component: {fileID: -7999464769231826609}
   m_Layer: 0
   m_Name: ThrowKnife
   m_TagString: Untagged
@@ -37,7 +38,7 @@ Transform:
   - {fileID: 1911059730716477286}
   - {fileID: 9133880333951829701}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &2907509312683087220
 MeshRenderer:
@@ -107,7 +108,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!65 &4490787293188764417
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -144,6 +145,18 @@ MonoBehaviour:
   x: 9
   y: -18
   z: -4
+--- !u!114 &-7999464769231826609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342216328135408741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 071d4b268f3fcd24bb16c0dbf275140f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4154190193287351158
 GameObject:
   m_ObjectHideFlags: 0
