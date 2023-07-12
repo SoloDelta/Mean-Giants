@@ -300,7 +300,7 @@ namespace FPS
             StartCoroutine(ChangeStealthVals(false));
             percentSpotted = 0;
             StopCoroutine(Roam());
-            Debug.Log("Search Complete");
+     
         }
         bool canSeeBody()
         {
@@ -319,7 +319,7 @@ namespace FPS
                         
                         if (hit.collider.gameObject.layer == 13 && angleToDead <= viewConeAngle)
                         {
-                            Debug.DrawRay(headPosition.position, deadDirection);
+                         
                             agent.isStopped = false;
                             agent.stoppingDistance = 4;
                             agent.SetDestination(deadEnemy.transform.position);
@@ -365,7 +365,7 @@ namespace FPS
             {
                 playerDirection = new Vector3(0, 1, 0) + GameManager.instance.player.transform.position - headPosition.position;
                 angleToPlayer = Vector3.Angle(new Vector3(playerDirection.x, 0, playerDirection.z), transform.forward);
-                Debug.DrawRay(headPosition.position, playerDirection);
+ 
                 RaycastHit hit;
                 if (Physics.Raycast(headPosition.position, playerDirection, out hit))
                 {
@@ -448,7 +448,6 @@ namespace FPS
                 viewConeAngle -= 20;
             }
 
-            Debug.Log("HP: " + HP + "/ " + maxHealth);
         }
         #endregion
 
@@ -470,7 +469,7 @@ namespace FPS
                     if(headPosition.parent.gameObject.GetComponent<Collider>())
                     {
                         headPosition.parent.gameObject.GetComponent<Collider>().enabled = false;
-                        Debug.Log("Foundhead");
+                    
                     }
                     StopAllCoroutines();
                     spottedUI.SetActive(false);
@@ -534,7 +533,7 @@ namespace FPS
             playerDirection = new Vector3(0, 1, 0) + GameManager.instance.player.transform.position - shootPosition.position;
             Instantiate(bullet, shootPosition.position, Quaternion.LookRotation(playerDirection));
             audSource.PlayOneShot(shootSound, shootSoundVol);
-            Debug.DrawRay(shootPosition.position, playerDirection);
+       
         }
         void ShotgunBlast()
         {
@@ -555,7 +554,7 @@ namespace FPS
 
 
             audSource.PlayOneShot(shootSound, shootSoundVol);
-            Debug.DrawRay(shootPosition.position, playerDirection);
+   
 
         }
         IEnumerator HitMarker()
@@ -630,7 +629,7 @@ namespace FPS
             }
             else if (!destinationChosen && agent.velocity.magnitude < 1 && Vector3.Distance(transform.position, agent.destination) <= 2)
             {
-                Debug.Log("Got Stuck, Finding new roam");
+           
                 Vector3 randomPos = Random.insideUnitSphere * roamDist;
                 randomPos += startingPos;
                 NavMeshHit hit;
@@ -691,7 +690,7 @@ namespace FPS
             if (Physics.Raycast(transform.position, fwd, out hit, 5))
             {
                 if (hit.collider.CompareTag("Door")){raycastedObj = hit.collider.gameObject.GetComponent<DoorController>();
-                    Debug.Log("Open Door");
+  
                     if(raycastedObj != null) { raycastedObj.PlayAnimationEnemy(); }
                       
                 }
@@ -735,12 +734,12 @@ namespace FPS
                 
                 if (collision.collider.gameObject.GetComponent<EnemyAIRefactor>().agent.isActiveAndEnabled)
                 {
-                    Debug.Log("Enemy collision");
+
                     if (Vector3.Distance(agent.transform.position, agent.destination) > 
                         Vector3.Distance(collision.collider.gameObject.GetComponent<EnemyAIRefactor>().agent.transform.position, 
                         collision.collider.gameObject.GetComponent<EnemyAIRefactor>().agent.destination))
                     {
-                        Debug.Log("Get out my way");
+                   
                     }
                 }
 
@@ -762,7 +761,7 @@ namespace FPS
             yield return new WaitForSeconds(15);
             if (!baseManagerScript.highAlert)
             {
-                Debug.Log("try again");
+     
                 tryAlert = true;
             }
         }

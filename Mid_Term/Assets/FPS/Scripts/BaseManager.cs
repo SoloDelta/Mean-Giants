@@ -197,7 +197,7 @@ namespace FPS
                     {
                         if (Vector3.Distance(enemy.transform.position, _callingEnemy.transform.position) < alertEnemiesRange)
                         {
-                            Debug.Log("enem alerted");
+   
                             enemy.GetComponent<EnemyAIRefactor>().shouldStartSearching = true;
                             enemy.GetComponent<EnemyAIRefactor>().agent.SetDestination(GameManager.instance.player.transform.position);
                         }
