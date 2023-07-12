@@ -32,7 +32,7 @@ namespace FPS
         // Start is called before the first frame update
         void Start()
         {
-            //GameManager.instance.UpdateObjective(numberToSpawn); 
+            GameManager.instance.UpdateObjective(numberToSpawn * 2); 
         }
 
         // Update is called once per frame
@@ -58,6 +58,7 @@ namespace FPS
             for(int i = 0; i < numberToSpawn; i++)
             {
                 Instantiate(enemy, enemy.startingPos = spawnPos[i].position, transform.rotation);
+                enemy.forMission = true;
             }
             numberSpawn++;
             yield return new WaitForSeconds(timeBetweenSpawns);

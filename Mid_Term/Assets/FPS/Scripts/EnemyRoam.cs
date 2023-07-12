@@ -276,16 +276,17 @@ namespace FPS
                 if (HP <= 0) //if the enemy is dead, turns of lasersight, stops all active coroutines, stops animations, and turns off collision.
                 {
                     DropItem();
-                    if (forMission)
+                    if (forMission && GameManager.instance.enemiesRemaining > 0)
                     {
+
                         GameManager.instance.UpdateObjective(-1);
                     }
-                    GameManager.instance.hitMarkKill.gameObject.SetActive(false);
                     if (headPosition.parent.gameObject.GetComponent<Collider>())
                     {
                         headPosition.parent.gameObject.GetComponent<Collider>().enabled = false;
           
                     }
+                    GameManager.instance.hitMarkKill.gameObject.SetActive(false);
                     StopAllCoroutines();
                     spottedUI.SetActive(false);
                     spottingUI.SetActive(false);
@@ -294,7 +295,6 @@ namespace FPS
                     anim.SetBool("Aiming", false);
                     anim.SetBool("Death", true);
                     audSource.PlayOneShot(deathSound, deathSoundVol);
-                    //GameManager.instance.UpdateObjective(-1);9
 
                     StartCoroutine(HitMarker());
 

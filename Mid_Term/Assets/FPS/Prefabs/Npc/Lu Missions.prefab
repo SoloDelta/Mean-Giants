@@ -665,8 +665,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Adam, you have to take this knife, then take out a guard to get their key
-    to escape!
+  m_text: Adam, buy this pistol thats on my bunk, then take out a guard to get their
+    key to escape!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6301,7 +6301,7 @@ Transform:
   - {fileID: 5990336763876231185}
   - {fileID: 7989638586988592181}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: -93.299, z: 0}
 --- !u!114 &4401654792951189175
 MonoBehaviour:
@@ -6323,7 +6323,7 @@ MonoBehaviour:
   updateObjective:
   - Speak to your cell mate.
   - Go to HQ and see the commander.
-  - 'Wild Retreat Troops to Kill '
+  - 'Wild Retreat Troops to Kill:'
   - Return to the Commander
   - Steal Enemy Files
   - Return to the Commander
@@ -6343,7 +6343,9 @@ MonoBehaviour:
   hasVillageObjective: 0
   firstMissionCompleted: 0
   secondMissionCompleted: 0
+  secondMissionStarted: 0
   thirdMissionCompleted: 0
+  thirdMissionStarted: 0
   fourthMissionCompleted: 0
   fifthMissionCompleted: 0
   sixthMissionCompleted: 0
@@ -6712,8 +6714,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: We need to thin out the enemy guards go and take out a squad of 8 across
-    the river.
+  m_text: We need to thin out the enemy troops at Wild Retreat across the bridge.
+    Report back to me when you are done.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

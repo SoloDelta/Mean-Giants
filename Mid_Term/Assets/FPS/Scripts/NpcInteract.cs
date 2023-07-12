@@ -34,9 +34,9 @@ namespace FPS
         public bool hasVillageObjective = false;
         public bool firstMissionCompleted = false;
         public bool secondMissionCompleted = false;
-        bool secondMissionStarted = false;
+        public bool secondMissionStarted = false;
         public bool thirdMissionCompleted = false;
-        bool thirdMissionStarted = false;
+        public bool thirdMissionStarted = false;
         public bool fourthMissionCompleted = false;
         public bool fifthMissionCompleted = false;
         public bool sixthMissionCompleted = false;
@@ -82,9 +82,15 @@ namespace FPS
             if(secondMissionStarted)
             {
                 GameManager.instance.objectiveText.text = updateObjective[2];
+                GameManager.instance.enemiesToKill.enabled = true;
+                if(GameManager.instance.enemiesRemaining <= 0)
+                {
+                    secondMissionCompleted = true;
+                }
             }
             if(secondMissionCompleted && !thirdMissionStarted)
             {
+                GameManager.instance.enemiesToKill.enabled = false;
                 GameManager.instance.objectiveText.text = updateObjective[3];
             }
             if(fourthMissionCompleted && !fifthMissionCompleted)
@@ -158,6 +164,7 @@ namespace FPS
             secondMissionStarted = true;
             yield return new WaitForSeconds(15);
             npcText[2].enabled = false;
+
 
         }
 

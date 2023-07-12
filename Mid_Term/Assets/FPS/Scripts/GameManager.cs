@@ -48,6 +48,7 @@ namespace FPS
         public GameObject playerFlashUI;
         public GameObject loseMenu;
         public TextMeshProUGUI objectiveText;
+        public TextMeshProUGUI enemiesToKill;
         public TextMeshProUGUI itemCollectedText;
         public TextMeshProUGUI ammoMaxText;
         public TextMeshProUGUI ammoStorageText;
@@ -69,6 +70,7 @@ namespace FPS
 
         [Header("----- Objectives -----")]
         public int enemiesRemaining;
+        NpcInteract npc;
 
         public bool isPaused;
         private float timeScaleOriginal;
@@ -117,15 +119,14 @@ namespace FPS
             activeMenu = null;
         }
 
-        public void UpdateObjective(int obj)
+        public void UpdateObjective(int amount)
         {
-            //enemiesRemaining += amount;
-            //enemiesRemainingText.text = enemiesRemaining.ToString("F0");
+            enemiesRemaining += amount;
+            enemiesToKill.text = enemiesRemaining.ToString("F0");
 
             if (enemiesRemaining <= 0)
             {
-                //win condition met
-                //StartCoroutine(YouWin());
+                enemiesRemaining = 0;
             }
         }
 
