@@ -60,6 +60,7 @@ namespace FPS
         public Image hitMark;
         public Image hitMarkKill;
         public GameObject checkPointPopup;
+        public GameObject gunPos;
 
 
         //-----------------------------------------------------------------

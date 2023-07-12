@@ -341,6 +341,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 6605866817763923183, guid: 90fc07a8e308f2a418005fc96b0abb90, type: 3}
+      propertyPath: gunPos
+      value: 
+      objectReference: {fileID: 1423879069}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -758,6 +762,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44115abda65645c45839478bb93a40a9, type: 3}
+--- !u!1 &1423879069 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6680098411237278510, guid: 279e1c08b64de3a4c8023e8a3cdefe0a, type: 3}
+  m_PrefabInstance: {fileID: 7195345587511020316}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1610914465
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -819,38 +828,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b5e934dab45aa848bea2b34632eff69, type: 3}
---- !u!1 &1646511660 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6243520853881285344, guid: 279e1c08b64de3a4c8023e8a3cdefe0a, type: 3}
-  m_PrefabInstance: {fileID: 7195345587511020316}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &1646511667
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1646511660}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &1945132877 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6265606801439199425, guid: b724078aed9f8fe47bcaa3172f6353f4, type: 3}
@@ -1017,30 +994,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5969234395311703542, guid: 279e1c08b64de3a4c8023e8a3cdefe0a, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5969234395311703542, guid: 279e1c08b64de3a4c8023e8a3cdefe0a, type: 3}
-      propertyPath: audioMixer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5969234395311703542, guid: 279e1c08b64de3a4c8023e8a3cdefe0a, type: 3}
-      propertyPath: audKnifeVol
-      value: 0.215
-      objectReference: {fileID: 0}
-    - target: {fileID: 5969234395311703542, guid: 279e1c08b64de3a4c8023e8a3cdefe0a, type: 3}
-      propertyPath: totalThrows
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5969234395311703542, guid: 279e1c08b64de3a4c8023e8a3cdefe0a, type: 3}
-      propertyPath: objectToThrow
-      value: 
-      objectReference: {fileID: 342216328135408741, guid: 3a8f4401b7a77594aa2b6f68f92d3c46, type: 3}
-    - target: {fileID: 5969234395311703542, guid: 279e1c08b64de3a4c8023e8a3cdefe0a, type: 3}
-      propertyPath: throwCooldown
-      value: 0.3
-      objectReference: {fileID: 0}
     - target: {fileID: 7638439082459081696, guid: 279e1c08b64de3a4c8023e8a3cdefe0a, type: 3}
       propertyPath: m_Name
       value: Adam Player
@@ -1089,14 +1042,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5234182585185864844, guid: 279e1c08b64de3a4c8023e8a3cdefe0a, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6243520853881285344, guid: 279e1c08b64de3a4c8023e8a3cdefe0a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1646511667}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 279e1c08b64de3a4c8023e8a3cdefe0a, type: 3}
 --- !u!1001 &7945507142209820632
 PrefabInstance:

@@ -25,10 +25,12 @@ public class KnifeHandler : MonoBehaviour
         {
             if (CanAttack)
             {
+                StartCoroutine(GunHide());
                 KnifeAttack();
                 audioMixer.KnifeSlash();
             }
         }
+
     }
 
     public void KnifeAttack()
@@ -44,5 +46,14 @@ public class KnifeHandler : MonoBehaviour
     {
         yield return new WaitForSeconds(AttackCooldown);
         CanAttack = true;
+    }
+
+    IEnumerator GunHide()
+    {
+        GameManager.instance.gunPos.SetActive(false);
+        yield return new WaitForSeconds(.5f);
+        GameManager.instance.gunPos.SetActive(true);
+
+
     }
 }
