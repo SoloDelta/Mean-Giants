@@ -132,7 +132,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 506170105720181217}
-  m_LocalRotation: {x: -0, y: 0.37861127, z: -0, w: 0.9255558}
+  m_LocalRotation: {x: 0, y: 0.3786082, z: 0, w: 0.9255571}
   m_LocalPosition: {x: 692.8, y: 15.169435, z: 684.2}
   m_LocalScale: {x: 2000, y: 200, z: 10}
   m_ConstrainProportionsScale: 0
@@ -146,7 +146,7 @@ Transform:
   - {fileID: 5006277007737160750}
   - {fileID: 1834252392154497829}
   m_Father: {fileID: 0}
-  m_RootOrder: 42
+  m_RootOrder: 43
   m_LocalEulerAnglesHint: {x: 0, y: 44.495, z: 0}
 --- !u!33 &7108805189997876259
 MeshFilter:
@@ -210,7 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3fd0c934e8fa5045888064a7c914e96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 506170105720181217}
+  enemy: {fileID: 3019587407260432778, guid: fe9f33a304fda664d8a59d16324a573b, type: 3}
   spawnPos:
   - {fileID: 1960749746842472339}
   - {fileID: 559890871546659914}

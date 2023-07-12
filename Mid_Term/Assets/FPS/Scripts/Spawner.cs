@@ -18,7 +18,7 @@ namespace FPS
      */
     public class Spawner : MonoBehaviour
     {
-        [SerializeField] GameObject objectToSpawn;
+        [SerializeField] EnemyRoam enemy;
         [SerializeField] Transform[] spawnPos;
         [SerializeField] float timeBetweenSpawns;
         [SerializeField] int numberToSpawn;
@@ -55,9 +55,9 @@ namespace FPS
         IEnumerator Spawn()
         {
             isSpawning = true;
-            for(int i = 0; i < spawnPos.Length; i++)
+            for(int i = 0; i < numberToSpawn; i++)
             {
-                Instantiate(objectToSpawn , spawnPos[i].position, transform.rotation);
+                Instantiate(enemy, enemy.startingPos = spawnPos[i].position, transform.rotation);
             }
             numberSpawn++;
             yield return new WaitForSeconds(timeBetweenSpawns);
