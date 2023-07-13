@@ -13,6 +13,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 namespace FPS
 {
@@ -135,9 +136,8 @@ namespace FPS
             yield return new WaitForSeconds(1);
             activeMenu = winMenu;
             activeMenu.SetActive(true);
-            PausedState();
-            yield return new WaitForSeconds(3);
-            Loader.instance.LoadNextLevel();
+            yield return new WaitForSeconds(1);
+            SceneManager.LoadScene("Credits");
         }
 
         public void YouLose()
