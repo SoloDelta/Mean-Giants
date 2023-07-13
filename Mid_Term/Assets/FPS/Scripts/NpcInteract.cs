@@ -68,6 +68,7 @@ namespace FPS
             else if(firstMissionCompleted)
             {
                 StartCoroutine(MissionTwo());
+                secondMissionStarted = true;
 
             }
             else if(secondMissionCompleted)
@@ -86,7 +87,7 @@ namespace FPS
             if(firstMissionCompleted)
             {
                 GameManager.instance.objectiveText.text = updateObjective[1];
-                secondMissionStarted = true;
+
             }
             if(secondMissionStarted)
             {
@@ -173,6 +174,7 @@ namespace FPS
         {
             //kill enemies
             npcText[2].enabled = true;
+            
             villageMeshFilter.mesh = changeTo;
             villageCollider.enabled = false;
             yield return new WaitForSeconds(15);

@@ -136,6 +136,8 @@ namespace FPS
             activeMenu = winMenu;
             activeMenu.SetActive(true);
             PausedState();
+            yield return new WaitForSeconds(3);
+            Loader.instance.LoadNextLevel();
         }
 
         public void YouLose()
