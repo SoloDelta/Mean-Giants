@@ -96,6 +96,7 @@ namespace FPS
                 if (GameManager.instance.enemiesRemaining <= 0)
                 {
                     secondMissionCompleted = true;
+                    StartCoroutine(GameManager.instance.YouWin());
                 }
 
             }
