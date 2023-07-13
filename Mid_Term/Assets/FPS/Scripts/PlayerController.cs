@@ -152,7 +152,7 @@ namespace FPS
 
                                 StartCoroutine(collectedText(hit));
                                 Destroy(hit.collider.gameObject);
-                                Debug.Log("Cube Collected");
+                                //Debug.Log("Cube Collected");
                             }
 
                         }
@@ -316,7 +316,7 @@ namespace FPS
                         damageable = hit.collider.gameObject.transform.parent.transform.parent.GetComponent<IDamage>();
                         if(damageable != null)
                         {
-                            Debug.Log("HEADSHOT");
+                            //Debug.Log("HEADSHOT");
                             damageable.TakeDamage(shootDamage * 2);
                         }
 
@@ -356,7 +356,7 @@ namespace FPS
                     if(lastHit.collider == null) { lastHit = hit; }
                     if(lastHit.collider.gameObject == hit.collider.gameObject)
                     {
-                        Debug.Log("Hit same collider");
+                        //Debug.Log("Hit same collider");
                     }
                     if (lastRun != null && lastHit.collider.gameObject == hit.collider.gameObject)
                     {
@@ -591,25 +591,25 @@ namespace FPS
 
             if (keyPickup != null)
             {
-                Debug.Log("Picking up key: " + name.ToString());
+               //Debug.Log("Picking up key: " + name.ToString());
 
                 if (keyPickup.CompareTag("PrisonKey"))
                 {
                     keyStorage.HasPrisonKey = true;
-                    Debug.Log("hasPrisonKey is now true");
+                    //Debug.Log("hasPrisonKey is now true");
                 }
                 else if (keyPickup.CompareTag("CompoundKey"))
                 {
                     keyStorage.HasCompoundKey = true;
-                    Debug.Log("hasCompoundKey is now true");
+                    //Debug.Log("hasCompoundKey is now true");
                 }
 
-                Debug.Log("Destroying object: " + obj.name);
+                //Debug.Log("Destroying object: " + obj.name);
                 Destroy(obj);
             }
             else
             {
-                Debug.LogError("The provided object does not have the PickupKeys component.");
+                //Debug.LogError("does not have the PickupKeys component.");
             }
         }
 

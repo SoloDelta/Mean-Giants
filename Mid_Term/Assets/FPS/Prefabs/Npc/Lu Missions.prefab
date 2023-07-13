@@ -1072,7 +1072,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5040168969951225577}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
@@ -6643,7 +6643,7 @@ MonoBehaviour:
   - Go to HQ and see the commander.
   - 'Wild Retreat Troops to Kill:'
   - Return to the Commander
-  - Steal Enemy Files
+  - Steal Enemy File at Phantom Fortress
   - Return to the Commander
   - 'Phantom Fortress Troops to Kill '
   - Return to the Commander
@@ -6654,9 +6654,11 @@ MonoBehaviour:
   - Survive The Wave
   prisonCollider: {fileID: 0}
   villageCollider: {fileID: 0}
+  phantomCollider: {fileID: 0}
   changeTo: {fileID: 0}
   prisonMeshFilter: {fileID: 0}
   villageMeshFilter: {fileID: 0}
+  phantomMeshFilter: {fileID: 0}
   hasPrisonObjective: 0
   hasVillageObjective: 0
   firstMissionCompleted: 0

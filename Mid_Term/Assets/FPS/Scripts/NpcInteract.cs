@@ -22,6 +22,7 @@ namespace FPS
         [SerializeField] KeyStorage key;
         [SerializeField] Canvas[] npcText;
         [SerializeField] string[] updateObjective;
+        PlayerController player;
 
         [Header("--- Boundry Collider")]
         public Collider prisonCollider;
@@ -33,17 +34,17 @@ namespace FPS
         public MeshFilter phantomMeshFilter;
 
 
-        public bool hasPrisonObjective = false;
-        public bool hasVillageObjective = false;
-        public bool firstMissionCompleted = false;
-        public bool secondMissionCompleted = false;
-        public bool secondMissionStarted = false;
-        public bool thirdMissionCompleted = false;
-        public bool thirdMissionStarted = false;
-        public bool fourthMissionCompleted = false;
-        public bool fifthMissionCompleted = false;
-        public bool sixthMissionCompleted = false;
-        public bool seventhMissionCompleted = false;
+        public bool hasPrisonObjective;
+        public bool hasVillageObjective;
+        public bool firstMissionCompleted;
+        public bool secondMissionCompleted;
+        public bool secondMissionStarted;
+        public bool thirdMissionCompleted;
+        public bool thirdMissionStarted;
+        public bool fourthMissionCompleted;
+        public bool fifthMissionCompleted;
+        public bool sixthMissionCompleted;
+        public bool seventhMissionCompleted;
         PrisonToHqNpcSpawn spawned;
 
         private void Update()
@@ -85,6 +86,7 @@ namespace FPS
             if(firstMissionCompleted)
             {
                 GameManager.instance.objectiveText.text = updateObjective[1];
+                secondMissionStarted = true;
             }
             if(secondMissionStarted)
             {
@@ -96,16 +98,20 @@ namespace FPS
                 }
 
             }
-            if(thirdMissionStarted)
+            if(secondMissionCompleted)
             {
                 GameManager.instance.enemiesToKill.enabled = false;
                 GameManager.instance.objectiveText.text = updateObjective[3];
             }
-            if(fourthMissionCompleted && !fifthMissionCompleted)
+            if(thirdMissionStarted)
             {
                 GameManager.instance.objectiveText.text = updateObjective[4];
+                if(player.stoleFile)
+                {
+                    thirdMissionCompleted = true;
+                }
             }
-            if(fifthMissionCompleted && !sixthMissionCompleted)
+            if(thirdMissionCompleted)
             {
                 GameManager.instance.objectiveText.text = updateObjective[5];
             }
@@ -167,7 +173,6 @@ namespace FPS
         {
             //kill enemies
             npcText[2].enabled = true;
-            secondMissionStarted = true;
             villageMeshFilter.mesh = changeTo;
             villageCollider.enabled = false;
             yield return new WaitForSeconds(15);
@@ -181,6 +186,7 @@ namespace FPS
         {
             //steal item from base one
             npcText[3].enabled = true;
+            thirdMissionStarted = true;
             phantomMeshFilter.mesh = changeTo;
             phantomCollider.enabled = false;
             yield return new WaitForSeconds(15);
