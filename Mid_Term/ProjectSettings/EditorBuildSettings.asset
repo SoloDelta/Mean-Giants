@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/FPS/Scenes/Main.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/FPS/Scenes/UI/Credits.unity
+    guid: c846a8f5931d77c449628d9b347bfd00
   m_configObjects: {}

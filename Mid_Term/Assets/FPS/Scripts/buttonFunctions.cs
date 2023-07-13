@@ -19,6 +19,14 @@ namespace FPS
     public class ButtonFunctions : MonoBehaviour
     {
         public GameObject targetObject;
+        
+        /**----------------------------------------------------------------
+         * @brief
+         */
+        public void Credits()
+        {
+            SceneManager.LoadScene("Credits");
+        }
 
         /**----------------------------------------------------------------
          * @brief
