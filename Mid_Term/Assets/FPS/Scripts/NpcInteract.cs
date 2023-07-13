@@ -26,9 +26,12 @@ namespace FPS
         [Header("--- Boundry Collider")]
         public Collider prisonCollider;
         public Collider villageCollider;
+        public Collider phantomCollider;
         public Mesh changeTo;
         public MeshFilter prisonMeshFilter;
         public MeshFilter villageMeshFilter;
+        public MeshFilter phantomMeshFilter;
+
 
         public bool hasPrisonObjective = false;
         public bool hasVillageObjective = false;
@@ -63,8 +66,12 @@ namespace FPS
             }
             else if(firstMissionCompleted)
             {
-
                 StartCoroutine(MissionTwo());
+
+            }
+            else if(secondMissionCompleted)
+            {
+                StartCoroutine(MissionThree());
             }
 
         }
@@ -83,12 +90,13 @@ namespace FPS
             {
                 GameManager.instance.objectiveText.text = updateObjective[2];
                 GameManager.instance.enemiesToKill.enabled = true;
-                if(GameManager.instance.enemiesRemaining <= 0)
+                if (GameManager.instance.enemiesRemaining <= 0)
                 {
                     secondMissionCompleted = true;
                 }
+
             }
-            if(secondMissionCompleted && !thirdMissionStarted)
+            if(thirdMissionStarted)
             {
                 GameManager.instance.enemiesToKill.enabled = false;
                 GameManager.instance.objectiveText.text = updateObjective[3];
@@ -158,12 +166,13 @@ namespace FPS
         private IEnumerator MissionTwo()
         {
             //kill enemies
-            villageMeshFilter.mesh = changeTo;
-            villageCollider.enabled = false;
             npcText[2].enabled = true;
             secondMissionStarted = true;
+            villageMeshFilter.mesh = changeTo;
+            villageCollider.enabled = false;
             yield return new WaitForSeconds(15);
             npcText[2].enabled = false;
+
 
 
         }
@@ -172,6 +181,8 @@ namespace FPS
         {
             //steal item from base one
             npcText[3].enabled = true;
+            phantomMeshFilter.mesh = changeTo;
+            phantomCollider.enabled = false;
             yield return new WaitForSeconds(15);
             npcText[3].enabled = false;
         }

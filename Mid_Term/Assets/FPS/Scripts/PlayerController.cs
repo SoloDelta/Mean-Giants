@@ -19,7 +19,7 @@ namespace FPS
     /**----------------------------------------------------------------
      * @brief
      */
-    public class PlayerController : MonoBehaviour, IDamage, IHealth, IAmmo, IKey, IMoney, IDataPersistence
+    public class PlayerController : MonoBehaviour, IDamage, IHealth, IAmmo, IKey, IMoney, IDataPersistence , IObjective
     {
         #region Variables
         [Header("----- Components -----")]
@@ -79,6 +79,7 @@ namespace FPS
         int shieldOrig;
         NpcInteract npc;
         private RaycastHit lastHit;
+        public bool stoleFile = false;
        //public Key useableKeys;
 
         
@@ -544,6 +545,12 @@ namespace FPS
         /**----------------------------------------------------------------
         * @brief
          */
+        public void ObjectivePickup(GameObject obj)
+        {
+            stoleFile = true;
+            Destroy(obj);
+        }
+
         public void PickupGun(GunStats gunstat)
         {
 

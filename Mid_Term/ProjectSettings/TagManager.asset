@@ -25,6 +25,7 @@ TagManager:
   - EnemyHead
   - Sound
   - Knife
+  - FileToSteal
   layers:
   - Default
   - TransparentFX
