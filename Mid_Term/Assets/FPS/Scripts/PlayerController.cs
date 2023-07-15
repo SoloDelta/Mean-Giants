@@ -275,7 +275,7 @@ namespace FPS
                 isCrouching = true;
                 audioMixer.CrouchSound();
             }
-            else if (Input.GetButtonUp("Crouch") && !isSprinting)
+            else if (Input.GetButtonUp("Crouch") && !isSprinting && isCrouching)
             {
                 playerSpeed = speedOrig;
                 controller.height = controller.height * 2;
