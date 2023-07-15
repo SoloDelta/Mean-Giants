@@ -20,14 +20,17 @@ public class KnifeHandler : MonoBehaviour
 
     private void Update()
     {
-        
-        if (Input.GetKeyDown(KeyCode.LeftAlt))
+
+        if (GameManager.instance.activeMenu == null)
         {
-            if (CanAttack)
+            if (Input.GetKeyDown(KeyCode.LeftAlt))
             {
-                StartCoroutine(GunHide());
-                KnifeAttack();
-                audioMixer.KnifeSlash();
+                if (CanAttack)
+                {
+                    StartCoroutine(GunHide());
+                    KnifeAttack();
+                    audioMixer.KnifeSlash();
+                }
             }
         }
 

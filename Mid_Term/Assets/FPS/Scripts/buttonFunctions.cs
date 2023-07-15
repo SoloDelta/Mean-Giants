@@ -42,6 +42,7 @@ namespace FPS
 
         public void PlayGame()
         {
+            Time.timeScale = 1;
             SceneManager.LoadScene("Main");
         }
 
