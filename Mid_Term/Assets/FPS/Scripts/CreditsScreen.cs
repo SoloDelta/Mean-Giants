@@ -34,6 +34,7 @@ namespace FPS
             if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
             {
                 SceneManager.LoadScene("MainMenu");
+                GameManager.instance.PausedState();
             }
         }
     }
