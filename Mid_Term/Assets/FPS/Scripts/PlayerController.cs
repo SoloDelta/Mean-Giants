@@ -268,14 +268,14 @@ namespace FPS
          */
         public void crouch()
         {
-            if (Input.GetButtonDown("Crouch"))
+            if (Input.GetButtonDown("Crouch") && !isSprinting)
             {
                 playerSpeed /= 2;
                 controller.height = controller.height / 2;
                 isCrouching = true;
                 audioMixer.CrouchSound();
             }
-            else if (Input.GetButtonUp("Crouch"))
+            else if (Input.GetButtonUp("Crouch") && !isSprinting)
             {
                 playerSpeed = speedOrig;
                 controller.height = controller.height * 2;
